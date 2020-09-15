@@ -1,0 +1,2 @@
+Message : background : hidden : 증거를 얻었다.
+Select : 4 : Message

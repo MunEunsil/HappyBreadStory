@@ -10,8 +10,9 @@ namespace HappyBread.Objects
     {
         public override void Interact()
         {
-            GameModel.Instance.dialogueManager.ExecuteDialogue("stone");
-            GameModel.Instance.selector.Test();
+            GameModel.Instance.dialogueManager.FileName = "stone";
+            GameModel.Instance.dialogueManager.ExecuteDialogue();
+            GameModel.Instance.questionManager.Test();
         }
     }
 }

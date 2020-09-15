@@ -72,8 +72,7 @@ namespace HappyBread.GamePlay
                 if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
                 {
                     state = State.Idle;
-                    GameModel.Instance.inputManager.UndoState();
-                    gameObject.SetActive(false);
+                    GameModel.Instance.dialogueManager.QuitDialogue();
                     return;
                 }
 
@@ -91,7 +90,6 @@ namespace HappyBread.GamePlay
                     imageUI.sprite = sprite;
                 }
                 currentText = seperated[1].Trim();
-
                 NextCommand = KeyCode.None;
 
                 typingCoroutine = StartCoroutine(SmoothTyping(currentText));

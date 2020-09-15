@@ -6,7 +6,7 @@ namespace HappyBread.GamePlay
 {
     public abstract class Interactable : MonoBehaviour
     {
-        private Evidence evidence;
+        protected Evidence evidence;
 
         public abstract void Interact();
     }

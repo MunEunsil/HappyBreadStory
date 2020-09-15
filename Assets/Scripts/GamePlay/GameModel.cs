@@ -21,9 +21,8 @@ namespace HappyBread.Core
         public DialogueManager dialogueManager;
         public InputManager inputManager;
         public CaseDiary caseDiary;
-        public UIManager uiManager;
         public HpControl hpControl;
-        public Selector selector;
+        public QuestionManager questionManager;
 
         private static GameModel instance;
     }

@@ -182,7 +182,7 @@ MonoBehaviour:
   playerControl: {fileID: 1368445345}
   dialogue: {fileID: 707839620}
   caseDiary: {fileID: 440859000}
-  selector: {fileID: 1298425651}
+  questionManager: {fileID: 1298425651}
 --- !u!114 &121160536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 707839620}
+  isActive: 0
 --- !u!114 &121160537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ MonoBehaviour:
   caseDiary: {fileID: 440859000}
   uiManager: {fileID: 121160537}
   hpControl: {fileID: 1466214113}
-  selector: {fileID: 1298425651}
+  questionManager: {fileID: 1298425651}
 --- !u!1 &707839618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1211,7 @@ GameObject:
   - component: {fileID: 1298425650}
   - component: {fileID: 1298425651}
   m_Layer: 5
-  m_Name: Selector
+  m_Name: QuestionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

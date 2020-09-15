@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
-    public class Selector : MonoBehaviour
+    public class QuestionManager : MonoBehaviour
     {
         public GameObject questionPrefab;
         public Vector3 NextMoveCommand;
         public KeyCode NextCommand;
-        public int answerIndex = -1; // 해당 인덱스를 통해 선택한 답변이 무엇인지 알아낸다.
+        public int AnswerIndex = -1; // 해당 인덱스를 통해 선택한 답변이 무엇인지 알아낸다.
 
         private enum State
         {
@@ -30,7 +30,7 @@ namespace HappyBread.GamePlay
         public void CreateSelector(List<string> rawQuestions)
         { 
             selectedIndex = 0;
-            answerIndex = -1;
+            AnswerIndex = -1;
 
             float totalHeight = (rawQuestions.Count - 1) * (questionHeight + questionMargin); // selector가 차지하는 공간의 총 높이
             for (int index = 0; index < rawQuestions.Count; index++)
@@ -82,7 +82,7 @@ namespace HappyBread.GamePlay
                 }
                 questions.Clear();
 
-                answerIndex = selectedIndex;
+                AnswerIndex = selectedIndex;
                 GameModel.Instance.inputManager.UndoState();
                 gameObject.SetActive(false);
             }
@@ -144,8 +144,8 @@ namespace HappyBread.GamePlay
 
         public void Test()
         {
-            gameObject.SetActive(true);
-            GameModel.Instance.inputManager.ChangeState(InputManager.State.SelectorControl);
+            gameObject.SetActive(true); // UI 관련
+            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
             List<string> test = new List<string>();
             test.Add("1. 안녕 나는 재상");
             test.Add("2. 안녕 나는 재중");
