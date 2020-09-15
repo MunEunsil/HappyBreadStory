@@ -68,36 +68,10 @@ namespace HappyBread.GamePlay
                     case GameData.keyCodeCaseDiary:
                         AttemptOpenCaseDiary();
                         break;
-                    case GameData.keyCodeGetEvidence:
-                        AttemptGetEvidence();
-                        break;
                     default:
                         break;
                 }
             }
-        }
-
-        private void AttemptGetEvidence()
-        {
-            Vector2 start = transform.position;
-            Vector2 end = (Vector2)transform.position + playerDirection * hitDistance;
-            hit = Physics2D.Linecast(start, end, evidenceLayer);
-            if (hit.transform != null)
-            {
-                GetEvidence(hit);
-            }
-            NextFunctionCommand = KeyCode.None;
-        }
-
-        // TODO : Stone에 따로 정립해야함.
-        private void GetEvidence(RaycastHit2D hit)
-        {
-            GameModel.Instance.dialogueManager.ExecuteDialogue("alarm");
-            GameModel.Instance.caseDiary.AddEvidence(
-                new Evidence()
-                {
-                    Sprite = ResourceLoader.LoadSprite("stone")
-                });
         }
 
         private void AttemptOpenCaseDiary()
@@ -121,7 +95,7 @@ namespace HappyBread.GamePlay
 
         private void Interact(RaycastHit2D hit)
         {
-            hit.transform.GetComponent<IInteractable>().Interact();
+            hit.transform.GetComponent<Interactable>().Interact();
         }
 
         private void IdleState()

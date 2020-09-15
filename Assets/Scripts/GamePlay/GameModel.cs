@@ -23,6 +23,7 @@ namespace HappyBread.Core
         public CaseDiary caseDiary;
         public UIManager uiManager;
         public HpControl hpControl;
+        public Selector selector;
 
         private static GameModel instance;
     }

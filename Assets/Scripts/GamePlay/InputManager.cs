@@ -12,6 +12,7 @@ namespace HappyBread.GamePlay
         public PlayerControl playerControl;
         public Dialogue dialogue;
         public CaseDiary caseDiary;
+        public Selector selector;
 
         private List<State> stack; // 이전 상태를 저장합니다.
 
@@ -21,6 +22,7 @@ namespace HappyBread.GamePlay
             PlayerControl,
             DialogControl,
             CaseDiaryControl,
+            SelectorControl,
             Pause
         }
 
@@ -57,6 +59,34 @@ namespace HappyBread.GamePlay
                 case State.CaseDiaryControl:
                     CaseDiaryControl();
                     break;
+                case State.SelectorControl:
+                    SelectorControl();
+                    break;
+            }
+        }
+
+        private void SelectorControl()
+        {
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                selector.NextMoveCommand = Vector3.up;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                selector.NextMoveCommand = Vector3.down;
+            }
+            else
+            {
+                selector.NextMoveCommand = Vector3.zero;
+            }
+
+            if (Input.GetKeyUp(GameData.KeyCodeSelect))
+            {
+                selector.NextCommand = GameData.KeyCodeSelect;
+            }
+            else
+            {
+                selector.NextCommand = KeyCode.None;
             }
         }
 
@@ -118,10 +148,6 @@ namespace HappyBread.GamePlay
             else if (Input.GetKeyUp(GameData.keyCodeCaseDiary))
             {
                 playerControl.NextFunctionCommand = GameData.keyCodeCaseDiary;
-            }
-            else if (Input.GetKeyUp(GameData.keyCodeGetEvidence))
-            {
-                playerControl.NextFunctionCommand = GameData.keyCodeGetEvidence;
             }
             else
             {

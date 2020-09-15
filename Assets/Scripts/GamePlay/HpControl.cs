@@ -12,8 +12,7 @@ namespace HappyBread.GamePlay
         private float hp;
 
         public void Add(float value)
-        {
-            Debug.Log(hp);
+        {            
             hp += value;
             fill.fillAmount = hp / maxHp;
         }

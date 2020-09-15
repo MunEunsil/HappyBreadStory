@@ -77,7 +77,7 @@ namespace HappyBread.GamePlay
                     return;
                 }
 
-                string[] seperated = currentDialogue[currentIndex].Split(':');
+                string[] seperated = currentDialogue[currentIndex].Split(':'); // 텍스트 파일을 ':' 을 기준으로 분리한다.
 
                 string imageFileName = seperated[0].Trim();
                 Sprite sprite = ResourceLoader.LoadSprite(imageFileName);
@@ -92,6 +92,8 @@ namespace HappyBread.GamePlay
                 }
                 currentText = seperated[1].Trim();
 
+                NextCommand = KeyCode.None;
+
                 typingCoroutine = StartCoroutine(SmoothTyping(currentText));
             }
         }
@@ -104,6 +106,7 @@ namespace HappyBread.GamePlay
                 state = State.Waiting;
                 textUI.text = currentText;
                 currentText = "";
+                NextCommand = KeyCode.None;
             }
         }
 
@@ -113,7 +116,7 @@ namespace HappyBread.GamePlay
             textUI.text = "";
             foreach (var character in text)
             {
-                if (textUI.text.Length == 3)
+                if (textUI.text.Length == 3) // 글자를 3개까지 읽으면 모든 텍스트를 출력할 수 있게끔 상태를 변경한다.
                 {
                     state = State.NonBlocking;
                 }

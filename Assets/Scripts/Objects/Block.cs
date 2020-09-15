@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class Block : MonoBehaviour, IInteractable
+    public class Block : Interactable
     {
-        public void Interact()
+        public override void Interact()
         {
             GameModel.Instance.dialogueManager.ExecuteDialogue("blocks");
         }
