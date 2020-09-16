@@ -6,6 +6,8 @@ namespace HappyBread.GamePlay
 {
     public abstract class Event
     {
+        public Event ParentEvent { get; set; }
+
         public enum EventState
         {
             Waiting, // 실행 전 기다리는 상태
@@ -28,6 +30,11 @@ namespace HappyBread.GamePlay
         {
             eventState = EventState.Terminated;
             EndDetail();
+
+            if (ParentEvent != null)
+            {
+                ParentEvent.End();
+            }
         }
 
         protected abstract void EndDetail();

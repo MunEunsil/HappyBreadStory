@@ -17,7 +17,7 @@ namespace HappyBread.GamePlay
         public Vector3 NextMoveCommand;
         public KeyCode NextCommand;
         public int AnswerIndex = -1; // 해당 인덱스를 통해 선택한 답변이 무엇인지 알아낸다.
-        public QuestionBoxEvent questionBoxEvent = null;
+        public Event ConnectedEvent { get; set; }
 
         private enum State
         {
@@ -33,6 +33,10 @@ namespace HappyBread.GamePlay
 
         public void CreateSelector(List<string> rawQuestions)
         { 
+            if(rawQuestions.Count == 0)
+            {
+                return;
+            }
             selectedIndex = 0;
             AnswerIndex = -1;
 
@@ -91,10 +95,10 @@ namespace HappyBread.GamePlay
                 gameObject.SetActive(false);
 
                 // 이벤트와 연결 제거
-                if (questionBoxEvent != null)
+                if (ConnectedEvent != null)
                 {
-                    questionBoxEvent.End();
-                    questionBoxEvent = null;
+                    ConnectedEvent.End();
+                    ConnectedEvent = null;
                 }
             }
             else

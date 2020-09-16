@@ -6,21 +6,24 @@ namespace HappyBread.GamePlay
 {
     public class QuestionBoxEvent : Event
     {
+        private List<string> questions;
+
+        public QuestionBoxEvent(List<string> questions)
+        {
+            this.questions = questions;
+        }
+
         protected override void BeginDetail()
         {
             GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
-            GameModel.Instance.questionBox.questionBoxEvent = this;
+            GameModel.Instance.questionBox.ConnectedEvent = this;
             GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
-            List<string> test = new List<string>();
-            test.Add("1. 안녕 나는 재상");
-            test.Add("2. 안녕 나는 재중");
-            test.Add("3. 안녕 나는 재하");
-            GameModel.Instance.questionBox.CreateSelector(test);
+            GameModel.Instance.questionBox.CreateSelector(questions);
         }
 
         protected override void EndDetail()
         {
-            
+            questions = new List<string>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace HappyBread.GamePlay
         public Text textUI;
         public float typingIdleTime = 0.05f;
         public KeyCode NextCommand;
-        public DialogueEvent dialogueEvent = null;
+        public Event ConnectedEvent { get; set; }
 
         private Coroutine typingCoroutine;
         private List<string> currentDialogue;
@@ -79,10 +79,10 @@ namespace HappyBread.GamePlay
                     GameModel.Instance.inputManager.UndoState(); // Input 관리
                     gameObject.SetActive(false); // UI 관리
 
-                    if (dialogueEvent != null)
+                    if (ConnectedEvent != null)
                     {
-                        dialogueEvent.End(); // 이벤트 매니저에게 알림
-                        dialogueEvent = null;
+                        ConnectedEvent.End(); // 이벤트 매니저에게 알림
+                        ConnectedEvent = null;
                     }
                     return;
                 }
