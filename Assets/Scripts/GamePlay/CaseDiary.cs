@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// 증거를 저장하고 관리하는 클래스.
+    /// </summary>
     public class CaseDiary : MonoBehaviour
     {
         public GameObject blankEvidenceObject;

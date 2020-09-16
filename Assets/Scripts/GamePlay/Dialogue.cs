@@ -7,12 +7,16 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// 대화를 저장하고 있으며 관리하는 클래스.
+    /// </summary>
     public class Dialogue : MonoBehaviour
     {
         public Image imageUI;
         public Text textUI;
         public float typingIdleTime = 0.05f;
         public KeyCode NextCommand;
+        public DialogueEvent dialogueEvent = null;
 
         private Coroutine typingCoroutine;
         private List<string> currentDialogue;
@@ -72,7 +76,14 @@ namespace HappyBread.GamePlay
                 if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
                 {
                     state = State.Idle;
-                    GameModel.Instance.dialogueManager.QuitDialogue();
+                    GameModel.Instance.inputManager.UndoState(); // Input 관리
+                    gameObject.SetActive(false); // UI 관리
+
+                    if (dialogueEvent != null)
+                    {
+                        dialogueEvent.End(); // 이벤트 매니저에게 알림
+                        dialogueEvent = null;
+                    }
                     return;
                 }
 
@@ -129,6 +140,8 @@ namespace HappyBread.GamePlay
             state = State.Idle;
             NextCommand = KeyCode.None;
         }
+
+
     }
 
 }

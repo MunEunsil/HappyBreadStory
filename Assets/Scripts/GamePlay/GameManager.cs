@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HappyBread.Core
+namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// 게임을 관리하는 최상위 클래스.
+    /// </summary>
     public class GameManager : MonoBehaviour
     {
         // Start is called before the first frame update

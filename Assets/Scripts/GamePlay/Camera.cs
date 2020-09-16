@@ -6,7 +6,10 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class CameraControl : MonoBehaviour
+    /// <summary>
+    /// 카메라를 제어하는 클래스.
+    /// </summary>
+    public class Camera : MonoBehaviour
     {
         public GameObject target;
         public float followingTime = 0.3f;

@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
-    public class HpControl : MonoBehaviour
+    /// <summary>
+    /// Hp 값을 제어하고 관리하는 클래스.
+    /// </summary>
+    public class Hp : MonoBehaviour
     {
         public Image fill;
         private float maxHp = 100.0f;
@@ -14,6 +17,12 @@ namespace HappyBread.GamePlay
         public void Add(float value)
         {            
             hp += value;
+            fill.fillAmount = hp / maxHp;
+        }
+
+        public void Set(float value)
+        {
+            hp = value;
             fill.fillAmount = hp / maxHp;
         }
 

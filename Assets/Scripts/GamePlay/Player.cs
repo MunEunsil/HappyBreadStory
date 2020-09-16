@@ -8,7 +8,10 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class PlayerControl : MonoBehaviour
+    /// <summary>
+    /// 플레이어를 제어 할 수 있는 클래스.
+    /// </summary>
+    public class Player : MonoBehaviour
     {
         [HideInInspector]
         public Vector3 NextMoveCommand;
@@ -137,7 +140,7 @@ namespace HappyBread.GamePlay
             animator.SetFloat("WalkY", playerDirection.y);
             NextMoveCommand = Vector3.zero;
 
-            GameModel.Instance.hpControl.Add(-useHpAmount);
+            GameModel.Instance.hp.Add(-useHpAmount);
         }
 
         private void Stop()

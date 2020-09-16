@@ -6,7 +6,9 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    // 보류
+    /// <summary>
+    /// 증거에 대한 자료를 저장하는 클래스.
+    /// </summary>
     public class Evidence
     {
         public string Name { get; set; }

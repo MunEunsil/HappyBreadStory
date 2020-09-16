@@ -7,12 +7,15 @@ using HappyBread.Core;
 
 namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// Input의 제어를 담당하는 매니저 클래스.
+    /// </summary>
     public class InputManager : MonoBehaviour
     {
-        public PlayerControl playerControl;
+        public Player player;
         public Dialogue dialogue;
         public CaseDiary caseDiary;
-        public QuestionManager questionManager;
+        public QuestionBox questionBox;
 
         private List<State> stack; // 이전 상태를 저장합니다.
 
@@ -69,24 +72,24 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
-                questionManager.NextMoveCommand = Vector3.up;
+                questionBox.NextMoveCommand = Vector3.up;
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                questionManager.NextMoveCommand = Vector3.down;
+                questionBox.NextMoveCommand = Vector3.down;
             }
             else
             {
-                questionManager.NextMoveCommand = Vector3.zero;
+                questionBox.NextMoveCommand = Vector3.zero;
             }
 
             if (Input.GetKeyUp(GameData.KeyCodeSelect))
             {
-                questionManager.NextCommand = GameData.KeyCodeSelect;
+                questionBox.NextCommand = GameData.KeyCodeSelect;
             }
             else
             {
-                questionManager.NextCommand = KeyCode.None;
+                questionBox.NextCommand = KeyCode.None;
             }
         }
 
@@ -122,36 +125,36 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                playerControl.NextMoveCommand = Vector3.up;
+                player.NextMoveCommand = Vector3.up;
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                playerControl.NextMoveCommand = Vector3.down;
+                player.NextMoveCommand = Vector3.down;
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                playerControl.NextMoveCommand = Vector3.left;
+                player.NextMoveCommand = Vector3.left;
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                playerControl.NextMoveCommand = Vector3.right;
+                player.NextMoveCommand = Vector3.right;
             }
             else
             {
-                playerControl.NextMoveCommand = Vector3.zero;
+                player.NextMoveCommand = Vector3.zero;
             }
 
             if (Input.GetKeyUp(GameData.keyCodeInteract))
             {
-                playerControl.NextFunctionCommand = GameData.keyCodeInteract;
+                player.NextFunctionCommand = GameData.keyCodeInteract;
             }
             else if (Input.GetKeyUp(GameData.keyCodeCaseDiary))
             {
-                playerControl.NextFunctionCommand = GameData.keyCodeCaseDiary;
+                player.NextFunctionCommand = GameData.keyCodeCaseDiary;
             }
             else
             {
-                playerControl.NextFunctionCommand = KeyCode.None;
+                player.NextFunctionCommand = KeyCode.None;
             }
         }
 

@@ -8,12 +8,16 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
-    public class QuestionManager : MonoBehaviour
+    /// <summary>
+    /// 질문 상자를 제어하고 질문을 생성하는 클래스.
+    /// </summary>
+    public class QuestionBox : MonoBehaviour
     {
         public GameObject questionPrefab;
         public Vector3 NextMoveCommand;
         public KeyCode NextCommand;
         public int AnswerIndex = -1; // 해당 인덱스를 통해 선택한 답변이 무엇인지 알아낸다.
+        public QuestionBoxEvent questionBoxEvent = null;
 
         private enum State
         {
@@ -85,6 +89,13 @@ namespace HappyBread.GamePlay
                 AnswerIndex = selectedIndex;
                 GameModel.Instance.inputManager.UndoState();
                 gameObject.SetActive(false);
+
+                // 이벤트와 연결 제거
+                if (questionBoxEvent != null)
+                {
+                    questionBoxEvent.End();
+                    questionBoxEvent = null;
+                }
             }
             else
             {
@@ -140,17 +151,6 @@ namespace HappyBread.GamePlay
         private void Awake()
         {
             questions = new List<GameObject>();
-        }
-
-        public void Test()
-        {
-            gameObject.SetActive(true); // UI 관련
-            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
-            List<string> test = new List<string>();
-            test.Add("1. 안녕 나는 재상");
-            test.Add("2. 안녕 나는 재중");
-            test.Add("3. 안녕 나는 재하");
-            CreateSelector(test);
         }
     }
 }

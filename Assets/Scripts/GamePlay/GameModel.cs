@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HappyBread.Core
+namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// 게임 내의 각종 객체를 저장하는 클래스.
+    /// </summary>
     public class GameModel : MonoBehaviour
     {
         public static GameModel Instance
@@ -18,11 +21,12 @@ namespace HappyBread.Core
                 return instance;
             }
         }
-        public DialogueManager dialogueManager;
         public InputManager inputManager;
         public CaseDiary caseDiary;
-        public HpControl hpControl;
-        public QuestionManager questionManager;
+        public Hp hp;
+        public QuestionBox questionBox;
+        public Dialogue dialogue;
+        public EventManager eventManager;
 
         private static GameModel instance;
     }
