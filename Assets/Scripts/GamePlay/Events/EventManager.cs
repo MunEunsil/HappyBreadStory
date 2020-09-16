@@ -59,14 +59,6 @@ namespace HappyBread.GamePlay
                 state = State.Idle;
                 return;
             }
-            // running stack의 맨 위의 이벤트가 중지되어있다면 재실행시킨다.
-            else if (runningStack.Count != 0 &&
-                runningStack[runningStack.Count - 1].eventState == Event.EventState.Stopped)
-            {
-                state = State.Running;
-                runningStack[runningStack.Count - 1].Resume();
-                return;
-            }
             // running stack이 비어있다면 waitingQueue에서 이벤트를 실행시킨다.
             else if (runningStack.Count == 0)
             {
@@ -101,24 +93,6 @@ namespace HappyBread.GamePlay
                 runningStack.Add(_event);
                 _event.Begin();
             }
-        }
-
-        /// <summary>
-        /// NonBlock Event를 추가합니다. 실행되고 있는 이벤트가 존재해도 바로 실행합니다.
-        /// </summary>
-        public void AddNonBlockingEvent(Event _event)
-        {
-            if (state == State.Running)
-            {
-                runningStack[runningStack.Count - 1].Pause();
-                runningStack.Add(_event);
-            }
-            else
-            {
-                runningStack.Add(_event);
-            }
-            state = State.Running;
-            _event.Begin();
         }
 
         private void Awake()

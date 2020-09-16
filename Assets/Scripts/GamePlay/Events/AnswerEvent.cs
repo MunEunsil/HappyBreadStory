@@ -6,6 +6,10 @@ using System.Reflection;
 
 namespace HappyBread.GamePlay
 {
+    /// <summary>
+    /// 질문에 대한 답변을 한 뒤에 해당 답에 대한 이벤트를 발생시키기 위해 만든 이벤트
+    /// 실수할 가능성이 있기 때문에 개수를 잘 맞춰서 작성해야한다.
+    /// </summary>
     public class AnswerEvent : Event
     {
         List<Event> events;

@@ -12,7 +12,8 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class Dialogue : MonoBehaviour
     {
-        public Image imageUI;
+        public Image characterUI;
+        public Image backgroundUI;
         public Text textUI;
         public float typingIdleTime = 0.05f;
         public KeyCode NextCommand;
@@ -41,7 +42,10 @@ namespace HappyBread.GamePlay
                 case State.Waiting:
                     if (NextCommand == KeyCode.Space)
                     {
-                        Next();
+                        if (state == State.Waiting)
+                        {
+                            Next();
+                        }
                     }
                     break;
                 case State.Blocking:
@@ -68,43 +72,104 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private void Next()
+        public void Next()
         {
-            if (state == State.Waiting)
+            if(state == State.Idle) // 대화가 들어있지 않으면 아무일도 일어나지 않는다.
             {
-                currentIndex++;
-                if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
-                {
-                    state = State.Idle;
-                    GameModel.Instance.inputManager.UndoState(); // Input 관리
-                    gameObject.SetActive(false); // UI 관리
-
-                    if (ConnectedEvent != null)
-                    {
-                        ConnectedEvent.End(); // 이벤트 매니저에게 알림
-                        ConnectedEvent = null;
-                    }
-                    return;
-                }
-
-                string[] seperated = currentDialogue[currentIndex].Split(':'); // 텍스트 파일을 ':' 을 기준으로 분리한다.
-
-                string imageFileName = seperated[0].Trim();
-                Sprite sprite = ResourceLoader.LoadSprite(imageFileName);
-                if (sprite == null)
-                {
-                    imageUI.enabled = false;
-                }
-                else
-                {
-                    imageUI.enabled = true;
-                    imageUI.sprite = sprite;
-                }
-                currentText = seperated[1].Trim();
-                NextCommand = KeyCode.None;
-
-                typingCoroutine = StartCoroutine(SmoothTyping(currentText));
+                return;
             }
+
+            currentIndex++;
+            if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
+            {
+                End();
+                return;
+            }
+
+            string[] seperated = currentDialogue[currentIndex].Split(':'); // 텍스트 파일을 ':' 을 기준으로 분리한다.
+
+            // flag
+            // Message -> 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ]
+            // Question -> 1번 인자[ flag ],  2번 인자 [ Message ], 2번 인자 [ Question 1 ], 3번 인자 [ Question 2 ] , ...
+            // Question의 내용은 인자에서 읽는다.
+            string flag = seperated[0].Trim();
+
+            switch (flag)
+            {
+                case "Message":
+                    ShowMessage(seperated);
+                    break;
+                case "Question":
+                    ShowQuestion(seperated);
+                    break;
+            }
+
+            NextCommand = KeyCode.None;
+        }
+
+        private void ShowQuestion(string[] seperated)
+        {
+            int startIndex = 2;
+            List<string> questions = new List<string>();
+
+            // 메세지를 출력한다.
+            currentText = seperated[1].Trim();
+            typingCoroutine = StartCoroutine(SmoothTyping(currentText));
+
+            // 질문 내용을 List에 추가한다.
+            for (int index = startIndex; index < seperated.Length; index++)
+            {
+                questions.Add(seperated[index].Trim());
+            }
+            GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
+            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
+            GameModel.Instance.questionBox.CreateSelector(questions);
+        }
+
+        private void ShowMessage(string[] seperated)
+        {
+            string backgroundFileName = seperated[1].Trim();
+            string characterFileName = seperated[2].Trim();
+
+            Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+            Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+
+            if (backgroundSprite == null)
+            {
+                backgroundUI.enabled = false;
+            }
+            else
+            {
+                backgroundUI.enabled = true;
+                backgroundUI.sprite = backgroundSprite;
+            }
+
+            if (characterSprite == null)
+            {
+                characterUI.enabled = false;
+            }
+            else
+            {
+                characterUI.enabled = true;
+                characterUI.sprite = characterSprite;
+            }
+
+            currentText = seperated[3].Trim();
+            typingCoroutine = StartCoroutine(SmoothTyping(currentText));
+        }
+
+        private void End()
+        {
+            state = State.Idle;
+            GameModel.Instance.inputManager.UndoState(); // Input 관리
+            gameObject.SetActive(false); // UI 관리
+
+            if (ConnectedEvent != null)
+            {
+                ConnectedEvent.End(); // 이벤트 매니저에게 알림
+                ConnectedEvent = null;
+            }
+            return;
         }
 
         private void PrintAll()

@@ -92,6 +92,7 @@ namespace HappyBread.GamePlay
 
                 AnswerIndex = selectedIndex;
                 GameModel.Instance.inputManager.UndoState();
+                GameModel.Instance.dialogue.Next(); // 대화가 진행 중이라면 다음 단계로 넘어간다.
                 gameObject.SetActive(false);
 
                 // 이벤트와 연결 제거

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,16 +9,13 @@ namespace HappyBread.GamePlay
     {
         public override void Interact()
         {
-            List<string> temp = new List<string>();
-            temp.Add("Hello");
-            temp.Add("Hi");
-            GameModel.Instance.eventManager.AddBlockingEvent(new DialogueEvent("stone"));
-            GameModel.Instance.eventManager.AddNonBlockingEvent(new QuestionBoxEvent(temp));
+            GameModel.Instance.eventManager.AddBlockingEvent(new DialogueEvent("test"));
 
-            List<Event> tempEvent = new List<Event>();
-            tempEvent.Add(new DialogueEvent("temp"));
-            tempEvent.Add(new DialogueEvent("blocks"));
-            GameModel.Instance.eventManager.AddBlockingEvent(new AnswerEvent(tempEvent));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { Debug.Log("Hello!!!"); }));
+            events.Add(new ActionEvent(() => { Debug.Log("I'm!!!"); }));
+            events.Add(new ActionEvent(() => { Debug.Log("Jaeha!!!"); }));
+            GameModel.Instance.eventManager.AddBlockingEvent(new AnswerEvent(events));
         }
     }
 }
