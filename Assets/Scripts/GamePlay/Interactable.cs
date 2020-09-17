@@ -9,8 +9,17 @@ namespace HappyBread.GamePlay
     /// </summary>
     public abstract class Interactable : MonoBehaviour
     {
-        protected Evidence evidence;
+        // 상호 작용이 가능한 물체는 언제나 증거가 될 수 있다.
+        // 때문에 이 곳에는 그에 대한 상세 내용을 작성해야한다.
+        public Evidence Evidence { get; protected set; } 
 
         public abstract void Interact();
+
+        protected abstract void InitEvidence();
+
+        private void Awake()
+        {
+            InitEvidence();
+        }
     }
 }

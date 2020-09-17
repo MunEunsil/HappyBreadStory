@@ -21,8 +21,13 @@ namespace HappyBread.GamePlay
 
         protected override void BeginDetail()
         {
-            // TODO : 현재는 선택된 답변을 제일 뒤에 밀어 넣는다. 그렇게 하지 않기 위한 개선이 필요하다.
             int index = GameModel.Instance.questionBox.AnswerIndex;
+
+            if( !(0 <= index && index < events.Count) )
+            {
+                Debug.Log($"{index}는 올바르지 않은 index입니다.");
+                return;
+            }
 
             events[index].ParentEvent = this;
             events[index].Begin(); // 등록된 이벤트를 실행한다.

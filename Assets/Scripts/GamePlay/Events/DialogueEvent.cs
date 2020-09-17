@@ -20,7 +20,6 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.dialogue.gameObject.SetActive(true);
                 GameModel.Instance.dialogue.Execute(ResourceLoader.LoadText(FileName));
                 GameModel.Instance.dialogue.ConnectedEvent = this;
-                GameModel.Instance.inputManager.ChangeState(InputManager.State.DialogControl);
             }
             else
             {

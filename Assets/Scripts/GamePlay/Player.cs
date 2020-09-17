@@ -14,7 +14,7 @@ namespace HappyBread.GamePlay
     public class Player : MonoBehaviour
     {
         [HideInInspector]
-        public Vector3 NextMoveCommand;
+        public Vector3 NextMoveCommand; // 다음 움직임 명령
         [HideInInspector]
         public KeyCode NextFunctionCommand;
         public LayerMask interactableLayer;
@@ -27,8 +27,8 @@ namespace HappyBread.GamePlay
 
         private enum State
         {
-            Idle,
-            Walking
+            Idle, // 움직이지 않을 때
+            Walking // 움직일 때
         }
 
         private State state;
@@ -49,6 +49,7 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
+            // 움직임 구현부 ( 화살표 키 )
             switch (state)
             {
                 case State.Idle:
@@ -61,14 +62,15 @@ namespace HappyBread.GamePlay
                     break;
             }
 
+            // 그 외 단축키 구현부 ( 상호작용 키 )
             if (NextFunctionCommand != KeyCode.None)
             {
                 switch (NextFunctionCommand)
                 {
-                    case GameData.keyCodeInteract:
+                    case GlobalGameData.keyCodeInteract:
                         AttemptInteract();
                         break;
-                    case GameData.keyCodeCaseDiary:
+                    case GlobalGameData.keyCodeCaseDiary:
                         AttemptOpenCaseDiary();
                         break;
                     default:
@@ -103,7 +105,7 @@ namespace HappyBread.GamePlay
 
         private void IdleState()
         {
-            if (NextMoveCommand != Vector3.zero)
+            if (NextMoveCommand != Vector3.zero) // 움직이라는 명령을 받음
             {
                 animator.SetBool("isWalking", true);
                 state = State.Walking;
@@ -119,11 +121,11 @@ namespace HappyBread.GamePlay
 
         private void WalkingState()
         {
-            if (NextMoveCommand != Vector3.zero)
+            if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음
             {
                 Move();
             }
-            else
+            else // 움직임 상태 해제
             {
                 state = State.Idle;
                 animator.SetBool("isWalking", false);
@@ -140,7 +142,7 @@ namespace HappyBread.GamePlay
             animator.SetFloat("WalkY", playerDirection.y);
             NextMoveCommand = Vector3.zero;
 
-            GameModel.Instance.hp.Add(-useHpAmount);
+            GameModel.Instance.hp.Add(-useHpAmount); // Hp 변동
         }
 
         private void Stop()

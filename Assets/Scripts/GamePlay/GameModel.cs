@@ -21,12 +21,14 @@ namespace HappyBread.GamePlay
                 return instance;
             }
         }
+
         public InputManager inputManager;
+        public EventManager eventManager;
         public CaseDiary caseDiary;
-        public Hp hp;
         public QuestionBox questionBox;
         public Dialogue dialogue;
-        public EventManager eventManager;
+        public Player player;
+        public Hp hp;
 
         private static GameModel instance;
     }

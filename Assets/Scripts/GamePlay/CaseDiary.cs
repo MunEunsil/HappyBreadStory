@@ -22,13 +22,11 @@ namespace HappyBread.GamePlay
         public void AddEvidence(Evidence evidence)
         {
             evidences.Add(evidence);
-            Render();
         }
 
         public void DeleteEvidence(int index)
         {
             evidences.RemoveAt(index);
-            Render();
         }
 
         private void OnEnable()
@@ -38,11 +36,13 @@ namespace HappyBread.GamePlay
 
         private void Render()
         {
+            // 기존 object를 삭제한다.
             foreach (GameObject obj in evidencesObject)
             {
                 Destroy(obj);
             }
 
+            // 저장된 배열을 토대로 새로 그린다.
             foreach (Evidence evidence in evidences)
             {
                 GameObject newEvidenceObject = Instantiate<GameObject>(blankEvidenceObject, content.transform);
@@ -53,6 +53,9 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
+            // 방향키를 누르는 경우
+
+            // A를 눌렀을 경우
             if (NextCommand != KeyCode.None)
             {
                 if (NextCommand == KeyCode.A)

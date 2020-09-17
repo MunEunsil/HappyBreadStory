@@ -65,6 +65,7 @@ namespace HappyBread.GamePlay
         {
             if (state == State.Idle)
             {
+                GameModel.Instance.inputManager.ChangeState(InputManager.State.DialogControl);
                 currentDialogue = dialogue;
                 currentIndex = -1;
                 state = State.Waiting;
@@ -89,8 +90,10 @@ namespace HappyBread.GamePlay
             string[] seperated = currentDialogue[currentIndex].Split(':'); // 텍스트 파일을 ':' 을 기준으로 분리한다.
 
             // flag
-            // Message -> 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ]
-            // Question -> 1번 인자[ flag ],  2번 인자 [ Message ], 2번 인자 [ Question 1 ], 3번 인자 [ Question 2 ] , ...
+            // Message ->
+            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ]
+            // Question ->
+            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ], 5번 인자 [ Question 1 ], 6번 인자 [ Question 2 ] , ...
             // Question의 내용은 인자에서 읽는다.
             string flag = seperated[0].Trim();
 
@@ -109,21 +112,21 @@ namespace HappyBread.GamePlay
 
         private void ShowQuestion(string[] seperated)
         {
-            int startIndex = 2;
+            int startIndex = 4;
             List<string> questions = new List<string>();
-
-            // 메세지를 출력한다.
-            currentText = seperated[1].Trim();
-            typingCoroutine = StartCoroutine(SmoothTyping(currentText));
 
             // 질문 내용을 List에 추가한다.
             for (int index = startIndex; index < seperated.Length; index++)
             {
                 questions.Add(seperated[index].Trim());
             }
+
+            // Question Box 세팅
             GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
-            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
             GameModel.Instance.questionBox.CreateSelector(questions);
+
+            // 메세지를 출력한다.
+            ShowMessage(seperated);
         }
 
         private void ShowMessage(string[] seperated)
@@ -161,6 +164,7 @@ namespace HappyBread.GamePlay
         private void End()
         {
             state = State.Idle;
+            currentIndex = -1;
             GameModel.Instance.inputManager.UndoState(); // Input 관리
             gameObject.SetActive(false); // UI 관리
 

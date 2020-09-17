@@ -16,7 +16,8 @@ namespace HappyBread.GamePlay
         public GameObject questionPrefab;
         public Vector3 NextMoveCommand;
         public KeyCode NextCommand;
-        public int AnswerIndex = -1; // 해당 인덱스를 통해 선택한 답변이 무엇인지 알아낸다.
+        public int AnswerIndex = -1; // 선택된 값, 확정
+
         public Event ConnectedEvent { get; set; }
 
         private enum State
@@ -29,7 +30,7 @@ namespace HappyBread.GamePlay
         private List<GameObject> questions;
         private float questionHeight = 50f;
         private float questionMargin = 1f;
-        private int selectedIndex = 0;
+        private int selectedIndex = 0; // 선택된 값, 아직 확정이 아님
 
         public void CreateSelector(List<string> rawQuestions)
         { 
@@ -37,8 +38,12 @@ namespace HappyBread.GamePlay
             {
                 return;
             }
+
             selectedIndex = 0;
             AnswerIndex = -1;
+            NextMoveCommand = Vector3.zero; // 기존 값을 초기화해준다. 이것을 실행하지 않는다면, 다른 환경에서 넘어올 때 값이 남아있을 수 있다.
+            NextCommand = KeyCode.None; // 기존 값을 초기화해준다. 이것을 실행하지 않는다면, 다른 환경에서 넘어올 때 값이 남아있을 수 있다.
+            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
 
             float totalHeight = (rawQuestions.Count - 1) * (questionHeight + questionMargin); // selector가 차지하는 공간의 총 높이
             for (int index = 0; index < rawQuestions.Count; index++)
@@ -81,7 +86,7 @@ namespace HappyBread.GamePlay
 
         private void Select(KeyCode nextCommand)
         {
-            if (nextCommand == GameData.KeyCodeSelect)
+            if (nextCommand == GlobalGameData.KeyCodeSelect)
             {
                 // 선택지 제거
                 foreach(GameObject question in questions)

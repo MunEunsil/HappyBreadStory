@@ -11,12 +11,7 @@ namespace HappyBread.GamePlay
     /// Input의 제어를 담당하는 매니저 클래스.
     /// </summary>
     public class InputManager : MonoBehaviour
-    {
-        public Player player;
-        public Dialogue dialogue;
-        public CaseDiary caseDiary;
-        public QuestionBox questionBox;
-
+    {   
         private List<State> stack; // 이전 상태를 저장합니다.
 
 
@@ -28,9 +23,8 @@ namespace HappyBread.GamePlay
             QuestionManagerControl,
             Pause
         }
-
+        [SerializeField]
         private State state;
-
         // 스택에 현재 상태를 저장하고 인자로 받은 상태로 변경합니다.
         public void ChangeState(State state)
         {
@@ -72,32 +66,32 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
-                questionBox.NextMoveCommand = Vector3.up;
+                GameModel.Instance.questionBox.NextMoveCommand = Vector3.up;
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                questionBox.NextMoveCommand = Vector3.down;
+                GameModel.Instance.questionBox.NextMoveCommand = Vector3.down;
             }
             else
             {
-                questionBox.NextMoveCommand = Vector3.zero;
+                GameModel.Instance.questionBox.NextMoveCommand = Vector3.zero;
             }
 
-            if (Input.GetKeyUp(GameData.KeyCodeSelect))
+            if (Input.GetKeyUp(GlobalGameData.KeyCodeSelect))
             {
-                questionBox.NextCommand = GameData.KeyCodeSelect;
+                GameModel.Instance.questionBox.NextCommand = GlobalGameData.KeyCodeSelect;
             }
             else
             {
-                questionBox.NextCommand = KeyCode.None;
+                GameModel.Instance.questionBox.NextCommand = KeyCode.None;
             }
         }
 
         private void CaseDiaryControl()
         {
-            if (Input.GetKeyUp(GameData.keyCodeCaseDiary))
+            if (Input.GetKeyUp(GlobalGameData.keyCodeCaseDiary))
             {
-                caseDiary.NextCommand = GameData.keyCodeCaseDiary;
+                GameModel.Instance.caseDiary.NextCommand = GlobalGameData.keyCodeCaseDiary;
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
@@ -105,7 +99,7 @@ namespace HappyBread.GamePlay
             }
             else
             {
-                caseDiary.NextCommand = KeyCode.None;
+                GameModel.Instance.caseDiary.NextCommand = KeyCode.None;
             }
         }
 
@@ -113,11 +107,11 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                dialogue.NextCommand = KeyCode.Space;
+                GameModel.Instance.dialogue.NextCommand = KeyCode.Space;
             }
             else
             {
-                dialogue.NextCommand = KeyCode.None;
+                GameModel.Instance.dialogue.NextCommand = KeyCode.None;
             }
         }
 
@@ -125,36 +119,36 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                player.NextMoveCommand = Vector3.up;
+                GameModel.Instance.player.NextMoveCommand = Vector3.up;
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                player.NextMoveCommand = Vector3.down;
+                GameModel.Instance.player.NextMoveCommand = Vector3.down;
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
-                player.NextMoveCommand = Vector3.left;
+                GameModel.Instance.player.NextMoveCommand = Vector3.left;
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                player.NextMoveCommand = Vector3.right;
+                GameModel.Instance.player.NextMoveCommand = Vector3.right;
             }
-            else
+            else // TODO : 아무것도 안눌렸을 때라는 표현이 아닌 것 같다. 애매하다 고치기 필요.
             {
-                player.NextMoveCommand = Vector3.zero;
+                GameModel.Instance.player.NextMoveCommand = Vector3.zero;
             }
 
-            if (Input.GetKeyUp(GameData.keyCodeInteract))
+            if (Input.GetKeyUp(GlobalGameData.keyCodeInteract))
             {
-                player.NextFunctionCommand = GameData.keyCodeInteract;
+                GameModel.Instance.player.NextFunctionCommand = GlobalGameData.keyCodeInteract;
             }
-            else if (Input.GetKeyUp(GameData.keyCodeCaseDiary))
+            else if (Input.GetKeyUp(GlobalGameData.keyCodeCaseDiary))
             {
-                player.NextFunctionCommand = GameData.keyCodeCaseDiary;
+                GameModel.Instance.player.NextFunctionCommand = GlobalGameData.keyCodeCaseDiary;
             }
             else
             {
-                player.NextFunctionCommand = KeyCode.None;
+                GameModel.Instance.player.NextFunctionCommand = KeyCode.None;
             }
         }
 

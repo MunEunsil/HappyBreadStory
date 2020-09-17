@@ -11,10 +11,9 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class Evidence
     {
-        public string Name { get; set; }
-        public string Content { get; set; }
-        public Sprite Sprite { get; set; }
-        public Action Action { get; set; }
-
+        public string Name { get; set; } // 증거의 이름
+        public string Content { get; set; } // 증거의 내용
+        public Sprite Sprite { get; set; } // 증거의 이미지
+        public Action Action { get; set; } // 증거를 선택하면 발생하는 액션
     }
 }

@@ -1,2 +1,3 @@
-Message : : hidden : 증거를 얻었다.
-Question : 자 무엇을 원하니? : 재하 : 최고 : 좋아
+Message : green : hidden : 어?!
+Question : green : hidden : 자 무엇을 원하니? : 재하 : 최고 : 좋아
+Message : green : hidden : 독특한 취향이구나.

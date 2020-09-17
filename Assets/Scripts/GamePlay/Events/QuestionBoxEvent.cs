@@ -17,7 +17,6 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
             GameModel.Instance.questionBox.ConnectedEvent = this;
-            GameModel.Instance.inputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
             GameModel.Instance.questionBox.CreateSelector(questions);
         }
 
