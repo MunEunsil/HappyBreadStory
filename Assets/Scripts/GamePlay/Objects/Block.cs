@@ -16,11 +16,11 @@ namespace HappyBread.GamePlay
             //events.Add(new ActionEvent(() => { Debug.Log("Jaeha!!!"); }));
             //GameModel.Instance.eventManager.AddBlockingEvent(new AnswerEvent(events));
 
-            GameModel.Instance.eventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
             List<Event> events = new List<Event>();
-            events.Add(new ActionEvent(() => { GameModel.Instance.caseDiary.AddEvidence(Evidence); }));
+            events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
             events.Add(new ActionEvent(() => { }));
-            GameModel.Instance.eventManager.AddBlockingEvent(new AnswerEvent(events));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
         }
 
         protected override void InitEvidence()

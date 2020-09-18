@@ -67,7 +67,7 @@ namespace HappyBread.GamePlay
 
         private void Exit()
         {
-            GameModel.Instance.inputManager.UndoState();
+            GameModel.Instance.InputManager.UndoState();
             NextCommand = KeyCode.None;
             gameObject.SetActive(false);
         }

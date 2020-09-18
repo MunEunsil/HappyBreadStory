@@ -9,6 +9,33 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class DataManager : MonoBehaviour
     {
+        private static DataManager _instance;
+
+        public static DataManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = GameObject.Find("DataManager").GetComponent<DataManager>();
+                }
+                return _instance;
+            }
+        }
+
         public string PlayerName { get; set; }
+
+        private void Awake()
+        {
+            if (_instance == null)
+            {
+                _instance = this;
+                DontDestroyOnLoad(this);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

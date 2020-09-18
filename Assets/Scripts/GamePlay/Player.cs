@@ -81,8 +81,8 @@ namespace HappyBread.GamePlay
 
         private void AttemptOpenCaseDiary()
         {
-            GameModel.Instance.inputManager.ChangeState(InputManager.State.CaseDiaryControl);
-            GameModel.Instance.caseDiary.gameObject.SetActive(true);
+            GameModel.Instance.InputManager.ChangeState(InputManager.State.CaseDiaryControl);
+            GameModel.Instance.CaseDiary.gameObject.SetActive(true);
             NextFunctionCommand = KeyCode.None;
         }
 
@@ -142,7 +142,7 @@ namespace HappyBread.GamePlay
             animator.SetFloat("WalkY", playerDirection.y);
             NextMoveCommand = Vector3.zero;
 
-            GameModel.Instance.hp.Add(-useHpAmount); // Hp 변동
+            GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }
 
         private void Stop()

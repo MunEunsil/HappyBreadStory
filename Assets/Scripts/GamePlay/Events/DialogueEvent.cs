@@ -17,9 +17,9 @@ namespace HappyBread.GamePlay
         {
             if (FileName != null)
             {
-                GameModel.Instance.dialogue.gameObject.SetActive(true);
-                GameModel.Instance.dialogue.Execute(ResourceLoader.LoadText(FileName));
-                GameModel.Instance.dialogue.ConnectedEvent = this;
+                GameModel.Instance.Dialogue.gameObject.SetActive(true);
+                GameModel.Instance.Dialogue.Execute(ResourceLoader.LoadText(FileName));
+                GameModel.Instance.Dialogue.ConnectedEvent = this;
             }
             else
             {

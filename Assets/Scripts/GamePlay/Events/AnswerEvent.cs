@@ -21,7 +21,7 @@ namespace HappyBread.GamePlay
 
         protected override void BeginDetail()
         {
-            int index = GameModel.Instance.questionBox.AnswerIndex;
+            int index = GameModel.Instance.QuestionBox.AnswerIndex;
 
             if( !(0 <= index && index < events.Count) )
             {

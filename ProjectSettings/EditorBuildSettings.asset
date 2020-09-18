@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/OpeningScene.unity
+    guid: 46b95f2fbebd1b04b92d3133e0572d4c
+  - enabled: 1
+    path: Assets/Scenes/ManagerScene.unity
+    guid: 719943f40058de14b909d3aa80999296
+  - enabled: 1
+    path: Assets/Scenes/FadeIn.unity
+    guid: c8c61bdf9f421464e8fc561fc72b75d0
   m_configObjects: {}

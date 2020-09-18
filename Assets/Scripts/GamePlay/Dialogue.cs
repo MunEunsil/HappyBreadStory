@@ -65,7 +65,7 @@ namespace HappyBread.GamePlay
         {
             if (state == State.Idle)
             {
-                GameModel.Instance.inputManager.ChangeState(InputManager.State.DialogControl);
+                GameModel.Instance.InputManager.ChangeState(InputManager.State.DialogControl);
                 currentDialogue = dialogue;
                 currentIndex = -1;
                 state = State.Waiting;
@@ -122,8 +122,8 @@ namespace HappyBread.GamePlay
             }
 
             // Question Box 세팅
-            GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
-            GameModel.Instance.questionBox.CreateSelector(questions);
+            GameModel.Instance.QuestionBox.gameObject.SetActive(true); // UI 관련
+            GameModel.Instance.QuestionBox.CreateSelector(questions);
 
             // 메세지를 출력한다.
             ShowMessage(seperated);
@@ -165,7 +165,7 @@ namespace HappyBread.GamePlay
         {
             state = State.Idle;
             currentIndex = -1;
-            GameModel.Instance.inputManager.UndoState(); // Input 관리
+            GameModel.Instance.InputManager.UndoState(); // Input 관리
             gameObject.SetActive(false); // UI 관리
 
             if (ConnectedEvent != null)

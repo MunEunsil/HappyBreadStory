@@ -15,9 +15,9 @@ namespace HappyBread.GamePlay
 
         protected override void BeginDetail()
         {
-            GameModel.Instance.questionBox.gameObject.SetActive(true); // UI 관련
-            GameModel.Instance.questionBox.ConnectedEvent = this;
-            GameModel.Instance.questionBox.CreateSelector(questions);
+            GameModel.Instance.QuestionBox.gameObject.SetActive(true); // UI 관련
+            GameModel.Instance.QuestionBox.ConnectedEvent = this;
+            GameModel.Instance.QuestionBox.CreateSelector(questions);
         }
 
         protected override void EndDetail()
