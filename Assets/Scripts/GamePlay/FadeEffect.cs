@@ -9,14 +9,21 @@ namespace HappyBread.GamePlay
     public class FadeEffect : MonoBehaviour
     {
         public Image target;
-        public string effect;
         public float speed;
+        public float aliveTime; // Fade out이 시작한 뒤로부터 되고 얼마나 기다리는 지
 
         private float start, end;
 
         private void Start()
         {
-            StartCoroutine(effect);
+            StartCoroutine("FadeOut");
+            Invoke("StartFadeIn", aliveTime);
+        }
+
+        private void StartFadeIn()
+        {
+            StopCoroutine("FadeOut");
+            StartCoroutine("FadeIn");
         }
 
         private IEnumerator FadeIn()
@@ -30,7 +37,7 @@ namespace HappyBread.GamePlay
                 yield return new WaitForSeconds(speed);
             }
 
-            SceneManager.UnloadSceneAsync("FadeIn");
+            SceneManager.UnloadSceneAsync("FadeEffect");
         }
 
         private IEnumerator FadeOut()
@@ -43,7 +50,6 @@ namespace HappyBread.GamePlay
                 start++;
                 yield return new WaitForSeconds(speed);
             }
-            SceneManager.UnloadSceneAsync("FadeOut");
         }
     }
 }

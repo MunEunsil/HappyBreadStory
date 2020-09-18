@@ -14,28 +14,44 @@ namespace HappyBread.GamePlay
 
         public void Next()
         {
-            SceneManager.LoadSceneAsync("FadeIn", LoadSceneMode.Additive);
-            steps[currentStep].SetActive(false);
+            SceneManager.LoadSceneAsync("FadeEffect", LoadSceneMode.Additive);
+            Invoke("SetActiveFalse", 2f);
 
             if (currentStep + 1 >= steps.Length)
             {
-                SceneManager.LoadScene("MainScene", LoadSceneMode.Additive);
-                SceneManager.UnloadSceneAsync("OpeningScene");
-                GameModel.Instance.InputManager.SetState(InputManager.State.PlayerControl);
+                Invoke("NextScene", 2f);
                 return;
             }
 
-            steps[++currentStep].SetActive(true);
+            currentStep++;
+            Invoke("SetActiveTrue", 2f);
 
-            if(currentStep == 1) // 말하는 부분
+            if (currentStep == 1) // 말하는 부분
             {
-                Invoke("InvokeOpening", 0.3f);
+                Invoke("InvokeOpening", 3f);
             }
+        }
+
+        private void SetActiveTrue()
+        {
+            steps[currentStep].SetActive(true);
+        }
+
+        private void SetActiveFalse()
+        {
+            steps[currentStep].SetActive(false);
         }
 
         private void InvokeOpening()
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
+        }
+
+        private void NextScene()
+        {
+            SceneManager.LoadScene("Main", LoadSceneMode.Additive);
+            SceneManager.UnloadSceneAsync("Opening");
+            GameModel.Instance.InputManager.SetState(InputManager.State.PlayerControl);
         }
 
         public void SetPlayerName()

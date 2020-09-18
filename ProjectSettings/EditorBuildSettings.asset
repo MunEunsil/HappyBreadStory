@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Global.unity
     guid: 719943f40058de14b909d3aa80999296
   - enabled: 1
-    path: Assets/Scenes/FadeInEffect.unity
+    path: Assets/Scenes/FadeEffect.unity
     guid: c8c61bdf9f421464e8fc561fc72b75d0
+  - enabled: 1
+    path: Assets/Scenes/FadeOutEffect.unity
+    guid: fcd15ba71e3ac7147b39a5fbdcc799d6
   m_configObjects: {}
