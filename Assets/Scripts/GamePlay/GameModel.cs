@@ -26,6 +26,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private EventManager eventManager;
         [SerializeField]
+        private UIManager uiManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -113,6 +115,18 @@ namespace HappyBread.GamePlay
                     hp = GameObject.FindObjectOfType<Hp>();
                 }
                 return hp;
+            }
+        }
+
+        public UIManager UIManager
+        {
+            get
+            {
+                if (uiManager == null)
+                {
+                    uiManager = GameObject.FindObjectOfType<UIManager>();
+                }
+                return uiManager;
             }
         }
 

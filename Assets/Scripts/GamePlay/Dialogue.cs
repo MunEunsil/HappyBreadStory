@@ -66,6 +66,7 @@ namespace HappyBread.GamePlay
             if (state == State.Idle)
             {
                 GameModel.Instance.InputManager.ChangeState(InputManager.State.DialogControl);
+                GameModel.Instance.UIManager.PlayingMode(false);
                 currentDialogue = dialogue;
                 currentIndex = -1;
                 state = State.Waiting;
