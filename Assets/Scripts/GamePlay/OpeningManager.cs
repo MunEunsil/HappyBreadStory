@@ -55,7 +55,7 @@ namespace HappyBread.GamePlay
 
         public void SetPlayerName()
         {
-            if (playerName.Equals(""))
+            if (playerName.text.Equals(""))
             {
                 // 입력이 제대로 되지 않은 경우
                 return;
