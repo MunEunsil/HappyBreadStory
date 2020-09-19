@@ -17,24 +17,22 @@ namespace HappyBread.GamePlay
             SceneManager.LoadSceneAsync("FadeEffect", LoadSceneMode.Additive);
             Invoke("SetActiveFalse", 2f);
 
-            if (currentStep + 1 >= steps.Length)
+            if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
             {
                 Invoke("NextScene", 2f);
                 return;
             }
 
-            currentStep++;
             Invoke("SetActiveTrue", 2f);
-
-            if (currentStep == 1) // 말하는 부분
-            {
-                Invoke("InvokeOpening", 3f);
-            }
         }
 
         private void SetActiveTrue()
         {
-            steps[currentStep].SetActive(true);
+            steps[++currentStep].SetActive(true);
+            if (currentStep == 1) // 말하는 부분
+            {
+                Invoke("InvokeOpening", 1f);
+            }
         }
 
         private void SetActiveFalse()
@@ -45,6 +43,7 @@ namespace HappyBread.GamePlay
         private void InvokeOpening()
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next(); }));
         }
 
         private void NextScene()
@@ -58,6 +57,7 @@ namespace HappyBread.GamePlay
         {
             if (playerName.Equals(""))
             {
+                // 입력이 제대로 되지 않은 경우
                 return;
             }
             else

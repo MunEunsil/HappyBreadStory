@@ -19,7 +19,7 @@ namespace HappyBread.GamePlay
         public KeyCode NextCommand;
         public Event ConnectedEvent { get; set; }
 
-        private Coroutine typingCoroutine;
+        private Coroutine typingCoroutine = null;
         private List<string> currentDialogue;
         private int currentIndex;
         private string currentText;
@@ -66,6 +66,7 @@ namespace HappyBread.GamePlay
             if (state == State.Idle)
             {
                 GameModel.Instance.InputManager.ChangeState(InputManager.State.DialogControl);
+                GameModel.Instance.UIManager.PlayingMode(false);
                 currentDialogue = dialogue;
                 currentIndex = -1;
                 state = State.Waiting;
@@ -158,6 +159,11 @@ namespace HappyBread.GamePlay
             }
 
             currentText = seperated[3].Trim();
+
+            if(typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
             typingCoroutine = StartCoroutine(SmoothTyping(currentText));
         }
 
