@@ -1,4 +1,5 @@
 ﻿using HappyBread.Core;
+using HappyBread.ETC;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace HappyBread.GamePlay
             foreach (Evidence evidence in evidences)
             {
                 GameObject newEvidenceObject = Instantiate<GameObject>(blankEvidenceObject, content.transform);
-                newEvidenceObject.GetComponent<Image>().sprite = evidence.Sprite;
+                newEvidenceObject.GetComponent<Image>().sprite = ResourceLoader.LoadSprite(evidence.Sprite);
                 evidencesObject.Add(newEvidenceObject);
             }
         }
@@ -67,7 +68,7 @@ namespace HappyBread.GamePlay
 
         private void Exit()
         {
-            GameModel.Instance.InputManager.UndoState();
+            GameModel.Instance.StateManager.UndoState();
             NextCommand = KeyCode.None;
             gameObject.SetActive(false);
         }

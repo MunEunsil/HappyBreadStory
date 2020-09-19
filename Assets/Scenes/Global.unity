@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 121160536}
   - component: {fileID: 121160537}
   - component: {fileID: 121160538}
+  - component: {fileID: 121160539}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -218,6 +219,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpUI: {fileID: 1466214109}
+--- !u!114 &121160539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121160532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21a9bd500740a24ea7de73399c049bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &284115137
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +624,7 @@ MonoBehaviour:
   dialogue: {fileID: 707839620}
   player: {fileID: 0}
   hp: {fileID: 1466214113}
+  stateManager: {fileID: 0}
 --- !u!1 &707839618
 GameObject:
   m_ObjectHideFlags: 0

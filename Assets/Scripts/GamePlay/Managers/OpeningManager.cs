@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using HappyBread.GamePlay.GameState;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -50,7 +51,7 @@ namespace HappyBread.GamePlay
         {
             SceneManager.LoadScene("Main", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync("Opening");
-            GameModel.Instance.InputManager.SetState(InputManager.State.PlayerControl);
+            GameModel.Instance.StateManager.SetState(new PlayingState());
         }
 
         public void SetPlayerName()
@@ -65,6 +66,11 @@ namespace HappyBread.GamePlay
                 DataManager.Instance.PlayerName = playerName.text;
                 Next();
             }
+        }
+
+        private void Start()
+        {
+            GameModel.Instance.StateManager.SetState(new OpeningState());
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HappyBread.ETC;
+using HappyBread.GamePlay.GameState;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,6 @@ namespace HappyBread.GamePlay
         {
             if (FileName != null)
             {
-                GameModel.Instance.Dialogue.gameObject.SetActive(true);
                 GameModel.Instance.Dialogue.Execute(ResourceLoader.LoadText(FileName));
                 GameModel.Instance.Dialogue.ConnectedEvent = this;
             }

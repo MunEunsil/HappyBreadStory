@@ -37,6 +37,8 @@ namespace HappyBread.GamePlay
         private Player player;
         [SerializeField]
         private Hp hp;
+        [SerializeField]
+        private StateManager stateManager;
 
         public InputManager InputManager
         {
@@ -130,8 +132,19 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public StateManager StateManager
+        {
+            get
+            {
+                if (stateManager == null)
+                {
+                    stateManager = GameObject.FindObjectOfType<StateManager>();
+                }
+                return stateManager;
+            }
+        }
 
-        private static GameModel _instance;
+        private static GameModel _instance = null;
 
         private void Awake()
         {

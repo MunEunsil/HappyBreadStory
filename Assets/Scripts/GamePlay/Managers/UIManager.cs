@@ -9,11 +9,14 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class UIManager : MonoBehaviour
     {
-        public GameObject hpUI;
-
-        public void PlayingMode(bool isOn)
+        public void HpAppear()
         {
-            hpUI.SetActive(isOn);
+            GameModel.Instance.Hp.Appear();
+        }
+
+        public void HpHide()
+        {
+            GameModel.Instance.Hp.Hide();
         }
     }
 }

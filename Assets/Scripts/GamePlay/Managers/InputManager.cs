@@ -12,46 +12,25 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class InputManager : MonoBehaviour
     {   
-        private List<State> stack; // 이전 상태를 저장합니다.
-
-
         public enum State
         {
             OpeningControl,
             PlayerControl,
-            DialogControl,
+            DialogueControl,
             CaseDiaryControl,
-            QuestionManagerControl,
+            QuestionBoxControl,
             Pause
         }
+
         [SerializeField]
         private State state;
-        // 스택에 현재 상태를 저장하고 인자로 받은 상태로 변경합니다.
-        public void ChangeState(State state)
-        {
-            stack.Add(this.state);
-            this.state = state;
-        }
-
         /// <summary>
-        /// 현재 스택을 초기화하고, 상태를 지정합니다.
+        /// 상태를 지정합니다.
         /// </summary>
         /// <param name="state">InputManager의 상태</param>
         public void SetState(State state)
         {
-            stack.Clear();
             this.state = state;
-        }
-
-        // 이전 상태로 되돌립니다.
-        public void UndoState()
-        {
-            if (stack.Count > 0)
-            {
-                int index = stack.Count - 1;
-                this.state = stack[index];
-                stack.RemoveAt(index);
-            }
         }
 
         private void Update()
@@ -61,19 +40,19 @@ namespace HappyBread.GamePlay
                 case State.PlayerControl:
                     CharacterControl();
                     break;
-                case State.DialogControl:
+                case State.DialogueControl:
                     DialogControl();
                     break;
                 case State.CaseDiaryControl:
                     CaseDiaryControl();
                     break;
-                case State.QuestionManagerControl:
-                    QuestionManagerControl();
+                case State.QuestionBoxControl:
+                    QuestionBoxControl();
                     break;
             }
         }
 
-        private void QuestionManagerControl()
+        private void QuestionBoxControl()
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
@@ -166,11 +145,6 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.Player.NextFunctionCommand = KeyCode.None;
             }
-        }
-
-        private void Awake()
-        {
-            stack = new List<State>();
         }
     }
 

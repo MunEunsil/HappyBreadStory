@@ -26,6 +26,16 @@ namespace HappyBread.GamePlay
             fill.fillAmount = hp / maxHp;
         }
 
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
+
         private void Awake()
         {
             hp = maxHp;

@@ -1,5 +1,6 @@
 ﻿using HappyBread.Core;
 using HappyBread.ETC;
+using HappyBread.GamePlay.GameState;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -81,7 +82,7 @@ namespace HappyBread.GamePlay
 
         private void AttemptOpenCaseDiary()
         {
-            GameModel.Instance.InputManager.ChangeState(InputManager.State.CaseDiaryControl);
+            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
             GameModel.Instance.CaseDiary.gameObject.SetActive(true);
             NextFunctionCommand = KeyCode.None;
         }

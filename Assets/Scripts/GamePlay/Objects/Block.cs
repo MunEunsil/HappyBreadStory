@@ -22,7 +22,7 @@ namespace HappyBread.GamePlay
             {
                 Name = "Block",
                 Content = "정체를 알 수 없는 블록이다.",
-                Sprite = ResourceLoader.LoadSprite("stone"),
+                Sprite = "stone",
                 Action = () =>
                  {
 
