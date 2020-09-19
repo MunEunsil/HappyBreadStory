@@ -28,6 +28,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private UIManager uiManager;
         [SerializeField]
+        private DateManager dateManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -39,6 +41,8 @@ namespace HappyBread.GamePlay
         private Hp hp;
         [SerializeField]
         private StateManager stateManager;
+        [SerializeField]
+        private Date date;
 
         public InputManager InputManager
         {
@@ -120,6 +124,18 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public Date Date
+        {
+            get
+            {
+                if (date == null)
+                {
+                    date = GameObject.FindObjectOfType<Date>();
+                }
+                return date;
+            }
+        }
+
         public UIManager UIManager
         {
             get
@@ -141,6 +157,18 @@ namespace HappyBread.GamePlay
                     stateManager = GameObject.FindObjectOfType<StateManager>();
                 }
                 return stateManager;
+            }
+        }
+
+        public DateManager DateManager
+        {
+            get
+            {
+                if (dateManager == null)
+                {
+                    dateManager = GameObject.FindObjectOfType<DateManager>();
+                }
+                return dateManager;
             }
         }
 

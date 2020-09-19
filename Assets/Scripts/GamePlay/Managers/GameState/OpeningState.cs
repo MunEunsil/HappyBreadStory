@@ -9,7 +9,7 @@ namespace HappyBread.GamePlay.GameState
         public void Change()
         {
             GameModel.Instance.InputManager.SetState(InputManager.State.OpeningControl);
-            GameModel.Instance.UIManager.HpHide();
+            GameModel.Instance.UIManager.BasicUIHide();
         }
     }
 }

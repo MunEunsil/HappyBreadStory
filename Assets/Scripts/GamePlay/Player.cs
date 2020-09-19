@@ -101,7 +101,15 @@ namespace HappyBread.GamePlay
 
         private void Interact(RaycastHit2D hit)
         {
-            hit.transform.GetComponent<Interactable>().Interact();
+            Interactable interactable = hit.transform.GetComponent<Interactable>();
+            if(interactable != null)
+            {
+                interactable.Interact();
+            }
+            else
+            {
+                Debug.Log("Can't Find Interactable");
+            }
         }
 
         private void IdleState()

@@ -18,5 +18,33 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.Hp.Hide();
         }
+
+        public void DateAppear()
+        {
+            GameModel.Instance.Date.Appear();
+        }
+
+        public void DateHide()
+        {
+            GameModel.Instance.Date.Hide();
+        }
+
+        /// <summary>
+        /// Basic == Hp, Date
+        /// </summary>
+        public void BasicUIAppear()
+        {
+            HpAppear();
+            DateAppear();
+        }
+
+        /// <summary>
+        /// Basic == Hp, Date
+        /// </summary>
+        public void BasicUIHide()
+        {
+            HpHide();
+            DateHide();
+        }
     }
 }

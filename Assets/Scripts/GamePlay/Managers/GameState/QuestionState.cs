@@ -9,7 +9,7 @@ namespace HappyBread.GamePlay.GameState
         public void Change()
         {
             GameModel.Instance.InputManager.SetState(InputManager.State.QuestionBoxControl);
-            GameModel.Instance.UIManager.HpHide();
+            GameModel.Instance.UIManager.BasicUIHide();
             GameModel.Instance.QuestionBox.gameObject.SetActive(true); // UI 관련
         }
     }
