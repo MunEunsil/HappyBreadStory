@@ -21,7 +21,7 @@ namespace HappyBread.GamePlay
                     // 4. 다른 이벤트를 작동한다.
                     SceneManager.LoadScene("FadeEffect", LoadSceneMode.Additive);
                     GameModel.Instance.UIManager.BasicUIHide();
-                    GameModel.Instance.DateManager.AddDay(1);
+                    GameModel.Instance.Date.AddDay(1);
                     GameModel.Instance.Hp.Set(100f);
                     Invoke("Greeting", 3f);
                 }

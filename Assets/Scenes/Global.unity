@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 121160537}
   - component: {fileID: 121160538}
   - component: {fileID: 121160539}
-  - component: {fileID: 121160540}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -229,18 +228,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e21a9bd500740a24ea7de73399c049bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &121160540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121160532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf9c346299fb994e8c7cb3582d680e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &284115137
@@ -632,7 +619,6 @@ MonoBehaviour:
   inputManager: {fileID: 0}
   eventManager: {fileID: 0}
   uiManager: {fileID: 0}
-  dateManager: {fileID: 0}
   caseDiary: {fileID: 440859000}
   questionBox: {fileID: 1298425651}
   dialogue: {fileID: 707839620}

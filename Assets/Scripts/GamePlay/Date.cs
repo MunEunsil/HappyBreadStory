@@ -7,16 +7,22 @@ public class Date : MonoBehaviour
 {
     public Text text;
 
-    private string day;
+    private int date = 1;
 
-    public void SetDate(int day)
+    public void SetDate(int number)
     {
-        if(day < 0)
+        if(number < 0)
         {
             return;
         }
-        this.day = day.ToString();
-        text.text = $"Day\n{this.day}";
+        this.date = number;
+        Render();
+    }
+
+    public void AddDay(int number)
+    {
+        this.date += number;
+        Render();
     }
 
     public void Appear()
@@ -27,5 +33,10 @@ public class Date : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void Render()
+    {
+        text.text = $"Day\n{this.date}";
     }
 }
