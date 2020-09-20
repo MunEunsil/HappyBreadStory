@@ -130,10 +130,8 @@ namespace HappyBread.GamePlay
             }
         }
 
-        protected override void Move(Vector2 NextMoveCommand)
+        protected override void AfterMove()
         {
-            base.Move(NextMoveCommand);
-
             NextMoveCommand = Vector3.zero;
             GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }

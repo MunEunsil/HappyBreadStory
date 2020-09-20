@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class MovingObject : MonoBehaviour
+    public abstract class MovingObject : MonoBehaviour
     {
         public float speed;
         public float speedArriveTime;
@@ -23,6 +23,7 @@ namespace HappyBread.GamePlay
 
             animator.SetFloat("WalkX", objectDirection.x);
             animator.SetFloat("WalkY", objectDirection.y);
+            AfterMove();
         }
 
         protected virtual void Awake()
@@ -31,5 +32,7 @@ namespace HappyBread.GamePlay
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
         }
+
+        protected abstract void AfterMove();
     }
 }
