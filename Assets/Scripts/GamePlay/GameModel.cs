@@ -28,6 +28,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private UIManager uiManager;
         [SerializeField]
+        private EffectManager effectManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -37,6 +39,14 @@ namespace HappyBread.GamePlay
         private Player player;
         [SerializeField]
         private Hp hp;
+        [SerializeField]
+        private StateManager stateManager;
+        [SerializeField]
+        private Date date;
+        [SerializeField]
+        private Background background;
+        [SerializeField]
+        private Fade fade;
 
         public InputManager InputManager
         {
@@ -118,6 +128,42 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public Date Date
+        {
+            get
+            {
+                if (date == null)
+                {
+                    date = GameObject.FindObjectOfType<Date>();
+                }
+                return date;
+            }
+        }
+
+        public Background Background
+        {
+            get
+            {
+                if (background == null)
+                {
+                    background = GameObject.FindObjectOfType<Background>();
+                }
+                return background;
+            }
+        }
+
+        public Fade Fade
+        {
+            get
+            {
+                if (fade == null)
+                {
+                    fade = GameObject.FindObjectOfType<Fade>();
+                }
+                return fade;
+            }
+        }
+
         public UIManager UIManager
         {
             get
@@ -130,8 +176,31 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public StateManager StateManager
+        {
+            get
+            {
+                if (stateManager == null)
+                {
+                    stateManager = GameObject.FindObjectOfType<StateManager>();
+                }
+                return stateManager;
+            }
+        }
 
-        private static GameModel _instance;
+        public EffectManager EffectManager
+        {
+            get
+            {
+                if (effectManager == null)
+                {
+                    effectManager = GameObject.FindObjectOfType<EffectManager>();
+                }
+                return effectManager;
+            }
+        }
+
+        private static GameModel _instance = null;
 
         private void Awake()
         {

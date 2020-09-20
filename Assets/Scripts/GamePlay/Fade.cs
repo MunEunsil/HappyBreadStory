@@ -6,24 +6,39 @@ using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
-    public class FadeEffect : MonoBehaviour
+    public class Fade : MonoBehaviour
     {
         public Image target;
         public float speed;
-        public float aliveTime; // Fade out이 시작한 뒤로부터 되고 얼마나 기다리는 지
-
         private float start, end;
+        private Coroutine coroutine;
 
-        private void Start()
+        public void StartFadeIn()
         {
-            StartCoroutine("FadeOut");
-            Invoke("StartFadeIn", aliveTime);
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = StartCoroutine(FadeIn());
         }
 
-        private void StartFadeIn()
+        public void StartFadeOut()
         {
-            StopCoroutine("FadeOut");
-            StartCoroutine("FadeIn");
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+            coroutine = StartCoroutine(FadeOut());
+        }
+
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
 
         private IEnumerator FadeIn()
@@ -36,8 +51,7 @@ namespace HappyBread.GamePlay
                 start--;
                 yield return new WaitForSeconds(speed);
             }
-
-            SceneManager.UnloadSceneAsync("FadeEffect");
+            Hide();
         }
 
         private IEnumerator FadeOut()

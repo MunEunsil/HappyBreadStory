@@ -1,4 +1,5 @@
 ﻿using HappyBread.Core;
+using HappyBread.GamePlay.GameState;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace HappyBread.GamePlay
 
         private State state = State.Idle;
         private List<GameObject> questions;
-        private float questionHeight = 50f;
+        private float questionHeight = 75f;
         private float questionMargin = 1f;
         private int selectedIndex = 0; // 선택된 값, 아직 확정이 아님
 
@@ -43,8 +44,8 @@ namespace HappyBread.GamePlay
             AnswerIndex = -1;
             NextMoveCommand = Vector3.zero; // 기존 값을 초기화해준다. 이것을 실행하지 않는다면, 다른 환경에서 넘어올 때 값이 남아있을 수 있다.
             NextCommand = KeyCode.None; // 기존 값을 초기화해준다. 이것을 실행하지 않는다면, 다른 환경에서 넘어올 때 값이 남아있을 수 있다.
-            GameModel.Instance.InputManager.ChangeState(InputManager.State.QuestionManagerControl); // Input 관련
-
+            GameModel.Instance.StateManager.ChangeState(new QuestionState()); // Input 관련
+            
             float totalHeight = (rawQuestions.Count - 1) * (questionHeight + questionMargin); // selector가 차지하는 공간의 총 높이
             for (int index = 0; index < rawQuestions.Count; index++)
             {
@@ -96,7 +97,7 @@ namespace HappyBread.GamePlay
                 questions.Clear();
 
                 AnswerIndex = selectedIndex;
-                GameModel.Instance.InputManager.UndoState();
+                GameModel.Instance.StateManager.UndoState();
                 GameModel.Instance.Dialogue.Next(); // 대화가 진행 중이라면 다음 단계로 넘어간다.
                 gameObject.SetActive(false);
 

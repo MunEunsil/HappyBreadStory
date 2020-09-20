@@ -8,12 +8,7 @@ namespace HappyBread.GamePlay
         public override void Interact()
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("test"));
-
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
-            List<Event> events = new List<Event>();
-            events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
-            events.Add(new ActionEvent(() => { }));
-            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+            GetEvidence();
         }
 
         protected override void InitEvidence()
@@ -22,10 +17,10 @@ namespace HappyBread.GamePlay
             {
                 Name = "Block",
                 Content = "정체를 알 수 없는 블록이다.",
-                Sprite = ResourceLoader.LoadSprite("stone"),
+                Sprite = "stone",
                 Action = () =>
                  {
-
+                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("stone"));
                  }
             };
         }

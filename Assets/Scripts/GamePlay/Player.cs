@@ -1,5 +1,6 @@
 ﻿using HappyBread.Core;
 using HappyBread.ETC;
+using HappyBread.GamePlay.GameState;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace HappyBread.GamePlay
     /// <summary>
     /// 플레이어를 제어 할 수 있는 클래스.
     /// </summary>
-    public class Player : MonoBehaviour
+    public class Player : MovingObject
     {
         [HideInInspector]
         public Vector3 NextMoveCommand; // 다음 움직임 명령
@@ -20,10 +21,7 @@ namespace HappyBread.GamePlay
         public LayerMask interactableLayer;
         public LayerMask evidenceLayer;
         public float hitDistance = 0.5f;
-        public float speed = 2f;
-        public float speedArriveTime = 0.1f; // 0에 가까울 수록 빨리 해당 속도에 도달
         public float useHpAmount = 0.01f;
-
 
         private enum State
         {
@@ -32,18 +30,10 @@ namespace HappyBread.GamePlay
         }
 
         private State state;
-        private Rigidbody2D rigidBody2D;
-        private Animator animator;
-        private SpriteRenderer spriteRenderer;
-        private Vector2 playerDirection;
-        private Vector2 currentVelocity;
         private RaycastHit2D hit;
 
-        private void Awake()
+        private void Start()
         {
-            rigidBody2D = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
             state = State.Idle;
         }
 
@@ -81,7 +71,7 @@ namespace HappyBread.GamePlay
 
         private void AttemptOpenCaseDiary()
         {
-            GameModel.Instance.InputManager.ChangeState(InputManager.State.CaseDiaryControl);
+            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
             GameModel.Instance.CaseDiary.gameObject.SetActive(true);
             NextFunctionCommand = KeyCode.None;
         }
@@ -89,7 +79,7 @@ namespace HappyBread.GamePlay
         private void AttemptInteract()
         {
             Vector2 start = transform.position;
-            Vector2 end = (Vector2)transform.position + playerDirection * hitDistance;
+            Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
             hit = Physics2D.Linecast(start, end, interactableLayer);
             if (hit.transform != null)
             {
@@ -100,7 +90,15 @@ namespace HappyBread.GamePlay
 
         private void Interact(RaycastHit2D hit)
         {
-            hit.transform.GetComponent<Interactable>().Interact();
+            Interactable interactable = hit.transform.GetComponent<Interactable>();
+            if(interactable != null)
+            {
+                interactable.Interact();
+            }
+            else
+            {
+                Debug.Log("Can't Find Interactable");
+            }
         }
 
         private void IdleState()
@@ -123,7 +121,7 @@ namespace HappyBread.GamePlay
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음
             {
-                Move();
+                Move(NextMoveCommand);
             }
             else // 움직임 상태 해제
             {
@@ -132,16 +130,9 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private void Move()
+        protected override void AfterMove()
         {
-            playerDirection = NextMoveCommand.normalized;
-            spriteRenderer.flipX = NextMoveCommand.x > 0 ? false : NextMoveCommand.x < 0 ? true : spriteRenderer.flipX;
-            rigidBody2D.velocity = Vector2.SmoothDamp(rigidBody2D.velocity, playerDirection * speed, ref currentVelocity, speedArriveTime);
-
-            animator.SetFloat("WalkX", playerDirection.x);
-            animator.SetFloat("WalkY", playerDirection.y);
             NextMoveCommand = Vector3.zero;
-
             GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }
 

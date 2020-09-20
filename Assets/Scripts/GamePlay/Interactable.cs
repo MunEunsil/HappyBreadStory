@@ -15,6 +15,31 @@ namespace HappyBread.GamePlay
 
         public abstract void Interact();
 
+        /// <summary>
+        /// 해당 객체에 존재하는 Evidence를 획득할지 물어보고 가져옵니다.
+        /// </summary>
+        protected void GetEvidence()
+        {
+            if(Evidence == null)
+            {
+                Debug.Log("Evidence is null");
+                return;
+            }
+
+            if (!GameModel.Instance.CaseDiary.Contains(Evidence))
+            {
+                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
+                List<Event> events = new List<Event>();
+                events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
+                events.Add(new ActionEvent(() => { }));
+                GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+            }
+        }
+
+        /// <summary>
+        /// Evidence에 대하여 정의내립니다.
+        /// 만약 Evidence가 필요하지 않다면 빈 메서드로 구현합니다.
+        /// </summary>
         protected abstract void InitEvidence();
 
         private void Awake()

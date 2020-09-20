@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using HappyBread.GamePlay.GameState;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,7 @@ namespace HappyBread.GamePlay
 
         public void Next()
         {
-            SceneManager.LoadSceneAsync("FadeEffect", LoadSceneMode.Additive);
+            GameModel.Instance.EffectManager.FadeOut();
             Invoke("SetActiveFalse", 2f);
 
             if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
@@ -29,6 +30,7 @@ namespace HappyBread.GamePlay
         private void SetActiveTrue()
         {
             steps[++currentStep].SetActive(true);
+            GameModel.Instance.EffectManager.FadeIn(0.2f);
             if (currentStep == 1) // 말하는 부분
             {
                 Invoke("InvokeOpening", 1f);
@@ -50,12 +52,11 @@ namespace HappyBread.GamePlay
         {
             SceneManager.LoadScene("Main", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync("Opening");
-            GameModel.Instance.InputManager.SetState(InputManager.State.PlayerControl);
         }
 
         public void SetPlayerName()
         {
-            if (playerName.Equals(""))
+            if (playerName.text.Equals(""))
             {
                 // 입력이 제대로 되지 않은 경우
                 return;
@@ -65,6 +66,11 @@ namespace HappyBread.GamePlay
                 DataManager.Instance.PlayerName = playerName.text;
                 Next();
             }
+        }
+
+        private void Start()
+        {
+            GameModel.Instance.StateManager.SetState(new OpeningState());
         }
     }
 }

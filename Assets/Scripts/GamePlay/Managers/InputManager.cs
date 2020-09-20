@@ -12,46 +12,25 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class InputManager : MonoBehaviour
     {   
-        private List<State> stack; // 이전 상태를 저장합니다.
-
-
         public enum State
         {
             OpeningControl,
             PlayerControl,
-            DialogControl,
+            DialogueControl,
             CaseDiaryControl,
-            QuestionManagerControl,
+            QuestionBoxControl,
             Pause
         }
+
         [SerializeField]
         private State state;
-        // 스택에 현재 상태를 저장하고 인자로 받은 상태로 변경합니다.
-        public void ChangeState(State state)
-        {
-            stack.Add(this.state);
-            this.state = state;
-        }
-
         /// <summary>
-        /// 현재 스택을 초기화하고, 상태를 지정합니다.
+        /// 상태를 지정합니다.
         /// </summary>
         /// <param name="state">InputManager의 상태</param>
         public void SetState(State state)
         {
-            stack.Clear();
             this.state = state;
-        }
-
-        // 이전 상태로 되돌립니다.
-        public void UndoState()
-        {
-            if (stack.Count > 0)
-            {
-                int index = stack.Count - 1;
-                this.state = stack[index];
-                stack.RemoveAt(index);
-            }
         }
 
         private void Update()
@@ -61,19 +40,19 @@ namespace HappyBread.GamePlay
                 case State.PlayerControl:
                     CharacterControl();
                     break;
-                case State.DialogControl:
+                case State.DialogueControl:
                     DialogControl();
                     break;
                 case State.CaseDiaryControl:
                     CaseDiaryControl();
                     break;
-                case State.QuestionManagerControl:
-                    QuestionManagerControl();
+                case State.QuestionBoxControl:
+                    QuestionBoxControl();
                     break;
             }
         }
 
-        private void QuestionManagerControl()
+        private void QuestionBoxControl()
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
@@ -100,13 +79,34 @@ namespace HappyBread.GamePlay
 
         private void CaseDiaryControl()
         {
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.up;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.down;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.left;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.right;
+            }
+            else // TODO : 아무것도 안눌렸을 때라는 표현이 아닌 것 같다. 애매하다 고치기 필요.
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.zero;
+            }
+
             if (Input.GetKeyUp(GlobalGameData.keyCodeCaseDiary))
             {
                 GameModel.Instance.CaseDiary.NextCommand = GlobalGameData.keyCodeCaseDiary;
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
-                // 증거 확인
+                GameModel.Instance.CaseDiary.NextCommand = KeyCode.Space;
             }
             else
             {
@@ -166,11 +166,6 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.Player.NextFunctionCommand = KeyCode.None;
             }
-        }
-
-        private void Awake()
-        {
-            stack = new List<State>();
         }
     }
 
