@@ -28,6 +28,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private UIManager uiManager;
         [SerializeField]
+        private EffectManager effectManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -41,6 +43,10 @@ namespace HappyBread.GamePlay
         private StateManager stateManager;
         [SerializeField]
         private Date date;
+        [SerializeField]
+        private Background background;
+        [SerializeField]
+        private Fade fade;
 
         public InputManager InputManager
         {
@@ -134,6 +140,30 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public Background Background
+        {
+            get
+            {
+                if (background == null)
+                {
+                    background = GameObject.FindObjectOfType<Background>();
+                }
+                return background;
+            }
+        }
+
+        public Fade Fade
+        {
+            get
+            {
+                if (fade == null)
+                {
+                    fade = GameObject.FindObjectOfType<Fade>();
+                }
+                return fade;
+            }
+        }
+
         public UIManager UIManager
         {
             get
@@ -155,6 +185,18 @@ namespace HappyBread.GamePlay
                     stateManager = GameObject.FindObjectOfType<StateManager>();
                 }
                 return stateManager;
+            }
+        }
+
+        public EffectManager EffectManager
+        {
+            get
+            {
+                if (effectManager == null)
+                {
+                    effectManager = GameObject.FindObjectOfType<EffectManager>();
+                }
+                return effectManager;
             }
         }
 

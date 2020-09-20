@@ -8,12 +8,7 @@ namespace HappyBread.GamePlay
         public override void Interact()
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("test"));
-
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
-            List<Event> events = new List<Event>();
-            events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
-            events.Add(new ActionEvent(() => { }));
-            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+            GetEvidence();
         }
 
         protected override void InitEvidence()

@@ -30,6 +30,11 @@ namespace HappyBread.GamePlay
             evidences.RemoveAt(index);
         }
 
+        public bool Contains(Evidence evidence)
+        {
+            return evidences.Contains(evidence);
+        }
+
         private void OnEnable()
         {
             Render();

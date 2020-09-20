@@ -19,7 +19,7 @@ namespace HappyBread.GamePlay
                     // 2. 페이드 효과를 실행한다.
                     // 3. Hp를 가득채운다.
                     // 4. 다른 이벤트를 작동한다.
-                    SceneManager.LoadScene("FadeEffect", LoadSceneMode.Additive);
+                    GameModel.Instance.EffectManager.Fade();
                     GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.Date.AddDay(1);
                     GameModel.Instance.Hp.Set(100f);

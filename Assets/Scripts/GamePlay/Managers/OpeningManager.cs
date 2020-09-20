@@ -15,7 +15,7 @@ namespace HappyBread.GamePlay
 
         public void Next()
         {
-            SceneManager.LoadSceneAsync("FadeEffect", LoadSceneMode.Additive);
+            GameModel.Instance.EffectManager.FadeOut();
             Invoke("SetActiveFalse", 2f);
 
             if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
@@ -30,6 +30,7 @@ namespace HappyBread.GamePlay
         private void SetActiveTrue()
         {
             steps[++currentStep].SetActive(true);
+            GameModel.Instance.EffectManager.FadeIn(0.2f);
             if (currentStep == 1) // 말하는 부분
             {
                 Invoke("InvokeOpening", 1f);
@@ -51,7 +52,6 @@ namespace HappyBread.GamePlay
         {
             SceneManager.LoadScene("Main", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync("Opening");
-            GameModel.Instance.StateManager.SetState(new PlayingState());
         }
 
         public void SetPlayerName()

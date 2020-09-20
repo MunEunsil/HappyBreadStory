@@ -55,7 +55,6 @@ namespace HappyBread.GamePlay
         private void Awake()
         {
             stack = new List<IState>();
-            state = new PlayingState();
         }
     }
 }
