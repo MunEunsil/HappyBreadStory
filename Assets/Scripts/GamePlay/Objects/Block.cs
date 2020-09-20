@@ -20,7 +20,7 @@ namespace HappyBread.GamePlay
                 Sprite = "stone",
                 Action = () =>
                  {
-
+                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("stone"));
                  }
             };
         }

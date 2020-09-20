@@ -79,13 +79,34 @@ namespace HappyBread.GamePlay
 
         private void CaseDiaryControl()
         {
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.up;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.down;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.left;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.right;
+            }
+            else // TODO : 아무것도 안눌렸을 때라는 표현이 아닌 것 같다. 애매하다 고치기 필요.
+            {
+                GameModel.Instance.CaseDiary.NextMoveCommand = Vector2.zero;
+            }
+
             if (Input.GetKeyUp(GlobalGameData.keyCodeCaseDiary))
             {
                 GameModel.Instance.CaseDiary.NextCommand = GlobalGameData.keyCodeCaseDiary;
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
-                // 증거 확인
+                GameModel.Instance.CaseDiary.NextCommand = KeyCode.Space;
             }
             else
             {
