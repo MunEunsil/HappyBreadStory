@@ -47,6 +47,12 @@ TagManager:
   - name: Background
     uniqueID: 3281158511
     locked: 0
-  - name: Units
+  - name: Objects
     uniqueID: 3279897591
+    locked: 0
+  - name: Characters
+    uniqueID: 3916276733
+    locked: 0
+  - name: Player
+    uniqueID: 3270850467
     locked: 0

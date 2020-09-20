@@ -113,31 +113,23 @@ namespace HappyBread.GamePlay
 
         private void MoveCursor()
         {
-            // 좌우 화살표
-            // 1. 해당 줄의 최대 가로 길이일 때, 0으로 보낸다.
-            // 2. 0일 때, 해당 가로 줄의 최대 길이로 보낸다.
-
-            // 상하 화살표
-            // 1. 해당 줄의 최대 세로 길이일 때, 0으로 보낸다.
-            // 2. 0일 때, 해당 세로 줄의 최대 길이로 보낸다.
-
-            // 최대 가로 인덱스
-            // index - (cursorRow * colNumber)
-
-            // 최대 세로 인덱스
-            // totalRow - ( index + colNumber >= totalIndex ? 0 : 1 )
-
             int row = cursorIndex / colNumber;
             int col = cursorIndex % colNumber;
-            int totalRow = evidencesObject.Count / colNumber -
-                ((evidencesObject.Count - 1) - ((evidencesObject.Count / colNumber) * colNumber) < col ? 1 : 0);
-            int totalCol = row == (evidences.Count / colNumber) ? (evidencesObject.Count - 1) - (row * colNumber) : colNumber - 1;
-            Debug.Log(totalRow);
+            int maxRow = (evidencesObject.Count - 1) / colNumber;
+            int maxCol = (evidencesObject.Count - 1) % colNumber;
+
             if (NextMoveCommand == Vector2.up)
             {
-                if(row - 1 < 0)
+                if(row == 0)
                 {
-                    row = totalRow;
+                    if (col > maxCol)
+                    {
+                        row = maxRow - 1;
+                    }
+                    else
+                    {
+                        row = maxRow;
+                    }
                 }
                 else
                 {
@@ -146,20 +138,41 @@ namespace HappyBread.GamePlay
             }
             else if(NextMoveCommand == Vector2.down)
             {
-                if (row + 1 > totalRow)
+                if (col > maxCol)
                 {
-                    row = 0;
+                    if (row == maxRow - 1)
+                    {
+                        row = 0;
+                    }
+                    else
+                    {
+                        row = row + 1;
+                    }
                 }
                 else
                 {
-                    row = row + 1;
+                    if (row == maxRow)
+                    {
+                        row = 0;
+                    }
+                    else
+                    {
+                        row = row + 1;
+                    }
                 }
             }
             else if (NextMoveCommand == Vector2.left)
             {
-                if(col - 1 < 0)
+                if(col == 0)
                 {
-                    col = totalCol;
+                    if (row == maxRow)
+                    {
+                        col = maxCol;
+                    }
+                    else
+                    {
+                        col = colNumber - 1;
+                    }
                 }
                 else
                 {
@@ -168,13 +181,27 @@ namespace HappyBread.GamePlay
             }
             else if (NextMoveCommand == Vector2.right)
             {
-                if(col + 1 > totalCol)
+                if(row == maxRow)
                 {
-                    col = 0;
+                    if (col == maxCol)
+                    {
+                        col = 0;
+                    }
+                    else
+                    {
+                        col += 1;
+                    }
                 }
                 else
                 {
-                    col = col + 1;
+                    if (col == colNumber - 1)
+                    {
+                        col = 0;
+                    }
+                    else
+                    {
+                        col += 1;
+                    }
                 }
             }
             cursorIndex = row * colNumber + col;
@@ -200,19 +227,6 @@ namespace HappyBread.GamePlay
 
         private void Awake()
         {
-            for (int idx = 0; idx < 29; idx++)
-            {
-                evidences.Add(new Evidence()
-                {
-                    Name = "Block",
-                    Content = "정체를 알 수 없는 블록이다.",
-                    Sprite = "stone",
-                    Action = () =>
-                    {
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("stone"));
-                    }
-                });
-            }
         }
     }
 
