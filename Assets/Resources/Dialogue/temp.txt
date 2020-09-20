@@ -1,1 +1,0 @@
-Message :: stone : 이상한 돌이다.
