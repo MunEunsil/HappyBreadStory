@@ -30,6 +30,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private EffectManager effectManager;
         [SerializeField]
+        private FloorManager floorManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -68,6 +70,17 @@ namespace HappyBread.GamePlay
                     eventManager = GameObject.FindObjectOfType<EventManager>();
                 }
                 return eventManager;
+            }
+        }
+        public FloorManager FloorManager
+        {
+            get
+            {
+                if (floorManager == null)
+                {
+                    floorManager = GameObject.FindObjectOfType<FloorManager>();
+                }
+                return floorManager;
             }
         }
         public CaseDiary CaseDiary

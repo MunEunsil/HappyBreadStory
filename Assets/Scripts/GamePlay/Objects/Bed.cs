@@ -15,10 +15,6 @@ namespace HappyBread.GamePlay
             events.Add(new ActionEvent(
                 () =>
                 {
-                    // 1. 날짜를 변경한다.
-                    // 2. 페이드 효과를 실행한다.
-                    // 3. Hp를 가득채운다.
-                    // 4. 다른 이벤트를 작동한다.
                     GameModel.Instance.EffectManager.Fade();
                     GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.Date.AddDay(1);

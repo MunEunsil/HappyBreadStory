@@ -510,6 +510,7 @@ MonoBehaviour:
   cursorPrefab: {fileID: 8103821729348958248, guid: 5a05f3e91e325924eb356a0950494317,
     type: 3}
   NextCommand: 0
+  cursorIndex: 0
   cursor: {fileID: 0}
 --- !u!1 &524545908
 GameObject:
@@ -735,6 +736,7 @@ MonoBehaviour:
   eventManager: {fileID: 0}
   uiManager: {fileID: 0}
   effectManager: {fileID: 121160540}
+  floorManager: {fileID: 0}
   caseDiary: {fileID: 440859000}
   questionBox: {fileID: 1298425651}
   dialogue: {fileID: 707839620}
