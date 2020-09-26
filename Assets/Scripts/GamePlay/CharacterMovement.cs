@@ -5,10 +5,12 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
 
-    public Vector3[] waypoints; //이동포인트 배열
+    //public Vector3[] waypoints; //이동포인트 배열
     private Vector3 currPosition; //현재 위치 
     private int waypointIndex = 0; //이동포인트 인덱스
     private float speed = 0.5f;
+
+    public GameObject[] waypointObject; //waypoint역할을 할 겜오브젝트 배열 
 
     protected Animator animator;
 
@@ -23,16 +25,16 @@ public class CharacterMovement : MonoBehaviour
         currPosition = transform.position;
 
         //이동지점 배열의 인덱스 0부터 배열크기까지
-        if (waypointIndex < waypoints.Length)
+        if (waypointIndex < waypointObject.Length)
         {
             animator.SetBool("isWalking", true);
             float step = speed * Time.deltaTime;
 
-            transform.position = Vector3.MoveTowards(currPosition, waypoints[waypointIndex], step);
+            transform.position = Vector3.MoveTowards(currPosition, waypointObject[waypointIndex].transform.position, step);
 
 
             //현재위치가 이동지점이라면 배열인덱스+1 하여 다음 포인트로 이동
-            if (Vector3.Distance(waypoints[waypointIndex], currPosition) == 0f)
+            if (Vector3.Distance(waypointObject[waypointIndex].transform.position, currPosition) == 0f)
             {
 
                 waypointIndex++;
