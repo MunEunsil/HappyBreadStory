@@ -23,7 +23,21 @@ namespace HappyBread.GamePlay
             }
         }
 
+        private bool isPause = false;
+
         public string PlayerName { get; set; }
+
+        public bool IsPause
+        {
+            get
+            {
+                return isPause;
+            }
+            set
+            {
+                isPause = value;
+            }
+        }
 
         private void Awake()
         {

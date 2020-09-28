@@ -1,50 +1,87 @@
-﻿using System.Collections;
+﻿using HappyBread.GamePlay;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+namespace HappyBread.GamePlay
 {
-
-    //public Vector3[] waypoints; //이동포인트 배열
-    private Vector3 currPosition; //현재 위치 
-    private int waypointIndex = 0; //이동포인트 인덱스
-    private float speed = 0.5f;
-
-    public GameObject[] waypointObject; //waypoint역할을 할 겜오브젝트 배열 
-
-    protected Animator animator;
-
-    void Start()
+    public class CharacterMovement : MovingObject
     {
-        animator = GetComponent<Animator>();
-    }
+        private int waypointIndex = 0; //이동포인트 인덱스
 
-    void Update()
-    {
-        //이동중인 현위치 변수에 담기
-        currPosition = transform.position;
+        private readonly float minDistance = 0.5f;
+        private List<Vector3> currentWaypoints;
+        public Vector3 destination;
+        public WayPoints wayPoints;
+        public int startWayPoint;
 
-        //이동지점 배열의 인덱스 0부터 배열크기까지
-        if (waypointIndex < waypointObject.Length)
+        private State state;
+
+        public void SetIdleState()
         {
-            animator.SetBool("isWalking", true);
-            float step = speed * Time.deltaTime;
+            this.state = State.Idle;
+        }
 
-            transform.position = Vector3.MoveTowards(currPosition, waypointObject[waypointIndex].transform.position, step);
+        public void SetWalkingState()
+        {
+            this.state = State.Walking;
+        }
 
+        public void ChangeWayPoints(int index)
+        {
+            currentWaypoints = wayPoints.GetWayPoints(index);
+            waypointIndex = 0;
+            destination = currentWaypoints[waypointIndex];
+        }
 
-            //현재위치가 이동지점이라면 배열인덱스+1 하여 다음 포인트로 이동
-            if (Vector3.Distance(waypointObject[waypointIndex].transform.position, currPosition) == 0f)
+        private void Start()
+        {
+            state = State.Walking;
+            // 본인에게 맞는 waypoints를 불러온다.
+            // 받아오는 형식만 변경된다면 waypoints 가 다르게 구현되어도 될듯
+            ChangeWayPoints(startWayPoint);
+        }
+
+        private void Update()
+        {
+            if (DataManager.Instance.IsPause)
             {
-
-                waypointIndex++;
+                Stop();
             }
-
+            else
+            {
+                switch (state)
+                {
+                    case State.Idle:
+                        Stop();
+                        break;
+                    case State.Walking:
+                        BeforeMove();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
-        else
+
+        private void BeforeMove()
         {
-            animator.SetBool("isWalking", false);
+            Vector2 direction = destination - transform.position;
+            Move(direction);
         }
 
+        protected override void AfterMove()
+        {
+            SetDestination();
+        }
+
+        private void SetDestination()
+        {
+            if (Vector3.Distance(destination, transform.position) <= minDistance)
+            {
+                waypointIndex = ( waypointIndex + 1 ) % currentWaypoints.Count;
+                destination = currentWaypoints[waypointIndex];
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HappyBread.GamePlay;
+using HappyBread.GamePlay.GameState;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,9 @@ namespace HappyBread.GamePlay
                 () =>
                 {
                     GameModel.Instance.EffectManager.Fade();
-                    GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.Date.AddDay(1);
                     GameModel.Instance.Hp.Set(100f);
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
                     Invoke("Greeting", 3f);
                 }
                 ));
@@ -33,6 +34,7 @@ namespace HappyBread.GamePlay
 
         private void Greeting()
         {
+            GameModel.Instance.StateManager.Resume();
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("greeting"));
             GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); }));   
         }

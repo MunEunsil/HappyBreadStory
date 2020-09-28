@@ -23,12 +23,6 @@ namespace HappyBread.GamePlay
         public float hitDistance = 0.5f;
         public float useHpAmount = 0.01f;
 
-        private enum State
-        {
-            Idle, // 움직이지 않을 때
-            Walking // 움직일 때
-        }
-
         private State state;
         private RaycastHit2D hit;
 
@@ -105,7 +99,6 @@ namespace HappyBread.GamePlay
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령을 받음
             {
-                animator.SetBool("isWalking", true);
                 state = State.Walking;
             }
             else
@@ -126,7 +119,6 @@ namespace HappyBread.GamePlay
             else // 움직임 상태 해제
             {
                 state = State.Idle;
-                animator.SetBool("isWalking", false);
             }
         }
 
@@ -135,18 +127,5 @@ namespace HappyBread.GamePlay
             NextMoveCommand = Vector3.zero;
             GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }
-
-        private void Stop()
-        {
-            if (rigidBody2D.velocity.sqrMagnitude > Vector2.kEpsilon)
-            {
-                rigidBody2D.velocity = Vector2.SmoothDamp(rigidBody2D.velocity, Vector2.zero, ref currentVelocity, speedArriveTime);
-            }
-            else
-            {
-                rigidBody2D.velocity = Vector2.zero;
-            }
-        }
-
     }
 }

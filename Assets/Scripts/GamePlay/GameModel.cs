@@ -26,6 +26,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private EventManager eventManager;
         [SerializeField]
+        private AudioManager audioManager;
+        [SerializeField]
         private UIManager uiManager;
         [SerializeField]
         private EffectManager effectManager;
@@ -70,6 +72,17 @@ namespace HappyBread.GamePlay
                     eventManager = GameObject.FindObjectOfType<EventManager>();
                 }
                 return eventManager;
+            }
+        }
+        public AudioManager AudioManager
+        {
+            get
+            {
+                if (audioManager == null)
+                {
+                    audioManager = GameObject.FindObjectOfType<AudioManager>();
+                }
+                return audioManager;
             }
         }
         public FloorManager FloorManager

@@ -52,6 +52,15 @@ namespace HappyBread.GamePlay
             }
         }
 
+        public void Resume()
+        {
+            if(state is PauseState)
+            {
+                DataManager.Instance.IsPause = false;
+                GameModel.Instance.StateManager.UndoState();
+            }
+        }
+
         private void Awake()
         {
             stack = new List<IState>();

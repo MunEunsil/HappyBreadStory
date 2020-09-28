@@ -8,7 +8,9 @@ namespace HappyBread.GamePlay.GameState
     {
         public void Change()
         {
-            GameModel.Instance.UIManager.HpHide();
+            GameModel.Instance.InputManager.SetState(InputManager.State.Pause);
+            GameModel.Instance.UIManager.BasicUIHide();
+            DataManager.Instance.IsPause = true;
         }
     }
 }

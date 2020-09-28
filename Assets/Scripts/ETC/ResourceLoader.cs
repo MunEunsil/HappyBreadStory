@@ -32,5 +32,11 @@ namespace HappyBread.ETC
             Sprite sprite = Resources.Load($"Image/{fileName}", typeof(Sprite)) as Sprite;
             return sprite;
         }
+
+        public static AudioClip LoadBackgroundAudio(string fileName)
+        {
+            AudioClip audioClip = Resources.Load($"Audio/Background/{fileName}", typeof(AudioClip)) as AudioClip;
+            return audioClip;
+        }
     }
 }
