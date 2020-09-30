@@ -31,12 +31,19 @@ namespace HappyBread.GamePlay
         {
             currentWaypoints = wayPoints.GetWayPoints(index);
             waypointIndex = 0;
-            destination = currentWaypoints[waypointIndex];
+            if (currentWaypoints.Count > 0)
+            {
+                destination = currentWaypoints[waypointIndex];
+            }
+            else
+            {
+                state = State.Idle;
+            }
         }
 
         private void Start()
         {
-            state = State.Walking;
+            state = State.Idle;
             // 본인에게 맞는 waypoints를 불러온다.
             // 받아오는 형식만 변경된다면 waypoints 가 다르게 구현되어도 될듯
             ChangeWayPoints(startWayPoint);
@@ -77,6 +84,12 @@ namespace HappyBread.GamePlay
 
         private void SetDestination()
         {
+            if (currentWaypoints.Count <= 1)
+            {
+                state = State.Idle;
+                return;
+            }
+
             if (Vector3.Distance(destination, transform.position) <= minDistance)
             {
                 waypointIndex = ( waypointIndex + 1 ) % currentWaypoints.Count;
