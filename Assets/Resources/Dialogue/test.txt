@@ -1,3 +1,3 @@
-Message : op_bg : stone : 어?!
+Message : op_bg : stone : 어?! {playerName}야 안녕?
 Question : op_bg : stone : 자 무엇을 원하니? : 재하 : 최고 : 좋아
 Message : op_bg : stone : 독특한 취향이구나.

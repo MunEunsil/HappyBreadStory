@@ -157,7 +157,8 @@ namespace HappyBread.GamePlay
                 characterUI.sprite = characterSprite;
             }
 
-            currentText = seperated[3].Trim();
+            // 메세지 변환
+            currentText = InjectVariable(seperated[3].Trim());
 
             if(typingCoroutine != null)
             {
@@ -215,6 +216,11 @@ namespace HappyBread.GamePlay
             NextCommand = KeyCode.None;
         }
 
+        private string InjectVariable(string rawText)
+        {
+            string text = rawText.Replace("{playerName}", DataManager.Instance.PlayerName);
+            return text;
+        }
 
     }
 

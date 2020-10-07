@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class TestHelper : MonoBehaviour
+    public class StartHelper : MonoBehaviour
     {
         public string mapName;
         public int date = -1;

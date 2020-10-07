@@ -51,7 +51,6 @@ namespace HappyBread.GamePlay
         private void NextScene()
         {
             SceneManager.LoadScene("Player", LoadSceneMode.Additive);
-            //GameModel.Instance.MapManager.ChangeMap("Map1_1");
             SceneManager.UnloadSceneAsync("Opening");
         }
 
