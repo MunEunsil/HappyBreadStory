@@ -16,11 +16,9 @@ namespace HappyBread.GamePlay
             events.Add(new ActionEvent(
                 () =>
                 {
-                    GameModel.Instance.EffectManager.Fade();
-                    GameModel.Instance.Date.AddDay(1);
-                    GameModel.Instance.Hp.Set(100f);
+                    GameModel.Instance.EffectManager.FadeOut();
                     GameModel.Instance.StateManager.ChangeState(new PauseState());
-                    Invoke("Greeting", 3f);
+                    Invoke("WakeUp", 2f);
                 }
                 ));
             events.Add(new ActionEvent(() => { }));
@@ -32,11 +30,21 @@ namespace HappyBread.GamePlay
 
         }
 
-        private void Greeting()
+        private void WakeUp()
         {
+            ChangeMap();
+            GameModel.Instance.Hp.Set(100f);
+            GameModel.Instance.EffectManager.FadeIn();
             GameModel.Instance.StateManager.Resume();
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("greeting"));
-            GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); }));   
+            //GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); }));   
+        }
+
+        private void ChangeMap()
+        {
+            GameModel.Instance.Date.AddDay(1);
+            int date = GameModel.Instance.Date.Current;
+            GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
         }
     }
 }

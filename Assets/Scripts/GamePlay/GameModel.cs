@@ -34,6 +34,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private FloorManager floorManager;
         [SerializeField]
+        private MapManager mapManager;
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -94,6 +96,17 @@ namespace HappyBread.GamePlay
                     floorManager = GameObject.FindObjectOfType<FloorManager>();
                 }
                 return floorManager;
+            }
+        }
+        public MapManager MapManager
+        {
+            get
+            {
+                if (mapManager == null)
+                {
+                    mapManager = GameObject.FindObjectOfType<MapManager>();
+                }
+                return mapManager;
             }
         }
         public CaseDiary CaseDiary
