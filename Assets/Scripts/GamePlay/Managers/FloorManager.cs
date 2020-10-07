@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using HappyBread.GamePlay.GameState;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace HappyBread.GamePlay
             this.from = from;
             this.to = to;
             this.exitPos = exitPos;
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
             Invoke("ChangeFloor", 2f);
         }
@@ -24,6 +26,7 @@ namespace HappyBread.GamePlay
             floors[to].SetActive(true);
             GameModel.Instance.Player.transform.position = exitPos;
             GameModel.Instance.EffectManager.FadeIn(0.2f);
+            GameModel.Instance.StateManager.Resume();
         }
     }
 }

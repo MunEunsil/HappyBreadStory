@@ -9,6 +9,7 @@ namespace HappyBread.GamePlay
     public class Fade : MonoBehaviour
     {
         public Image target;
+        public float idleTime;
         public float speed;
         private float start, end;
         private Coroutine coroutine;
@@ -45,11 +46,11 @@ namespace HappyBread.GamePlay
         {
             start = 255f;
             end = 0f;
-            while (start != end)
+            while (start > end)
             {
                 target.color = new Color(0f, 0f, 0f, start / 255f);
-                start--;
-                yield return new WaitForSeconds(speed);
+                start -= Time.deltaTime * speed;
+                yield return new WaitForSeconds(idleTime);
             }
             Hide();
         }
@@ -58,11 +59,11 @@ namespace HappyBread.GamePlay
         {
             start = 0f;
             end = 255f;
-            while (start != end)
+            while (start < end)
             {
                 target.color = new Color(0f, 0f, 0f, start / 255f);
-                start++;
-                yield return new WaitForSeconds(speed);
+                start += Time.deltaTime * speed;
+                yield return new WaitForSeconds(idleTime);
             }
         }
     }
