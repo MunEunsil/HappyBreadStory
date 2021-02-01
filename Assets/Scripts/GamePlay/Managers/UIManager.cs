@@ -30,7 +30,7 @@ namespace HappyBread.GamePlay
         }
 
         /// <summary>
-        /// Basic == Hp, Date
+        /// Basic == Hp, Date, Clock, SettingBtn,
         /// </summary>
         public void BasicUIAppear()
         {
