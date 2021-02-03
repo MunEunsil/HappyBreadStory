@@ -543,6 +543,7 @@ GameObject:
   - component: {fileID: 439914532}
   - component: {fileID: 439914531}
   - component: {fileID: 439914530}
+  - component: {fileID: 439914533}
   m_Layer: 5
   m_Name: SettingBtn
   m_TagString: Untagged
@@ -649,6 +650,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439914528}
   m_CullTransparentMesh: 0
+--- !u!114 &439914533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439914528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb671ceecbea75241925280763182ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &440858996
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,15 +989,19 @@ MonoBehaviour:
   effectManager: {fileID: 121160540}
   floorManager: {fileID: 0}
   mapManager: {fileID: 0}
+  clock: {fileID: 213580913}
   caseDiary: {fileID: 440859000}
   questionBox: {fileID: 1298425651}
   dialogue: {fileID: 707839620}
   player: {fileID: 0}
   hp: {fileID: 1466214113}
+  caseDiaryBtn: {fileID: 716452161}
   stateManager: {fileID: 0}
   date: {fileID: 2017114713}
   background: {fileID: 0}
   fade: {fileID: 1404671814}
+  callBtn: {fileID: 1583462429}
+  settingBtn: {fileID: 439914533}
 --- !u!1 &707839618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1070,7 @@ GameObject:
   - component: {fileID: 716452160}
   - component: {fileID: 716452159}
   - component: {fileID: 716452158}
+  - component: {fileID: 716452161}
   m_Layer: 5
   m_Name: CaseDiaryBtn
   m_TagString: Untagged
@@ -1159,6 +1177,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716452156}
   m_CullTransparentMesh: 0
+--- !u!114 &716452161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716452156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e35e551c3f5da42bef51e617e86923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &862729376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1927,7 @@ GameObject:
   - component: {fileID: 1583462428}
   - component: {fileID: 1583462427}
   - component: {fileID: 1583462426}
+  - component: {fileID: 1583462429}
   m_Layer: 5
   m_Name: callBtn
   m_TagString: Untagged
@@ -2003,6 +2034,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583462424}
   m_CullTransparentMesh: 0
+--- !u!114 &1583462429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583462424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98aa8c2e5a1283c4abf04bd869e05d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1795951795
 GameObject:
   m_ObjectHideFlags: 0

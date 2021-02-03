@@ -18,6 +18,22 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.Hp.Hide();
         }
+        public void ClockAppear()
+        {
+            GameModel.Instance.Clock.Appear();
+        }
+        public void ClockHide()
+        {
+            GameModel.Instance.Clock.Hide();
+        }
+        public void CaseDiaryBtnAppear()
+        {
+            GameModel.Instance.CaseDiaryBtn.Appear();
+        }
+        public void CaseDiaryBtnHide()
+        {
+            GameModel.Instance.CaseDiaryBtn.Hide();
+        }
 
         public void DateAppear()
         {
@@ -28,14 +44,36 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.Date.Hide();
         }
+        public void CallBtnAppear()
+        {
+            GameModel.Instance.CallBtn.Appear();
+        }
+        public void CallBtnHide()
+        {
+            GameModel.Instance.CallBtn.Hide();
+        }
+        public void SettingBtnAppear()
+        {
+            GameModel.Instance.SettingBtn.Appear();
+        }
+        public void SettingBtnHide()
+        {
+            GameModel.Instance.SettingBtn.Hide();
+        }
 
         /// <summary>
-        /// Basic == Hp, Date, Clock, SettingBtn,
+        /// Basic == Hp, Date, Clock, SettingBtn,CaseDiaryBtn,
         /// </summary>
         public void BasicUIAppear()
         {
             HpAppear();
             DateAppear();
+            ClockAppear();
+            CaseDiaryBtnAppear();
+            CallBtnAppear();
+            SettingBtnAppear();
+          
+
         }
 
         /// <summary>
@@ -45,6 +83,10 @@ namespace HappyBread.GamePlay
         {
             HpHide();
             DateHide();
+            ClockHide();
+            CaseDiaryBtnHide();
+            CallBtnHide();
+            SettingBtnHide();
         }
     }
 }

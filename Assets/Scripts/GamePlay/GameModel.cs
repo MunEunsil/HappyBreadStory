@@ -21,6 +21,7 @@ namespace HappyBread.GamePlay
                 return _instance;
             }
         }
+
         [SerializeField]
         private InputManager inputManager;
         [SerializeField]
@@ -36,6 +37,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private MapManager mapManager;
         [SerializeField]
+        private Clock clock;         //지금추가 한 부분
+        [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
         private QuestionBox questionBox;
@@ -46,6 +49,8 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private Hp hp;
         [SerializeField]
+        private CaseDiaryBtn caseDiaryBtn;
+        [SerializeField]
         private StateManager stateManager;
         [SerializeField]
         private Date date;
@@ -53,6 +58,11 @@ namespace HappyBread.GamePlay
         private Background background;
         [SerializeField]
         private Fade fade;
+        [SerializeField]
+        private CallBtn callBtn;
+        [SerializeField]
+        private SettingBtn settingBtn;
+
 
         public InputManager InputManager
         {
@@ -166,6 +176,40 @@ namespace HappyBread.GamePlay
                 return hp;
             }
         }
+        public CallBtn CallBtn
+        {
+            get
+            {
+                if(callBtn == null)
+                {
+                    callBtn = FindObjectOfType<CallBtn>();
+                }
+                return callBtn;
+            }
+        }
+
+        public CaseDiaryBtn CaseDiaryBtn
+        {
+            get
+            {
+                if (caseDiaryBtn == null)
+                {
+                    caseDiaryBtn = GameObject.FindObjectOfType<CaseDiaryBtn>();
+                }
+                return caseDiaryBtn;
+            }
+        }
+        public Clock Clock
+        {
+            get
+            {
+                if (hp == null)
+                {
+                    clock = GameObject.FindObjectOfType<Clock>();
+                }
+                return clock;
+            }
+        }
 
         public Date Date
         {
@@ -176,6 +220,17 @@ namespace HappyBread.GamePlay
                     date = GameObject.FindObjectOfType<Date>();
                 }
                 return date;
+            }
+        }
+        public SettingBtn SettingBtn
+        {
+            get
+            {
+                if (settingBtn == null)
+                {
+                    settingBtn = GameObject.FindObjectOfType<SettingBtn>();
+                }
+                return settingBtn;
             }
         }
 
