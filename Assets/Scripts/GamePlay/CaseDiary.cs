@@ -69,7 +69,7 @@ namespace HappyBread.GamePlay
             // 커서를 새로 그린다.
             RenderCursor();
         }
-
+        
         private void RenderCursor()
         {
             if(evidencesObject.Count == 0) // 비어 있으면 아무 일도 일어나지 않는다.
