@@ -633,7 +633,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1955825838}
   m_Father: {fileID: 440858997}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -845,7 +846,6 @@ RectTransform:
   - {fileID: 456415271}
   - {fileID: 303303628}
   - {fileID: 1270220554}
-  - {fileID: 1955825838}
   m_Father: {fileID: 645426074}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -911,6 +911,8 @@ MonoBehaviour:
   NextCommand: 0
   cursorIndex: 0
   cursor: {fileID: 0}
+  evidenceWindow: {fileID: 303303627}
+  talkBoxWindow: {fileID: 456415270}
 --- !u!1 &456415270
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +925,7 @@ GameObject:
   - component: {fileID: 456415273}
   - component: {fileID: 456415272}
   m_Layer: 5
-  m_Name: evidenceWindow
+  m_Name: TalkBoxWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,12 +2604,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955825837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 440858997}
-  m_RootOrder: 5
+  m_Father: {fileID: 303303628}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

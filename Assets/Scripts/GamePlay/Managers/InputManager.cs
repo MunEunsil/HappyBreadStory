@@ -108,6 +108,10 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.Space;
             }
+           else if (Input.GetKeyUp(KeyCode.Tab)) 
+            {
+                GameModel.Instance.CaseDiary.NextCommand = KeyCode.Tab;
+            }
             else
             {
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.None;

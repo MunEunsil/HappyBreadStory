@@ -24,6 +24,12 @@ namespace HappyBread.GamePlay
         private int colNumber = 8;
         public GameObject cursor;
 
+        //evidenceWindow 확인을 위한 변수 
+        private bool IsEvidenceWindow = false; // false : 증거화면 , true : 대화화면 
+        //증거/대화들 false면 못찾아서 추가함
+        public GameObject evidenceWindow;
+        public GameObject talkBoxWindow;
+
         public Vector2 NextMoveCommand { get; internal set; }
 
         public void AddEvidence(Evidence evidence)
@@ -97,18 +103,44 @@ namespace HappyBread.GamePlay
                 MoveCursor();
             }
 
-            // A를 눌렀을 경우
             if (NextCommand != KeyCode.None)
             {
-                if (NextCommand == KeyCode.A)
+                if (NextCommand == KeyCode.A) //A 눌렀을 때
                 {
+                    Debug.Log("a누름");
                     Exit();
                 }
-                else if (NextCommand == KeyCode.Space)
+                else if (NextCommand == KeyCode.Space) //space 눌렀을 때
                 {
+                    Debug.Log("스페이스바 누름");
                     ShowEvidence();
                 }
+                else if (NextCommand ==KeyCode.Tab) // tab 눌렀을 때
+                {
+                    Debug.Log("tab 눌렀음!");
+                    if (IsEvidenceWindow == false) //true 이면 대화 화면 false이면 증거화면
+                    {
+                        //증거화면 끄고 대화화면 켜기 
+                        evidenceWindow.SetActive(false);
+                        talkBoxWindow.SetActive(true);
+                        IsEvidenceWindow = true;
+
+
+                    }
+                    else
+                    {
+                        //대화화면 끄고 증거화면 켜기
+                        talkBoxWindow.SetActive(false);
+                        evidenceWindow.SetActive(true);
+                        IsEvidenceWindow =false;
+                    }
+                }
             }
+            
+
+
+            
+
         }
 
         private void MoveCursor()
