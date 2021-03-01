@@ -15,8 +15,8 @@ TagManager:
   - 
   - Interactable
   - Evidence
-  - 
-  - 
+  - player
+  - floorOBJ
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3270850467
+    locked: 0
+  - name: FloorObjects
+    uniqueID: 872917949
     locked: 0
