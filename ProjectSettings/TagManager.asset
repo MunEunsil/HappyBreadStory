@@ -50,7 +50,7 @@ TagManager:
   - name: Objects
     uniqueID: 3279897591
     locked: 0
-  - name: Characters
+  - name: Characters and Obgects
     uniqueID: 3916276733
     locked: 0
   - name: Player
