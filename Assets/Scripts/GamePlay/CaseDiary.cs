@@ -19,7 +19,9 @@ namespace HappyBread.GamePlay
         public GameObject cursorPrefab;
         public KeyCode NextCommand;
         private List<Evidence> evidences = new List<Evidence>();
-        private List<GameObject> evidencesObject = new List<GameObject>();
+        private List<GameObject> evidencesObject = new List<GameObject>();   
+        public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
+
         public int cursorIndex;
         private int colNumber = 8;
         public GameObject cursor;
@@ -29,6 +31,7 @@ namespace HappyBread.GamePlay
         //증거/대화들 false면 못찾아서 추가함
         public GameObject evidenceWindow;
         public GameObject talkBoxWindow;
+
 
         public Vector2 NextMoveCommand { get; internal set; }
 
@@ -78,21 +81,40 @@ namespace HappyBread.GamePlay
         
         private void RenderCursor()
         {
-            if(evidencesObject.Count == 0) // 비어 있으면 아무 일도 일어나지 않는다.
+            if(IsEvidenceWindow == false) //증거화면이 켜있는 상태 
             {
-                return;
-            }
+                if (evidencesObject.Count == 0) // 비어 있으면 아무 일도 일어나지 않는다.
+                {
+                    return;
+                }
 
-            if(cursor == null) // 아직 생성되지 않았다면 생성한다.
-            {
-                cursor = Instantiate(cursorPrefab, evidencesObject[cursorIndex].transform);
-            }
+                if (cursor == null) // 아직 생성되지 않았다면 생성한다.
+                {
+                    cursor = Instantiate(cursorPrefab, evidencesObject[cursorIndex].transform);
+                }
 
-            if(cursorIndex < evidencesObject.Count)
-            {
-                cursor.transform.SetParent(evidencesObject[cursorIndex].transform);
-                cursor.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                if (cursorIndex < evidencesObject.Count)
+                {
+                    cursor.transform.SetParent(evidencesObject[cursorIndex].transform);
+                    cursor.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                }
+
             }
+            else
+            {
+
+                if (cursor == null) // 아직 생성되지 않았다면 생성한다.
+                {
+                    cursor = Instantiate(cursorPrefab, suspectsObject[cursorIndex].transform);
+                }
+
+                if (cursorIndex < suspectsObject.Count)
+                {
+                    cursor.transform.SetParent(suspectsObject[cursorIndex].transform);
+                    cursor.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                }
+            }
+            
         }
 
         private void Update()
@@ -143,12 +165,27 @@ namespace HappyBread.GamePlay
 
         }
 
+        //2021 03 05 TalkBoxCusor를위해 수정 
         private void MoveCursor()
         {
             int row = cursorIndex / colNumber;
             int col = cursorIndex % colNumber;
-            int maxRow = (evidencesObject.Count - 1) / colNumber;
-            int maxCol = (evidencesObject.Count - 1) % colNumber;
+            int maxRow = 0;
+            int maxCol = 0;
+
+            if(IsEvidenceWindow == false)// false : 증거화면
+            {
+                 maxRow = (evidencesObject.Count - 1) / colNumber;
+                 maxCol = (evidencesObject.Count - 1) % colNumber;
+            }
+            else // talkBox
+            {
+                 colNumber = 10;
+                 row = cursorIndex/ colNumber;
+                 col = cursorIndex% colNumber;
+                 maxRow = 5;
+                 maxCol = 2;
+            }
 
             if (NextMoveCommand == Vector2.up)
             {
