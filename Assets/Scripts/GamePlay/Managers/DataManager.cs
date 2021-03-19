@@ -50,5 +50,6 @@ namespace HappyBread.GamePlay
                 Destroy(this.gameObject);
             }
         }
+
     }
 }

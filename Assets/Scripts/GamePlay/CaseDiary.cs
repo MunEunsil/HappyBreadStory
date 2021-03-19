@@ -28,9 +28,12 @@ namespace HappyBread.GamePlay
 
         //evidenceWindow 확인을 위한 변수 
         private bool IsEvidenceWindow = false; // false : 증거화면 , true : 대화화면 
+
         //증거/대화들 false면 못찾아서 추가함
         public GameObject evidenceWindow;
         public GameObject talkBoxWindow;
+
+     
 
 
         public Vector2 NextMoveCommand { get; internal set; }
@@ -56,7 +59,7 @@ namespace HappyBread.GamePlay
             Render();
         }
 
-        private void Render()
+        private void Render()  
         {
             // 기존 object를 삭제한다.
             Destroy(cursor);
@@ -81,7 +84,7 @@ namespace HappyBread.GamePlay
         
         private void RenderCursor()
         {
-            if(IsEvidenceWindow == false) //증거화면이 켜있는 상태 
+            if(IsEvidenceWindow == false) //증거탭 켜있는 상태 
             {
                 if (evidencesObject.Count == 0) // 비어 있으면 아무 일도 일어나지 않는다.
                 {
@@ -100,7 +103,7 @@ namespace HappyBread.GamePlay
                 }
 
             }
-            else
+            else //대화탭 켜있는 상태
             {
 
                 if (cursor == null) // 아직 생성되지 않았다면 생성한다.
@@ -180,11 +183,11 @@ namespace HappyBread.GamePlay
             }
             else // talkBox
             {
-                 colNumber = 10;
+                 colNumber = 6;
                  row = cursorIndex/ colNumber;
                  col = cursorIndex% colNumber;
-                 maxRow = 5;
-                 maxCol = 2;
+                 maxRow = 1;
+                 maxCol = 5;
             }
 
             if (NextMoveCommand == Vector2.up)
@@ -226,7 +229,7 @@ namespace HappyBread.GamePlay
                     }
                     else
                     {
-                        row = row + 1;
+                        row = row + 1;   
                     }
                 }
             }

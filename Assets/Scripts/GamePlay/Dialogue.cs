@@ -25,6 +25,9 @@ namespace HappyBread.GamePlay
         private int currentIndex;
         private string currentText;
 
+        public int answerIndex = -1;   //AnswerIndex에 해당하는 answer을 출력하기 위함.
+        public QuestionBox questionBox;
+
         private enum State
         {
             Idle,       // Dialogue가 들어와있지 않은 상태
@@ -106,11 +109,56 @@ namespace HappyBread.GamePlay
                 case "Question":
                     ShowQuestion(seperated);
                     break;
+                case "Answer":        //플래그 추가 
+                    ShowAnswerMessage(seperated);
+                    break;
+
             }
 
             NextCommand = KeyCode.None;
         }
 
+        private void ShowAnswerMessage(string[] seperated)
+        {
+            string backgroundFileName = seperated[1].Trim();
+            string characterFileName = seperated[2].Trim();
+
+            Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+            Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+
+            if (backgroundSprite == null)
+            {
+                backgroundUI.enabled = false;
+            }
+            else
+            {
+                backgroundUI.enabled = true;
+                backgroundUI.sprite = backgroundSprite;
+            }
+
+            if (characterSprite == null)
+            {
+                characterUI.enabled = false;
+            }
+            else
+            {
+                characterUI.enabled = true;
+                characterUI.sprite = characterSprite;
+            }
+            answerIndex = questionBox.AnswerIndex;
+
+            // 메세지 변환
+            currentText = InjectVariable(seperated[3+answerIndex].Trim()); //3+amswerIndex 가 답변순서가 맞는지 확인 
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+            typingCoroutine = StartCoroutine(SmoothTyping(currentText));
+        }
+
+
+       
         private void ShowQuestion(string[] seperated)
         {
             int startIndex = 4;

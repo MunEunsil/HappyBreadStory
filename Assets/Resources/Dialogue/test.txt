@@ -1,3 +1,5 @@
 Message :askAddAvidence : stone : 어?! {playerName}야 안녕?
 Question :askAddAvidence: stone : 자 무엇을 원하니? : 재하 : 최고 : 좋아
-Message :askAddAvidence: stone : 독특한 취향이 구나.
+Answer :askAddAvidence: stone : 1번 선택 : 2번 선택: 3번 선택
+Question :askAddAvidence : stone : 1번다음엔 뭐 선택할래? : 1번 : 2번 : 3번 
+Answer :askAddAvidence: stone : 1번 선택 : 2번 선택: 3번 선택

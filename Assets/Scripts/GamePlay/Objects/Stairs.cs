@@ -15,6 +15,7 @@ namespace HappyBread.GamePlay
             if(collision.CompareTag("Player"))
             {
                 GameModel.Instance.FloorManager.ChangeFloor(from, to, exit.transform.position);
+               
             }
         }
     }

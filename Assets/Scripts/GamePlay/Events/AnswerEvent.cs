@@ -21,7 +21,7 @@ namespace HappyBread.GamePlay
 
         protected override void BeginDetail()
         {
-            int index = GameModel.Instance.QuestionBox.AnswerIndex;
+            int index = GameModel.Instance.QuestionBox.AnswerIndex;    //QusetionBox의 AnswerIndex를 index로 가져옴
 
             if( !(0 <= index && index < events.Count) )
             {
