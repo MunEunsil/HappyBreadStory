@@ -70,7 +70,8 @@ namespace HappyBread.GamePlay
             }
             evidencesObject.Clear();
 
-            // 저장된 배열을 토대로 새로 그린다.
+            // 저장된 배열을 토대로 새로 그린다. 
+            // 03-23 증거 생성 위치 해결해야함 
             foreach (Evidence evidence in evidences)
             {
                 GameObject newEvidenceObject = Instantiate<GameObject>(blankEvidenceObject, content.transform);
