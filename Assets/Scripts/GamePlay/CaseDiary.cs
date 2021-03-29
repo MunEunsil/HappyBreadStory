@@ -23,7 +23,7 @@ namespace HappyBread.GamePlay
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
 
         public int cursorIndex;
-        private int colNumber = 8;
+        private int colNumber = 6;
         public GameObject cursor;
 
         //evidenceWindow 확인을 위한 변수 
@@ -170,6 +170,7 @@ namespace HappyBread.GamePlay
         }
 
         //2021 03 05 TalkBoxCusor를위해 수정 
+        //col을 통일시켜서 if문을 굳이 안써도 될것같다. 수정하자. 2021 03 29
         private void MoveCursor()
         {
             int row = cursorIndex / colNumber;
@@ -182,14 +183,16 @@ namespace HappyBread.GamePlay
                  maxRow = (evidencesObject.Count - 1) / colNumber;
                  maxCol = (evidencesObject.Count - 1) % colNumber;
             }
-            else // talkBox
+            else // true : talkBox
             {
                  colNumber = 6;
+                 maxRow = (suspectsObject.Count - 1) / colNumber;
+                 maxCol = (suspectsObject.Count - 1) % colNumber;
                  row = cursorIndex/ colNumber;
                  col = cursorIndex% colNumber;
-                 maxRow = 1;
-                 maxCol = 5;
+
             }
+            
 
             if (NextMoveCommand == Vector2.up)
             {
