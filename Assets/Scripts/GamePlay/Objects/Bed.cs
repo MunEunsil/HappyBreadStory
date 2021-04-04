@@ -9,9 +9,11 @@ namespace HappyBread.GamePlay
 {
     public class Bed : Interactable
     {
+        // int date = GameModel.Instance.Date.Current;
         public override void Interact()
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("bed"));
+
             List<Event> events = new List<Event>();
             events.Add(new ActionEvent(
                 () =>
@@ -33,10 +35,13 @@ namespace HappyBread.GamePlay
         private void WakeUp()
         {
             ChangeMap();
+            
+            int date = GameModel.Instance.Date.Current;
+
             GameModel.Instance.Hp.Set(100f);
             GameModel.Instance.EffectManager.FadeIn();
             GameModel.Instance.StateManager.Resume();
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("greeting"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"BedDay{date}"));
             //GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); }));   
         }
 
@@ -45,6 +50,8 @@ namespace HappyBread.GamePlay
             GameModel.Instance.Date.AddDay(1);
             int date = GameModel.Instance.Date.Current;
             GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
+            
+
         }
     }
 }
