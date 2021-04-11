@@ -19,10 +19,12 @@ namespace HappyBread.GamePlay
             DialogueControl,
             CaseDiaryControl,
             QuestionBoxControl,
+            CallControl,
+            RoomInvestigateControl,
             Pause
         }
 
-        [SerializeField]
+        [SerializeField] 
         private State state;
         /// <summary>
         /// 상태를 지정합니다.
@@ -45,6 +47,12 @@ namespace HappyBread.GamePlay
                     break;
                 case State.CaseDiaryControl:
                     CaseDiaryControl();
+                    break;
+                case State.CallControl:
+                    CallControl();
+                    break;
+                case State.RoomInvestigateControl:
+                    RoomInvestigateControl();
                     break;
                 case State.QuestionBoxControl:
                     QuestionBoxControl();
@@ -117,6 +125,71 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.None;
             }
         }
+        private void CallControl()
+        {
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                GameModel.Instance.Call.NextMoveCommand = Vector2.up;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                GameModel.Instance.Call.NextMoveCommand = Vector2.down;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GameModel.Instance.Call.NextMoveCommand = Vector2.left;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GameModel.Instance.Call.NextMoveCommand = Vector2.right;
+            }
+            else 
+            {
+                GameModel.Instance.Call.NextMoveCommand = Vector2.zero;
+            }
+
+             if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
+            {
+                GameModel.Instance.Call.NextCommand = GlobalGameData.keyCodeCall;
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                GameModel.Instance.Call.NextCommand = KeyCode.Space;
+            }
+            else
+            {
+                GameModel.Instance.CaseDiary.NextCommand = KeyCode.None;
+            }
+        }
+
+        private void RoomInvestigateControl()
+        {
+            if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.left;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.right;
+            }
+            else 
+            {
+                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.zero;
+            }
+
+            if (Input.GetKeyUp(GlobalGameData.keyCodeRoom)) //keyCall 대신 outRoom 추가해야함ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+            {
+                GameModel.Instance.RoomInvestigate.NextCommand = GlobalGameData.keyCodeRoom; 
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))  
+            {
+                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.Space;
+            }
+            else
+            {
+                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.None;
+            }
+        }
 
         private void DialogControl()
         {
@@ -165,6 +238,10 @@ namespace HappyBread.GamePlay
             else if (Input.GetKeyUp(GlobalGameData.keyCodeCaseDiary))
             {
                 GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCaseDiary;
+            }
+            else if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
+            {
+                GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCall;
             }
             else
             {

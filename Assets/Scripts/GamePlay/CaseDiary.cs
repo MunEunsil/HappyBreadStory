@@ -71,7 +71,6 @@ namespace HappyBread.GamePlay
             evidencesObject.Clear();
 
             // 저장된 배열을 토대로 새로 그린다. 
-            // 03-23 증거 생성 위치 해결해야함 
             foreach (Evidence evidence in evidences)
             {
                 GameObject newEvidenceObject = Instantiate<GameObject>(blankEvidenceObject, content.transform);
@@ -130,20 +129,21 @@ namespace HappyBread.GamePlay
             }
 
             if (NextCommand != KeyCode.None)
+            if (NextCommand != KeyCode.None)
             {
                 if (NextCommand == KeyCode.A) //A 눌렀을 때
                 {
-                    Debug.Log("a누름");
+                  //  Debug.Log("a누름");
                     Exit();
                 }
                 else if (NextCommand == KeyCode.Space) //space 눌렀을 때
                 {
-                    Debug.Log("스페이스바 누름");
+                   // Debug.Log("스페이스바 누름");
                     ShowEvidence();
                 }
                 else if (NextCommand ==KeyCode.Tab) // tab 눌렀을 때
                 {
-                    Debug.Log("tab 눌렀음!");
+                   // Debug.Log("tab 눌렀음!");
                     if (IsEvidenceWindow == false) //true 이면 대화 화면 false이면 증거화면
                     {
                         //증거화면 끄고 대화화면 켜기 

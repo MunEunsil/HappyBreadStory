@@ -1,5 +1,0 @@
-Message : askAddAvidence : 팬케이크 : 으아아아악!!!! 
-Message : askAddAvidence : 땅콩버터 : 이...이럴수가!! 
-Message : askAddAvidence : 크로와상 : 다들 비키세요! 제가 보겠습니다. 
-Message : askAddAvidence : 도넛 : 세상에...어떻게 이런일이..
-Message : askAddAvidence : 마카롱 : ...

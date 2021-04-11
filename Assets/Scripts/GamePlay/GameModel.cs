@@ -37,7 +37,7 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private MapManager mapManager;
         [SerializeField]
-        private Clock clock;         //지금추가 한 부분
+        private Clock clock;       
         [SerializeField]
         private CaseDiary caseDiary;
         [SerializeField]
@@ -62,6 +62,11 @@ namespace HappyBread.GamePlay
         private CallBtn callBtn;
         [SerializeField]
         private SettingBtn settingBtn;
+        [SerializeField]
+        private Call call;
+        [SerializeField]
+        private RoomInvestigate roomInvestigate;        //방금추가 
+
 
 
         public InputManager InputManager
@@ -130,6 +135,31 @@ namespace HappyBread.GamePlay
                 return caseDiary;
             }
         }
+     
+        public Call Call
+        {
+            get
+            {
+                if (call == null)
+                {
+                    call = GameObject.FindObjectOfType<Call>();
+                }
+                return call;
+            }
+        }
+
+        public RoomInvestigate RoomInvestigate
+        {
+            get
+            {
+                if (roomInvestigate == null)
+                {
+                    roomInvestigate = GameObject.FindObjectOfType<RoomInvestigate>();
+                }
+                return roomInvestigate;
+            }
+        }
+
 
         public QuestionBox QuestionBox
         {

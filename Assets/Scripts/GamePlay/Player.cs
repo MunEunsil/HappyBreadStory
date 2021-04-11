@@ -12,8 +12,12 @@ namespace HappyBread.GamePlay
     /// <summary>
     /// 플레이어를 제어 할 수 있는 클래스.
     /// </summary>
+    ///
+
+
     public class Player : MovingObject
     {
+
         [HideInInspector]
         public Vector3 NextMoveCommand; // 다음 움직임 명령
         [HideInInspector]
@@ -55,7 +59,12 @@ namespace HappyBread.GamePlay
                         AttemptInteract();
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
+                        Debug.Log("a누름");
                         AttemptOpenCaseDiary();
+                        break;
+                    case GlobalGameData.keyCodeCall: 
+                        Debug.Log("c누름");
+                        AttemptOpenCall();
                         break;
                     default:
                         break;
@@ -69,8 +78,14 @@ namespace HappyBread.GamePlay
             GameModel.Instance.CaseDiary.gameObject.SetActive(true);
             NextFunctionCommand = KeyCode.None;
         }
+        private void AttemptOpenCall()
+        {
+            GameModel.Instance.StateManager.ChangeState(new CallState());
+            GameModel.Instance.Call.gameObject.SetActive(true);
+            NextFunctionCommand = KeyCode.None;
+        }
 
-        private void AttemptInteract()
+        private void AttemptInteract()  
         {
             Vector2 start = transform.position;
             Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
