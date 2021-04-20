@@ -13,6 +13,8 @@ namespace HappyBread.GamePlay
         // 때문에 이 곳에는 그에 대한 상세 내용을 작성해야한다.
         public Evidence Evidence { get; protected set; } 
 
+        public Dialogue Dialogue { get; protected set; }
+
         public abstract void Interact();
 
         /// <summary>
@@ -36,11 +38,13 @@ namespace HappyBread.GamePlay
             }
         }
 
+
         /// <summary>
         /// Evidence에 대하여 정의내립니다.
         /// 만약 Evidence가 필요하지 않다면 빈 메서드로 구현합니다.
         /// </summary>
         protected abstract void InitEvidence();
+       // protected abstract void InitDialogue(); 
 
         private void Awake()
         {

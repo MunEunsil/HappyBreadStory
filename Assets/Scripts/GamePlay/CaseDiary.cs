@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 namespace HappyBread.GamePlay
 {
     /// <summary>
@@ -21,6 +22,19 @@ namespace HappyBread.GamePlay
         private List<Evidence> evidences = new List<Evidence>();
         private List<GameObject> evidencesObject = new List<GameObject>();   
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
+        
+
+        public GameObject suspectsObj; 
+        public GameObject detailObj;
+        public bool detailObjSetactive = false; 
+    
+
+        //대화키워드 text 리스트 
+        public List<Text> keyWordTextObj = new List<Text>();
+
+        public Image detailImage;
+        public Image detailText;
+
 
         public int cursorIndex;
         private int colNumber = 6;
@@ -84,7 +98,7 @@ namespace HappyBread.GamePlay
         
         private void RenderCursor()
         {
-            if(IsEvidenceWindow == false) //증거탭 켜있는 상태 
+            if (IsEvidenceWindow == false) //증거탭 켜있는 상태 
             {
                 if (evidencesObject.Count == 0) // 비어 있으면 아무 일도 일어나지 않는다.
                 {
@@ -103,7 +117,7 @@ namespace HappyBread.GamePlay
                 }
 
             }
-            else //대화탭 켜있는 상태
+            else if (IsEvidenceWindow == true && detailObjSetactive == false)//대화탭 켜있는 상태  
             {
 
                 if (cursor == null) // 아직 생성되지 않았다면 생성한다.
@@ -116,19 +130,44 @@ namespace HappyBread.GamePlay
                     cursor.transform.SetParent(suspectsObject[cursorIndex].transform);
                     cursor.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 }
+            } //210417 
+            else if(detailObjSetactive == true) //디테일 ui 
+            {
+                if (cursor == null) // 아직 생성되지 않았다면 생성한다.
+                {
+                    Debug.Log("커서 null");
+                    cursor = Instantiate(cursorPrefab, keyWordTextObj[cursorIndex].transform);
+                }
+
+                if (cursorIndex < keyWordTextObj.Count)
+                {
+                    cursor.transform.SetParent(keyWordTextObj[cursorIndex].transform);
+                    cursor.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                }   
             }
             
         }
 
         private void Update()
         {
-            // 방향키를 누르는 경우
-            if (NextMoveCommand != Vector2.zero)
+            if (detailObjSetactive == false)   // 디테일UI 꺼져있는 경우(인물만 나와있는 ui)
             {
-                MoveCursor();
+                // 방향키를 누르는 경우
+                if (NextMoveCommand != Vector2.zero)
+                {
+                    MoveCursor();
+                }
+            }
+            else if (detailObjSetactive == true) //디테일UI 켜져있는 경우 (대화 키워드가 있는 ui)
+            {
+                if (NextMoveCommand != Vector2.zero)
+                {
+                    DetailMoveCursor();
+                }
+                   
             }
 
-            if (NextCommand != KeyCode.None)
+
             if (NextCommand != KeyCode.None)
             {
                 if (NextCommand == KeyCode.A) //A 눌렀을 때
@@ -138,12 +177,29 @@ namespace HappyBread.GamePlay
                 }
                 else if (NextCommand == KeyCode.Space) //space 눌렀을 때
                 {
-                   // Debug.Log("스페이스바 누름");
-                    ShowEvidence();
+                        // Debug.Log("스페이스바 누름");
+
+                        if (IsEvidenceWindow == false) //증거탭
+                        {
+                            ShowEvidence();
+                        }
+                        else //대화 탭
+                        {
+                            //디테일 ui 
+                            MoveDetail(); 
+                            //이쪽 수정해야함 
+                            //조건문 추가해서 대화 키워드 눌렀을 떄 이동하는거 만들어야함 
+                                                                                
+                        }
+                        
                 }
                 else if (NextCommand ==KeyCode.Tab) // tab 눌렀을 때
                 {
-                   // Debug.Log("tab 눌렀음!");
+                    cursorIndex = 0;
+                    Destroy(cursor);
+                    cursor = null;
+                
+                    // Debug.Log("tab 눌렀음!");
                     if (IsEvidenceWindow == false) //true 이면 대화 화면 false이면 증거화면
                     {
                         //증거화면 끄고 대화화면 켜기 
@@ -160,6 +216,8 @@ namespace HappyBread.GamePlay
                         evidenceWindow.SetActive(true);
                         IsEvidenceWindow =false;
                     }
+
+                    RenderCursor();
                 }
             }
             
@@ -170,7 +228,7 @@ namespace HappyBread.GamePlay
         }
 
         //2021 03 05 TalkBoxCusor를위해 수정 
-        //col을 통일시켜서 if문을 굳이 안써도 될것같다. 수정하자. 2021 03 29
+
         private void MoveCursor()
         {
             int row = cursorIndex / colNumber;
@@ -285,6 +343,37 @@ namespace HappyBread.GamePlay
             RenderCursor();
         }
 
+        //detail 커서 움직임 
+        private void DetailMoveCursor()
+        {
+            if (NextMoveCommand == Vector2.left)
+            {
+                if (cursorIndex == 0)
+                {
+                    cursorIndex = 0;
+                }
+                else
+                {
+                    cursorIndex = cursorIndex - 1;
+                }
+
+            }
+            else if (NextMoveCommand == Vector2.right)
+            {
+                if (cursorIndex == keyWordTextObj.Count - 1)
+                {
+                    cursorIndex = keyWordTextObj.Count - 1;
+                }
+                else
+                {
+                    cursorIndex = cursorIndex + 1;
+                }
+
+            }
+
+            NextMoveCommand = Vector2.zero;
+            RenderCursor();
+        }
         private void ShowEvidence()
         {
             if (evidences.Count > 0 && cursorIndex < evidences.Count)
@@ -292,6 +381,58 @@ namespace HappyBread.GamePlay
                 evidences[cursorIndex].Action();
                 NextCommand = KeyCode.None;
             }
+        }
+        private void MoveDetail()
+        {
+            detailObjSetactive = true ; //나중에 끌 때 false으로 바꿔주기  
+
+            detailObj.SetActive(true);
+            NextCommand = KeyCode.None;
+            
+            //이미지 
+            string characterFileName = suspectsObject[cursorIndex].name;
+            Sprite detailImageSprite = ResourceLoader.LoadSprite(characterFileName);
+            detailImage.sprite = detailImageSprite;
+            //설명text 이미지
+            string characterDescription = suspectsObject[cursorIndex].name+"Description";
+            Sprite detailTextImg = ResourceLoader.LoadSprite(characterDescription);
+            detailText.sprite = detailTextImg;
+
+            //키워드들 채우기
+            // if문 추가해서 1이면 나타나게 하고 아니면 행동X
+            for (int i=0; i< keyWordTextObj.Count; i++)
+            {
+                if (characterFileName == "straw")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.strawDialogeKeywords[i];
+                else if (characterFileName == "pancake")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.pancakeDialogeKeywords[i];
+                else if (characterFileName == "cake")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.cakeDialogeKeywords[i];
+                else if (characterFileName == "crois")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.croisDialogeKeywords[i];
+                else if (characterFileName == "maca")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.macaDialogeKeywords[i];
+                else if (characterFileName == "jelly")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.jellyDialogeKeywords[i];
+                else if (characterFileName == "jam")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.jamDialogeKeywords[i];
+                else if (characterFileName == "hodu")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.hoduDialogeKeywords[i];
+                else if (characterFileName == "donut")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.donutDialogeKeywords[i];
+                else if (characterFileName == "twist")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.twistDialogeKeywords[i];
+                else if (characterFileName == "choco")
+                    keyWordTextObj[i].text = TalkBoxData.Instance.chocoDialogeKeywords[i];
+            }
+            suspectsObj.SetActive(false);
+            cursorIndex = 0;
+            Destroy(cursor);
+            cursor = null;
+
+            //커서 만들기 
+            RenderCursor();
+
         }
 
         private void Exit()
@@ -303,6 +444,7 @@ namespace HappyBread.GamePlay
 
         private void Awake()
         {
+
         }
     }
 

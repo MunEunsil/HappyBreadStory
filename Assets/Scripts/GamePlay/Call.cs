@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using HappyBread.GamePlay.GameState;
 
 namespace HappyBread.GamePlay
 {
@@ -19,11 +19,12 @@ namespace HappyBread.GamePlay
         public GameObject cursorPrefab;
         public KeyCode NextCommand;
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
+      //  public GameObject askSure;
 
         public int cursorIndex;
         private int colNumber = 6;
         public GameObject cursor;
-
+       
 
         public GameObject talkBoxWindow;
 
@@ -81,13 +82,53 @@ namespace HappyBread.GamePlay
                 else if (NextCommand == KeyCode.Space) //space 눌렀을 때
                 {
                     // Debug.Log("스페이스바 누름");
-                    //ShowEvidence(); // 범인으로 씬 이동?
+                    AskSure();
+                    NextCommand = KeyCode.None;
+                    //call ui 끄기 
+                    gameObject.SetActive(false);
+                    //state변경 까지 하면 완-료 
                 }
             
             }
 
         }
 
+
+        private void AskSure()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("askSure"));
+
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(
+                () =>
+                {
+                    GameModel.Instance.EffectManager.FadeOut();
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                    Invoke("WakeUp", 2f);
+                }
+                ));
+            events.Add(new ActionEvent(() => { }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
+        }
+        private void WakeUp()
+        {
+            ChangeMap();
+
+
+            GameModel.Instance.Hp.Set(100f);
+            GameModel.Instance.EffectManager.FadeIn();
+            GameModel.Instance.StateManager.Resume();
+
+        }
+
+        private void ChangeMap()
+        {
+                    
+            GameModel.Instance.MapManager.ChangeMap($"Map6_1");
+
+
+        }
 
         private void MoveCursor()
         {
