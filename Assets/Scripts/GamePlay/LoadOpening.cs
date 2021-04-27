@@ -10,7 +10,9 @@ namespace HappyBread.GamePlay
         // Start is called before the first frame update
         void Start()
         {
+            
             SceneManager.LoadScene("Opening", LoadSceneMode.Additive);
+            
         }
     }
 }

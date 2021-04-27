@@ -12,6 +12,7 @@ namespace HappyBread.GamePlay
         // int date = GameModel.Instance.Date.Current;
         public override void Interact()
         {
+       
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("bed"));
 
             List<Event> events = new List<Event>();

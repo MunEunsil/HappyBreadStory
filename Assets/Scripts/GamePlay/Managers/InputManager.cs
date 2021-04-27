@@ -21,6 +21,8 @@ namespace HappyBread.GamePlay
             QuestionBoxControl,
             CallControl,
             RoomInvestigateControl,
+            MiddleEndingControl,
+            ReanonsingControl,
             Pause
         }
 
@@ -57,9 +59,52 @@ namespace HappyBread.GamePlay
                 case State.QuestionBoxControl:
                     QuestionBoxControl();
                     break;
+                case State.ReanonsingControl:
+                    ReanonsingControl();
+                    break;
+                case State.MiddleEndingControl:
+                    MiddleEndingControl();
+                    break;
             }
         }
 
+        private void MiddleEndingControl()
+        {
+            //오직 스페이스만 가능 
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                GameModel.Instance.MiddleEnding.NextCommand = KeyCode.Space;
+            }
+        }
+        private void ReanonsingControl()
+        {
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.up;
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.down;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            {
+                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.left;
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            {
+                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.right;
+            }
+            else if (Input.GetKeyUp(KeyCode.Space))
+            {
+                GameModel.Instance.ReasoningManager.NextCommand = KeyCode.Space;
+            }
+            else 
+            {
+                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.zero;
+            }  
+         
+        
+        }
         private void QuestionBoxControl()
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
@@ -116,9 +161,13 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.Space;
             }
-           else if (Input.GetKeyUp(KeyCode.Tab)) 
+            else if (Input.GetKeyUp(KeyCode.Tab))
             {
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.Tab;
+            }
+            else if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                GameModel.Instance.CaseDiary.NextCommand = KeyCode.Escape;
             }
             else
             {

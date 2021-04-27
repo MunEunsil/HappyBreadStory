@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HappyBread.GamePlay.GameState;
+
 
 namespace HappyBread.GamePlay
 {
@@ -9,6 +11,10 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class GameManager : MonoBehaviour
     {
+        
+      //  public GameObject player;
+
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -20,5 +26,20 @@ namespace HappyBread.GamePlay
         {
 
         }
+
+        //public void GameSave()
+        //{
+        //    //player.x , player.y
+        //    PlayerPrefs.SetFloat("player X",player.transform.position.x);
+        //    PlayerPrefs.SetFloat("player Y", player.transform.position.y);
+
+        //    //evidence list 
+
+
+        //    //dialogeKeyword 오픈현황 
+        //    //date 
+        //    PlayerPrefs.SetInt("date",DataManager.Instance.date);
+        //}
+        //public void GameLoad() { }
     }
 }

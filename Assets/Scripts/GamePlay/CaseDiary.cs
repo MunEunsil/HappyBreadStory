@@ -19,10 +19,15 @@ namespace HappyBread.GamePlay
         public GameObject content;
         public GameObject cursorPrefab;
         public KeyCode NextCommand;
-        private List<Evidence> evidences = new List<Evidence>();
+        //public List<Evidence> evidences = new List<Evidence>();
         private List<GameObject> evidencesObject = new List<GameObject>();   
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
-        
+
+        //키워드를 선택하면 키워드에 해당하는 텍스트no
+        public GameObject keywordTextView;
+        public bool keywordTextViewBool = false; //대화 보는 창 
+        public Text keywordTextViewText;
+
 
         public GameObject suspectsObj; 
         public GameObject detailObj;
@@ -41,7 +46,7 @@ namespace HappyBread.GamePlay
         public GameObject cursor;
 
         //evidenceWindow 확인을 위한 변수 
-        private bool IsEvidenceWindow = false; // false : 증거화면 , true : 대화화면 
+        public bool IsEvidenceWindow = false; // false : 증거화면 , true : 대화화면 
 
         //증거/대화들 false면 못찾아서 추가함
         public GameObject evidenceWindow;
@@ -54,17 +59,17 @@ namespace HappyBread.GamePlay
 
         public void AddEvidence(Evidence evidence)
         {
-            evidences.Add(evidence);
+           DataManager.Instance.evidences.Add(evidence);
         }
 
         public void DeleteEvidence(int index)
         {
-            evidences.RemoveAt(index);
+            DataManager.Instance.evidences.RemoveAt(index);
         }
 
         public bool Contains(Evidence evidence)
         {
-            return evidences.Contains(evidence);
+            return DataManager.Instance.evidences.Contains(evidence);
         }
 
         private void OnEnable()
@@ -85,7 +90,7 @@ namespace HappyBread.GamePlay
             evidencesObject.Clear();
 
             // 저장된 배열을 토대로 새로 그린다. 
-            foreach (Evidence evidence in evidences)
+            foreach (Evidence evidence in DataManager.Instance.evidences)
             {
                 GameObject newEvidenceObject = Instantiate<GameObject>(blankEvidenceObject, content.transform);
                 newEvidenceObject.GetComponent<Image>().sprite = ResourceLoader.LoadSprite(evidence.Sprite);
@@ -96,7 +101,7 @@ namespace HappyBread.GamePlay
             RenderCursor();
         }
         
-        private void RenderCursor()
+        public  void RenderCursor()
         {
             if (IsEvidenceWindow == false) //증거탭 켜있는 상태 
             {
@@ -148,7 +153,7 @@ namespace HappyBread.GamePlay
             
         }
 
-        private void Update()
+        private void Update() 
         {
             if (detailObjSetactive == false)   // 디테일UI 꺼져있는 경우(인물만 나와있는 ui)
             {
@@ -167,30 +172,62 @@ namespace HappyBread.GamePlay
                    
             }
 
-
-            if (NextCommand != KeyCode.None)
+            if (NextCommand != KeyCode.None) 
             {
-                if (NextCommand == KeyCode.A) //A 눌렀을 때
+                if (NextCommand == KeyCode.Escape) //esc 눌렀을 때
                 {
-                  //  Debug.Log("a누름");
-                    Exit();
+                    //esc 상황마다 다른거 if문으로 만들기 
+                    if (detailObjSetactive == false) // 다이어리 닫음
+                    {
+                        Exit();
+                    }
+                    else if (detailObjSetactive == true && keywordTextViewBool == false) //detail 닫음 
+                    {
+                        cursorIndex = 0;
+                        Destroy(cursor);
+                        cursor = null;
+
+                        detailObj.SetActive(false);
+                        suspectsObj.SetActive(true);
+                        detailObjSetactive = false; 
+
+                        NextCommand = KeyCode.None;
+
+
+                        RenderCursor();
+
+                    }
+                    else if (detailObjSetactive == true && keywordTextViewBool == true)
+                    {
+                        cursorIndex = 0;
+                        Destroy(cursor);
+                        cursor = null;
+
+                        keywordTextView.SetActive(false);
+                        keywordTextViewBool = false;
+                        NextCommand = KeyCode.None;
+
+                        RenderCursor();
+                    }
+                    
                 }
                 else if (NextCommand == KeyCode.Space) //space 눌렀을 때
                 {
-                        // Debug.Log("스페이스바 누름");
+                    // Debug.Log("스페이스바 누름");
 
-                        if (IsEvidenceWindow == false) //증거탭
-                        {
-                            ShowEvidence();
-                        }
-                        else //대화 탭
-                        {
-                            //디테일 ui 
-                            MoveDetail(); 
-                            //이쪽 수정해야함 
-                            //조건문 추가해서 대화 키워드 눌렀을 떄 이동하는거 만들어야함 
-                                                                                
-                        }
+                    if (IsEvidenceWindow == false) //증거탭
+                    {
+                        ShowEvidence();
+                    }
+                    else if (IsEvidenceWindow == true && detailObjSetactive == false)//대화 탭
+                    {   //디테일 ui 
+                        MoveDetail(); 
+                    }
+                    else if (detailObjSetactive == true)
+                    {
+                        // 디테일 켜져있을때 스페이스바를 누르면 일어날 일을 여기에 만들면 됨 
+                        showDialogeText();
+                    }
                         
                 }
                 else if (NextCommand ==KeyCode.Tab) // tab 눌렀을 때
@@ -220,16 +257,13 @@ namespace HappyBread.GamePlay
                     RenderCursor();
                 }
             }
-            
-
-
-            
+                     
 
         }
 
         //2021 03 05 TalkBoxCusor를위해 수정 
 
-        private void MoveCursor()
+        public void MoveCursor()
         {
             int row = cursorIndex / colNumber;
             int col = cursorIndex % colNumber;
@@ -376,13 +410,13 @@ namespace HappyBread.GamePlay
         }
         private void ShowEvidence()
         {
-            if (evidences.Count > 0 && cursorIndex < evidences.Count)
+            if (DataManager.Instance.evidences.Count > 0 && cursorIndex < DataManager.Instance.evidences.Count)
             {
-                evidences[cursorIndex].Action();
+                DataManager.Instance.evidences[cursorIndex].Action();
                 NextCommand = KeyCode.None;
             }
         }
-        private void MoveDetail()
+        private void MoveDetail() //
         {
             detailObjSetactive = true ; //나중에 끌 때 false으로 바꿔주기  
 
@@ -398,6 +432,7 @@ namespace HappyBread.GamePlay
             Sprite detailTextImg = ResourceLoader.LoadSprite(characterDescription);
             detailText.sprite = detailTextImg;
 
+            
             //키워드들 채우기
             // if문 추가해서 1이면 나타나게 하고 아니면 행동X
             for (int i=0; i< keyWordTextObj.Count; i++)
@@ -435,6 +470,18 @@ namespace HappyBread.GamePlay
 
         }
 
+        //대화탭 -> 캐릭터 선택 -> 캐릭터 대화 정보 창에서 스페이스바를 누르면 해당 대화를 보여준다. 
+        private void showDialogeText()
+        {
+
+            string textKTW = keyWordTextObj[cursorIndex].text;
+            keywordTextViewText.text = ResourceLoader.LoadDialogeText(textKTW); //게임모델
+            keywordTextView.SetActive(true);
+            keywordTextViewBool = true; 
+
+
+
+        }
         private void Exit()
         {
             GameModel.Instance.StateManager.UndoState();

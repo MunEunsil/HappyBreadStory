@@ -1,5 +1,2 @@
-Message : askAddAvidence : 팬케이크 : 팬케이크는 잘 모르겠어요 
-Message : askAddAvidence : 땅콩버터 : 혼자있게 해주세요 
-Message : askAddAvidence : 크로와상 : 탐정님이 도움을 주셔야 할 것 같습니다. 
-Message : askAddAvidence : 마카롱 : 파티가 엉망이네요 아 이건 찍어도 괜찮죠? 
-Message : askAddAvidence : 꽈배기 : 아뇨 곤란합니다. 이런게 올라가면 저희 호텔 이미지가 나빠지잖아요
+Message : askAddAvidence : twist: 오늘은 경매기부가 진행됩니다.
+

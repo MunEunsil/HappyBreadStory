@@ -1,0 +1,4 @@
+Question : askAddAvidence : twist: 탐정님 혹시 저희 직원들 보지 못하셨나요? 꼭 필요할 땐 없다니까 : 어떤 직원이요? 
+Answer : askAddAvidence : twist : 이거 이거 다들 무슨 농땡이를! 월급을 다 깎아버려야 한다니까! 
+Message : askAddAvidence : : (무시당했다.)
+

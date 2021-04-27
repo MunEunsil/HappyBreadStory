@@ -4,53 +4,69 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using HappyBread.Core;
+using HappyBread.ETC;
 
-public class Date : MonoBehaviour
+
+
+namespace HappyBread.GamePlay
 {
-    public Text text;
-    private int date = 1;
-    private readonly int MAX_DATE = 6;
-    public int Current
+    public class Date : MonoBehaviour
     {
-        get { return date; }
-    }
+        public Text text;
+        public int date;
 
-    public void SetDate(int number)
-    {
-        if(number < 0 || number > MAX_DATE)
+        private readonly int MAX_DATE = 7;
+
+        private void Awake()
         {
-            Debug.Log("불가능한 날짜입니다.");
-            return;
+            date = DataManager.Instance.date;
         }
 
-        this.date = number;
-        Render();
-    }
-
-    public void AddDay(int number)
-    {
-        if(number + this.date > MAX_DATE)
+        public int Current
         {
-            Debug.Log("불가능한 날짜입니다.");
-            return;
+            get { return date; }
         }
 
-        this.date += number;
-        Render();
+        public void SetDate(int number)
+        {
+            if (number < 0 || number > MAX_DATE)
+            {
+                Debug.Log("불가능한 날짜입니다.");
+                return;
+            }
+
+            this.date = number;
+            Render();
+        }
+
+        public void AddDay(int number)
+        {
+            if (number + this.date > MAX_DATE)
+            {
+                Debug.Log("불가능한 날짜입니다.");
+                //불러오지 않게하기 
+                return;
+            }
+
+            this.date += number;
+            Render();
+        }
+
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void Render()
+        {
+            text.text = $"Day\n{this.date}";
+        }
     }
 
-    public void Appear()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void Render()
-    {
-        text.text = $"Day\n{this.date}";
-    }
 }

@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/day2_event.unity
     guid: 49cd588aff326d54a90be6276b6a42e5
+  - enabled: 1
+    path: Assets/Scenes/Map7_1.unity
+    guid: 11b345a5333e7ab49a2df07fe424832f
   m_configObjects: {}

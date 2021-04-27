@@ -1,17 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HappyBread.GamePlay.GameState;
 
-public class CallBtn : MonoBehaviour
+namespace HappyBread.GamePlay
 {
-    public void Appear()
+    public class CallBtn : MonoBehaviour
     {
-        gameObject.SetActive(true);
+        [SerializeField]
+        private GameObject reasoningManager;
+
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+        public void ClickCall()
+        {
+            reasoningManager.SetActive(true);
+            //state 변경 
+            GameModel.Instance.StateManager.ChangeState(new ReasoningState());
+
+        }
     }
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
-    }
 }
 

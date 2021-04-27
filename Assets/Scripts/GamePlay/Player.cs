@@ -136,6 +136,10 @@ namespace HappyBread.GamePlay
                 state = State.Idle;
             }
         }
+        private void SaveGame()
+        {
+            SaveLoad.instance.SaveGameData();
+        }
 
         protected override void AfterMove()
         {

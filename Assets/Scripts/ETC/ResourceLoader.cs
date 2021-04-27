@@ -38,5 +38,14 @@ namespace HappyBread.ETC
             AudioClip audioClip = Resources.Load($"Audio/Background/{fileName}", typeof(AudioClip)) as AudioClip;
             return audioClip;
         }
+        public static string LoadDialogeText(string fileName)
+        {
+            TextAsset text = Resources.Load($"keywordTextDialoge/{fileName}", typeof(TextAsset)) as TextAsset;
+            //을 string으로 리턴해줘야한다. 
+            StringReader sr = new StringReader(text.text);
+            string texts = sr.ReadLine();
+            return texts;
+        }
+      
     }
 }

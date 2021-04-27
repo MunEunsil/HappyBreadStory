@@ -15,6 +15,7 @@ namespace HappyBread.Core
         public const KeyCode KeyCodeSelect = KeyCode.Space;
         public const KeyCode keyCodeCall = KeyCode.C;
         public const KeyCode keyCodeRoom = KeyCode.B;
-
+        public const KeyCode keyExit = KeyCode.Escape;
+      //  public const KeyCode keyMiddleEndingExit = KeyCode.Space;
     }
 }

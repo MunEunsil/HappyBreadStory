@@ -65,7 +65,11 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private Call call;
         [SerializeField]
-        private RoomInvestigate roomInvestigate;        //방금추가 
+        private RoomInvestigate roomInvestigate;        
+        [SerializeField]
+        private MiddleEnding middleEnding;
+        [SerializeField]
+        private ReasoningManager reasoningManager;
 
 
 
@@ -80,6 +84,7 @@ namespace HappyBread.GamePlay
                 return inputManager;
             }
         }
+        
         public EventManager EventManager
         {
             get
@@ -135,7 +140,20 @@ namespace HappyBread.GamePlay
                 return caseDiary;
             }
         }
-     
+
+        public ReasoningManager ReasoningManager
+        {
+            get
+            {
+                if (reasoningManager==null)
+                {
+                    reasoningManager = GameModel.FindObjectOfType<ReasoningManager>();
+                }
+                return reasoningManager;
+            }
+        }
+
+
         public Call Call
         {
             get
@@ -261,6 +279,18 @@ namespace HappyBread.GamePlay
                     settingBtn = GameObject.FindObjectOfType<SettingBtn>();
                 }
                 return settingBtn;
+            }
+        }
+
+        public MiddleEnding MiddleEnding
+        {
+            get
+            {
+                if (middleEnding == null)
+                {
+                    middleEnding = GameObject.FindObjectOfType<MiddleEnding>();
+                }
+                return middleEnding;
             }
         }
 

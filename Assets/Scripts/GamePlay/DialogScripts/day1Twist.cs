@@ -7,7 +7,10 @@ namespace HappyBread.GamePlay
     {
         public override void Interact()
         {
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist"));
+           
+            string textFileName = "day"+DataManager.Instance.date+"_twist";
+
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
 
             GetEvidence();  //GetDialogue() 로 변경 
         }
