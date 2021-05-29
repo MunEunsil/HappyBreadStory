@@ -37,6 +37,7 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
             }
         }
+        //대화 저장 
 
 
         /// <summary>

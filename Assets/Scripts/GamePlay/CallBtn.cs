@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HappyBread.GamePlay.GameState;
+using UnityEngine.SceneManagement;
 
 namespace HappyBread.GamePlay
 {
@@ -21,9 +22,10 @@ namespace HappyBread.GamePlay
         }
         public void ClickCall()
         {
-            reasoningManager.SetActive(true);
+            //.SetActive(true);
             //state 변경 
-            GameModel.Instance.StateManager.ChangeState(new ReasoningState());
+            SceneManager.LoadScene("CallScene", LoadSceneMode.Additive);
+            //GameModel.Instance.StateManager.ChangeState(new ReasoningState());
 
         }
     }

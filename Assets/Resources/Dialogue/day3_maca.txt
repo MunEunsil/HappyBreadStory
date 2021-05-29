@@ -1,0 +1,3 @@
+Message : askAddAvidence : maca_stand : 탐정님! 오늘 경매 기부 정말 기대되지 않아요? 탐정님은 무엇을 가져오셨어요?
+Question : askAddAvidence : maca_stand : :전.. 아무것도 없는데
+Answer: askAddAvidence : maca_stand :네.... (뭐야)

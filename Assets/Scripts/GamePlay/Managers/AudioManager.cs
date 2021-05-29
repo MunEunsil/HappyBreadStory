@@ -36,7 +36,7 @@ namespace HappyBread.GamePlay
         private void Start()
         {
             backgroundAudioSource = BackgroundAudio.GetComponent<AudioSource>();
-            ChangeBackgroundAudio("background");
+            ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
             PlayBackgroundAudio();
         }
     }

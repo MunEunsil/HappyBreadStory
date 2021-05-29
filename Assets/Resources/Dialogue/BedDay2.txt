@@ -1,5 +1,7 @@
-Message : askAddAvidence : 크로와상 : 으아아아악!!!! 뭐야! 여기 딸...딸기잼이...!
-Message : askAddAvidence : twist : 이...이럴수가!! 
-Message : askAddAvidence : 크로와상 : 제가 다시한번 보겠습니다. 
-Message : askAddAvidence : 도넛 : 세상에...어떻게 이런일이..
-Message : askAddAvidence : 마카롱 : ...
+Message : strawDie1 : crois_stand : 으아아아악!!!! 뭐야! 여기 딸...딸기잼이...!
+Message : strawDie1 :  : 
+Message : strawDie1_2 :  : 
+Message : strawDie2 :  : 
+Message : strawDie2 : crois_stand : 제가 다시한번 보겠습니다. 
+Message : strawDie2 : donut_stand : 세상에...어떻게 이런일이..
+Message : strawDie2 : maca_stand : ...

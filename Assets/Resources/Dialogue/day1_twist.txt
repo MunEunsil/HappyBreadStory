@@ -1,6 +1,6 @@
-Message :askAddAvidence : twist : 어서오세요. 우리 세렌디피티 호텔은 3대째 5성을 이어온 호텔로, 항상 고객님께 최선을 다합니다. 
-Message :askAddAvidence : twist : 이번주 단 6일간, 우리 호텔에서만 볼 수 있는 솜사탕 안개를 꼭 즐기시길 바랍니다. 
-Message :askAddAvidence : twist : 언제든 궁금하게 있으시면 저를 불러주세요.
-Question :askAddAvidence: twist : 무엇이 궁금하신가요? : 왜 6일간 진행돼? : 행사 일정이 어떻게 돼? 
-Answer :askAddAvidence: twist : 우리 세렌디피티 호텔만이 솜사탕 안개를 볼 수 있는데, 그게 약 7일동안 유지된답니다~? 매우 아름답지만 이 기간엔 초대된 빵들만 올 수 있기 때문에 very very 특별하죠~ :  저희는 7일동안 [만찬]과 [경매 기부] 마지막날에 [가면무도회]가 있답니다~ 스케줄표 드릴가요?
+Message :askAddAvidence : twist_stand : 어서오세요. 우리 세렌디피티 호텔은 3대째 5성을 이어온 호텔로, 항상 고객님께 최선을 다합니다. 
+Message :askAddAvidence : twist_stand : 이번주 단 6일간, 우리 호텔에서만 볼 수 있는 솜사탕 안개를 꼭 즐기시길 바랍니다. 
+Message :askAddAvidence : twist_stand : 언제든 궁금하게 있으시면 저를 불러주세요.
+Question :askAddAvidence: twist_stand : 무엇이 궁금하신가요? : 왜 6일간 진행돼? : 행사 일정이 어떻게 돼? 
+Answer :askAddAvidence: twist_stand : 우리 세렌디피티 호텔만이 솜사탕 안개를 볼 수 있는데, 그게 약 7일동안 유지된답니다~? 매우 아름답지만 이 기간엔 초대된 빵들만 올 수 있기 때문에 very very 특별하죠~ :  저희는 7일동안 [만찬]과 [경매 기부] 마지막날에 [가면무도회]가 있답니다~ 스케줄표 드릴가요?
 

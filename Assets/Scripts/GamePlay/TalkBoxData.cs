@@ -15,34 +15,22 @@ namespace HappyBread.GamePlay
     
     public class TalkBoxData : MonoBehaviour
     {
-        private static TalkBoxData _instance;
-
-        public static TalkBoxData Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = GameObject.Find("TalkBoxData").GetComponent<TalkBoxData>();
-                }
-                return _instance;
-            }
-        }
 
         //키워드 오픈이 1로 바뀌면 setActive(T) 
         public string[] strawDialogeKeywords = { "straw0", "straw1", "straw2", "straw3", "straw4", "straw5", "straw6", "7", "8" };
-        public int[] strawDialogeKeywordsOpen = { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        public int[] strawDialogeKeywordsOpen = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        public string[] pancakeDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] cakeDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] croisDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] macaDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] jellyDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] jamDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] hoduDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] twistDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] chocoDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8" };
-        public string[] donutDialogeKeywords = { "0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        public string[] pancakeDialogeKeywords = { "pancake", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] cakeDialogeKeywords = { "cake", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] croisDialogeKeywords = { "crois", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] macaDialogeKeywords = { "maca", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] jellyDialogeKeywords = { "jelly", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] jamDialogeKeywords = { "jam", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] hoduDialogeKeywords = { "hodu", "1", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] twistDialogeKeywords = { "twist", "1", "2", "3", "4", "5", "6", "7", "8" };
+        
+        public string[] chocoDialogeKeywords = { "호두의 비리", "두려움", "2", "3", "4", "5", "6", "7", "8" };
+        public string[] donutDialogeKeywords = { "마지막 대화", "호두와 관계", "마카롱 의심", "3", "4", "5", "6", "7", "8"};
 
 
     }

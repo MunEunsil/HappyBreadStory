@@ -1,0 +1,3 @@
+Message : askAddAvidence : hodu_stand : 아 진짜 딸기잼도 이렇게 가는구나~ 
+Question : askAddAvidence : hodu_stand : : 어제밤에 어디계셨나요?
+Answer :  askAddAvidence : hodu_stand : 그걸 왜 저한테  물으시는거에요?

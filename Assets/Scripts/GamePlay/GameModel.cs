@@ -70,8 +70,22 @@ namespace HappyBread.GamePlay
         private MiddleEnding middleEnding;
         [SerializeField]
         private ReasoningManager reasoningManager;
+        [SerializeField]
+        private TalkBoxData talkBoxData;
 
 
+
+        public TalkBoxData TalkBoxData
+        {
+            get
+            {
+                if(talkBoxData == null)
+                {
+                    talkBoxData = GameModel.FindObjectOfType<TalkBoxData>();
+                }
+                return talkBoxData;
+            }
+        }
 
         public InputManager InputManager
         {

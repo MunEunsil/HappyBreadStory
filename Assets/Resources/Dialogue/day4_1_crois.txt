@@ -1,0 +1,2 @@
+Message : askAddAvidence : crois_stand :이자식 어딨는거야? 아~ 빵수가 맞아야 뭘 할거아냐~ 
+Message : askAddAvidence : crois_stand: 뭐야 아직도 수사놀이 하나? 비켜비켜

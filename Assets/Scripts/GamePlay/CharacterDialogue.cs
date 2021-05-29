@@ -1,14 +1,18 @@
-﻿using HappyBread.ETC;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using HappyBread.GamePlay;
+using System;
 
 namespace HappyBread.GamePlay
 {
     public class CharacterDialogue : Interactable
     {
+
         public override void Interact()
         {
             string characterName = this.name;
-            string textFileName = "day" + DataManager.Instance.date + "_"+ characterName;
+            string textFileName = "day" + GameModel.Instance.Date.Current + "_"+ characterName;
 
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
 
@@ -29,5 +33,7 @@ namespace HappyBread.GamePlay
             //};
 
         }
+        
+
     }
 }

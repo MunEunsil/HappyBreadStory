@@ -1,4 +1,8 @@
-﻿using HappyBread.ETC;
+﻿using HappyBread.Core;
+using HappyBread.ETC;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,19 +16,30 @@ namespace HappyBread.GamePlay
 
         public GameObject bgi; //추리쇼 배경 이미지
         public GameObject caseDiary;
+        public GameObject cases;
+        public GameObject call;
+
+        //public int strawCase = 0; //딸기 자살/타살에 대한 답을 했는지에 대한 변수 0이면 안한거 1이면 한거 
+        //public int jellyjellyCase = 0;
+        //public int hoduCase = 0;
+
+        //public int strawMurder = 0; //살인/자살 에 대한 증거 0이면 자살 1이면 타살??? 
+
         CaseDiary casediary;
         public KeyCode NextCommand;
 
 
 
         private string ArguementCharacterName;  //지목한 캐릭터 이름 
-
+        private string ArguementEvidenceName; //선택한 증거
 
         public Vector2 NextMoveCommand { get; internal set; }
 
         // Start is called before the first frame update
         void Start()
         {
+            call.SetActive(true);
+
             casediary = caseDiary.GetComponent<CaseDiary>();
 
             //추리시작 이미지 나타나기 & 추리시작 글씨 나타내기 (다른캐릭터들도ㅇ)
@@ -33,11 +48,18 @@ namespace HappyBread.GamePlay
             bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("추리배경");
 
             //인물선택 ui 보여주기 
-            showSuspects();
+            //showSuspects();
 
+            //사건3개 보여주기 
 
         }
 
+        void showCases()
+        {
+            cases.SetActive(true);
+            //커서 만들기
+
+        }
         void showSuspects()  //사건수첩의 인물을 보여줌
         {
             //인물탭을 보이게 해야함             
@@ -76,13 +98,44 @@ namespace HappyBread.GamePlay
             {
                 if (NextCommand == KeyCode.Space)
                 {
-                    ArguementCharacterName = casediary.suspectsObject[casediary.cursorIndex].name;
-                    StartArguement();
+                    if (casediary.IsEvidenceWindow == false)//증거
+                    {
+                        ArguementEvidenceName = DataManager.Instance.evidences[casediary.cursorIndex].Name;
+                        SecondArguement();
+                    }
+                    else//인물
+                    {
+                        ArguementCharacterName = casediary.suspectsObject[casediary.cursorIndex].name;
+                        StartArguement();
+                    }
+
 
                     NextCommand = KeyCode.None;
                 }
             }
 
+        }
+
+        void StartArguement()
+        {
+            //대화시작 
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("argument_" + ArguementCharacterName + "_1"));
+            
+            //대화 끝나면 증거 탭 열기 
+            casediary.evidenceWindow.SetActive(true);
+            casediary.talkBoxWindow.SetActive(false);
+            casediary.IsEvidenceWindow = false; 
+
+            casediary.RenderCursor();
+            //증거 선택하면 증거에 대한 추리 고르게 하기 
+            //그에 대한 대화 
+            //증거 선택하기 
+            //대화
+        }
+        void SecondArguement()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("arguement_"+ ArguementEvidenceName+"_2"));
+            //대화가 끝나면 엔딩 
         }
         void MoveCursor()
         {
@@ -188,19 +241,7 @@ namespace HappyBread.GamePlay
             casediary.RenderCursor();
         }
 
-        void StartArguement()
-        {
-            //대화시작 
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("argument_" + ArguementCharacterName + "_1"));
-            //대화 끝나면 증거 탭 열기 
-            //증거 선택하면 증거에 대한 추리 고르게 하기 
-            //그에 대한 대화 
-            //증거 선택하기 
-            //대화
 
-
-
-        }
 
     }
 }

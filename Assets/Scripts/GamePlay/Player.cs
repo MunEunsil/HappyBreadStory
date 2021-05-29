@@ -14,7 +14,6 @@ namespace HappyBread.GamePlay
     /// </summary>
     ///
 
-
     public class Player : MovingObject
     {
 
@@ -27,6 +26,7 @@ namespace HappyBread.GamePlay
         public float hitDistance = 0.5f;
         public float useHpAmount = 0.01f;
 
+
         private State state;
         private RaycastHit2D hit;
 
@@ -37,6 +37,17 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
+            //시간에 따라 식빵 게이지 줄이기
+            if (GameModel.Instance.Hp.hp != 0)
+            {
+                GameModel.Instance.Hp.Add(-Time.deltaTime);
+            }
+            else // 식빵 게이지가 0이면 
+            {
+                MiddleEnding4();
+            }
+            
+
             // 움직임 구현부 ( 화살표 키 )
             switch (state)
             {
@@ -49,28 +60,31 @@ namespace HappyBread.GamePlay
                 default:
                     break;
             }
-
+            
             // 그 외 단축키 구현부 ( 상호작용 키 )
             if (NextFunctionCommand != KeyCode.None)
             {
                 switch (NextFunctionCommand)
                 {
-                    case GlobalGameData.keyCodeInteract:
+                    //case GlobalGameData.keyCodeInteract:
+                    //    AttemptInteract();
+                    //    break;
+                    case GlobalGameData.mouseClick:
                         AttemptInteract();
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
                         Debug.Log("a누름");
                         AttemptOpenCaseDiary();
                         break;
-                    case GlobalGameData.keyCodeCall: 
+                    case GlobalGameData.keyCodeCall:
                         Debug.Log("c누름");
                         AttemptOpenCall();
                         break;
                     default:
                         break;
                 }
+                 }
             }
-        }
 
         private void AttemptOpenCaseDiary()
         {
@@ -85,7 +99,7 @@ namespace HappyBread.GamePlay
             NextFunctionCommand = KeyCode.None;
         }
 
-        private void AttemptInteract()  
+         public void AttemptInteract()  
         {
             Vector2 start = transform.position;
             Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
@@ -143,8 +157,29 @@ namespace HappyBread.GamePlay
 
         protected override void AfterMove()
         {
-            NextMoveCommand = Vector3.zero;
-            GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
+            //NextMoveCommand = Vector3.zero;
+            //GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
+        }
+
+        private void MiddleEnding4()
+        {
+            DataManager.Instance.middleEndingName = "middleEnding4";
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            Invoke("moldEnding", 2f);
+        }
+        private void moldEnding()
+        {
+
+            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
+
+            GameModel.Instance.EffectManager.FadeIn(0.2f);
+            GameModel.Instance.StateManager.Resume();
+
         }
     }
 }

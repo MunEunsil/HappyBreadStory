@@ -1,0 +1,5 @@
+Message : askAddAvidence : cake_stand : 안녕하세요 탐정님. 
+Question : askAddAvidence : cake_stand : :만찬때 컵케익씨가 파티장을 꾸며준 덕분에 즐거운 시간을 보낼 수 있었어요
+Answer: askAddAvidence : cake_stand :와! 저 정말 감동이에요!! 이렇게 후기를 들려주신 분은 처음인걸요!! 이번 경매기부도 프로페셔널하게 꾸며보겠어요!
+Question : askAddAvidence : cake_stand : :경매 기부에 참여하시나요?
+Answer: askAddAvidence : cake_stand :음~...탐정님만 미리 말씀드리자면, 제가 이번에 심혈을 기울여 만든 작품을 선보일 예정이에요. 후.... 떨리네요

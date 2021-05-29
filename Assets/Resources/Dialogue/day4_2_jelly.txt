@@ -1,0 +1,3 @@
+Message : askAddAvidence : jelly_stand : 정말...이게 무슨일인지... 이런일이 한번도 아니고 두번...정말 무섭네요 잘 알던 사람은 아니지만...행복한 곳으로 가셨길....저 근데, 젤리젤리 못보셨나요?
+Question : askAddAvidence : jelly_stand : :젤리젤리씨요? 아직도 못 찾으셨나요?
+Answer: askAddAvidence : jelly_stand :네... 어제 밤 부터 어딜 그리 돌아다니는지 하..

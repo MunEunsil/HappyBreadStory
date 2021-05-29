@@ -1,0 +1,9 @@
+Message : askAddAvidence : jam_stand :하루라도 더 함께 있고싶었는데...이런 사고로 잃게되다니...
+Question : askAddAvidence : jam_stand : :이건 그냥 사고사가 아닙니다.
+Answer: askAddAvidence : jam_stand :네? 그게 무슨말씀이세요. 그럼 살빵사건이란건가요??
+Question : askAddAvidence : jam_stand : :아직 확실하진 않지만....
+Answer: askAddAvidence : jam_stand :대체 무슨일인거죠?
+Question : askAddAvidence : jam_stand : : ...... 일단 질문 한가지 하겠습니다. 
+Answer: askAddAvidence : jam_stand : 
+Question : askAddAvidence : jam_stand : : 혹시 딸기잼이 최근에 평소와 다른 모습을 보였나요?
+Answer: askAddAvidence : jam_stand : 최근에 여기저기 슈가게이즈를 보는 것 같긴 했지만 그것 외에는...딱히..

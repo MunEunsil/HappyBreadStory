@@ -1,0 +1,11 @@
+Message : askAddAvidence : donut_stand : 그럴리가.... 호두가 그럴리가 없어요...그럴리가..탐정님 정말 사고인가요? 저 정말 호두한테 할 말이 많은데
+Question : askAddAvidence : donut_stand : : 무슨 말이요?
+Answer: askAddAvidence : donut_stand : 전날 밤에 우리 둘이 싸워가지고...
+Question : askAddAvidence : donut_stand : : 밤에요? 일때문인가요? 
+Answer: askAddAvidence : donut_stand : 그게... 근데 제 말이 수사에 뭔가 도움이 될까요?
+Question : askAddAvidence : donut_stand : : 뭐든 조사해봐야합니다. 
+Answer: askAddAvidence : donut_stand : 그게...사실 저랑 호두는 연인사이에요.
+Question : askAddAvidence : donut_stand : : 하지만 호두씨는 이미 결혼 했다고 하셨는데요
+Answer: askAddAvidence : donut_stand : 저희 떳떳하지 않지만...하지만..! 저희 정말 사랑하고....그빵과는 헤어지기로 했단말이에요...! 근데 어제 경매 기부 행사 끝나고 좀 다퉈가지고...흑흑 이게 다 막가롱 때문이야....
+Question : askAddAvidence : donut_stand : : 막가롱씨요?
+Answer: askAddAvidence : donut_stand : ....

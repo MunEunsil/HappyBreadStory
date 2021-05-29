@@ -19,7 +19,10 @@ namespace HappyBread.GamePlay
         public GameObject cursorPrefab;
         public KeyCode NextCommand;
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
-      //  public GameObject askSure;
+                                                                            //  public GameObject askSure;
+
+        public List<GameObject> cases = new List<GameObject>(); //사건들
+
 
         public int cursorIndex;
         private int colNumber = 6;

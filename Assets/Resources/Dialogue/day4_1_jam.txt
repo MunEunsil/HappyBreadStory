@@ -1,0 +1,6 @@
+Message : askAddAvidence : jam_stand : 어제 정말 경매 기부는 훌륭했어요. 탐정님의 그 탐정 모자는 정말 제가 갖고 싶었지만, 막가롱씨가 더 애타게 원하는 것 같아서 포기했지 뭐에요.
+Message : askAddAvidence : jam_stand :며칠 전에...제 피앙세가... 하지만 오늘 이 행사 덕분에 조금은 나아진것같아요...
+Question : askAddAvidence : jam_stand : : 이렇게 빨리요? : 다행이에요 나아가야죠.
+Answer: askAddAvidence : jam_stand :지금 무슨 말씀이세요.  : 안그래도 딸기잼이 그렇게 되기 전날에 저랑 좀 마찰이 있었어서 자꾸 생각나네요..
+Answer: askAddAvidence : jam_stand :무례합니다. :안그래도 딸기잼이 그렇게 되기 전날에 저랑 좀 마찰이 있었어서 자꾸 생각나네요..
+

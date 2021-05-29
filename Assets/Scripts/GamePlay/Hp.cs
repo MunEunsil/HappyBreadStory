@@ -11,8 +11,8 @@ namespace HappyBread.GamePlay
     public class Hp : MonoBehaviour
     {
         public Image fill;
-        private float maxHp = 100.0f;
-        private float hp;
+        private float maxHp = 300.0f;
+        public float hp;
 
         public void Add(float value)
         {            
@@ -40,5 +40,6 @@ namespace HappyBread.GamePlay
         {
             hp = maxHp;
         }
+
     }
 }

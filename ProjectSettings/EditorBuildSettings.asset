@@ -19,23 +19,23 @@ EditorBuildSettings:
     guid: 0f6d0e2de3c308c4494f330d8cc5bf7a
   - enabled: 1
     path: Assets/Scenes/Map2_1.unity
-    guid: 7f7a5ba86034a07459f61a6ae9a6b051
+    guid: 8b03ab85ddd89aa4a8b64eca37819981
   - enabled: 1
     path: Assets/Scenes/Map3_1.unity
-    guid: 9ea771fd63c7a1442a2b1e3298a7b1a0
+    guid: 6d7116b971cd0424ea21e551a1154942
   - enabled: 1
     path: Assets/Scenes/Map4_1.unity
-    guid: 8dcf9ddd66c5b874dbb0466629bd0b2c
+    guid: 0e3f8040d5810bf4e8fa0bb16c670600
   - enabled: 1
     path: Assets/Scenes/Map5_1.unity
-    guid: 3be2b3913110f764da5e4b51b10c1d67
+    guid: ff85f2ae9e7d1624389794c5b8b584bf
   - enabled: 1
     path: Assets/Scenes/Map6_1.unity
-    guid: 2834281b02f50cf4cb1d00cda26238a3
-  - enabled: 1
-    path: Assets/Scenes/day2_event.unity
-    guid: 49cd588aff326d54a90be6276b6a42e5
+    guid: e16bb21179b15c042a834e36af26b109
   - enabled: 1
     path: Assets/Scenes/Map7_1.unity
-    guid: 11b345a5333e7ab49a2df07fe424832f
+    guid: f238acd26b075fe40aa12c02ab2afa3e
+  - enabled: 1
+    path: Assets/Scenes/CallScene.unity
+    guid: b7225a705fe666d41abcb80784b3def6
   m_configObjects: {}

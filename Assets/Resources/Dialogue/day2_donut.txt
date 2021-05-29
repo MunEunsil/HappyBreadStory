@@ -1,0 +1,9 @@
+Message : askAddAvidence : donut_stand: 정말 사고죠?
+Question : askAddAvidence : donut_stand: :네? 
+Answer: askAddAvidence : donut_stand: 아니...사고니까 알아서 죽어준거잖아요
+Question : askAddAvidence : donut_stand: :어제밤에 어디계셨나요?
+Answer:askAddAvidence : donut_stand: 그걸 왜 물어요? 사고라면서요
+Question : askAddAvidence : donut_stand: :아직 확실하지 않습니...
+Answer:askAddAvidence : donut_stand: 전 디너파티 정리하고 바로 지하에서 일했어요. 저 바빠요
+Question : askAddAvidence : donut_stand: :그럼 그 밤사이에 사고도 들으셨나요?
+Answer: askAddAvidence : donut_stand: 아니요...아닐껄요...?

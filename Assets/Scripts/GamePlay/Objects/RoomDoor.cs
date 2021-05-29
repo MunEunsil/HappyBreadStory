@@ -35,7 +35,7 @@ namespace HappyBread.GamePlay
 
             GameModel.Instance.StateManager.Resume();
 
-            GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
+           // GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
 
 
         }

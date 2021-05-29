@@ -35,6 +35,7 @@ namespace HappyBread.GamePlay
 
         private void WakeUp()
         {
+            GameModel.Instance.StateManager.ChangeState(new PlayingState());
             ChangeMap();
             
             int date = GameModel.Instance.Date.Current;
@@ -43,14 +44,18 @@ namespace HappyBread.GamePlay
             GameModel.Instance.EffectManager.FadeIn();
             GameModel.Instance.StateManager.Resume();
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"BedDay{date}"));
-            //GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); }));   
+            //GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); })); 
+           
+            //game
         }
+
 
         private void ChangeMap()
         {
             GameModel.Instance.Date.AddDay(1);
             int date = GameModel.Instance.Date.Current;
             GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
+            
             
 
         }

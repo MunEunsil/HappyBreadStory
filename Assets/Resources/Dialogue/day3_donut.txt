@@ -1,0 +1,4 @@
+Question : askAddAvidence : donut_stand : : 안녕하세요 
+Answer: askAddAvidence : donut_stand : ......
+Message : askAddAvidence : donut_stand :저 가봐도 될까요? 
+Question : askAddAvidence : donut_stand : : 아. 수고하세요

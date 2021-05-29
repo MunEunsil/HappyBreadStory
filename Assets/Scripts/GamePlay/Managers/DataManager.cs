@@ -30,7 +30,11 @@ namespace HappyBread.GamePlay
 
         public List<Evidence> evidences = new List<Evidence>();
         public int date = 1;
+        public int floor = 1;
 
+        public int select = -1;
+        public bool stair = false;
+        
         public string middleEndingName;
 
         public float playerPosition; //플레이어 위치 (저장 불러오기 위함)

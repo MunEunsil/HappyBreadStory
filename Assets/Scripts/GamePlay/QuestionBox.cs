@@ -34,8 +34,8 @@ namespace HappyBread.GamePlay
         private int selectedIndex = 0; // 선택된 값, 아직 확정이 아님
 
         public void CreateSelector(List<string> rawQuestions)
-        { 
-            if(rawQuestions.Count == 0)
+        {          
+            if (rawQuestions.Count == 0)
             {
                 return;
             }
@@ -96,11 +96,41 @@ namespace HappyBread.GamePlay
                 }
                 questions.Clear();
 
+               
 
                 AnswerIndex = selectedIndex;
+
                 GameModel.Instance.StateManager.UndoState();
                 GameModel.Instance.Dialogue.Next(); // 대화가 진행 중이라면 다음 단계로 넘어간다.
                 gameObject.SetActive(false);
+
+                int from = DataManager.Instance.floor;
+
+                if (DataManager.Instance.stair == true)
+                {
+                    if (selectedIndex == 0) //지하 1 
+                    {
+                        GameModel.Instance.FloorManager.ChangeFloor(from, 0, GameObject.FindObjectOfType<Stairs>().exitB1.transform.position);
+                        DataManager.Instance.floor = 0;//지하
+                    }
+                    else if (selectedIndex == 1) //지상1
+                    {
+                        GameModel.Instance.FloorManager.ChangeFloor(from, 1, GameObject.FindObjectOfType<Stairs>().exitF1.transform.position);
+                        DataManager.Instance.floor = 1;//1층
+                    }
+                    else if (selectedIndex == 2)
+                    {
+                        GameModel.Instance.FloorManager.ChangeFloor(from, 2, GameObject.FindObjectOfType<Stairs>().exitF2.transform.position);
+                        DataManager.Instance.floor = 2;
+                    }
+                    else if (selectedIndex == 3)
+                    {
+                        GameModel.Instance.FloorManager.ChangeFloor(from, 3, GameObject.FindObjectOfType<Stairs>().exitF3.transform.position);
+                        DataManager.Instance.floor = 3;
+                    }
+
+                    DataManager.Instance.stair = false;
+                }
 
                 // 이벤트와 연결 제거
                 if (ConnectedEvent != null)

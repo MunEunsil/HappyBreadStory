@@ -1,0 +1,7 @@
+Message : askAddAvidence : choco_stand :흐...젠장 할일이 너무 많네...승진 안..시켜주면...고소한다..사장...
+Question : askAddAvidence : choco_stand : :냉동창고는 안에서는 안열리나요? 
+Answer: askAddAvidence : choco_stand :열쇠만 있으면 되요
+Question : askAddAvidence : choco_stand : :열쇠는 보통 어디있나요?
+Answer: askAddAvidence : choco_stand :보통....지하 프론트에 있...흐..아니...이런거 막...알려주면 안되는데...흐흐...
+
+

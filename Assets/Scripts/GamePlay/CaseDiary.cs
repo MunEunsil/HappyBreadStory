@@ -23,6 +23,9 @@ namespace HappyBread.GamePlay
         private List<GameObject> evidencesObject = new List<GameObject>();   
         public List<GameObject> suspectsObject = new List<GameObject>();    // talkBoxCharacter 
 
+        string characterFileName;
+
+
         //키워드를 선택하면 키워드에 해당하는 텍스트no
         public GameObject keywordTextView;
         public bool keywordTextViewBool = false; //대화 보는 창 
@@ -424,7 +427,8 @@ namespace HappyBread.GamePlay
             NextCommand = KeyCode.None;
             
             //이미지 
-            string characterFileName = suspectsObject[cursorIndex].name;
+            characterFileName = suspectsObject[cursorIndex].name;
+
             Sprite detailImageSprite = ResourceLoader.LoadSprite(characterFileName);
             detailImage.sprite = detailImageSprite;
             //설명text 이미지
@@ -432,34 +436,10 @@ namespace HappyBread.GamePlay
             Sprite detailTextImg = ResourceLoader.LoadSprite(characterDescription);
             detailText.sprite = detailTextImg;
 
-            
+
             //키워드들 채우기
-            // if문 추가해서 1이면 나타나게 하고 아니면 행동X
-            for (int i=0; i< keyWordTextObj.Count; i++)
-            {
-                if (characterFileName == "straw")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.strawDialogeKeywords[i];
-                else if (characterFileName == "pancake")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.pancakeDialogeKeywords[i];
-                else if (characterFileName == "cake")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.cakeDialogeKeywords[i];
-                else if (characterFileName == "crois")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.croisDialogeKeywords[i];
-                else if (characterFileName == "maca")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.macaDialogeKeywords[i];
-                else if (characterFileName == "jelly")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.jellyDialogeKeywords[i];
-                else if (characterFileName == "jam")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.jamDialogeKeywords[i];
-                else if (characterFileName == "hodu")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.hoduDialogeKeywords[i];
-                else if (characterFileName == "donut")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.donutDialogeKeywords[i];
-                else if (characterFileName == "twist")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.twistDialogeKeywords[i];
-                else if (characterFileName == "choco")
-                    keyWordTextObj[i].text = TalkBoxData.Instance.chocoDialogeKeywords[i];
-            }
+            FillKeyword();
+
             suspectsObj.SetActive(false);
             cursorIndex = 0;
             Destroy(cursor);
@@ -470,6 +450,75 @@ namespace HappyBread.GamePlay
 
         }
 
+        private void FillKeyword()
+        {
+
+            for (int i = 0; i < keyWordTextObj.Count; i++)
+            {
+                switch (characterFileName)
+                {
+                    case "straw":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.strawDialogeKeywords[i];
+                        Debug.Log("딸기 키워드?");
+                        break;
+                    case "pancake":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.pancakeDialogeKeywords[i];
+                        Debug.Log("팬케이크 키워드?");
+                        break;
+                    case "crois":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.croisDialogeKeywords[i];
+                        break;
+                    case "maca":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.macaDialogeKeywords[i];
+                        break;
+                    case "jelly":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jellyDialogeKeywords[i];
+                        break;
+                    case "jam":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jamDialogeKeywords[i];
+                        break;
+                    case "hodu":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.hoduDialogeKeywords[i];
+                        break;
+                    case "donut":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.donutDialogeKeywords[i];
+                        Debug.Log("도넛 키워드?");
+                        break;
+                    case "twist":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.twistDialogeKeywords[i];
+                        break;
+                    case "choco":
+                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.chocoDialogeKeywords[i];
+                        break;
+                    default:
+                        break;
+
+
+                }
+                //if (characterFileName == "straw")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.strawDialogeKeywords[i];
+                //else if (characterFileName == "pancake")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.pancakeDialogeKeywords[i];
+                //else if (characterFileName == "cake")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.cakeDialogeKeywords[i];
+                //else if (characterFileName == "crois")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.croisDialogeKeywords[i];
+                //else if (characterFileName == "maca")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.macaDialogeKeywords[i];
+                //else if (characterFileName == "jelly")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.jellyDialogeKeywords[i];
+                //else if (characterFileName == "jam")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.jamDialogeKeywords[i];
+                //else if (characterFileName == "hodu")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.hoduDialogeKeywords[i];
+                //else if (characterFileName == "donut")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.donutDialogeKeywords[i];
+                //else if (characterFileName == "twist")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.twistDialogeKeywords[i];
+                //else if (characterFileName == "choco")
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.chocoDialogeKeywords[i];
+            }
+        }
         //대화탭 -> 캐릭터 선택 -> 캐릭터 대화 정보 창에서 스페이스바를 누르면 해당 대화를 보여준다. 
         private void showDialogeText()
         {

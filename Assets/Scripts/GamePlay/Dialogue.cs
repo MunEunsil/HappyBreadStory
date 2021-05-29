@@ -42,6 +42,11 @@ namespace HappyBread.GamePlay
             switch (state)
             {
                 case State.Idle:
+                    if (NextCommand == KeyCode.Escape)
+                    {
+                        Debug.Log("esc 누름");
+                        End();
+                    }
                     break;
                 case State.Waiting:
                     if (NextCommand == KeyCode.Space)
@@ -51,13 +56,28 @@ namespace HappyBread.GamePlay
                             Next();
                         }
                     }
+                    else if (NextCommand == KeyCode.Escape)
+                    {
+                        Debug.Log("esc 누름");
+                        End();
+                    }
                     break;
                 case State.Blocking:
+                    if (NextCommand == KeyCode.Escape)
+                    {
+                        Debug.Log("esc 누름");
+                        End();
+                    }
                     break;
                 case State.NonBlocking:
                     if (NextCommand == KeyCode.Space)
                     {
                         PrintAll();
+                    }
+                    else if (NextCommand == KeyCode.Escape)
+                    {
+                        Debug.Log("esc 누름");
+                        End();
                     }
                     break;
                 default:
@@ -74,6 +94,7 @@ namespace HappyBread.GamePlay
                 currentIndex = -1;
                 state = State.Waiting;
                 Next();
+
             }
         }
 
@@ -112,12 +133,59 @@ namespace HappyBread.GamePlay
                 case "Answer":        //플래그 추가 
                     ShowAnswerMessage(seperated);
                     break;
+                case "Stair":
+                    Stairs(seperated);
+                    break;
+
 
             }
 
             NextCommand = KeyCode.None;
         }
 
+        private void Stairs(string[] seperated) //계단.
+        {
+
+            int from = DataManager.Instance.floor;
+
+            List<string> questions = new List<string>();
+
+            // 질문 내용을 List에 추가한다.
+            for (int index = 4; index < seperated.Length; index++)
+            {
+                questions.Add(seperated[index].Trim());
+            }
+
+            GameModel.Instance.QuestionBox.CreateSelector(questions);
+
+            ShowMessage(seperated);
+
+            //  answerIndex = questionBox.AnswerIndex;
+          //  answerIndex = DataManager.Instance.select;
+
+          //  Debug.Log(answerIndex);
+            //if (answerIndex == 1) //지하 1 
+            //{
+            //    GameModel.Instance.FloorManager.ChangeFloor(from, 0, GameObject.FindObjectOfType<Stairs>().exitB1.transform.position);
+            //    DataManager.Instance.floor = 0;//지하
+            //}
+            //else if (answerIndex == 2) //지상1
+            //{
+            //    GameModel.Instance.FloorManager.ChangeFloor(from, 1, GameObject.FindObjectOfType<Stairs>().exitF1.transform.position);
+            //    DataManager.Instance.floor = 1;//1층
+            //}
+            //else if (answerIndex == 3)
+            //{
+            //    GameModel.Instance.FloorManager.ChangeFloor(from, 2, GameObject.FindObjectOfType<Stairs>().exitF2.transform.position);
+            //    DataManager.Instance.floor = 2;
+            //}
+            //else if (answerIndex == 4)
+            //{
+            //    GameModel.Instance.FloorManager.ChangeFloor(from, 3, GameObject.FindObjectOfType<Stairs>().exitF3.transform.position);
+            //    DataManager.Instance.floor = 3;
+            //}
+
+        }
         private void ShowAnswerMessage(string[] seperated)
         {
             string backgroundFileName = seperated[1].Trim();
@@ -161,6 +229,7 @@ namespace HappyBread.GamePlay
        
         private void ShowQuestion(string[] seperated)
         {
+
             int startIndex = 4;
             List<string> questions = new List<string>();
 

@@ -70,11 +70,11 @@ namespace HappyBread.GamePlay
 
         private void MiddleEndingControl()
         {
-            //오직 스페이스만 가능 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 GameModel.Instance.MiddleEnding.NextCommand = KeyCode.Space;
             }
+
         }
         private void ReanonsingControl()
         {
@@ -228,11 +228,15 @@ namespace HappyBread.GamePlay
 
             if (Input.GetKeyUp(GlobalGameData.keyCodeRoom)) //keyCall 대신 outRoom 추가해야함ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
             {
-                GameModel.Instance.RoomInvestigate.NextCommand = GlobalGameData.keyCodeRoom; 
+                GameModel.Instance.RoomInvestigate.NextCommand = GlobalGameData.keyCodeRoom;
             }
-            else if (Input.GetKeyUp(KeyCode.Space))  
+            else if (Input.GetKeyUp(KeyCode.Space))
             {
                 GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.Space;
+            }
+            else if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.Escape;
             }
             else
             {
@@ -246,10 +250,15 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.Dialogue.NextCommand = KeyCode.Space;
             }
+            else if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                GameModel.Instance.Dialogue.NextCommand = KeyCode.Escape;
+            }
             else
             {
                 GameModel.Instance.Dialogue.NextCommand = KeyCode.None;
             }
+
         }
 
         private void CharacterControl()
@@ -259,19 +268,19 @@ namespace HappyBread.GamePlay
                 return;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.W))
             {
                 GameModel.Instance.Player.NextMoveCommand = Vector3.up;
             }
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.S))
             {
                 GameModel.Instance.Player.NextMoveCommand = Vector3.down;
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.A))
             {
                 GameModel.Instance.Player.NextMoveCommand = Vector3.left;
             }
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.D))
             {
                 GameModel.Instance.Player.NextMoveCommand = Vector3.right;
             }
@@ -291,6 +300,10 @@ namespace HappyBread.GamePlay
             else if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
             {
                 GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCall;
+            }
+            else if (Input.GetKeyUp(GlobalGameData.mouseClick))
+            {
+                GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.mouseClick;
             }
             else
             {
