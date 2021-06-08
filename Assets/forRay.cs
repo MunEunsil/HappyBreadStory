@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +7,8 @@ namespace HappyBread.GamePlay
 {
     public class forRay : MonoBehaviour
     {
-        float mouseDistance15f;
-        Vector3 MousePoint;
+        float MaxDistance = 15f;
+        Vector3 MousePosition;
         Camera cam; 
 
         // Start is called before the first frame update
@@ -23,9 +22,18 @@ namespace HappyBread.GamePlay
         {
             if (Input.GetMouseButtonDown(0))
             {
-                MousePoint = Input.mousePosition;
-              //  MousePoint = Camera.main
-                
+                MousePosition = Input.mousePosition;
+
+                MousePosition = cam.ScreenToWorldPoint(MousePosition);
+
+                RaycastHit2D hit = Physics2D.Raycast(MousePosition, transform.forward, MaxDistance);
+
+                Debug.DrawRay(MousePosition, transform.forward*10,Color.red,0.3f);
+
+                if (hit)
+                {
+                    hit.transform.GetComponent<SpriteRenderer>().color = Color.red;
+                }
             }
         }
     }

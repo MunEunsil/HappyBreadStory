@@ -9,25 +9,25 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class RoomDoor : MonoBehaviour
+    public class RoomDoor : Interactable
     {
         public GameObject Room;
 
         public KeyCode NextFunctionCommand;
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
+        //    if (collision.CompareTag("Player"))
+        //    {
                 
-                GameModel.Instance.StateManager.ChangeState(new PauseState());
-                GameModel.Instance.EffectManager.FadeOut();
-                Invoke("InterRoom", 2f);
-                NextFunctionCommand = KeyCode.None;            
-            }
+        //        GameModel.Instance.StateManager.ChangeState(new PauseState());
+        //        GameModel.Instance.EffectManager.FadeOut();
+        //        Invoke("InterRoom", 2f);
+        //        NextFunctionCommand = KeyCode.None;            
+        //    }
 
 
-        }
+        //}
         private void InterRoom()
         {
             Room.SetActive(true);
@@ -37,6 +37,17 @@ namespace HappyBread.GamePlay
 
            // GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
 
+        }
+        public override void Interact()
+        {
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+            Invoke("InterRoom", 2f);
+            NextFunctionCommand = KeyCode.None;
+        }
+
+        protected override void InitEvidence()   //증거X -> 대화 저장 
+        {
 
         }
     }

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Diary_evidence
+  - Diary_tab
+  - Diary_exit
+  - Diary_suspects
   layers:
   - Default
   - TransparentFX

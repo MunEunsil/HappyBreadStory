@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HappyBread.GamePlay.GameState;
 
-public class CaseDiaryBtn : MonoBehaviour
+namespace HappyBread.GamePlay
 {
-    public void Appear()
+    public class CaseDiaryBtn : MonoBehaviour
     {
-        gameObject.SetActive(true);
-    }
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+        public void AttemptOpenCaseDiary()
+        {
+            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
+            GameModel.Instance.CaseDiary.gameObject.SetActive(true);
+            //NextFunctionCommand = KeyCode.None;
+        }
     }
 }

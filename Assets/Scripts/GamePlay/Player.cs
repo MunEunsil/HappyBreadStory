@@ -74,7 +74,7 @@ namespace HappyBread.GamePlay
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
                         Debug.Log("a누름");
-                        AttemptOpenCaseDiary();
+                        Debug.Log(DataManager.Instance.evidences);
                         break;
                     case GlobalGameData.keyCodeCall:
                         Debug.Log("c누름");
@@ -86,17 +86,19 @@ namespace HappyBread.GamePlay
                  }
             }
 
-        private void AttemptOpenCaseDiary()
-        {
-            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
-            GameModel.Instance.CaseDiary.gameObject.SetActive(true);
-            NextFunctionCommand = KeyCode.None;
-        }
+        //CaseDiaryBtn 스크립트에 적용 
+        //public void AttemptOpenCaseDiary()
+        //{
+        //    GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
+        //    GameModel.Instance.CaseDiary.gameObject.SetActive(true);
+        //    NextFunctionCommand = KeyCode.None;
+        //}
         private void AttemptOpenCall()
         {
             GameModel.Instance.StateManager.ChangeState(new CallState());
             GameModel.Instance.Call.gameObject.SetActive(true);
             NextFunctionCommand = KeyCode.None;
+
         }
 
          public void AttemptInteract()  
@@ -108,6 +110,8 @@ namespace HappyBread.GamePlay
             {
                 Interact(hit);
             }
+
+
             NextFunctionCommand = KeyCode.None;
         }
 
@@ -117,6 +121,7 @@ namespace HappyBread.GamePlay
             if(interactable != null)
             {
                 interactable.Interact();
+
             }
             else
             {

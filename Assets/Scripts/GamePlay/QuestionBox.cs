@@ -106,6 +106,8 @@ namespace HappyBread.GamePlay
 
                 int from = DataManager.Instance.floor;
 
+                //엘베 작동 부분 
+
                 if (DataManager.Instance.stair == true)
                 {
                     if (selectedIndex == 0) //지하 1 

@@ -78,30 +78,30 @@ namespace HappyBread.GamePlay
         }
         private void ReanonsingControl()
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.up;
-            }
-            else if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.down;
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftArrow))
-            {
-                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.left;
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.right;
-            }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                GameModel.Instance.ReasoningManager.NextCommand = KeyCode.Space;
-            }
-            else 
-            {
-                GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.zero;
-            }  
+            //if (Input.GetKeyUp(KeyCode.UpArrow))
+            //{
+            //    GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.up;
+            //}
+            //else if (Input.GetKeyUp(KeyCode.DownArrow))
+            //{
+            //    GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.down;
+            //}
+            //else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            //{
+            //    GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.left;
+            //}
+            //else if (Input.GetKeyUp(KeyCode.RightArrow))
+            //{
+            //    GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.right;
+            //}
+            //else if (Input.GetKeyUp(KeyCode.Space))
+            //{
+            //    GameModel.Instance.ReasoningManager.NextCommand = KeyCode.Space;
+            //}
+            //else 
+            //{
+            //    GameModel.Instance.ReasoningManager.NextMoveCommand = Vector2.zero;
+            //}  
          
         
         }
@@ -168,6 +168,10 @@ namespace HappyBread.GamePlay
             else if (Input.GetKeyUp(KeyCode.Escape))
             {
                 GameModel.Instance.CaseDiary.NextCommand = KeyCode.Escape;
+            }
+            else if (Input.GetKeyUp(GlobalGameData.mouseClick))
+            {
+                GameModel.Instance.CaseDiary.NextCommand = GlobalGameData.mouseClick;
             }
             else
             {
@@ -236,7 +240,11 @@ namespace HappyBread.GamePlay
             }
             else if (Input.GetKeyUp(KeyCode.Escape))
             {
-                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.Escape;
+                GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.Escape;
+            }
+            else if (Input.GetKeyUp(GlobalGameData.mouseClick))
+            {
+                GameModel.Instance.RoomInvestigate.NextFunctionCommand = GlobalGameData.mouseClick;
             }
             else
             {
