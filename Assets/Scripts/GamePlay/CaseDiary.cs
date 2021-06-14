@@ -515,6 +515,7 @@ namespace HappyBread.GamePlay
                 switch (characterFileName)
                 {
                     case "straw":
+                        //if strawDialogeKeywordsOpen[i] ==1 이면 else 넘어가기 
                         keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.strawDialogeKeywords[i];
                         Debug.Log("딸기 키워드?");
                         break;
@@ -563,7 +564,7 @@ namespace HappyBread.GamePlay
                 //else if (characterFileName == "maca")
                 //    keyWordTextObj[i].text = TalkBoxData.Instance.macaDialogeKeywords[i];
                 //else if (characterFileName == "jelly")
-                //    keyWordTextObj[i].text = TalkBoxData.Instance.jellyDialogeKeywords[i];
+                //    keyWordTextObj[i].text = TalkBoxData.Instance.jellyDialogeKeywords[i]; 
                 //else if (characterFileName == "jam")
                 //    keyWordTextObj[i].text = TalkBoxData.Instance.jamDialogeKeywords[i];
                 //else if (characterFileName == "hodu")

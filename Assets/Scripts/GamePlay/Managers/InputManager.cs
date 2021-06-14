@@ -107,11 +107,11 @@ namespace HappyBread.GamePlay
         }
         private void QuestionBoxControl()
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            if (Input.GetKeyUp(KeyCode.W))
             {
                 GameModel.Instance.QuestionBox.NextMoveCommand = Vector3.up;
             }
-            else if (Input.GetKeyUp(KeyCode.DownArrow))
+            else if (Input.GetKeyUp(KeyCode.S))
             {
                 GameModel.Instance.QuestionBox.NextMoveCommand = Vector3.down;
             }

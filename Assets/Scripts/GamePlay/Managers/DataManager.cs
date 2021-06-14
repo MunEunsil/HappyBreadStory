@@ -39,6 +39,16 @@ namespace HappyBread.GamePlay
 
         public float playerPosition; //플레이어 위치 (저장 불러오기 위함)
 
+        //day마다 대화 한 횟수를 저장할 변수
+        public int cake, choco, crois, donut, hodu, jam, jelly, jellyjelly, maca, pancake, straw, twist = 0;
+
+        //딸기 방 열기 위한 조건 
+        public bool QuestionStrawRoom = false;
+        // false : 닫힘 , true : 열림 
+        public bool strawRoomOpen = false; 
+
+
+
         public bool IsPause
         {
             get

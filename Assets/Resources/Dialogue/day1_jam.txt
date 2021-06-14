@@ -1,3 +1,0 @@
-Message : askAddAvidence : jam_stand : 안녕하세요. 항상 우리마을 위해 힘써주셔서 감사합니다. 대단하세요. 혹시 수사하실 때 필요한게 있으시면 저한테 연락주세요. 제가 도울 수 있는 한 최대한 돕겠습니다.
-Message : askAddAvidence : jam_stand : 딸기잼은 항상 까칠하지만 그게 매력이죠. 너무 미워하지 마세요. 저래보여도 마음은 여린잼이에요. 아, 딸기잼은 제 약혼자랍니다.
-Message : askAddAvidence : jam_stand : 질문이라도?

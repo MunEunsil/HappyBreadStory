@@ -10,9 +10,10 @@ using UnityEngine.UI;
 namespace HappyBread.GamePlay
 {
     /// <summary>
-    /// CaseDiary talkBox탭을  관리하는 클래스
+    /// CaseDiary talkBox탭을  관리
+    /// npc와 대화가 발생하면 사건수첩의 키워드와 대화를 오픈  
     /// </summary>
-    
+
     public class TalkBoxData : MonoBehaviour
     {
 
@@ -32,6 +33,12 @@ namespace HappyBread.GamePlay
         public string[] chocoDialogeKeywords = { "호두의 비리", "두려움", "2", "3", "4", "5", "6", "7", "8" };
         public string[] donutDialogeKeywords = { "마지막 대화", "호두와 관계", "마카롱 의심", "3", "4", "5", "6", "7", "8"};
 
+        public void checkDialogue(string characterName)
+        {
+            //대화 했는지 캐릭터 이름을 받아서 확인 
+            // day N , 캐릭터, N번째 확인이 아니지. 이름을 바꿔야할수도 있겠다. 이건 ㅇ회의 후 하기로  
+            
+        }
 
     }
 

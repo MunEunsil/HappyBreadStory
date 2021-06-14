@@ -1,3 +1,0 @@
-Message : askAddAvidence : crois_stand : 하하하하 자네가 그 탐정이로군! 나때는 말야~ 탐정가는 사실 취급도 안했는데 말이야~
-Message : askAddAvidence : crois_stand : 엣헴. 나는 이 마을에서 무려 20년동안 사건사고를 맡아왔다아~ 이말이야~
-Message : askAddAvidence : crois_stand : 아니이~ 근데 이 호텔 그 어마어마한 소문치고는 사알짝 실망스러운데에? 아니 뭐 부족하단건 아니고오~ 꽈배기 저 사장 뭔가 구린 냄새가 나아~
