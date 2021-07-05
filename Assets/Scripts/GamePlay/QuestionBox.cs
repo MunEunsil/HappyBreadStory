@@ -96,7 +96,6 @@ namespace HappyBread.GamePlay
                 }
                 questions.Clear();
 
-               
 
                 AnswerIndex = selectedIndex;
 
@@ -133,6 +132,50 @@ namespace HappyBread.GamePlay
                     DataManager.Instance.stair = false;
                 }
 
+                //answerEvent에서 이부분 수정 
+                //사건 추리 - 자/타
+                if (DataManager.Instance.Choice_StrawCase == true) // 딸기사건 추리 중
+                {
+                    if (selectedIndex == 0) //사고사
+                    {
+                        DataManager.Instance.isSuicide = false;
+                        DataManager.Instance.isStrawSuicide = false;
+                    }
+                    else //타살
+                    {
+                        DataManager.Instance.isSuicide = true;
+                        DataManager.Instance.isStrawSuicide = true;
+                    }
+                }
+                else if (DataManager.Instance.Choice_HoduCase == true) //호두사건 추리 중
+                {
+                    if (selectedIndex == 0) //자살
+                    {
+                        DataManager.Instance.isSuicide = false;
+                        DataManager.Instance.isHoduSuicide = false;
+                    }
+                    else //타살
+                    {
+                        DataManager.Instance.isSuicide = true;
+                        DataManager.Instance.isHoduSuicide = true;
+                    }
+
+                }
+                else if (DataManager.Instance.Choice_JellyjellyCase) //젤리젤리 사건 추리
+                {
+                    if (selectedIndex == 0) //자살
+                    {
+                        DataManager.Instance.isSuicide = false;
+                        DataManager.Instance.isJellyjellySuicide = false;
+                    }
+                    else //타살
+                    {
+                        DataManager.Instance.isSuicide = true;
+                        DataManager.Instance.isJellyjellySuicide = true;
+                    }
+                }
+
+
                 // 이벤트와 연결 제거
                 if (ConnectedEvent != null)
                 {
@@ -152,6 +195,7 @@ namespace HappyBread.GamePlay
 
             if (nextMoveCommand == Vector3.up)
             {
+
                 flag = -1;
             }
             else if (nextMoveCommand == Vector3.down)

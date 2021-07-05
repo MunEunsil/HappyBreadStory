@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 112099733}
   m_Layer: 5
   m_Name: tap talk
-  m_TagString: Diary_tab
+  m_TagString: Diary_tab_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,6 +296,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 171.01674, y: 41.36228}
   m_EdgeRadius: 0
+--- !u!1 &114913255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114913257}
+  - component: {fileID: 114913256}
+  m_Layer: 0
+  m_Name: checkDiaryDialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114913256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114913255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7be66eabb7539438fb9a7dbe1e5424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &114913257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114913255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2640982, y: -0.07317987, z: -110.75734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119555707
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +540,111 @@ MonoBehaviour:
   pancake: 0
   straw: 0
   twist: 0
+  QuestionStrawRoom: 0
+  strawRoomOpen: 0
+  Day_nextCommand: 0
+  Choice_StrawCase: 0
+  Choice_HoduCase: 0
+  Choice_JellyjellyCase: 0
+  isSuicide: 0
+  isStrawSuicide: 0
+  isHoduSuicide: 0
+  isJellyjellySuicide: 0
+  isStrawCaseFail: 0
+  isHoduCaseFail: 0
+  isJellyjellyFail: 0
+  strawCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  strawCaseEvidence2:
+  - "\uC824\uB9AC\uC824\uB9AC\uC0AC\uC9C4"
+  - "\uB09C\uAC04"
+  - "\uCABD\uC9C0"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  - "\uB9AC\uBCF8"
+  - "\uC824\uB9AC\uD654\uC7A5\uD488"
+  hoduCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  hoduCaseEvidence2:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  jellyjellyCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  jellyjellyCaseEvidence2:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  strawCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  happyEnding: 0
+  Call_NextCommand: 0
 --- !u!114 &121160538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -849,7 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
 --- !u!4 &181397446
 Transform:
   m_ObjectHideFlags: 1
@@ -862,7 +1009,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212899456
 GameObject:
@@ -2124,7 +2271,7 @@ GameObject:
   - component: {fileID: 422483403}
   m_Layer: 5
   m_Name: Text (6)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2180,7 +2327,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &422483404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2428,6 +2575,7 @@ RectTransform:
   - {fileID: 112099730}
   - {fileID: 456415271}
   - {fileID: 134773896}
+  - {fileID: 1208519790}
   m_Father: {fileID: 645426074}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3100,7 +3248,7 @@ GameObject:
   - component: {fileID: 546538186}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3156,7 +3304,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &546538187
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3383,7 +3531,7 @@ GameObject:
   - component: {fileID: 640907134}
   m_Layer: 5
   m_Name: tap evidence
-  m_TagString: Diary_tab
+  m_TagString: Diary_tab_evidence
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3707,7 +3855,7 @@ GameObject:
   - component: {fileID: 654516569}
   m_Layer: 5
   m_Name: choco
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3947,6 +4095,7 @@ MonoBehaviour:
   middleEnding: {fileID: 608954214}
   reasoningManager: {fileID: 0}
   talkBoxData: {fileID: 0}
+  checkDiarydialoge: {fileID: 0}
 --- !u!1 &703659446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4075,6 +4224,8 @@ MonoBehaviour:
   textUI: {fileID: 1441473257}
   typingIdleTime: 0.05
   NextCommand: 0
+  characterName: {fileID: 1486585231}
+  dialogueDone: 0
   answerIndex: -1
   questionBox: {fileID: 1298425651}
 --- !u!1 &716452156
@@ -4693,7 +4844,7 @@ GameObject:
   - component: {fileID: 867401151}
   m_Layer: 5
   m_Name: donut
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4767,7 +4918,7 @@ GameObject:
   - component: {fileID: 898974594}
   m_Layer: 5
   m_Name: hodu
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4915,7 +5066,7 @@ GameObject:
   - component: {fileID: 933993416}
   m_Layer: 5
   m_Name: jam
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5243,8 +5394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -349, y: 42.836}
-  m_SizeDelta: {x: 396.9607, y: 396.9607}
+  m_AnchoredPosition: {x: 276, y: 71}
+  m_SizeDelta: {x: 487.1791, y: 396.9607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1009611053
 GameObject:
@@ -5407,7 +5558,7 @@ GameObject:
   - component: {fileID: 1023745708}
   m_Layer: 5
   m_Name: straw
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5859,6 +6010,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1569620059}
   - {fileID: 1441473256}
   m_Father: {fileID: 707839619}
   m_RootOrder: 2
@@ -5905,6 +6057,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191644194}
   m_CullTransparentMesh: 0
+--- !u!1 &1208519789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208519790}
+  - component: {fileID: 1208519792}
+  - component: {fileID: 1208519791}
+  - component: {fileID: 1208519793}
+  m_Layer: 5
+  m_Name: escapeButton
+  m_TagString: Diary_exit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1208519790
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208519789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 440858997}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -474, y: 176.3}
+  m_SizeDelta: {x: 58.187424, y: 58.187424}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1208519791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208519789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: dcbbe0d71131bea46a10e815a769f8f6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1208519792
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208519789}
+  m_CullTransparentMesh: 0
+--- !u!61 &1208519793
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208519789}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.69584274, y: 1.3918533}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 76.3413, y: 79.12425}
+  m_EdgeRadius: 0
 --- !u!1 &1238143549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5918,7 +6171,7 @@ GameObject:
   - component: {fileID: 1238143551}
   m_Layer: 5
   m_Name: Text (3)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5974,7 +6227,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &1238143552
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6013,7 +6266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strawDialogeKeywords:
-  - straw0
+  - "\uC131\uACA9"
   - straw1
   - straw2
   - straw3
@@ -6022,19 +6275,21 @@ MonoBehaviour:
   - straw6
   - 7
   - 8
-  strawDialogeKeywordsOpen: 0100000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  strawDialogeKeywordsOpen: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   pancakeDialogeKeywords:
-  - 0
-  - 1
-  - 2
+  - "\uCCAD\uC18C \uBBF8\uC2A4\uD14C\uB9AC"
+  - "\uD638\uB450\uC758 \uC77C\uC815"
+  - "\uB85C\uB610?"
   - 3
   - 4
   - 5
   - 6
   - 7
   - 8
+  pancake_DialogeKeywordsOpen: 0000000000000000000000000000000000000000000000000000000000000000
   cakeDialogeKeywords:
-  - 0
+  - "\uCEF5\uCF00\uC775\uACFC \uB538\uAE30\uC7BC \uC0AC\uC774"
+  - "\uB0C9\uB3D9\uCC3D\uACE0\uC758 \uC0C1\uD0DC"
   - 1
   - 2
   - 3
@@ -6043,49 +6298,59 @@ MonoBehaviour:
   - 6
   - 7
   - 8
+  cake_DialogeKeywordsOpen: 0000000000000000000000000000000000000000000000000000000000000000
   croisDialogeKeywords:
-  - 0
-  - 1
-  - 2
+  - "\uD06C\uB85C\uC544\uC0C1\uC758 \uC758\uC2EC"
+  - "day1\uD06C\uB85C\uC544\uC0C1 \uC54C\uB9AC\uBC14\uC774"
+  - "\uC624\uBE10 \uBC29\uBB38"
   - 3
   - 4
   - 5
   - 6
   - 7
   - 8
+  crois_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   macaDialogeKeywords:
-  - 0
-  - 1
-  - 2
+  - "\uB538\uAE30\uC7BC\uACFC \uC824\uB9AC\uC758 \uAD00\uACC4"
+  - "\uC624\uBE10\uADF8\uB7A8\uC5D0 \uB300\uD55C \uC9D1\uCC29"
+  - "\uC2A4\uD1A0\uCEE4"
   - 3
   - 4
   - 5
   - 6
   - 7
   - 8
+  maca_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   jellyDialogeKeywords:
-  - 0
-  - 1
-  - 2
-  - 3
+  - "day1 \uC54C\uB9AC\uBC14\uC774"
+  - "\uADF8\uB9BC\uB3C4\uAD6C"
+  - "\uC824\uB9AC\uB4E4\uC758 \uC2F8\uC6C0"
+  - "\uC824\uB9AC\uC824\uB9AC\uC758 \uD589\uBC29"
   - 4
   - 5
   - 6
   - 7
   - 8
+  jelly_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  jellyjellyDialogeKeywords:
+  - "\uCC9C\uC0C1\uD654\uAC00"
+  - "\uCC9C\uC5F0\uC7AC\uB8CC"
+  - "\uD560 \uC77C"
+  jellyjelly_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   jamDialogeKeywords:
-  - 0
-  - 1
-  - 2
-  - 3
+  - "\uB538\uAE30\uC7BC\uACFC \uC288\uAC00\uAC8C\uC774\uC988"
+  - "\uB538\uAE30\uC7BC\uACFC \uC5B8\uC7C1"
+  - "\uD638\uD154 \uC9C0\uC6D0\uAE08\uC758 \uD589\uBC29"
+  - "\uADC0\uCC2E\uC740 \uD32C\uCF00\uC774\uD06C"
   - 4
   - 5
   - 6
   - 7
   - 8
+  jam_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   hoduDialogeKeywords:
-  - 0
-  - 1
+  - "\uC218\uC0C1\uD55C \uC81C\uC548"
+  - "\uD070 \uAC74"
   - 2
   - 3
   - 4
@@ -6093,9 +6358,10 @@ MonoBehaviour:
   - 6
   - 7
   - 8
+  hodu_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   twistDialogeKeywords:
-  - 0
-  - 1
+  - "\uC77C\uC815"
+  - "\uB0C9\uB3D9\uCC3D\uACE0\uC758 \uBB38"
   - 2
   - 3
   - 4
@@ -6103,26 +6369,30 @@ MonoBehaviour:
   - 6
   - 7
   - 8
+  twist_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   chocoDialogeKeywords:
-  - 0
-  - 1
-  - 2
-  - 3
-  - 4
+  - "day1 \uC54C\uB9AC\uBC14\uC774"
+  - "\uD638\uB450\uC640\uC758 \uC0AC\uC774 "
+  - "\uC2E0\uBB38"
+  - "3\uCE35\uC5D4 \uBB34\uC5C7\uC774?"
+  - "\uB0C9\uB3D9\uCC3D\uACE0\uC758 \uC5F4\uC1E0"
+  - "\uBAA9\uACA9"
   - 5
   - 6
   - 7
   - 8
+  choco_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   donutDialogeKeywords:
-  - 0
-  - 1
-  - 2
+  - "\uB3C4\uB11B\uACFC \uB538\uAE30\uC7BC\uC758 \uC0AC\uC774"
+  - "\uBC24\uC5D0 \uB098\uB208 \uB300\uD654"
+  - "\uB9C8\uCE74\uB871 \uC758\uC2EC"
   - 3
   - 4
   - 5
   - 6
   - 7
   - 8
+  donut_DialogeKeywordsOpen: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!224 &1245635088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6227,6 +6497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1298425650}
   - component: {fileID: 1298425651}
+  - component: {fileID: 1298425652}
   m_Layer: 5
   m_Name: QuestionBox
   m_TagString: Untagged
@@ -6270,6 +6541,46 @@ MonoBehaviour:
   NextMoveCommand: {x: 0, y: 0, z: 0}
   NextCommand: 0
   AnswerIndex: -1
+--- !u!114 &1298425652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298425649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
 --- !u!1 &1311553632
 GameObject:
   m_ObjectHideFlags: 0
@@ -6283,7 +6594,7 @@ GameObject:
   - component: {fileID: 1311553634}
   m_Layer: 5
   m_Name: jelly
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6434,7 +6745,7 @@ GameObject:
   - component: {fileID: 1324471121}
   m_Layer: 5
   m_Name: Text (2)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6490,7 +6801,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &1324471122
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6708,7 +7019,7 @@ GameObject:
   - component: {fileID: 1350747863}
   m_Layer: 5
   m_Name: maca
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6782,7 +7093,7 @@ GameObject:
   - component: {fileID: 1383286627}
   m_Layer: 5
   m_Name: Text (4)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6838,7 +7149,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &1383286628
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6934,7 +7245,7 @@ GameObject:
   - component: {fileID: 1395590326}
   m_Layer: 5
   m_Name: Text (5)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6990,7 +7301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &1395590327
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7267,7 +7578,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1191644195}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7295,12 +7606,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 511dfaf5edb02cf49831c59334a799fd, type: 3}
-    m_FontSize: 45
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 45
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7671,6 +7982,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466649766}
   m_CullTransparentMesh: 0
+--- !u!1 &1486585229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486585230}
+  - component: {fileID: 1486585232}
+  - component: {fileID: 1486585231}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1486585230
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486585229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1569620059}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000019073}
+  m_SizeDelta: {x: 160, y: 61.845894}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1486585231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486585229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 511dfaf5edb02cf49831c59334a799fd, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1486585232
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486585229}
+  m_CullTransparentMesh: 0
 --- !u!1 &1490811191
 GameObject:
   m_ObjectHideFlags: 0
@@ -7893,6 +8282,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543055621}
   m_CullTransparentMesh: 0
+--- !u!1 &1569620058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1569620059}
+  - component: {fileID: 1569620061}
+  - component: {fileID: 1569620060}
+  m_Layer: 5
+  m_Name: nickname
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1569620059
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569620058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1486585230}
+  m_Father: {fileID: 1191644195}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -413.91, y: 109.78}
+  m_SizeDelta: {x: 159.89502, y: 61.845825}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1569620060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569620058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ac602aa30ccbd8443a1f0c26f03942b2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1569620061
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569620058}
+  m_CullTransparentMesh: 0
 --- !u!1 &1583462424
 GameObject:
   m_ObjectHideFlags: 0
@@ -8035,7 +8499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98aa8c2e5a1283c4abf04bd869e05d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reasoningManager: {fileID: 1001196361}
 --- !u!1 &1589810076
 GameObject:
   m_ObjectHideFlags: 0
@@ -8857,7 +9320,7 @@ GameObject:
   - component: {fileID: 1693565792}
   m_Layer: 5
   m_Name: cake
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9151,7 +9614,7 @@ GameObject:
   - component: {fileID: 1759783718}
   m_Layer: 5
   m_Name: Text (1)
-  m_TagString: Untagged
+  m_TagString: Diary_detailText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9207,7 +9670,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '?'
+  m_Text: 
 --- !u!222 &1759783719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9501,7 +9964,7 @@ GameObject:
   - component: {fileID: 1842354831}
   m_Layer: 5
   m_Name: pancake
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9609,6 +10072,111 @@ MonoBehaviour:
   pancake: 0
   straw: 0
   twist: 0
+  QuestionStrawRoom: 0
+  strawRoomOpen: 0
+  Day_nextCommand: 0
+  Choice_StrawCase: 0
+  Choice_HoduCase: 0
+  Choice_JellyjellyCase: 0
+  isSuicide: 0
+  isStrawSuicide: 0
+  isHoduSuicide: 0
+  isJellyjellySuicide: 0
+  isStrawCaseFail: 0
+  isHoduCaseFail: 0
+  isJellyjellyFail: 0
+  strawCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  strawCaseEvidence2:
+  - "\uC824\uB9AC\uC824\uB9AC\uC0AC\uC9C4"
+  - "\uB09C\uAC04"
+  - "\uCABD\uC9C0"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  - "\uB9AC\uBCF8"
+  - "\uC824\uB9AC\uD654\uC7A5\uD488"
+  hoduCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  hoduCaseEvidence2:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  jellyjellyCaseEvidence1:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  jellyjellyCaseEvidence2:
+  - "\uACBD\uB9E4\uADF8\uB9BC"
+  - "\uB09C\uAC04"
+  - "\uB0C9\uB3D9\uCC3D\uACE0_\uC5F4\uC1E0"
+  - "\uB538\uAE30\uB69C\uAED1"
+  - "\uB9AC\uBCF8"
+  - "\uC2E0\uBB38\uAE30\uC0AC"
+  strawCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  strawCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  hoduCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText1:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText2:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText11:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  jellyjellyCaseText22:
+  - "\uC120\uD0DD\uC9C01"
+  - "\uC120\uD0DD\uC9C02"
+  - "\uC120\uD0DD\uC9C03"
+  happyEnding: 0
+  Call_NextCommand: 0
 --- !u!4 &1920210042
 Transform:
   m_ObjectHideFlags: 0
@@ -9710,7 +10278,7 @@ GameObject:
   - component: {fileID: 2005056117}
   m_Layer: 5
   m_Name: twist
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9836,7 +10404,7 @@ GameObject:
   - component: {fileID: 2042242976}
   m_Layer: 5
   m_Name: crois
-  m_TagString: Untagged
+  m_TagString: Diary_suspects
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10032,6 +10600,50 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 6
+--- !u!1 &2082907993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2082907995}
+  - component: {fileID: 2082907994}
+  m_Layer: 0
+  m_Name: DataController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2082907994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082907993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a8824c2f557e44389327ec709d4ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameDataFileName: .json
+--- !u!4 &2082907995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082907993}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2093681491
 GameObject:
   m_ObjectHideFlags: 0
@@ -10209,7 +10821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2117559641
 MonoBehaviour:

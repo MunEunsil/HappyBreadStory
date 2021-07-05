@@ -18,8 +18,9 @@ namespace HappyBread.GamePlay
         }
         public void AttemptOpenCaseDiary()
         {
-            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
             GameModel.Instance.CaseDiary.gameObject.SetActive(true);
+            GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
+            
             //NextFunctionCommand = KeyCode.None;
         }
     }

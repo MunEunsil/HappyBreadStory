@@ -8,6 +8,22 @@ TagManager:
   - Diary_tab
   - Diary_exit
   - Diary_suspects
+  - Diary_tab_evidence
+  - Diary_tab_suspects
+  - Diary_detailText
+  - Call_choiceEvidence
+  - Call_Text1_leftButton
+  - Call_Text1_rightButton
+  - Call_Text2_leftButton
+  - 'Call_Text2_rightButton '
+  - Call_okButton
+  - Call_StrawCaseButton
+  - Call_slectEvidenceBox1
+  - Call_slectEvidenceBox2
+  - Call_HoduCaseButton
+  - Call_slectSuspect
+  - Call_ok_suspect
+  - Call_JellyJellyCaseButton
   layers:
   - Default
   - TransparentFX

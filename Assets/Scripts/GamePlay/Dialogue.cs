@@ -20,6 +20,10 @@ namespace HappyBread.GamePlay
         public KeyCode NextCommand;
         public Event ConnectedEvent { get; set; }
 
+        public Text characterName;
+
+        public bool dialogueDone = false;
+
         private Coroutine typingCoroutine = null;
         private List<string> currentDialogue;
         private int currentIndex;
@@ -116,7 +120,7 @@ namespace HappyBread.GamePlay
 
             // flag
             // Message ->
-            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ]
+            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ] 
             // Question ->
             // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ], 5번 인자 [ Question 1 ], 6번 인자 [ Question 2 ] , ...
             // Question의 내용은 인자에서 읽는다.
@@ -160,30 +164,6 @@ namespace HappyBread.GamePlay
 
             ShowMessage(seperated);
 
-            //  answerIndex = questionBox.AnswerIndex;
-          //  answerIndex = DataManager.Instance.select;
-
-          //  Debug.Log(answerIndex);
-            //if (answerIndex == 1) //지하 1 
-            //{
-            //    GameModel.Instance.FloorManager.ChangeFloor(from, 0, GameObject.FindObjectOfType<Stairs>().exitB1.transform.position);
-            //    DataManager.Instance.floor = 0;//지하
-            //}
-            //else if (answerIndex == 2) //지상1
-            //{
-            //    GameModel.Instance.FloorManager.ChangeFloor(from, 1, GameObject.FindObjectOfType<Stairs>().exitF1.transform.position);
-            //    DataManager.Instance.floor = 1;//1층
-            //}
-            //else if (answerIndex == 3)
-            //{
-            //    GameModel.Instance.FloorManager.ChangeFloor(from, 2, GameObject.FindObjectOfType<Stairs>().exitF2.transform.position);
-            //    DataManager.Instance.floor = 2;
-            //}
-            //else if (answerIndex == 4)
-            //{
-            //    GameModel.Instance.FloorManager.ChangeFloor(from, 3, GameObject.FindObjectOfType<Stairs>().exitF3.transform.position);
-            //    DataManager.Instance.floor = 3;
-            //}
 
         }
         private void ShowAnswerMessage(string[] seperated)
@@ -291,6 +271,7 @@ namespace HappyBread.GamePlay
             GameModel.Instance.StateManager.UndoState(); // Input 관리
             gameObject.SetActive(false); // UI 관리
 
+            dialogueDone = true;
             if (ConnectedEvent != null)
             {
                 ConnectedEvent.End(); // 이벤트 매니저에게 알림
@@ -331,6 +312,7 @@ namespace HappyBread.GamePlay
         {
             state = State.Idle;
             NextCommand = KeyCode.None;
+            dialogueDone = false;
         }
 
         private string InjectVariable(string rawText)

@@ -20,6 +20,7 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.Dialogue.Execute(ResourceLoader.LoadText(FileName));
                 GameModel.Instance.Dialogue.ConnectedEvent = this;
+
             }
             else
             {
@@ -31,6 +32,7 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
+            GameModel.Instance.EffectManager.FadeIn();
         }
     }
 }

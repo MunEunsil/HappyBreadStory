@@ -23,6 +23,7 @@ namespace HappyBread.GamePlay
             RoomInvestigateControl,
             MiddleEndingControl,
             ReanonsingControl,
+            DayEventControl,
             Pause
         }
 
@@ -65,6 +66,9 @@ namespace HappyBread.GamePlay
                 case State.MiddleEndingControl:
                     MiddleEndingControl();
                     break;
+                case State.DayEventControl:
+                    DayEventControl();
+                    break;
             }
         }
 
@@ -76,6 +80,19 @@ namespace HappyBread.GamePlay
             }
 
         }
+        private void DayEventControl()
+        {
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                DataManager.Instance.Day_nextCommand = KeyCode.Space;
+            }
+            else
+            {
+                DataManager.Instance.Day_nextCommand = KeyCode.None;
+
+            }
+        }
+
         private void ReanonsingControl()
         {
             //if (Input.GetKeyUp(KeyCode.UpArrow))
@@ -180,63 +197,27 @@ namespace HappyBread.GamePlay
         }
         private void CallControl()
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow))
-            {
-                GameModel.Instance.Call.NextMoveCommand = Vector2.up;
-            }
-            else if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                GameModel.Instance.Call.NextMoveCommand = Vector2.down;
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftArrow))
-            {
-                GameModel.Instance.Call.NextMoveCommand = Vector2.left;
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                GameModel.Instance.Call.NextMoveCommand = Vector2.right;
-            }
-            else 
-            {
-                GameModel.Instance.Call.NextMoveCommand = Vector2.zero;
-            }
 
-             if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
+             if (Input.GetKeyUp(GlobalGameData.mouseClick))
             {
-                GameModel.Instance.Call.NextCommand = GlobalGameData.keyCodeCall;
+                DataManager.Instance.Call_NextCommand = GlobalGameData.mouseClick;
             }
             else if (Input.GetKeyUp(KeyCode.Space))
             {
-                GameModel.Instance.Call.NextCommand = KeyCode.Space;
+                DataManager.Instance.Call_NextCommand = KeyCode.Space;
             }
             else
             {
-                GameModel.Instance.CaseDiary.NextCommand = KeyCode.None;
+                DataManager.Instance.Call_NextCommand = KeyCode.None;
             }
         }
 
         private void RoomInvestigateControl()
         {
-            if (Input.GetKeyUp(KeyCode.LeftArrow))
+            
+            if (Input.GetKeyUp(KeyCode.Space))
             {
-                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.left;
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
-            {
-                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.right;
-            }
-            else 
-            {
-                GameModel.Instance.RoomInvestigate.NextMoveCommand = Vector2.zero;
-            }
-
-            if (Input.GetKeyUp(GlobalGameData.keyCodeRoom)) //keyCall 대신 outRoom 추가해야함ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-            {
-                GameModel.Instance.RoomInvestigate.NextCommand = GlobalGameData.keyCodeRoom;
-            }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.Space;
+                GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.Space;
             }
             else if (Input.GetKeyUp(KeyCode.Escape))
             {
@@ -248,7 +229,7 @@ namespace HappyBread.GamePlay
             }
             else
             {
-                GameModel.Instance.RoomInvestigate.NextCommand = KeyCode.None;
+                GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.None;
             }
         }
 

@@ -35,15 +35,15 @@ namespace HappyBread.GamePlay
 
         private void WakeUp()
         {
-            GameModel.Instance.StateManager.ChangeState(new PlayingState());
+            //GameModel.Instance.StateManager.ChangeState(new PlayingState());
             ChangeMap();
             
             int date = GameModel.Instance.Date.Current;
 
-            GameModel.Instance.Hp.Set(100f);
+            
             GameModel.Instance.EffectManager.FadeIn();
             GameModel.Instance.StateManager.Resume();
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"BedDay{date}"));
+           // GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"BedDay{date}"));
             //GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { GameModel.Instance.UIManager.BasicUIAppear(); })); 
             //cake, choco, crois, donut, hodu, jam, jelly, jellyjelly, maca, pancake, straw, twist
             DataManager.Instance.cake = 0;
@@ -57,6 +57,7 @@ namespace HappyBread.GamePlay
             DataManager.Instance.maca = 0;
             DataManager.Instance.pancake = 0;
             DataManager.Instance.straw = 0;
+
             DataManager.Instance.twist = 0;
 
             //game
@@ -67,9 +68,25 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.Date.AddDay(1);
             int date = GameModel.Instance.Date.Current;
-            GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
-            
-            
+
+            if (date == 5)
+            {
+                //추리하기 시작!
+                GameModel.Instance.EffectManager.FadeIn();
+                SceneManager.LoadScene("CallEvent", LoadSceneMode.Additive);
+                GameModel.Instance.StateManager.ChangeState(new CallState());
+            }
+            else
+            {
+                GameModel.Instance.EffectManager.FadeIn();
+                //GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
+                SceneManager.UnloadSceneAsync($"Map{date-1}_1");
+                SceneManager.LoadScene($"Day{date}_event", LoadSceneMode.Additive);
+                //GameModel.Instance.MapManager.ChangeMap($"Day{date}_event");
+
+
+            }
+
 
         }
     }

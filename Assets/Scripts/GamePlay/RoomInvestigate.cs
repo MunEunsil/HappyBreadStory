@@ -16,7 +16,7 @@ namespace HappyBread.GamePlay
 
         public KeyCode NextCommand;
         public KeyCode NextFunctionCommand;
-
+        
 
         public Canvas RoomCanvas;    //raycast가 될 캔버스
         private GraphicRaycaster gr;
@@ -31,17 +31,18 @@ namespace HappyBread.GamePlay
 
         //public List<Evidence> roomEvidence = new List<Evidence>();
         
-        private void OnEnable()
-        {
-            GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
-            //cursorIndex = 0;
-            //Render();
-        }
+        //private void OnEnable()
+        //{
+        //    GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
+        //    //cursorIndex = 0;
+        //    //Render();
+        //}
 
         private void Update()
         {
             if (NextFunctionCommand != KeyCode.None)
             {
+                Debug.Log(NextFunctionCommand);
                 switch (NextFunctionCommand)
                 {
                     //case GlobalGameData.keyCodeInteract:
@@ -64,7 +65,7 @@ namespace HappyBread.GamePlay
 
         private void ClickInteract()
         {
-
+            Debug.Log("마우스 클릭 함");
             ped.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>(); // 여기에 히트 된 개체 저장
             
@@ -115,11 +116,10 @@ namespace HappyBread.GamePlay
 
         }
 
-
-        private void Awake()
+        private void Start()
         {
             GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
-
+            
             gr = RoomCanvas.GetComponent<GraphicRaycaster>();
             ped = new PointerEventData(null);
         }

@@ -8,8 +8,6 @@ namespace HappyBread.GamePlay
 {
     public class CallBtn : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject reasoningManager;
 
         public void Appear()
         {
@@ -24,7 +22,10 @@ namespace HappyBread.GamePlay
         {
             //.SetActive(true);
             //state 변경 
-            SceneManager.LoadScene("CallScene", LoadSceneMode.Additive);
+            GameModel.Instance.EffectManager.FadeIn();
+            SceneManager.LoadScene("CallEvent", LoadSceneMode.Additive);
+            GameModel.Instance.StateManager.ChangeState(new CallState());
+            
             //GameModel.Instance.StateManager.ChangeState(new ReasoningState());
 
         }

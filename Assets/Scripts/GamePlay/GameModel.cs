@@ -72,7 +72,8 @@ namespace HappyBread.GamePlay
         private ReasoningManager reasoningManager;
         [SerializeField]
         private TalkBoxData talkBoxData;
-
+        [SerializeField]
+        private checkDiaryDialogue checkDiarydialoge;
 
 
         public TalkBoxData TalkBoxData
@@ -84,6 +85,19 @@ namespace HappyBread.GamePlay
                     talkBoxData = GameModel.FindObjectOfType<TalkBoxData>();
                 }
                 return talkBoxData;
+            }
+        }
+ 
+
+        public checkDiaryDialogue checkDiaryDialogue
+        {
+            get
+            {
+                if (checkDiarydialoge == null)
+                {
+                    checkDiarydialoge = GameModel.FindObjectOfType<checkDiaryDialogue>();
+                }
+                return checkDiarydialoge;
             }
         }
 

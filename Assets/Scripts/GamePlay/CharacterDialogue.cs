@@ -26,8 +26,8 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.cake;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
-                        //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
                     {
@@ -56,6 +56,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
                     {
@@ -82,7 +83,7 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.hodu;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
-                        //... 대화
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
                     }
                     else
@@ -142,6 +143,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
                     {
@@ -172,6 +174,8 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        //if문 추가해서 strawRoomOpen 조건 넣어주기 
                     }
                     else
                     {
@@ -187,6 +191,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
                     {

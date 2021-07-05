@@ -40,7 +40,11 @@ namespace HappyBread.GamePlay
             //시간에 따라 식빵 게이지 줄이기
             if (GameModel.Instance.Hp.hp != 0)
             {
-                GameModel.Instance.Hp.Add(-Time.deltaTime);
+                if (DataManager.Instance.callStart==false)
+                {
+                    GameModel.Instance.Hp.Add(-Time.deltaTime);
+                }
+                
             }
             else // 식빵 게이지가 0이면 
             {
