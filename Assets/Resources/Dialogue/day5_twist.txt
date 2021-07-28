@@ -1,3 +1,0 @@
-Message : askAddAvidence : twist_stand : 이게 무슨일인지... 이번 파티를 위해 들인 돈이 얼마..!! 하... 우리 호텔에 진짜 살빵이 존재하기라도 한건가? 우리 호텔 명성이!!!
-Question : askAddAvidence : twist_stand : :경찰에 신고해야하는거 아닌가요?
-Answer: askAddAvidence : jelly_stand :어차피 솜사탕 안개가 걷히지 않으면 제대로된 수사요청을 하지 못합니다. 게다가 정확한 증거도 없고 하참... 가족이라고 그래도 좀 쓸만한가 했는데 이렇게 방해나 되서야. 

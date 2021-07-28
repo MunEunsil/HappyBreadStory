@@ -1,3 +1,0 @@
-Message : askAddAvidence : jellyjelly_stand :탐정님,  탐정님은 천연재료에 대해 어떻게 생각하세요?
-Question : askAddAvidence : jelly_stand : :네? 어...그냥 우리 몸 속 장기...  : 뭐라고 정의내리기 힘들죠.. 
-Answer: askAddAvidence : jelly_stand : 아...장...장기... : 음..그렇네요..감사해요.

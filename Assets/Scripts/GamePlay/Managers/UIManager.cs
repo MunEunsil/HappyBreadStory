@@ -46,7 +46,7 @@ namespace HappyBread.GamePlay
         }
         public void CallBtnAppear()
         {
-            GameModel.Instance.CallBtn.Appear();
+            //GameModel.Instance.CallBtn.Appear();
         }
         public void CallBtnHide()
         {

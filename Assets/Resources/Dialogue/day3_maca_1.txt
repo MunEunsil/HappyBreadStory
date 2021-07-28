@@ -1,0 +1,11 @@
+Message : askAddAvidence :character : 마카롱_기본 :탐정님 혹시 스토커나 협박법같은것도 잡아주시나여?
+Message : askAddAvidence :Player : 유저_기본 :왜요? 혹시 지금 위협 받고 있나요?
+Message : askAddAvidence :character : 마카롱_기본 :아..아니에요 제가 무슨! 하하! 그냥 오븐그램 각 잡으려고 하죠오~!
+Message : askAddAvidence :character : 마카롱_기본 :........
+Message : askAddAvidence :character : 마카롱_기본 :사실 제가 이 호텔에 온 뒤로 협박 편지를 받고 있는데...
+Message : askAddAvidence :Player : 유저_기본 :네?!
+Message : askAddAvidence :character : 마카롱_기본 :누군지 예상은 가지만 좀 애매해서요. (협박 편지 제공)
+Message : askAddAvidence :character : 마카롱_기본 :혹시 찾아주실 수 있나요?
+Message : askAddAvidence :Player : 유저_기본 :알겠습니다. 한번 조사해보겠습니다..!
+Message : askAddAvidence :character : 마카롱_기본 : 감사해요! 언제든 제 방에 오셔서 말씀해주세요! 아~! 탐정님, 오늘 세렌데피티 호텔의 장식인 가면 무도회 하죠?! 너무 멋질 것 같아요! ㅎㅎ 기대된다~~!!
+Message : askAddAvidence :Player : 유저_기본 :...(아마 오늘 가면 무도회는 취소될 텐데...)

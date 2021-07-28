@@ -1,1 +1,2 @@
-Message : askAddAvidence : 소라빵_기본 : 짐을 저에게 주세요…방에 올려다드릴게요...흐흐흐흐 
+Message : askAddAvidence:character:소라빵_기본:짐을 저에게 주세요…방에 올려다드릴게요...흐흐흐흐
+

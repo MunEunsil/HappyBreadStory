@@ -1,0 +1,5 @@
+Message : askAddAvidence:character :젤리_기본:무슨 일이라도?
+Message : askAddAvidence: Player :유저_기본:평소에도 그림을 그리시나요?
+Message : askAddAvidence:character :젤리_기본:아 네, 그럼요. 전 어딜가나 스케치 도구를 들고다녀요. 언제 어디서 제가 영감을 받을지 모르니까요. (웃음)
+Message : askAddAvidence: Player :유저_기본:그럼 혹시 이번 경매에서도 본인 그림을...
+Message : askAddAvidence:character :젤리_기본:어머, 네 맞아요. 부끄럽지만 항상 감사해요. 제 작품을 공감해주고 가치를 높게 평가해줘서요. 그 기대에 부흥하려고 더 열심히 할때도 있거든요. 

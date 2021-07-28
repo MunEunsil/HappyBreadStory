@@ -1,3 +1,4 @@
-Message : askAddAvidence : player : 딸기잼의 죽음은 .... 
-Question : askAddAvidence : player : :사고사 : 타살 
-Answer : askAddAcidence : :딸기잼의 죽음이 사고사인 이유는! : 딸기잼의 죽음이 타살인 이유는..! 
+Message : askAddAvidence : Player : 유저_기본 : 딸기잼의 죽음은 .... 
+Question : askAddAvidence : Player : 유저_기본 : :사고사 : 타살 
+Answer : askAddAcidence : Player: : 딸기잼의 죽음이 사고사인 이유는! : 딸기잼의 죽음이 타살인 이유는..! 
+

@@ -1,0 +1,3 @@
+Message : askAddAvidence:character :팬케이크_기본:이상하다...~? 왜 방금 닦았는데 또 시럽이 있지~? 흐으음
+Message : askAddAvidence:Player :유저_기본:저기...팬케익씨...팬케익씨의 시럽이 떨어지는 것 같..
+Message : askAddAvidence:character :팬케이크_기본:어어~?? 음 이상하네~?헤... 오늘은~ 경매기부니까~? 만찬때보다는~ 덜 더럽겠다 헤...

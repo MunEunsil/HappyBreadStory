@@ -13,8 +13,8 @@ namespace HappyBread.Core
         public const KeyCode keyCodeInteract = KeyCode.Space;
         public const KeyCode keyCodeCaseDiary = KeyCode.P;
         public const KeyCode KeyCodeSelect = KeyCode.Space;
-        public const KeyCode keyCodeCall = KeyCode.C;
-        public const KeyCode keyCodeRoom = KeyCode.B;
+       // public const KeyCode keyCodeCall = KeyCode.C;
+        //public const KeyCode keyCodeRoom = KeyCode.B;
         public const KeyCode keyExit = KeyCode.Escape;
 
         public const KeyCode mouseClick = KeyCode.Mouse0;

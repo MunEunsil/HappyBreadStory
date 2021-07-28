@@ -13,12 +13,18 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class Dialogue : MonoBehaviour
     {
-        public Image characterUI;
+        //public Image characterUI;
         public Image backgroundUI;
         public Text textUI;
         public float typingIdleTime = 0.05f;
         public KeyCode NextCommand;
         public Event ConnectedEvent { get; set; }
+
+        public GameObject characterUI_;
+        public GameObject backgroundUI_;
+        public GameObject evidenceUI_;
+        public GameObject playerUI_;
+
 
         public Text characterName;
 
@@ -28,6 +34,11 @@ namespace HappyBread.GamePlay
         private List<string> currentDialogue;
         private int currentIndex;
         private string currentText;
+
+        //public Image evidenceUI;
+
+        //public Image playerUI;
+
 
         public int answerIndex = -1;   //AnswerIndex에 해당하는 answer을 출력하기 위함.
         public QuestionBox questionBox;
@@ -112,6 +123,7 @@ namespace HappyBread.GamePlay
             currentIndex++;
             if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
             {
+
                 End();
                 return;
             }
@@ -120,9 +132,9 @@ namespace HappyBread.GamePlay
 
             // flag
             // Message ->
-            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ] 
+            // 1번 인자[ flag ], 2번 인자 [ Background Name ],3번 인자[ 캐릭터or증거or플레이어 ],4번 인자 [ Character Name ], 5번 인자 [ Message ] 
             // Question ->
-            // 1번 인자[ flag ], 2번 인자 [ Background Name ], 3번 인자 [ Character Name ], 4번 인자 [ Message ], 5번 인자 [ Question 1 ], 6번 인자 [ Question 2 ] , ...
+            // 1번 인자[ flag ], 2번 인자 [ Background Name ],3번 인자[ 캐릭터or증거or플레이어 ]  ,4번 인자 [ Character Name ], 4번 인자 [ Message ], 5번 인자 [ Question 1 ], 6번 인자 [ Question 2 ] , ...
             // Question의 내용은 인자에서 읽는다.
             string flag = seperated[0].Trim();
 
@@ -155,7 +167,7 @@ namespace HappyBread.GamePlay
             List<string> questions = new List<string>();
 
             // 질문 내용을 List에 추가한다.
-            for (int index = 4; index < seperated.Length; index++)
+            for (int index = 5; index < seperated.Length; index++)
             {
                 questions.Add(seperated[index].Trim());
             }
@@ -169,7 +181,7 @@ namespace HappyBread.GamePlay
         private void ShowAnswerMessage(string[] seperated)
         {
             string backgroundFileName = seperated[1].Trim();
-            string characterFileName = seperated[2].Trim();
+            string characterFileName = seperated[3].Trim();
 
             Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
             Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
@@ -186,17 +198,20 @@ namespace HappyBread.GamePlay
 
             if (characterSprite == null)
             {
-                characterUI.enabled = false;
+               // characterUI.enabled = false;
+                characterUI_.SetActive(false);
             }
             else
             {
-                characterUI.enabled = true;
-                characterUI.sprite = characterSprite;
+                //characterUI.enabled = true;
+                //characterUI.sprite = characterSprite;
+                characterUI_.SetActive(false);
+                characterUI_.GetComponent<Image>().sprite = characterSprite;
             }
             answerIndex = questionBox.AnswerIndex;
 
             // 메세지 변환
-            currentText = InjectVariable(seperated[3+answerIndex].Trim()); //3+amswerIndex 가 답변순서가 맞는지 확인 
+            currentText = InjectVariable(seperated[4+answerIndex].Trim()); //3+amswerIndex 가 답변순서가 맞는지 확인 
 
             if (typingCoroutine != null)
             {
@@ -210,7 +225,7 @@ namespace HappyBread.GamePlay
         private void ShowQuestion(string[] seperated)
         {
 
-            int startIndex = 4;
+            int startIndex = 5;
             List<string> questions = new List<string>();
 
             // 질문 내용을 List에 추가한다.
@@ -229,39 +244,143 @@ namespace HappyBread.GamePlay
         private void ShowMessage(string[] seperated)
         {
             string backgroundFileName = seperated[1].Trim();
-            string characterFileName = seperated[2].Trim();
+            string characterFileName = seperated[3].Trim(); //캐릭터나 증거의 이미지
+            string isEvidence = seperated[2].Trim();
 
-            Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
-            Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+            if (isEvidence == "Evidence") //증거일 때
+            {
+                Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+                Sprite EvidenceSprite = ResourceLoader.LoadSprite(characterFileName);
 
-            if (backgroundSprite == null)
-            {
-                backgroundUI.enabled = false;
+                //playerUI.enabled = false;
+                //characterUI.enabled = false;
+                characterUI_.SetActive(false);
+                playerUI_.SetActive(false);
+
+                if (backgroundSprite == null)
+                {
+                    backgroundUI.enabled = false;
+                    backgroundUI_.SetActive(false);
+                }
+                else
+                {
+                  //  backgroundUI.enabled = true;
+                    backgroundUI_.SetActive(true);
+                    backgroundUI_.GetComponent<Image>().sprite = backgroundSprite;
+                    //backgroundUI.sprite = backgroundSprite;
+                }
+
+                if (EvidenceSprite == null)
+                {
+                    evidenceUI_.SetActive(false);
+                    //evidenceUI.enabled = false;
+                }
+                else
+                {
+                  //  characterUI.enabled = true;
+                    //evidenceUI.sprite = EvidenceSprite;
+                    evidenceUI_.SetActive(true);
+                    evidenceUI_.GetComponent<Image>().sprite = EvidenceSprite;
+                }
+
+                // 메세지 변환
+                currentText = InjectVariable(seperated[4].Trim());
+
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                }
+                typingCoroutine = StartCoroutine(SmoothTyping(currentText));
             }
-            else
+            else if (isEvidence == "Player") //플레이어 대화 일 때
             {
-                backgroundUI.enabled = true;
-                backgroundUI.sprite = backgroundSprite;
+                Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+                Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
+
+                //characterUI.enabled = false;
+                //evidenceUI.enabled = false;
+                characterUI_.SetActive(false);
+                evidenceUI_.SetActive(false);
+
+                if (backgroundSprite == null)
+                {
+                    backgroundUI.enabled = false;
+                }
+                else
+                {
+                    backgroundUI.enabled = true;
+                    backgroundUI.sprite = backgroundSprite;
+                }
+
+                if (playerSprite == null)
+                {
+                   // playerUI.enabled = false;
+                    playerUI_.SetActive(false);
+                }
+                else
+                {
+                    //  characterUI.enabled = true;
+                    //playerUI.sprite = playerSprite;
+                    playerUI_.SetActive(true);
+                    playerUI_.GetComponent<Image>().sprite = playerSprite;
+                }
+
+                // 메세지 변환
+                currentText = InjectVariable(seperated[4].Trim());
+
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                }
+                typingCoroutine = StartCoroutine(SmoothTyping(currentText));
+            }
+            else //캐릭터 대화일 때
+            {
+                playerUI_.SetActive(false);
+                evidenceUI_.SetActive(false);
+                Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+                Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+
+                //playerUI.enabled = false;
+                //evidenceUI.enabled = false;
+
+                if (backgroundSprite == null)
+                {
+                    backgroundUI.enabled = false;
+                }
+                else
+                {
+                    backgroundUI.enabled = true;
+                    backgroundUI.sprite = backgroundSprite;
+                }
+
+                if (characterSprite == null)
+                {
+                    //characterUI.enabled = false;
+                    characterUI_.SetActive(false);
+                }
+                else
+                {
+                    //characterUI.enabled = true;
+                    //characterUI.sprite = characterSprite;
+
+                    characterUI_.SetActive(true);
+                    characterUI_.GetComponent<Image>().sprite = characterSprite;
+
+
+                }
+
+                // 메세지 변환
+                currentText = InjectVariable(seperated[4].Trim());
+
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                }
+                typingCoroutine = StartCoroutine(SmoothTyping(currentText));
             }
 
-            if (characterSprite == null)
-            {
-                characterUI.enabled = false;
-            }
-            else
-            {
-                characterUI.enabled = true;
-                characterUI.sprite = characterSprite;
-            }
 
-            // 메세지 변환
-            currentText = InjectVariable(seperated[3].Trim());
-
-            if(typingCoroutine != null)
-            {
-                StopCoroutine(typingCoroutine);
-            }
-            typingCoroutine = StartCoroutine(SmoothTyping(currentText));
         }
 
         private void End()

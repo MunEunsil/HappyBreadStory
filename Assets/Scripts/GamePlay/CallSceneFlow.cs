@@ -137,35 +137,35 @@ namespace HappyBread.GamePlay
             else if (obj.CompareTag("Call_Text1_leftButton")) //text1 왼쪽 버튼
             {
                 Debug.Log("왼쪽 버튼 누름");
-                if (CallManager.Instance.text1 == 0) { CallManager.Instance.text1 = 2; }
+                if (CallManager.Instance.text1 == 0) { CallManager.Instance.text1 = 1; }
                 else { CallManager.Instance.text1 = CallManager.Instance.text1 - 1; }
 
                 CallManager.Instance.RenderText1();
             }
             else if (obj.CompareTag("Call_Text1_rightButton")) //text1 오른쪽 버튼
             {
-                if (CallManager.Instance.text1 == 2) { CallManager.Instance.text1 = 0; }
+                if (CallManager.Instance.text1 == 1) { CallManager.Instance.text1 = 0; }
                 else { CallManager.Instance.text1 = CallManager.Instance.text1 + 1; }
 
                 CallManager.Instance.RenderText1();
             }
             else if (obj.CompareTag("Call_Text2_leftButton")) //text2 왼쪽 버튼
             {
-                if (CallManager.Instance.text2 == 0) { CallManager.Instance.text2 = 2; }
+                if (CallManager.Instance.text2 == 0) { CallManager.Instance.text2 = 1; }
                 else { CallManager.Instance.text2 = CallManager.Instance.text2 - 1; }
 
                 CallManager.Instance.RenderText2();
             }
             else if (obj.CompareTag("Call_Text2_rightButton "))  //text2 오른쪽 버튼
             {
-                if (CallManager.Instance.text2 == 0) { CallManager.Instance.text2 = 0; }
+                if (CallManager.Instance.text2 == 1) { CallManager.Instance.text2 = 0; }
                 else { CallManager.Instance.text2 = CallManager.Instance.text2 + 1; }
 
                 CallManager.Instance.RenderText2();
             }
             else if (obj.CompareTag("Call_okButton"))   //확인버튼
             {
-                CallManager.Instance.firstAskDone = true;
+                //CallManager.Instance.firstAskDone = true;
                 //선택한 증거에 대한 대화 
                 if (DataManager.Instance.isSuicide == true) //타살 
                 {

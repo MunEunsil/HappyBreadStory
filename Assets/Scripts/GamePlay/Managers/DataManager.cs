@@ -26,11 +26,16 @@ namespace HappyBread.GamePlay
 
         private bool isPause = false;
 
+        public bool dialogeEvidence = false; 
+
         public string PlayerName { get; set; }
 
         public List<Evidence> evidences = new List<Evidence>();
         public int date = 1;
         public int floor = 1;
+
+
+        public int newsnum = 1;
 
         public int select = -1;
         public bool stair = false;
@@ -76,43 +81,43 @@ namespace HappyBread.GamePlay
         //각 사건에서 사용할 증거 변수
         
         //딸기사건 사고/타살
-        public string[] strawCaseEvidence1 = new string[] {"경매그림","난간","냉동창고_열쇠","딸기뚜껑","리본","신문기사" };
+        public string[] straw_CaseEvidence1 = new string[] {"난간의높이","딸기잼화장품","도박_초대장","딸기뚜껑","1억수표3장","빨간부츠" };
         //딸기사건 범인지목
-        public string[] strawCaseEvidence2 = new string[] { "젤리젤리사진", "난간", "쪽지", "신문기사", "리본", "젤리화장품" };
+        public string[] straw_CaseEvidence2 = new string[] { "슈가게이지", "땅콩잼의편지", "명품가방", "명품모자", "젤리젤리사진", "딸기잼의소문과동기" };
 
         //호두사건 사고/타살
-        public string[] hoduCaseEvidence1 = new string[] { "경매그림", "난간", "냉동창고_열쇠", "딸기뚜껑", "리본", "젤리화장품" };
+        public string[] hodu_CaseEvidence1 = new string[] { "도박코인", "냉동창고_열쇠", "녹은아이스크림눈사람", "화장품광고지", "도넛과호두관계", "민중을이끄는꽈배기" };
         //호두사건 범인지목 
-        public string[] hoduCaseEvidence2 = new string[] { "경매그림", "난간", "냉동창고_열쇠", "딸기뚜껑", "리본", "쪽지" };
+        public string[] hodu_CaseEvidence2 = new string[] { "싸인없는그림", "오려진신문기사", "막가롱과거사진", "막가롱의약", "리본", "막가롱액자사진" };
 
         //젤리젤리사건 사고/타살
-        public string[] jellyjellyCaseEvidence1 = new string[] { "경매그림", "난간", "냉동창고_열쇠", "딸기뚜껑", "리본", "신문기사" };
+        public string[] jellyjelly_CaseEvidence1 = new string[] { "오븐방마시멜로", "막가롱의협박편지", "소라빵의목격", "냉동창고_열쇠", "젤리젤리의흔적", "젤리젤리다이어리" };
         //젤리젤리 범인지목
-        public string[] jellyjellyCaseEvidence2 = new string[] { "경매그림", "난간", "냉동창고_열쇠", "딸기뚜껑", "리본", "신문기사" };
+        public string[] jellyjelly_CaseEvidence2 = new string[] { "젤리가스크랩한기사", "젤리젤리다이어리", "젤리의미완성그림", "젤리의화장품", "시럽묻은편지", "크로아상거짓말" };
 
 
         //각 사건에서 사용할 증거 텍스트
 
         //딸기사건 사고/타살
-        public string[] strawCaseText1 = new string[] { "선택지1","선택지2","선택지3"  };
-        public string[] strawCaseText2 = new string[] {"선택지1","선택지2","선택지3" };
+        public string[] straw_CaseText1 = new string[] { "딸기잼보다 훨씬 높다.","딸기잼의 돈을 노렸다." };
+        public string[] straw_CaseText2 = new string[] {"누군가에게 받은것이다.","돌려서 여는 형식이다."};
         //딸기사건 범인지목
-        public string[] strawCaseText11 = new string[] { "선택지1", "선택지2", "선택지3" };
-        public string[] strawCaseText22 = new string[] { "선택지1", "선택지2", "선택지3" };
+        public string[] straw_CaseText11 = new string[] { "투자 실패로, 많은 돈이 필요하다.", "같은 학교 출신이라는 소문이 있다."};
+        public string[] straw_CaseText22 = new string[] { "빌미로 돈을 달라 협박했다.", "결혼을 취소해달라 했다."};
 
         //호두사건 사고/타살
-        public string[] hoduCaseText1 = new string[] { "선택지1", "선택지2", "선택지3" };
-        public string[] hoduCaseText2 = new string[] { "선택지1", "선택지2", "선택지3" };
+        public string[] hodu_CaseText1 = new string[] { "오랫동안 냉동 창고 문이 열려있었다.", "관리가 소홀했다." };
+        public string[] hodu_CaseText2 = new string[] { "원래는 1층에 있으면 안된다.", "다른 누군가 있었다." };
         //호두사건 범인지목
-        public string[] hoduCaseText11 = new string[] { "선택지1", "선택지2", "선택지3" };
-        public string[] hoduCaseText22 = new string[] { "선택지1", "선택지2", "선택지3" };
+        public string[] hodu_CaseText11 = new string[] { "협박 편지를 보냈다.", "어디선가 봤던 물건이다." };
+        public string[] hodu_CaseText22 = new string[] { "훔쳤다.", "싸인이 없어 사용할 수 없다." };
 
         //젤리젤리사건 사고/타살
-        public string[] jellyjellyCaseText1 = new string[] { "선택지1", "선택지2", "선택지3" };
-        public string[] jellyjellyCaseText2 = new string[] { "선택지1", "선택지2", "선택지3" };
+        public string[] jellyjelly_CaseText1 = new string[] { "잠금 장치 없는 밀어서 여는 문이다.", "너무 온도가 높아 녹아 내렸다." };
+        public string[] jellyjelly_CaseText2 = new string[] { "계획적인 연쇄 살인이다.", "소라빵이 담당 직원이었다" };
         //젤리젤리사건 범인지목
-        public string[] jellyjellyCaseText11 = new string[] { "선택지1", "선택지2", "선택지3" };
-        public string[] jellyjellyCaseText22 = new string[] { "선택지1", "선택지2", "선택지3" };
+        public string[] jellyjelly_CaseText11 = new string[] { "진실을 밝히려 했다.  ", "불안정한 심리였다." };
+        public string[] jellyjelly_CaseText22 = new string[] { "재료 차별을 반대한다.", "천연 재료인척 한다." };
 
 
         //엔딩 결과를 위함 

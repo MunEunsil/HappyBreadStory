@@ -22,6 +22,9 @@ namespace HappyBread.GamePlay
         {
             //.SetActive(true);
             //state 변경 
+            GameModel.Instance.AudioManager.StopBackgroundAudio();
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("추리하기");
+
             GameModel.Instance.EffectManager.FadeIn();
             SceneManager.LoadScene("CallEvent", LoadSceneMode.Additive);
             GameModel.Instance.StateManager.ChangeState(new CallState());

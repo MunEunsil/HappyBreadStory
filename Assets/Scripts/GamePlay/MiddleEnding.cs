@@ -23,9 +23,10 @@ namespace HappyBread.GamePlay
 
         public void Start()
         {
+            int date = DataManager.Instance.date;
             string MImage = DataManager.Instance.middleEndingName;
             endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite(MImage);
-            SceneManager.UnloadScene("map1_1"); //day에 따라 다르게 해야함으로 코드 추가 필요 
+            SceneManager.UnloadSceneAsync($"map{date}_1"); //day에 따라 다르게 해야함으로 코드 추가 필요 
         }
 
 
@@ -41,7 +42,7 @@ namespace HappyBread.GamePlay
                     NextCommand = KeyCode.None;
 
                     SceneManager.LoadScene("Opening", LoadSceneMode.Additive);
-                    SceneManager.UnloadScene("Player");
+                    SceneManager.UnloadSceneAsync("Player");
                     GameModel.Instance.MiddleEnding.gameObject.SetActive(false);
 
                 }

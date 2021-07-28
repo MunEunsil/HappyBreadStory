@@ -1,5 +1,0 @@
-Message : askAddAvidence : jelly_stand : 안녕하세요 탐정님.
-Question : askAddAvidence : jelly_stand : :오늘은 혼자네요? 
-Answer: askAddAvidence : jelly_stand :네... 젤리젤리랑 좀 싸웠거든요..
-Message : askAddAvidence : jelly_stand :이번 작품에 대해 언쟁을 좀 했어요. 아시다시피 저희 둘 작품 자체가 차별에 관한거라 예민하거든요...
-Message : askAddAvidence : jelly_stand :젤리젤리가 많이 화난 것 같아 걱정이네요.. 

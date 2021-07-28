@@ -1,1 +1,3 @@
-Message :askAddAvidence : twist_stand : 이번주 단 6일간, 우리 호텔에서만 볼 수 있는 솜사탕 안개를 꼭 즐기시길 바랍니다. 
+Message : askAddAvidence:character:꽈배기_기본:무엇이 궁금하신가요?
+Message : askAddAvidence:Player:유저_기본:왜 7일동안 행사가 진행돼?
+Message : askAddAvidence:character:꽈배기_기본:우리 세렌디피티 호텔만이 솜사탕 안개를 볼 수 있는데, 그게 약 7일동안 유지된답니다~? 매우 아름답지만 이 기간엔 초대된 빵들만 올 수 있기 때문에 very very 특별하죠~

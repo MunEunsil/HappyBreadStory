@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using HappyBread.GamePlay.GameState;
 
 namespace HappyBread.GamePlay
 {
@@ -437,7 +437,7 @@ namespace HappyBread.GamePlay
 
                 for (int i=0; i< DataManager.Instance.evidences.Count; i++)
                 {
-                    if (DataManager.Instance.evidences[i].Name == name);
+                    if (DataManager.Instance.evidences[i].Sprite == name)
                     {
                         DataManager.Instance.evidences[i].Action();
                         break;
@@ -562,7 +562,8 @@ namespace HappyBread.GamePlay
         }
         private void Exit()
         {
-            GameModel.Instance.StateManager.UndoState();
+            //GameModel.Instance.StateManager.UndoState();
+            GameModel.Instance.StateManager.ChangeState(new PlayingState());
             NextCommand = KeyCode.None;
             gameObject.SetActive(false);
         }

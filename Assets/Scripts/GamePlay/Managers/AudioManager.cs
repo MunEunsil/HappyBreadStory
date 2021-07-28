@@ -11,9 +11,12 @@ namespace HappyBread.GamePlay
         public GameObject EffectAudioPrefab;
 
         private AudioSource backgroundAudioSource;
+        //private AudioSource openingAudioSource;
+        //private AudioSource callAudioSource;
 
         public void ChangeBackgroundAudio(string name)
         {
+
             AudioClip audioClip = ResourceLoader.LoadBackgroundAudio(name);
             backgroundAudioSource.clip = audioClip;
         }
@@ -36,8 +39,11 @@ namespace HappyBread.GamePlay
         private void Start()
         {
             backgroundAudioSource = BackgroundAudio.GetComponent<AudioSource>();
-            ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
+            //ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
+            ChangeBackgroundAudio("오프닝");
             PlayBackgroundAudio();
         }
+
+
     }
 }

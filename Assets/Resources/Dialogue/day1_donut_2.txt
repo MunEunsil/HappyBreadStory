@@ -1,1 +1,1 @@
-Message : askAddAvidence : donut_stand : 유명하세요? ( 싸인해달라고 할까? )
+Message : askAddAvidence:character:도넛_기본:네? 뭐라고 하셨어요? (핸드폰 중)

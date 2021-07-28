@@ -1,5 +1,0 @@
-Message : askAddAvidence : pancake_stand : 아...아.....난 오늘 친구를 잃었어....(딸기잼 시체를 청소중)
-Question : askAddAvidence : pancake_stand : :네? 딸기잼이요?
-Answer: askAddAvidence : pancake_stand :아..! 아니에여...헤...먼 친구..
-Question : askAddAvidence : pancake_stand : : 아....괜찮으세요?
-Answer: askAddAvidence : pancake_stand :.헤...괜찮아... 이런일 한두번 하는 것도 아닌걸....헤....

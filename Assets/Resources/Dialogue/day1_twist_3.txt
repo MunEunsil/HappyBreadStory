@@ -1,4 +1,3 @@
-Message :askAddAvidence : twist_stand : 언제든 궁금하게 있으시면 저를 불러주세요.
-Question :askAddAvidence: twist_stand : 무엇이 궁금하신가요? : 왜 6일간 진행돼? : 행사 일정이 어떻게 돼? 
-Answer :askAddAvidence: twist_stand : 우리 세렌디피티 호텔만이 솜사탕 안개를 볼 수 있는데, 그게 약 7일동안 유지된답니다~? 매우 아름답지만 이 기간엔 초대된 빵들만 올 수 있기 때문에 very very 특별하죠~ :  저희는 7일동안 [만찬]과 [경매 기부] 마지막날에 [가면무도회]가 있답니다~ 스케줄표 드릴가요?
-
+Message : askAddAvidence:character:꽈배기_기본:무엇이 궁금하신가요?
+Message : askAddAvidence:Player:유저_기본:행사 일정이 어떻게 돼? 
+Message : askAddAvidence:character:꽈배기_기본:저희는 7일동안 [만찬]과 [경매 기부] 마지막날에 [가면무도회]가 있답니다~

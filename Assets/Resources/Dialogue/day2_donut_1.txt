@@ -1,0 +1,3 @@
+Message : askAddAvidence:character :도넛_기본:정말 사고죠?
+Message : askAddAvidence:Player :유저_기본: 네?
+Message : askAddAvidence:character :도넛_기본:아니...사고니까 알아서 죽어준거잖아요

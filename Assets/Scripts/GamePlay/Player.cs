@@ -44,9 +44,9 @@ namespace HappyBread.GamePlay
                 {
                     GameModel.Instance.Hp.Add(-Time.deltaTime);
                 }
-                
+
             }
-            else // 식빵 게이지가 0이면 
+            else if(GameModel.Instance.Hp.hp == 0)// 식빵 게이지가 0이면 
             {
                 MiddleEnding4();
             }
@@ -79,10 +79,6 @@ namespace HappyBread.GamePlay
                     case GlobalGameData.keyCodeCaseDiary:
                         Debug.Log("a누름");
                         Debug.Log(DataManager.Instance.evidences);
-                        break;
-                    case GlobalGameData.keyCodeCall:
-                        Debug.Log("c누름");
-                        AttemptOpenCall();
                         break;
                     default:
                         break;

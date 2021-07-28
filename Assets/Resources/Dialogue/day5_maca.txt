@@ -1,3 +1,0 @@
-Message : askAddAvidence : maca_stand : 아~ 탐정님, 오늘 원래 가면 무도회 하는 날인데... 안하겠죠?
-Question : askAddAvidence : jelly_stand : :아마 안하지 않을까요..?
-Answer: askAddAvidence : jelly_stand :아씨~! 세렌데피티 호텔의 마지막 장식인 가면 무도회를 딱! 해줘야 그림도 살고 인생샷 건지는건데! 그래도 뭐라도 주겠죠? 뭘까? ㅎㅎ 기대되요~~!!

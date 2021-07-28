@@ -13,6 +13,11 @@ namespace HappyBread.GamePlay
         public int currentStep;
         public Text playerName;
 
+        //인포 오브젝트 
+        public GameObject info;
+
+
+
         public void Next()
         {
             GameModel.Instance.EffectManager.FadeOut();
@@ -20,7 +25,9 @@ namespace HappyBread.GamePlay
 
             if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
             {
-                Invoke("NextScene", 2f);
+                //Invoke("NextScene", 2f);
+                GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
+                GameModel.Instance.AudioManager.PlayBackgroundAudio();
                 return;
             }
 
@@ -48,10 +55,11 @@ namespace HappyBread.GamePlay
             GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next(); }));
         }
 
-        private void NextScene()
+        public void NextScene()
         {
             SceneManager.LoadScene("Player", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync("Opening");
+
         }
 
         public void SetPlayerName()
@@ -64,6 +72,8 @@ namespace HappyBread.GamePlay
             else
             {
                 DataManager.Instance.PlayerName = playerName.text;
+                Invoke("NextScene", 2f);
+                GameModel.Instance.AudioManager.StopBackgroundAudio();
                 Next();
             }
         }
@@ -72,5 +82,17 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.StateManager.SetState(new OpeningState());
         }
+
+        public void ClickInfo()
+        {
+            info.SetActive(true);
+        }
+
+        public void ClickInfoEscape()
+        {
+            info.SetActive(false);
+        }
+
+
     }
 }

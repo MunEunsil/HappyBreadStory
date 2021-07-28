@@ -1,3 +1,1 @@
-Message : askAddAvidence : maca_stand : 저랑 사진찍어주세요~(오븐그램에 올려야지) 
-Message : askAddAvidence : maca_stand : 음 여기가 조명이 좋네. 어머! 보셨어요? 딸기잼이랑 젤리랑 친구래요!! 저도 친해지고 싶어요
-Message : askAddAvidence : maca_stand : (찰칵 찰칵)
+Message : askAddAvidence:character:마카롱_기본: 음~ 여기가 조명이 좋네~ 보셨어요? 딸기잼이랑 젤리랑 친구라던데! 나도 친해지고 싶당! 

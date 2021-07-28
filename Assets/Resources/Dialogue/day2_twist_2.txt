@@ -1,0 +1,4 @@
+Message : askAddAvidence:character :꽈배기_기본: 아 참, 오늘은 경매기부가 진행됩니다. 탐정님도 잊지않고 물건을 가져오셨죠? 
+Message : askAddAvidence : Player :유저_기본: .... 
+Message : askAddAvidence:character :꽈배기_기본: 하하…(정색)
+Message : askAddAvidence:character :제가 정~말 다아~ 좋은 곳에 기부하려고 하니 걱정하지 마시고 작은거라도 다 괜찮은데...손님들이 항상 큰걸 가져오시니...이따 뵙겠습니다

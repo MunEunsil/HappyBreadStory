@@ -1,0 +1,4 @@
+Message : askAddAvidence :character : 크로아상_기본 :에잉~ 돈이나 좀 만저보나 했는데~!! 이런저런 사고 때문에 내 일만 늘게 생겼네! 탐정! 집에 가기 전에 나랑 사건 기록 하는 것 좀 도와줘야겠어~
+Message : askAddAvidence :Player : 유저_기본 :아...네네
+Message : askAddAvidence :character : 크로아상_기본 :으..탐정 내가 어제 오븐 방에 있지 않았나! 어우 소름돋아서 원~ 내일 빨리 집으로 가야겠어!
+Message : askAddAvidence :character : 크로아상_기본 :아니 근데 말이야, 오븐 방 문은 잠기지도 않고 안에서 밖을 미는 형식인데, 왜 그렇게 손잡이에 녹아있었나~? 열려고 시도했나? 이상하네~?

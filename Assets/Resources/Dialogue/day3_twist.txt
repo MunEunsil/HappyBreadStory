@@ -1,6 +1,0 @@
-Message : askAddAvidence : twist_stand : 오늘은 경매기부가 진행됩니다~ 탐정님도 잊지않고 물건을 가져오셨죠?
-Question : askAddAvidence : twist_stand : :물론 가져왔지
-Answer: askAddAvidence : twist_stand :역시! 믿고있었다고요! 하하. 제가 정~말 다아~ 좋은 곳에 기부하려고 하니 걱정하지 마시고 작은거라도 다 괜찮은데...손님들이 항상 큰걸 가져오시니...이따 뵙겠습니다.
-Question : askAddAvidence : twist_stand : :(가져온 물건을 보여준다.)
-Answer: askAddAvidence : twist_stand :아...아니..?: .... 
-Answer: askAddAvidence : twist_stand : 아아 걱정마세요! 팔기만 하는게 아니라 사는 역할도있어야하니까요~ 하하 이따 뵙겠습니다. 쳇.

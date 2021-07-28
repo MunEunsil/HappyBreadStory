@@ -37,7 +37,7 @@ namespace HappyBread.GamePlay
         {
             //GameModel.Instance.StateManager.ChangeState(new PlayingState());
             ChangeMap();
-            
+            DataManager.Instance.floor = 1;
             int date = GameModel.Instance.Date.Current;
 
             
@@ -72,9 +72,16 @@ namespace HappyBread.GamePlay
             if (date == 5)
             {
                 //추리하기 시작!
-                GameModel.Instance.EffectManager.FadeIn();
+                GameModel.Instance.AudioManager.StopBackgroundAudio();
+                GameModel.Instance.AudioManager.ChangeBackgroundAudio("추리하기");
+               
+
+                SceneManager.UnloadSceneAsync($"Map{date - 1}_1");
+
                 SceneManager.LoadScene("CallEvent", LoadSceneMode.Additive);
                 GameModel.Instance.StateManager.ChangeState(new CallState());
+
+
             }
             else
             {

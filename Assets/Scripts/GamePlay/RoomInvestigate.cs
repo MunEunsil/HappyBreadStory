@@ -40,19 +40,36 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
+            //if (Input.GetMouseButtonUp(0))
+            //{
+            //    NextFunctionCommand = GlobalGameData.keyCodeInteract;
+            //}
+
+
+            if (Input.GetKeyUp(KeyCode.Mouse0)) //마우스 좌클릭
+            {
+                NextFunctionCommand = GlobalGameData.keyCodeInteract;
+                //ClickInteract();
+            }
+            else if (Input.GetKeyUp(KeyCode.Escape)) //esc
+            {
+                //Exit();
+                NextFunctionCommand = KeyCode.Escape;
+            }
+
+
             if (NextFunctionCommand != KeyCode.None)
             {
-                Debug.Log(NextFunctionCommand);
                 switch (NextFunctionCommand)
                 {
-                    //case GlobalGameData.keyCodeInteract:
-                    //    AttemptInteract();
+                    //case globalgamedata.keycodeinteract:
+                    //    attemptinteract();
                     //    break;
-                    case GlobalGameData.mouseClick:
+                    case GlobalGameData.keyCodeInteract:
                         ClickInteract();
                         break;
                     case KeyCode.Escape:
-                        Debug.Log("esc누름");
+                        //debug.log("esc누름");
                         Exit();
                         break;
                     default:
@@ -61,7 +78,7 @@ namespace HappyBread.GamePlay
             }
 
 
-            }
+        }
 
         private void ClickInteract()
         {
@@ -107,10 +124,10 @@ namespace HappyBread.GamePlay
 
         private void Exit()
         {
-          //  GameModel.Instance.StateManager.UndoState();
-            GameModel.Instance.StateManager.ChangeState(new PlayingState());
+            GameModel.Instance.StateManager.UndoState();
+            //GameModel.Instance.StateManager.ChangeState(new PlayingState());
 
-            NextFunctionCommand = KeyCode.None;
+            //NextFunctionCommand = KeyCode.None;
             gameObject.SetActive(false);
            
 

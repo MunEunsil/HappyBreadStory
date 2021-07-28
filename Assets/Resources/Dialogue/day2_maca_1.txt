@@ -1,0 +1,4 @@
+Message : askAddAvidence:character :마카롱_기본:어 탐정님? 어쩐일이세요?
+Message : askAddAvidence: Player :유저_기본:어제밤에 어디계셨나요?
+Message : askAddAvidence:character :마카롱_기본:네? 설마 이거 사고가 아닌건가요? (카메라를 꺼내며) 탐정님 살인인가요? 세상에! 특종입니다!
+Message : askAddAvidence: Player :유저_기본:…하하..(그냥 피해야겠다)

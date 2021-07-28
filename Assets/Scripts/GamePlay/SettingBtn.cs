@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HappyBread.GamePlay.GameState;
 
-public class SettingBtn : MonoBehaviour
+namespace HappyBread.GamePlay
 {
-    public void Appear()
+    public class SettingBtn : MonoBehaviour
     {
-        gameObject.SetActive(true);
-    }
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
+        public void Appear()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

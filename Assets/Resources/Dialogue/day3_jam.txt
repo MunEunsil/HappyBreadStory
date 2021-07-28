@@ -1,3 +1,0 @@
-Message : askAddAvidence : jam_stand : 아..!탐정님 안녕하세요...
-Question : askAddAvidence : jam_stand : :저...괜찮으세요? 안색이나빠요
-Answer: askAddAvidence : jam_stand :피앙세가 죽었는데...안색이  좋은것도 문제겠죠 (쓴웃음) 

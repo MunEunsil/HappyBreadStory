@@ -1,0 +1,6 @@
+Message : askAddAvidence:character :컵케익_기본:흥! 꼴좋지! 진짜 웃기지 않아요? 무슨 사고로 그곳에서 떨어지나 몰라
+Message : askAddAvidence:Player :유저_기본:어제밤에 어디계셨나요?
+Message : askAddAvidence:character :컵케익_기본:좀 기분나쁘네요. 아니 딸기잼 사고사 아니에요?
+Message : askAddAvidence:character :컵케익_기본:아까부터 여기저기 돌아다니시는데, 조심해주세요. 제가 데코한 장식 망가져요!
+Message : askAddAvidence:Player :유저_기본:아니 그래서 어디계셨...
+Message : askAddAvidence:character :컵케익_기본:저 디너 파티하고 그거 치웠거든요~? 정말 뭐하나 안도와주면서!

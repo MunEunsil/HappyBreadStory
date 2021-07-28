@@ -1,0 +1,7 @@
+Message : askAddAvidence:character : 크로아상_기본:뭐야? 뭔 볼일 있나~?
+Message : askAddAvidence:Player : 유저_기본: 왜 거짓말 하셨어요?
+Message : askAddAvidence:character : 크로아상_기본:어엉~? 그..그게 무슨 소리야아~?
+Message : askAddAvidence:Player : 유저_기본: 소라빵은 어제 분명 크루아상님이랑 어젯밤 같이 있었다는데...
+Message : askAddAvidence:character : 크로아상_기본:아아 내가 같이 안있다고 그랬었나? 하하 아 거참 내가 잠깐 까먹을수도 있지~!! 내가 얼굴이 동안이라 그렇지 제일 나이가 많잖아~ 음~ 그랬던 것 같기도 하네~ 뭘 그렇게 진지하게 물어~?
+Message : askAddAvidence:Player : 유저_기본:그래서 어제는 어디서 뭘 하신거에요?
+Message : askAddAvidence:character : 크로아상_기본:그걸 왜 자꾸 물어봐~? 나아는~ 그냥 이 호텔을 즐기고 있다고~!! 뭐.. 뭐라도 나온게 있어? 엣헴..

@@ -1,4 +1,0 @@
-Message : askAddAvidence : crois_stand : 호텔 명성답게 아주우 그냥 판타스틱한 곳이구만~~~ 아주 심심할틈이 없어!
-Question : askAddAvidence : crois_stand : :어제밤에 어디계셨나요?
-Answer: askAddAvidence : crois_stand :나? 나는 그냥 내 방에 있었지~?
-Message : askAddAvidence : crois_stand :나으의 촉으론 말이야~ 이거이거 그냥 단.순.한 사고가 아닌것같어~? 어~?

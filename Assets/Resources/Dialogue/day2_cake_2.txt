@@ -1,0 +1,2 @@
+Message : askAddAvidence:Player :유저_기본:아, 어제 만찬때 컵케익씨가 파티장을 꾸며준 덕분에 즐거운 시간을 보낼 수 있었어요
+Message : askAddAvidence:character :컵케익_기본:정말요? !!! 저 정말 감동이에요..! 이렇게 후기를 들려주신 분은 처음인걸요!! 이번 경매기부도 프로페셔널하게 꾸며보겠어요!

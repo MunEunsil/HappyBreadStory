@@ -1,4 +1,1 @@
-Message : askAddAvidence : maca_stand :  혹시 탐정님? 
-Message : askAddAvidence : maca_stand : 꺄!!! 저 완전 팬이에요!! 
-Message : askAddAvidence : maca_stand : 저랑 사진찍어주세요~(오븐그램에 올려야지) 
-  
+Message : askAddAvidence:character:마카롱_기본:혹시 탐정님? 77ㅑ 저 완전 팬이에요~ 저랑 사진찍어주세요~ (오븐그램에 올려야지)

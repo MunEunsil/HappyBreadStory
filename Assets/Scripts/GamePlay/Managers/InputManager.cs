@@ -69,6 +69,7 @@ namespace HappyBread.GamePlay
                 case State.DayEventControl:
                     DayEventControl();
                     break;
+
             }
         }
 
@@ -233,6 +234,8 @@ namespace HappyBread.GamePlay
             }
         }
 
+
+
         private void DialogControl()
         {
             if (Input.GetKeyUp(KeyCode.Space))
@@ -252,6 +255,7 @@ namespace HappyBread.GamePlay
 
         private void CharacterControl()
         {
+           // Debug.Log("캐릭터컨트롤");
             if(GameModel.Instance.Player == null)
             {
                 return;
@@ -286,10 +290,10 @@ namespace HappyBread.GamePlay
             {
                 GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCaseDiary;
             }
-            else if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
-            {
-                GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCall;
-            }
+            //else if (Input.GetKeyUp(GlobalGameData.keyCodeCall))
+            //{
+            //    //GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.keyCodeCall;
+            //}
             else if (Input.GetKeyUp(GlobalGameData.mouseClick))
             {
                 GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.mouseClick;

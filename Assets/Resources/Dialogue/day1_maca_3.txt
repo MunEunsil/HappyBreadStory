@@ -1,1 +1,1 @@
-Message : askAddAvidence : maca_stand : 아.... 탐정님 뭐 물어보실거 있으세요? 사진 다 찍었는데 있으시길래...(아 이제 오븐그램 해야하는데)
+Message : askAddAvidence:character:마카롱_기본:아...탐정님 뭐 물어보실거 있으세요? (아 바쁜데...)

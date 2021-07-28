@@ -1,5 +1,0 @@
-Message : askAddAvidence : jelly_stand : 엇 안녕하세요 탐정님, 무슨 일이라도?
-Question : askAddAvidence : jelly_stand : :평소에도 그림을 그리시나요?
-Answer: askAddAvidence : jelly_stand : 아 네, 그럼요. 전 어딜가나  스케치 도구를 들고다녀요. 언제 어디서 제가 영감을 받을지 모르니까요. (웃음)
-Question : askAddAvidence : jelly_stand : :그럼 혹시 이번 경매에서도 본인 그림을 가져오셨나요?
-Answer: askAddAvidence : jelly_stand : 네 맞아요. 부끄럽지만 항상 감사해요. 제 작품을 공감해주고 가치를 높게 평가해줘서요. 그 기대에 부흥하려고 더 열심히 할때도 있거든요.

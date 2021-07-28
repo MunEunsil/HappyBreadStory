@@ -27,9 +27,12 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.StateManager.ChangeState(new DayEventState());
 
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"Day{date}_evningEvent"));
+            //GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"Day{date}_evningEvent"));
+
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent($"Day{date-1}_event"));
 
             listIndex = 0;
+
         }
 
         // Update is called once per frame
@@ -64,12 +67,14 @@ namespace HappyBread.GamePlay
             //현재 씬 삭제 
             //다음 씬 불러오기
             //state변경 
+            date = GameModel.Instance.Date.Current;
             SceneManager.LoadScene($"Map{date}_1", LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync(ThisSceneName);
 
             GameModel.Instance.StateManager.ChangeState(new PlayingState());
             GameModel.Instance.Hp.Set(300f);
 
+            Debug.Log($"Map{date}_1 불러오기" );
         }
         private void LoadMorningEvent()
         {

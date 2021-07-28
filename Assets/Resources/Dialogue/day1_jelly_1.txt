@@ -1,1 +1,2 @@
-Message : askAddAvidence : jelly_stand : 탐정님? 안녕하세요. 말씀 많이 들었어요. 이렇게 뵙게 되어 영광이에요.
+Message : askAddAvidence:character:젤리_기본:탐정님? 안녕하세요. 말씀 많이 들었어요. 이렇게 뵙게 되어 영광이에요. 전 그림그리는 젤리랍니다.
+Message : askAddAvidence:character:젤리_기본: 옆에는 제 쌍둥이 동생이에요. 우린 함께 작업하고 무엇이든 함께 하죠.

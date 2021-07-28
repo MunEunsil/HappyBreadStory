@@ -1,1 +1,1 @@
-Message : askAddAvidence : crois_stand : 하하하하 자네가 그 탐정이로군! 나때는 말야~ 탐정가는 사실 취급도 안했는데 말이야~
+Message : askAddAvidence:character:크로아상_기본:하하하하 당신이 그 탐정가로군! 나때는 말야~ 탐정가는 사실 취급도 안했는데 말이야~ 엣헴.

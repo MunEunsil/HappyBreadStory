@@ -1,4 +1,0 @@
-Question : askAddAvidence : hodu_stand : :호두씨 안녕하세요!
-Answer: askAddAvidence : hodu_stand :오늘 경매기부 하는 날인거 아시죠? 하~참! 제가 이걸 얼마나 기다렸는지~ 두고봐요 제가 큰건 하나 합니다! 하하
-Question : askAddAvidence : hodu_stand : :큰건이요?
-Answer: askAddAvidence : hodu_stand : 경매장에서 보면 알게 됩니다!

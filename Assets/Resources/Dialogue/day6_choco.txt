@@ -1,5 +1,0 @@
-Message : askAddAvidence : choco_stand : 흐....있잖아...흐...내가 좋은거 알려줄게
-Question : askAddAvidence : choco_stand : :그게 뭔데요?
-Answer: askAddAvidence : choco_stand :이게...내 인생에서 진짜 중요하거든 흐...
-Question : askAddAvidence : choco_stand : :(무시한다.) : 그게 어떤거죠? : 아뇨 필요없습니다. 
-Answer: askAddAvidence : choco_stand : 아....ㅎ... 알았어요...ㅎ... : 내가 진짜 무서워서...흐...잘 들어봐..요..?흐 내...내가 봤어...오븐...실 일 끝내고 스태프실...가는데...예약..없이 쓰길래 따라갔다가....몰래 봤어...다 봤어...  네??? : ㅎ.....그냥 봤다고.... 가는걸...: 네...흐..흐흐

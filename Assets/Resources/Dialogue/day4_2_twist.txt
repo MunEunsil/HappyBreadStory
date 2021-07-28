@@ -1,4 +1,0 @@
-Message : askAddAvidence : twist_stand :호두..!호두가..!!!!하.....정말 이게 무슨...이게 무슨 말도안되는...!!!
-Question : askAddAvidence : twist_stand : : 원래 냉동창고는 안에서 문을 열지 못하나요?
-Answer: askAddAvidence : twist_stand :아니...열쇠만 있다면 안엣서도 열리는데..애초에 우린 냉동창고를 이용할땐 문을 열어두는데 이런 바보같은..!
-Message : askAddAvidence : twist_stand :여러분! 모두 밤이 늦었고 위험하니 각자 방으로 돌아가세요!

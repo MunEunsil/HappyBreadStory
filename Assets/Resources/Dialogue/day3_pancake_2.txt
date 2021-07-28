@@ -1,0 +1,4 @@
+Message : askAddAvidence :character : 팬케이크_기본 :헤...탐정..! 난 바보가 아니야~
+Message : askAddAvidence :Player : 유저_기본 : 그게 무슨 소리에요?
+Message : askAddAvidence :character : 팬케이크_기본 :난 곧 부우자가 될거야아! 헤…!
+Message : askAddAvidence :Player : 유저_기본 : ....?

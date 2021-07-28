@@ -1,3 +1,0 @@
-Message : askAddAvidence : jellyjelly_stand : 탐정님...안녕하세요
-Question : askAddAvidence : jelly_stand : :언니분께서  찾으시는데... 
-Answer: askAddAvidence : jelly_stand :아직 할일이 있어요
