@@ -10,7 +10,7 @@ using UnityEngine;
 namespace HappyBread.GamePlay
 {
     /// <summary>
-    /// 플레이어를 제어 할 수 있는 클래스.
+    /// 플레이어를 제어 할 수 있는 클래스. 
     /// </summary>
     ///
 
@@ -26,6 +26,7 @@ namespace HappyBread.GamePlay
         public float hitDistance = 0.5f;
         public float useHpAmount = 0.01f;
 
+        private bool MidEnding = false; //중간엔딩이 꺼져있음 
 
         private State state;
         private RaycastHit2D hit;
@@ -38,19 +39,32 @@ namespace HappyBread.GamePlay
         private void Update()
         {
             //시간에 따라 식빵 게이지 줄이기
-            if (GameModel.Instance.Hp.hp != 0)
+            if (GameModel.Instance.Hp.hp > 0)
             {
-                if (DataManager.Instance.callStart==false)
+                if (DataManager.Instance.callStart == false)  //추리하기 중이 아닐 때 
                 {
                     GameModel.Instance.Hp.Add(-Time.deltaTime);
                 }
 
             }
-            else if(GameModel.Instance.Hp.hp == 0)// 식빵 게이지가 0이면 
+            else
             {
-                MiddleEnding4();
+                if (MidEnding == false)
+                {
+                    GameModel.Instance.MiddleEnding.startMoldEnding();
+                    MidEnding = true;
+                }  
             }
-            
+            //else if(GameModel.Instance.Hp.hp == 0)// 식빵 게이지가 0이면 
+            //{
+            //    Debug.Log("hp 0임!!");
+            //    GameModel.Instance.MiddleEnding.startMoldEnding();
+            //}
+
+            //if (GameModel.Instance.Hp.hp<0)
+            //{
+            //    Debug.Log(GameModel.Instance.Hp.hp);
+            //}
 
             // 움직임 구현부 ( 화살표 키 )
             switch (state)
@@ -166,25 +180,25 @@ namespace HappyBread.GamePlay
             //GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }
 
-        private void MiddleEnding4()
-        {
-            DataManager.Instance.middleEndingName = "middleEnding4";
-            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+        //private void startMoldEnding()  
+        //{
+        //    DataManager.Instance.middleEndingName = "middleEnding4";
+        //    GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
-            //ui뿅 
-            GameModel.Instance.StateManager.ChangeState(new PauseState());
-            GameModel.Instance.EffectManager.FadeOut();
+        //    //ui뿅 
+        //    GameModel.Instance.StateManager.ChangeState(new PauseState());
+        //    GameModel.Instance.EffectManager.FadeOut();
 
-            Invoke("moldEnding", 2f);
-        }
-        private void moldEnding()
-        {
+        //    Invoke("moldEnding", 2f);
+        //}
+        //private void moldEnding() //곰팡이 엔딩
+        //{
 
-            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
+        //    GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
 
-            GameModel.Instance.EffectManager.FadeIn(0.2f);
-            GameModel.Instance.StateManager.Resume();
+        //    GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //    GameModel.Instance.StateManager.Resume();
 
-        }
+        //}
     }
 }

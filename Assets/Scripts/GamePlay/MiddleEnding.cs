@@ -38,7 +38,7 @@ namespace HappyBread.GamePlay
             {
                 if (NextCommand == KeyCode.Space)
                 {
-                    Debug.Log("미드엔딩 스테이트 에서 스페이스바 누름 ");
+                    Debug.Log("중간엔딩 state 에서 스페이스바 누름 ");
                     NextCommand = KeyCode.None;
 
                     SceneManager.LoadScene("Opening", LoadSceneMode.Additive);
@@ -49,6 +49,32 @@ namespace HappyBread.GamePlay
 
             }
 
+
+        }
+
+
+        //중간엔딩을 불러오기 위한 함수들 
+        //
+
+        public void startMoldEnding() //곰팡이 엔딩 불러오기
+        {
+           
+            DataManager.Instance.middleEndingName = "middleEnding4";
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            Invoke("moldEnding", 2f);
+        }
+        private void moldEnding() //곰팡이 엔딩
+        {
+
+            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
+
+            GameModel.Instance.EffectManager.FadeIn(0.2f);
+            GameModel.Instance.StateManager.Resume();
 
         }
 
