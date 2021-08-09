@@ -55,7 +55,10 @@ namespace HappyBread.GamePlay
         //day이벤트에서 사용할 nextCommand 
         public KeyCode Day_nextCommand;
 
-        
+        //중간엔딩을 만들기 위한 변수 
+        public int chocoFondue = 0; //3회 이상 조사하면 퐁듀엔딩
+        public int ovenEnding = 0; //3회 이상 조사하면 오븐엔딩 
+        public int freezerEnding =0;
 
         //추리하기 - 사건 선택
         public bool Choice_StrawCase = false;

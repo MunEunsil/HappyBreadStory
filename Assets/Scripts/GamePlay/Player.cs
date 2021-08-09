@@ -38,6 +38,7 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
+           
             //시간에 따라 식빵 게이지 줄이기
             if (GameModel.Instance.Hp.hp > 0)
             {
@@ -82,6 +83,7 @@ namespace HappyBread.GamePlay
             // 그 외 단축키 구현부 ( 상호작용 키 )
             if (NextFunctionCommand != KeyCode.None)
             {
+
                 switch (NextFunctionCommand)
                 {
                     //case GlobalGameData.keyCodeInteract:
