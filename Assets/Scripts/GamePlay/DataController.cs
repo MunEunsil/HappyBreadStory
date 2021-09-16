@@ -35,6 +35,7 @@ namespace HappyBread.GamePlay
         }
 
 
+
         public string GameDataFileName = "savePoint.json"; //이름변경금지
 
         public GameData _gmaeData;
@@ -68,6 +69,12 @@ namespace HappyBread.GamePlay
 
                 _gmaeData = new GameData();
             }
+        }
+
+        private void Start()
+        {
+            LoadGameData();
+            SaveGameData();
         }
 
         public void SaveGameData()

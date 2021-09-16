@@ -8,9 +8,20 @@ namespace HappyBread.GamePlay
     public class AudioManager : MonoBehaviour
     {
         public GameObject BackgroundAudio;
-        public GameObject EffectAudioPrefab;
+        public GameObject EffectAudio;
+
+        private AudioClip audioWalk; // 걸을 때 효과음
+        private AudioClip audioPaper; // 종이 넘어갈 때 효과음
+        private AudioClip audioClick; // 클릭했을 때 효과음
+        private AudioClip audioEvidence; // 증거 습득 할 때 효과음
+
+
+
+
 
         private AudioSource backgroundAudioSource;
+        private AudioSource effectAudioSource;
+
         //private AudioSource openingAudioSource;
         //private AudioSource callAudioSource;
 
@@ -23,7 +34,22 @@ namespace HappyBread.GamePlay
 
         public void PlayEffectAudio(string name)
         {
-            // 미구현
+            switch (name)
+            {
+                case "walk" :
+                    effectAudioSource.clip = audioWalk;
+                    break;
+                case "paper":
+                    effectAudioSource.clip = audioPaper;
+                    break;
+                case "click":
+                    effectAudioSource.clip = audioClick;
+                    break;
+                case "evidence":
+                    effectAudioSource.clip = audioEvidence;
+                    break;
+                
+            }
         }
 
         public void PlayBackgroundAudio()
@@ -39,6 +65,8 @@ namespace HappyBread.GamePlay
         private void Start()
         {
             backgroundAudioSource = BackgroundAudio.GetComponent<AudioSource>();
+            effectAudioSource = EffectAudio.GetComponent<AudioSource>();
+
             //ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
             ChangeBackgroundAudio("오프닝");
             PlayBackgroundAudio();
