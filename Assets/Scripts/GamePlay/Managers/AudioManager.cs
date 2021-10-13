@@ -10,10 +10,10 @@ namespace HappyBread.GamePlay
         public GameObject BackgroundAudio;
         public GameObject EffectAudio;
 
-        private AudioClip audioWalk; // 걸을 때 효과음
-        private AudioClip audioPaper; // 종이 넘어갈 때 효과음
-        private AudioClip audioClick; // 클릭했을 때 효과음
-        private AudioClip audioEvidence; // 증거 습득 할 때 효과음
+        public AudioClip audioWalk; // 걸을 때 효과음
+        public AudioClip audioPaper; // 종이 넘어갈 때 효과음
+        public AudioClip audioClick; // 클릭했을 때 효과음
+        public AudioClip audioEvidence; // 증거 습득 할 때 효과음
 
 
 
@@ -50,6 +50,9 @@ namespace HappyBread.GamePlay
                     break;
                 
             }
+            effectAudioSource.Play();
+
+             
         }
 
         public void PlayBackgroundAudio()

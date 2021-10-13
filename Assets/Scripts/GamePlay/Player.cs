@@ -86,14 +86,10 @@ namespace HappyBread.GamePlay
 
                 switch (NextFunctionCommand)
                 {
-                    //case GlobalGameData.keyCodeInteract:
-                    //    AttemptInteract();
-                    //    break;
                     case GlobalGameData.mouseClick:
                         AttemptInteract();
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
-                        Debug.Log("a누름");
                         Debug.Log(DataManager.Instance.evidences);
                         break;
                     default:
@@ -117,7 +113,7 @@ namespace HappyBread.GamePlay
 
         }
 
-         public void AttemptInteract()  
+        public void AttemptInteract()  
         {
             Vector2 start = transform.position;
             Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
@@ -164,6 +160,9 @@ namespace HappyBread.GamePlay
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음
             {
+                GameModel.Instance.AudioManager.PlayEffectAudio("walk");
+                
+                
                 Move(NextMoveCommand);
             }
             else // 움직임 상태 해제

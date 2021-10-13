@@ -296,6 +296,9 @@ namespace HappyBread.GamePlay
             //}
             else if (Input.GetKeyUp(GlobalGameData.mouseClick))
             {
+                //클릭했을 때 클릭소리 
+                GameModel.Instance.AudioManager.PlayEffectAudio("click");
+
                 GameModel.Instance.Player.NextFunctionCommand = GlobalGameData.mouseClick;
             }
             else

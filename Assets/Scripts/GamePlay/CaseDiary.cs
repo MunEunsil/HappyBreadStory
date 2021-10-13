@@ -66,7 +66,9 @@ namespace HappyBread.GamePlay
 
         public void AddEvidence(Evidence evidence)
         {
-           DataManager.Instance.evidences.Add(evidence);
+            //소리추가 
+            GameModel.Instance.AudioManager.PlayEffectAudio("evidence");
+            DataManager.Instance.evidences.Add(evidence);
         }
 
         public void DeleteEvidence(int index)

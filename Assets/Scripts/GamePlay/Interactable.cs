@@ -24,7 +24,7 @@ namespace HappyBread.GamePlay
         {
             if(Evidence == null)
             {
-                Debug.Log("Evidence is null");
+                Debug.Log("Evidennce is null");
                 return;
             }
 
@@ -38,6 +38,7 @@ namespace HappyBread.GamePlay
             }
         }
         //대화 저장 
+
 
 
         /// <summary>

@@ -68,7 +68,7 @@ namespace HappyBread.GamePlay
         {
             HpAppear();
             DateAppear();
-            ClockAppear();
+          //  ClockAppear();
             CaseDiaryBtnAppear();
             CallBtnAppear();
             SettingBtnAppear();
@@ -83,7 +83,7 @@ namespace HappyBread.GamePlay
         {
             HpHide();
             DateHide();
-            ClockHide();
+          // ClockHide();
             CaseDiaryBtnHide();
             CallBtnHide();
             SettingBtnHide();

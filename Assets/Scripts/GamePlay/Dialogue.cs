@@ -25,6 +25,13 @@ namespace HappyBread.GamePlay
         public GameObject evidenceUI_;
         public GameObject playerUI_;
 
+        //이름표
+        public GameObject characterNameUI_;
+        public Text characterNmaeText_;
+        public GameObject playerNameUI_;
+        public Text playerNmaeText_;
+
+
 
         public Text characterName;
 
@@ -200,6 +207,8 @@ namespace HappyBread.GamePlay
             {
                // characterUI.enabled = false;
                 characterUI_.SetActive(false);
+
+
             }
             else
             {
@@ -241,6 +250,60 @@ namespace HappyBread.GamePlay
             ShowMessage(seperated);
         }
 
+        //이름표 이름 보여주기 위함 
+        private void ShowNameTag(string name) 
+        {
+            //플레이어 이름 / npc 이름 
+            string[] TagName = new string [2];
+            TagName = name.Split('_');
+
+            ///
+            /// 대사 전부 수정할 일 있으면 그냥 캐릭터이름_ 이렇게 수정 
+            /// 다만 이렇게 하면 이미지 이름도 전부 수정 
+            /// 만약 대사 모두 다시 수정할 일이 있다면 츄라이
+            ///
+            switch (TagName[0])
+            {
+                case "컵케익":
+                    characterNmaeText_.text = "컵케익";
+                    break;
+                case "소라빵":
+                    characterNmaeText_.text = "초롱";
+                    break;
+                case "크로아상":
+                    characterNmaeText_.text = "크로 경장";
+                    break;
+                case "도넛":
+                    characterNmaeText_.text = "두나";
+                    break;
+                case "호두":
+                    characterNmaeText_.text = "워넷";
+                    break;
+                case "땅콩잼":
+                    characterNmaeText_.text = "피넛스";
+                    break;
+                case "젤리":
+                    characterNmaeText_.text = "젤리";
+                    break;
+                case "젤리젤리":
+                    characterNmaeText_.text = "젤리젤리";
+                    break;
+                case "마카롱":
+                    characterNmaeText_.text = "막가롱";
+                    break;
+                case "팬케이크":
+                    characterNmaeText_.text = "핫케이";
+                    break;
+                case "딸기잼":
+                    characterNmaeText_.text = "산딸기";
+                    break;
+                case "꽈배기":
+                    characterNmaeText_.text = "곽백이";
+                    break;
+
+            }
+        }
+
         private void ShowMessage(string[] seperated)
         {
             string backgroundFileName = seperated[1].Trim();
@@ -256,6 +319,7 @@ namespace HappyBread.GamePlay
                 //characterUI.enabled = false;
                 characterUI_.SetActive(false);
                 playerUI_.SetActive(false);
+                characterNameUI_.SetActive(false);
 
                 if (backgroundSprite == null)
                 {
@@ -297,10 +361,16 @@ namespace HappyBread.GamePlay
                 Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
                 Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
 
+                playerNmaeText_.text= DataManager.Instance.PlayerName;
+            
+
                 //characterUI.enabled = false;
                 //evidenceUI.enabled = false;
                 characterUI_.SetActive(false);
                 evidenceUI_.SetActive(false);
+                characterNameUI_.SetActive(false);
+
+
 
                 if (backgroundSprite == null)
                 {
@@ -322,6 +392,7 @@ namespace HappyBread.GamePlay
                     //  characterUI.enabled = true;
                     //playerUI.sprite = playerSprite;
                     playerUI_.SetActive(true);
+                    playerNameUI_.SetActive(true);
                     playerUI_.GetComponent<Image>().sprite = playerSprite;
                 }
 
@@ -358,13 +429,16 @@ namespace HappyBread.GamePlay
                 {
                     //characterUI.enabled = false;
                     characterUI_.SetActive(false);
+                    characterNameUI_.SetActive(false);
                 }
                 else
                 {
                     //characterUI.enabled = true;
                     //characterUI.sprite = characterSprite;
+                    ShowNameTag(seperated[3]);
 
                     characterUI_.SetActive(true);
+                    characterNameUI_.SetActive(true);
                     characterUI_.GetComponent<Image>().sprite = characterSprite;
 
 

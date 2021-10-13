@@ -32,6 +32,7 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
+
             GameModel.Instance.EffectManager.FadeIn();
         }
     }
