@@ -19,6 +19,7 @@ namespace HappyBread.GamePlay
             DataManager.Instance.dialogeEvidence = true;
             Evidence = new Evidence()
             {
+                Name = "bag",
                 Sprite = "명품가방",
                 Action = () =>
                 {
@@ -29,5 +30,5 @@ namespace HappyBread.GamePlay
             };
             DataManager.Instance.dialogeEvidence = false;
         }
-    }
+    } 
 }

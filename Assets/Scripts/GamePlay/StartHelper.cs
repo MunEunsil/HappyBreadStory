@@ -13,7 +13,8 @@ namespace HappyBread.GamePlay
         // Start is called before the first frame update
         void Start()
         {
-            if(date != -1)
+            
+            if (date != -1)
             {
                 GameModel.Instance.Date.SetDate(date);
             }
@@ -21,6 +22,7 @@ namespace HappyBread.GamePlay
             if (!mapName.Equals(""))
             {
                 GameModel.Instance.MapManager.ChangeMap(mapName);
+             
             }
 
             GameModel.Instance.EffectManager.FadeIn();

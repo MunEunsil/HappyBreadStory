@@ -20,8 +20,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map2.unity
     guid: 8b03ab85ddd89aa4a8b64eca37819981
+  - enabled: 1
+    path: Assets/Scenes/Demo.unity
+    guid: 3e0fa8d2786e8de4b9d6d70d261bd78c
   - enabled: 0
-    path: Assets/Scenes/Map3.unity
+    path: 
     guid: 6d7116b971cd0424ea21e551a1154942
   - enabled: 0
     path: 

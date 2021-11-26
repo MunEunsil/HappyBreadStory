@@ -8,88 +8,199 @@ namespace HappyBread.GamePlay
 {
     public class DataController : MonoBehaviour
     {
+        //파일 읽기
+        private SaveGameData saveData = new SaveGameData();
 
-        static GameObject _container;
-        static GameObject Container
+        private string SAVE_DATA_DIRECTORY; //저장할 폴더 경로
+        private string SAVE_FILENAME="/SaveFile.txt";//파일 이름
+       
+
+
+
+        //static GameObject _container;
+        //static GameObject Container
+        //{
+        //    get
+        //    {
+        //        return _container;
+        //    }
+        //}
+
+        //static DataController _instance;
+        //public static DataController instance
+        //{
+        //    get
+        //    {
+        //        if (!_instance)
+        //        {
+        //            _container = new GameObject();
+        //            _container.name = "DataController";
+        //            _instance = _container.AddComponent(typeof(DataController)) as DataController;
+        //            DontDestroyOnLoad(_container);
+        //        }
+        //        return _instance;
+        //    }
+        //}
+
+
+
+      //  public string GameDataFileName = "savePoint.json"; //이름변경금지
+
+
+
+        //public GameData _gmaeData;
+        //public GameData gameData
+        //{
+        //    get
+        //    {
+        //        if (_gmaeData == null)
+        //        {
+        //            LoadGameData();
+        //            saveGameData();
+        //        }
+        //        return _gmaeData;
+        //    }
+        //}
+
+        //public void LoadGameData()
+        //{
+        //    string filePath = Application.persistentDataPath + GameDataFileName;
+
+        //    if (File.Exists(filePath))
+        //    {
+        //        Debug.Log("불러오기 성공");
+        //        string FromJsonData = File.ReadAllText(filePath);
+        //        _gmaeData = JsonUtility.FromJson<GameData>(FromJsonData);
+
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("새로운 파일 생성");
+
+        //        _gmaeData = new GameData();
+        //    }
+        //}
+
+        private void Start()
         {
-            get
+            // LoadGameData();
+            SAVE_DATA_DIRECTORY = Application.dataPath + "/Save/";
+
+            if (!Directory.Exists(SAVE_DATA_DIRECTORY))//해당 경로가 존재하지 않는다면
             {
-                return _container;
+                Directory.CreateDirectory(SAVE_DATA_DIRECTORY); //폴더생성(경로 생성)
             }
+
+
+      
+
+
+            //saveGameData();
         }
 
-        static DataController _instance;
-        public static DataController instance
+        //저장하기
+        public void saveGameData()
         {
-            get
+            //date저장 
+            saveData.date = DataManager.Instance.date;
+            //증거저장
+            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
             {
-                if (!_instance)
+                saveData.evidences.Add(DataManager.Instance.evidences[j]);
+            }
+
+            //증거 이름만 저장
+            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            {
+                saveData.evidence_name.Add(DataManager.Instance.evidences[j].Name); //모든 증거품 Name 추가 및 확인
+            }
+
+
+            //대화키워드 오픈 저장 
+            //테스트니까 일단 딸기만 
+            //for (int i = 0; i < DataManager.Instance.straw_DialogeKeywordsOpen.Length; i++)
+            //{
+            //    saveData.straw_keyword.Add(DataManager.Instance.straw_DialogeKeywordsOpen[i]);
+            //}
+
+            string json = JsonUtility.ToJson(saveData); //제이슨화
+
+            File.WriteAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME, json);
+
+            Debug.Log("저장해뜸!");
+            Debug.Log(json);
+            
+
+           // SaveGameData.date = DataManager.Instance.date;
+
+
+
+
+           // string ToJsonData = JsonUtility.ToJson(gameData);
+            //string filePath = Application.persistentDataPath + GameDataFileName;
+          //  File.WriteAllText(filePath,ToJsonData);
+           // Debug.Log("저장 완료");
+        }
+
+        //로드하기
+        public void LoadData()
+        {
+            if (File.Exists(SAVE_DATA_DIRECTORY + SAVE_FILENAME))
+            {
+                //전체 읽어오기
+                string loadjson = File.ReadAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME);
+                saveData = JsonUtility.FromJson<SaveGameData>(loadjson);
+
+                //date 로드 
+                DataManager.Instance.date = saveData.date;
+
+                //증거 로드
+                for (int j = 1; j < saveData.evidences.Count; j++)
+                { 
+                     DataManager.Instance.evidences.Add(saveData.evidences[j]);
+                } 
+            
+
+                //딸기대화 키워드 오픈 로드 
+                for (int i = 0; i < saveData.straw_keyword.Count; i++)
                 {
-                    _container = new GameObject();
-                    _container.name = "DataController";
-                    _instance = _container.AddComponent(typeof(DataController)) as DataController;
-                    DontDestroyOnLoad(_container);
+                    DataManager.Instance.straw_DialogeKeywordsOpen[i] = saveData.straw_keyword[i];
+
                 }
-                return _instance;
-            }
-        }
 
-
-
-        public string GameDataFileName = "savePoint.json"; //이름변경금지
-
-        public GameData _gmaeData;
-        public GameData gameData
-        {
-            get
-            {
-                if (_gmaeData == null)
-                {
-                    LoadGameData();
-                    SaveGameData();
-                }
-                return _gmaeData;
-            }
-        }
-
-        public void LoadGameData()
-        {
-            string filePath = Application.persistentDataPath + GameDataFileName;
-
-            if (File.Exists(filePath))
-            {
-                Debug.Log("불러오기 성공");
-                string FromJsonData = File.ReadAllText(filePath);
-                _gmaeData = JsonUtility.FromJson<GameData>(FromJsonData);
+                Debug.Log("로드 -완-");
 
             }
             else
             {
-                Debug.Log("새로운 파일 생성");
-
-                _gmaeData = new GameData();
+                Debug.Log("save 없음");
             }
-        }
-
-        private void Start()
-        {
-            LoadGameData();
-            SaveGameData();
-        }
-
-        public void SaveGameData()
-        {
-            string ToJsonData = JsonUtility.ToJson(gameData);
-            string filePath = Application.persistentDataPath + GameDataFileName;
-            File.WriteAllText(filePath,ToJsonData);
-            Debug.Log("저장 완료");
         }
 
         private void OnApplicationQuit()
         {//꺼지면 자동저장
-            SaveGameData();
+            saveGameData();
         }
 
 
+        public void Check__Evidence()
+        {
+            //증거가 어떻게 저장되는지 확인
+
+            Debug.Log(DataManager.Instance.evidences.Count);
+            for (int j = 1; j < DataManager.Instance.evidences.Count; j++)
+            {
+                Debug.Log(DataManager.Instance.evidences[j]);
+
+                Debug.Log("\n 증거 이름 ");
+                Debug.Log(DataManager.Instance.evidences[j].Name);
+                Debug.Log("\n 증거 액션 ");
+                Debug.Log(DataManager.Instance.evidences[j].Action);
+                Debug.Log("\n 증거 이미지 이름 ");
+                Debug.Log(DataManager.Instance.evidences[j].Sprite);
+
+            }
+            
+        }
     }
 }

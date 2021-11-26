@@ -74,7 +74,8 @@ namespace HappyBread.GamePlay
         private TalkBoxData talkBoxData;
         [SerializeField]
         private checkDiaryDialogue checkDiarydialoge;
-
+        [SerializeField]
+        private latelyEvidence lately_Evidence;
 
         public TalkBoxData TalkBoxData
         {
@@ -87,7 +88,18 @@ namespace HappyBread.GamePlay
                 return talkBoxData;
             }
         }
- 
+        
+        public latelyEvidence latelyEvidence
+        {
+            get
+            {
+                if (lately_Evidence == null)
+                {
+                    lately_Evidence = GameModel.FindObjectOfType<latelyEvidence>();
+                }
+                return lately_Evidence;
+            }
+        }
 
         public checkDiaryDialogue checkDiaryDialogue
         {
@@ -298,6 +310,9 @@ namespace HappyBread.GamePlay
                 return date;
             }
         }
+
+
+
         public SettingBtn SettingBtn
         {
             get
@@ -369,6 +384,7 @@ namespace HappyBread.GamePlay
                 return stateManager;
             }
         }
+       
 
         public EffectManager EffectManager
         {

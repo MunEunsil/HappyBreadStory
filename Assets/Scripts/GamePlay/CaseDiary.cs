@@ -69,6 +69,9 @@ namespace HappyBread.GamePlay
             //소리추가 
             GameModel.Instance.AudioManager.PlayEffectAudio("evidence");
             DataManager.Instance.evidences.Add(evidence);
+            //최근습득증거 추가
+            GameModel.Instance.latelyEvidence.latelyEvidenceTest();
+
         }
 
         public void DeleteEvidence(int index)
@@ -235,8 +238,8 @@ namespace HappyBread.GamePlay
                     if (obj.CompareTag("Diary_suspects"))
                     {
                         //디테일 ui
-                        MoveDetail();
-                        detailObjSetactive = true;
+                        //MoveDetail();
+                        //detailObjSetactive = true;
                     }
                     else if (obj.CompareTag("Diary_detailText"))
                     {
@@ -453,6 +456,9 @@ namespace HappyBread.GamePlay
             NextCommand = KeyCode.None;
         }
 
+
+
+        //대화 탭 관련
         private void MoveDetail() // 대화 탭 -> 캐릭터 선택 
         {
             string name = obj.GetComponent<Image>().sprite.name;
@@ -494,8 +500,9 @@ namespace HappyBread.GamePlay
                 switch (characterFileName)
                 {
                     case "straw":
+                        
                         //if strawDialogeKeywordsOpen[i] ==1 이면 else 넘어가기 
-                        if (GameModel.Instance.TalkBoxData.strawDialogeKeywordsOpen[i] == 1)
+                        if (DataManager.Instance.straw_DialogeKeywordsOpen[i] == true)
                         {
                             keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.strawDialogeKeywords[i];
                         }
@@ -504,45 +511,108 @@ namespace HappyBread.GamePlay
                             keyWordTextObj[i].text = "?";
                         }
                         
-                        Debug.Log("딸기 키워드?");
+                        Debug.Log("딸기 키워드");
                         break;
                     case "pancake":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.pancakeDialogeKeywords[i];
-                        Debug.Log("팬케이크 키워드?");
-                        break;
-                    case "crois":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.croisDialogeKeywords[i];
-                        break;
-                    case "maca":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.macaDialogeKeywords[i];
-                        break;
-                    case "jelly":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jellyDialogeKeywords[i];
-                        break;
-                    case "jam":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jamDialogeKeywords[i];
-                        break;
-                    case "hodu":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.hoduDialogeKeywords[i];
-                        break;
-                    case "donut":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.donutDialogeKeywords[i];
-                        Debug.Log("도넛 키워드?");
-                        break;
-                    case "twist":
-                        if (GameModel.Instance.TalkBoxData.twist_DialogeKeywordsOpen[i] == 1)
+                        if (DataManager.Instance.pancake_DialogeKeywordsOpen[i] == true)
                         {
-                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.twistDialogeKeywords[i];
-                            Debug.Log("키워드를 넣어줘");
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.pancakeDialogeKeywords[i];
                         }
                         else
                         {
                             keyWordTextObj[i].text = "?";
                         }
-                        Debug.Log("twist대화 넣을것이야");
+                        Debug.Log("팬케이크 키워드");
+                        break;
+
+                    case "crois":
+                        if (DataManager.Instance.crois_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.croisDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("크로아상 키워드");
+                        break;
+
+                    case "maca":
+                        if (DataManager.Instance.maca_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.macaDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("마카롱 키워드");
+                        break;
+                    case "jelly":
+                        if (DataManager.Instance.jelly_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jellyDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("젤리 키워드");
+                        break;
+                    case "jam":
+                        if (DataManager.Instance.jam_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.jamDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("잼 키워드");
+                        break;
+
+                    case "hodu":
+                        if (DataManager.Instance.hodu_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.hoduDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("호두 키워드");
+                        break;
+
+                    case "donut":
+                        if (DataManager.Instance.donut_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.donutDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
+                        Debug.Log("도넛 키워드?");
+                        break;
+                    case "twist":
+                        if (DataManager.Instance.twist_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.twistDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
                         break;
                     case "choco":
-                        keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.chocoDialogeKeywords[i];
+                        if (DataManager.Instance.choco_DialogeKeywordsOpen[i] == true)
+                        {
+                            keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.chocoDialogeKeywords[i];
+                        }
+                        else
+                        {
+                            keyWordTextObj[i].text = "?";
+                        }
                         break;
                     default:
                         break;
@@ -559,7 +629,7 @@ namespace HappyBread.GamePlay
             //string textKTW = keyWordTextObj[cursorIndex].text;
             //keywordTextViewText.text = ResourceLoader.LoadDialogeText(textKTW); //게임모델
             //keywordTextView.SetActive(true);
-            //keywordTextViewBool = true; 
+            //keywordTextViewBool = true;
 
         }
         private void Exit()

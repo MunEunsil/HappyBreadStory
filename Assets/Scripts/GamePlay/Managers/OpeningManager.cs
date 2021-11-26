@@ -21,6 +21,7 @@ namespace HappyBread.GamePlay
         public void Next()
         {
             GameModel.Instance.EffectManager.FadeOut();
+            
             Invoke("SetActiveFalse", 2f);
 
             if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
@@ -58,8 +59,14 @@ namespace HappyBread.GamePlay
         public void NextScene()
         {
             SceneManager.UnloadSceneAsync("Opening");
-           // SceneManager.LoadScene("Map1_1",LoadSceneMode.Additive);
+
             SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+
+            //데모
+            // GameModel.Instance.EffectManager.Fade();
+            GameModel.Instance.EffectManager.FadeIn();
+            SceneManager.LoadScene("Map1_1", LoadSceneMode.Additive);
+            GameModel.Instance.StateManager.SetState(new PlayingState());
         }
 
         public void SetPlayerName()
@@ -93,6 +100,11 @@ namespace HappyBread.GamePlay
             info.SetActive(false);
         }
 
+        public void ExitButton()
+        {
+            Application.Quit();
+            Debug.Log("게임종료");
+        }
 
     }
 }

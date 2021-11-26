@@ -88,7 +88,7 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.EffectManager.FadeIn();
                 //GameModel.Instance.MapManager.ChangeMap($"Map{date}_1");
                 SceneManager.UnloadSceneAsync($"Map{date-1}_1");
-                SceneManager.LoadScene($"Day{date}_event", LoadSceneMode.Additive);
+                SceneManager.LoadScene($"Day{date}_event", LoadSceneMode.Additive); //데모버전 수정 $"Day{date}_event" -> Demo
                 //GameModel.Instance.MapManager.ChangeMap($"Day{date}_event");
 
 

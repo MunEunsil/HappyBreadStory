@@ -60,6 +60,16 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.SettingBtn.Hide();
         }
+        public void latelyEvidenceHide()
+        {
+            GameModel.Instance.latelyEvidence.Hide();
+        }
+        public void latelyEvidenceAppear()
+        {
+            GameModel.Instance.latelyEvidence.Appear();
+        }
+
+
 
         /// <summary>
         /// Basic == Hp, Date, Clock, SettingBtn,CaseDiaryBtn,
@@ -70,9 +80,9 @@ namespace HappyBread.GamePlay
             DateAppear();
           //  ClockAppear();
             CaseDiaryBtnAppear();
-            CallBtnAppear();
+           // CallBtnAppear();
             SettingBtnAppear();
-          
+          //  latelyEvidenceAppear();
 
         }
 
@@ -85,8 +95,9 @@ namespace HappyBread.GamePlay
             DateHide();
           // ClockHide();
             CaseDiaryBtnHide();
-            CallBtnHide();
+          //  CallBtnHide();
             SettingBtnHide();
+          //  latelyEvidenceHide();
         }
     }
 }

@@ -35,6 +35,7 @@ namespace HappyBread.GamePlay
                 events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
                 events.Add(new ActionEvent(() => { }));
                 GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
             }
         }
         //대화 저장 
@@ -45,7 +46,8 @@ namespace HappyBread.GamePlay
         /// Evidence에 대하여 정의내립니다.
         /// 만약 Evidence가 필요하지 않다면 빈 메서드로 구현합니다.
         /// </summary>
-        protected abstract void InitEvidence();
+        protected abstract void InitEvidence(); 
+        //protected -> public 취약취약  
        // protected abstract void InitDialogue(); 
 
         private void Awake()

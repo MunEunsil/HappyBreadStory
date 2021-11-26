@@ -126,6 +126,35 @@ namespace HappyBread.GamePlay
         //엔딩 결과를 위함 
         public bool happyEnding = false; //true 면 해피엔딩
 
+        //사건수첩 대화 키워드 오픈을 위한 변수 
+        public bool[] straw_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false, false }; // 딸기잼
+
+
+        public bool[] pancake_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false }; //팬케이크
+
+        public bool[] cake_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false };// 컵케이크
+
+        public bool[] crois_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //크로아상
+
+        public bool[] maca_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //마카롱
+
+        public bool[] jelly_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //젤리
+
+        public bool[] jellyjelly_DialogeKeywordsOpen = { false, false, false, false, false }; //젤리젤리
+
+        public bool[] jam_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //땅콩잼
+
+        public bool[] hodu_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //호두
+
+        public bool[] twist_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //꽈배기
+
+        public bool[] choco_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //초코소라빵
+
+        public bool[] donut_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //도넛
+
+
+
+
         public KeyCode Call_NextCommand;
         public bool IsPause
         {

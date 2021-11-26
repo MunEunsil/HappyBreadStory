@@ -80,5 +80,11 @@ namespace HappyBread.GamePlay
         {
 
         }
+
+
+        public void gameExitButton()
+        {
+            Application.Quit();
+        }
     }
 }

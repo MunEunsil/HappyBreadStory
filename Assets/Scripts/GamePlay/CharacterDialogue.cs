@@ -27,7 +27,8 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+
                     }
                     else
                     {
@@ -42,6 +43,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -56,7 +58,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -71,6 +73,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -83,8 +86,9 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.hodu;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                       // GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -99,6 +103,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -113,6 +118,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -128,6 +134,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -143,7 +150,8 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                        //GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
                     {
@@ -159,6 +167,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -174,8 +183,8 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
-                        //if문 추가해서 strawRoomOpen 조건 넣어주기 
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+
                     }
                     else
                     {
@@ -191,7 +200,7 @@ namespace HappyBread.GamePlay
                     {
                         //... 대화
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -202,17 +211,21 @@ namespace HappyBread.GamePlay
                     break;
 
             }
-
-            GetEvidence();  //GetDialogue() 로 변경 
+            
+            
 
 
         }
 
-        protected override void InitEvidence()   //증거X -> 대화 저장 
+        protected override void InitEvidence()  
+        {
+            //Awake
+
+        }
+        private void checkKeyword()
         {
 
         }
-        
 
     }
 }

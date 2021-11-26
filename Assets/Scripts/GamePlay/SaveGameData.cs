@@ -5,18 +5,45 @@ using System;
 
 namespace HappyBread.GamePlay
 {
-    [Serializable] //직렬화
+    [Serializable] 
 
     public class SaveGameData
     {
-        //플레이어 위치 
-        public float playerPosition = DataManager.Instance.playerPosition;
+
         //날짜 
-        public int date = DataManager.Instance.date;
-        //증거수집현황
-        public List<Evidence> evidences = DataManager.Instance.evidences;
+        public int date;//= DataManager.Instance.date; 이건 저기 dataController에서 
+        //증거
+        public List<Evidence> evidences = new List<Evidence>();
+        
         //대화 열림 유무에 대한 정보 
-        //아직 대화 시스템 안바꿨으니까 ㄱㄷ
+
+        public List<bool> straw_keyword = new List<bool>(); // 딸기잼 대화 키워드 
+
+        public List<bool> pancake_keyword = new List<bool>();
+
+        public List<bool> cake_keyword = new List<bool>();
+
+        public List<bool> crois_keyword = new List<bool>();
+
+        public List<bool> maca_keyword = new List<bool>();
+
+        public List<bool> jelly_keyword = new List<bool>();
+
+        public List<bool> jellyjelly_keyword = new List<bool>();
+
+        public List<bool> jam_keyword = new List<bool>();
+
+        public List<bool> hodu_keyword = new List<bool>();
+
+        public List<bool> twist_keyword = new List<bool>();
+
+        public List<bool> choco_keyword = new List<bool>();
+
+        public List<bool> donut_keyword = new List<bool>();
+
+        public List<string> evidence_name = new List<string>();
+
+         
 
     }
 
