@@ -444,8 +444,10 @@ namespace HappyBread.GamePlay
                 {
                     if (DataManager.Instance.evidences[i].Sprite == name)
                     {
-                        DataManager.Instance.evidences[i].Action();
-                        break;
+                       // DataManager.Instance.evidences[i].Action(); //
+                       //GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(DataManager.Instance.evidences[i].Sprite));
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(name));
+                    break;
                     }
                 }
                                   

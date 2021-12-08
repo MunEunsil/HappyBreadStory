@@ -76,6 +76,21 @@ namespace HappyBread.GamePlay
         private checkDiaryDialogue checkDiarydialoge;
         [SerializeField]
         private latelyEvidence lately_Evidence;
+        [SerializeField]
+        private DataController dataController;
+
+        public DataController DataController
+        {
+            get
+            {
+                if (dataController == null)
+                {
+                    dataController = GameModel.FindObjectOfType<DataController>();
+                }
+                return dataController;
+            }
+        }
+        
 
         public TalkBoxData TalkBoxData
         {

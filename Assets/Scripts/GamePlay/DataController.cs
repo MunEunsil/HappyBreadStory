@@ -103,16 +103,16 @@ namespace HappyBread.GamePlay
         {
             //date저장 
             saveData.date = DataManager.Instance.date;
-            //증거저장
-            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-            {
-                saveData.evidences.Add(DataManager.Instance.evidences[j]);
-            }
 
             //증거 이름만 저장
             for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
             {
                 saveData.evidence_name.Add(DataManager.Instance.evidences[j].Name); //모든 증거품 Name 추가 및 확인
+            }
+            //증거 sprite만 저장 
+            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            {
+                saveData.evidence_Sprite.Add(DataManager.Instance.evidences[j].Sprite); //모든 증거품 Sprite 추가 및 확인
             }
 
 
@@ -154,21 +154,30 @@ namespace HappyBread.GamePlay
                 //date 로드 
                 DataManager.Instance.date = saveData.date;
 
-                //증거 로드
-                for (int j = 1; j < saveData.evidences.Count; j++)
+                //증거 이름
+                for (int j = 0; j < saveData.evidence_name.Count; j++)
                 { 
-                     DataManager.Instance.evidences.Add(saveData.evidences[j]);
+                    //DataManager.Instance.evidences.Add(saveData.evidences[j]);
+                    //DataManager.Instance.evidences[j].Name = saveData.evidence_Sprite[j];
+                    DataManager.Instance.evidences.Insert(j,new Evidence() { Name = saveData.evidence_name[j], Sprite = saveData.evidence_Sprite[j] });
+
+                    
                 } 
-            
+         
 
                 //딸기대화 키워드 오픈 로드 
                 for (int i = 0; i < saveData.straw_keyword.Count; i++)
                 {
                     DataManager.Instance.straw_DialogeKeywordsOpen[i] = saveData.straw_keyword[i];
+                   // Debug.Log("딸기대화 키워드 오픈여부 로드"+i);
 
                 }
 
                 Debug.Log("로드 -완-");
+
+                Debug.Log(DataManager.Instance.evidences.Count);
+                
+
 
             }
             else
@@ -177,10 +186,19 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private void OnApplicationQuit()
-        {//꺼지면 자동저장
-            saveGameData();
+        public void FortestLoad()
+        {
+            for (int i = 0; i < DataManager.Instance.evidences.Count; i++)
+            {
+                DataManager.Instance.evidences.RemoveAt(i);
+                Debug.Log("증거 리스트 지우기");
+            }
         }
+
+        //private void OnApplicationQuit()
+        //{//꺼지면 자동저장
+        //    saveGameData();
+        //}
 
 
         public void Check__Evidence()
@@ -188,14 +206,12 @@ namespace HappyBread.GamePlay
             //증거가 어떻게 저장되는지 확인
 
             Debug.Log(DataManager.Instance.evidences.Count);
-            for (int j = 1; j < DataManager.Instance.evidences.Count; j++)
+            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
             {
                 Debug.Log(DataManager.Instance.evidences[j]);
 
                 Debug.Log("\n 증거 이름 ");
                 Debug.Log(DataManager.Instance.evidences[j].Name);
-                Debug.Log("\n 증거 액션 ");
-                Debug.Log(DataManager.Instance.evidences[j].Action);
                 Debug.Log("\n 증거 이미지 이름 ");
                 Debug.Log(DataManager.Instance.evidences[j].Sprite);
 

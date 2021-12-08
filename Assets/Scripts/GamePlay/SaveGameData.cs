@@ -43,7 +43,7 @@ namespace HappyBread.GamePlay
 
         public List<string> evidence_name = new List<string>();
 
-         
+        public List<string> evidence_Sprite = new List<string>();
 
     }
 

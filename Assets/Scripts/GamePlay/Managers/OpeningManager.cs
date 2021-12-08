@@ -106,5 +106,27 @@ namespace HappyBread.GamePlay
             Debug.Log("게임종료");
         }
 
+        public void Click_Load()
+        {
+            GameModel.Instance.DataController.LoadData(); //데이터 로드 
+            load_LoadScene();
+        }
+
+        private void load_LoadScene() //로드버튼을 크릭했을 때 씬이동
+        {
+            SceneManager.UnloadSceneAsync("Opening");
+
+            SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+
+            //date+1에 해당하는 씬 이동 
+            GameModel.Instance.EffectManager.FadeIn();
+            string LoadDate_Scene = "Map_" + DataManager.Instance.date+1 + "_1";  //date 아침 이벤트 씬으로 연결되어야함 
+
+
+            SceneManager.LoadScene(LoadDate_Scene, LoadSceneMode.Additive);
+            GameModel.Instance.StateManager.SetState(new PlayingState());
+
+        }
+
     }
 }

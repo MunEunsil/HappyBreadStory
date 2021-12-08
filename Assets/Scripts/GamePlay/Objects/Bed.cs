@@ -60,7 +60,11 @@ namespace HappyBread.GamePlay
 
             DataManager.Instance.twist = 0;
 
-            //game
+            //load 를 위한 data저장 
+            GameModel.Instance.DataController.saveGameData();
+
+
+
         }
 
 
