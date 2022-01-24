@@ -1,1 +1,1 @@
-Message : askAddAvidence:character:호두_기본:탐정님~ 어서오세요. 여기 2층이시죠? 나중에 심심하면 저 불러주세요~ 그때 재밌는거 하나 알려드릴게요~
+Message : askAddAvidence:character:호두_기본:탐정님, 어서오세요. 여기 3층이시죠? 나중에 심심하면 저 불러주세요! 그때 재밌는거 하나 알려드릴게요.

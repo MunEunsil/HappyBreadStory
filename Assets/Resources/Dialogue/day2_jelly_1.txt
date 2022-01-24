@@ -1,5 +1,5 @@
 Message : askAddAvidence:character :젤리_기본:... 안타깝네요...
-Message : askAddAvidence: Player :유저_기본:어제밤에 어디계셨나요?
+Message : askAddAvidence: Player :유저_기본:어젯밤에 어디계셨나요?
 Message : askAddAvidence:character :젤리_기본:전 제 동생과 방에 있었어요... 이건 왜 물으시는거죠?
 Message : askAddAvidence: Player :유저_기본:단순 사고가 아닌 것 같아서...
 Message : askAddAvidence:character :젤리_기본:세상에...그렇다면 빨리 범빵을 찾으면 좋겠네요. 꼭 찾아주세요.

@@ -14,26 +14,27 @@ namespace HappyBread.GamePlay
         {
             if (collision.CompareTag("Player"))
             {
-                DataManager.Instance.middleEndingName = "middleEnding1";
-                GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+                GameModel.Instance.MiddleEnding.cottonCandyEnding();
+                //DataManager.Instance.middleEndingName = "middleEnding1";
+                //GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
 
-                //ui뿅 
-                GameModel.Instance.StateManager.ChangeState(new PauseState());
-                GameModel.Instance.EffectManager.FadeOut();
+                ////ui뿅 
+                //GameModel.Instance.StateManager.ChangeState(new PauseState());
+                //GameModel.Instance.EffectManager.FadeOut();
 
-                Invoke("exitHotelEnding", 2f);
+                //Invoke("exitHotelEnding", 2f);
 
             }
         }
-        private void exitHotelEnding()
-        {
+        //private void exitHotelEnding()
+        //{
             
-            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
+        //    GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
 
-            GameModel.Instance.EffectManager.FadeIn(0.2f);
-            GameModel.Instance.StateManager.Resume();
-        }
+        //    GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //    GameModel.Instance.StateManager.Resume();
+        //}
     }
 
 }

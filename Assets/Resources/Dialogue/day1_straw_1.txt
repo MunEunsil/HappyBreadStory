@@ -1,2 +1,2 @@
-Message : askAddAvidence:character:딸기잼_기본: (째릿) 어머. 뉴스에 나온 그 탐.정.님? 정말~ 시대가 어떤 시대인데 아직도 탐정이 범인을 잡다니 웃기죠? 
+Message : askAddAvidence:character:딸기잼_기본: 어머. 뉴스에 나온 그 탐.정.님? 정말~ 시대가 어떤 시대인데 아직도 탐정이 범인을 잡다니 웃기죠?  
 Message : askAddAvidence:character:딸기잼_기본: 근데~ 탐정하면 돈 많이 버나? 연봉 몇이에요? 뭐~ 우리 땅콩잼보단 누구든 낮겠지만?

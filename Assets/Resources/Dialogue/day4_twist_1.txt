@@ -1,3 +1,3 @@
 Message : askAddAvidence :character : .꽈배기_기본 :아이고 이거 원 명성 다 떨어지겠네 아이고…이게 무슨일인지... 이번 파티를 위해 들인 돈이 얼마..!! 
 Message : askAddAvidence :character : .꽈배기_기본 :하... 우리 호텔에 진짜 살빵이 존재하기라도 한건가? 탐정님!!! 뭐 나온거 없어요?!
-Message : askAddAvidence :Player : 유저_기본 :…(이 와중에도 명성을 신경 쓰다니…)
+Message : askAddAvidence :Player : 유저_기본 :…

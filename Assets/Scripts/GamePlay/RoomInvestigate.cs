@@ -27,7 +27,7 @@ namespace HappyBread.GamePlay
         public Vector2 NextMoveCommand { get; internal set; }
 
         //조사할 수 있는 오브젝트 리스트
-        public List<GameObject> roomObject = new List<GameObject>();
+        //public List<GameObject> roomObject = new List<GameObject>();
 
         //public List<Evidence> roomEvidence = new List<Evidence>();
         
@@ -122,14 +122,19 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private void Exit()
+        //나가기 버튼 
+        public void Exit() 
         {
-            GameModel.Instance.StateManager.UndoState();
-            //GameModel.Instance.StateManager.ChangeState(new PlayingState());
-
-            //NextFunctionCommand = KeyCode.None;
+            // GameModel.Instance.StateManager.UndoState();
             gameObject.SetActive(false);
-           
+            GameModel.Instance.Player.inRoom = false;
+            GameModel.Instance.StateManager.ChangeState(new PlayingState());
+
+            NextFunctionCommand = KeyCode.None;
+
+            GameModel.Instance.UIManager.BasicUIAppear();
+
+
 
         }
 
@@ -139,6 +144,8 @@ namespace HappyBread.GamePlay
             
             gr = RoomCanvas.GetComponent<GraphicRaycaster>();
             ped = new PointerEventData(null);
+
+            //
         }
 
     }

@@ -1,5 +1,5 @@
-Message : askAddAvidence:character :호두_기본:아 진짜 딸기잼도 이렇게 가는구나~
-Message : askAddAvidence:Player :유저_기본: 어제밤에 어디계셨나요? 
-Message : askAddAvidence:character :호두_기본:그걸 저한테 물으시는거에요? 것보다 오늘 경매기부 하는 날인거 아시죠? 하~참! 제가 이걸 얼마나 기다렸는지~ 두고봐요 제가 큰건 하나 합니다! 하하
-Message : askAddAvidence:Player :유저_기본: 큰건이요?
-Message : askAddAvidence:character :호두_기본:보면 압니다~~!!
+Message : askAddAvidence:character:호두_기본:아 진짜 딸기잼도 이렇게 가는구나~
+Message : askAddAvidence:Player:유저_기본: 어젯밤에 어디계셨나요? 
+Message : askAddAvidence:character:호두_기본:그걸 저한테 물으시는거에요? 것보다 오늘 경매기부 하는 날인거 아시죠? 하~참! 제가 이걸 얼마나 기다렸는지~ 두고봐요 제가 큰건 하나 합니다! 하하
+Message : askAddAvidence:Player:유저_기본: 큰건이요?
+Message : askAddAvidence:character:호두_기본:보면 압니다~~!!

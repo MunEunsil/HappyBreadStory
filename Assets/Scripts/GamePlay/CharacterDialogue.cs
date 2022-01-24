@@ -26,8 +26,25 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.cake;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
+                        if (textFileName == "day1_cake_2")
+                        {
+                            DataManager.Instance.cake_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_cake_1")
+                        {
+                            DataManager.Instance.cake_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day2_cake_2")
+                        {
+                            DataManager.Instance.cake_DialogeKeywordsOpen[2] = true;
+                        }
+                        else if (textFileName=="day4_cake_1")
+                        {
+                            DataManager.Instance.cake_DialogeKeywordsOpen[3] = true;
+                        }
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+
 
                     }
                     else
@@ -42,8 +59,33 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+
+                        if (textFileName == "day1_choco_3")
+                        {
+                            DataManager.Instance.choco_DialogeKeywordsOpen[0] = true;
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                        else if (textFileName == "day2_choco_2")
+                        {
+                            choco_day2_1_choice();
+                            //DataManager.Instance.choco_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day2_choco_3")
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            DataManager.Instance.choco_DialogeKeywordsOpen[2] = true;
+                        }
+                        else if (textFileName == "day3_choco_1")
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            DataManager.Instance.choco_DialogeKeywordsOpen[3] = true;
+                        }
+                        else
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                       
+
                     }
                     else
                     {
@@ -56,9 +98,9 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.crois;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
-                        //... 대화
+                        //... 대화;
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+;
                     }
                     else
                     {
@@ -72,8 +114,17 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                        if (textFileName == "day3_donut_1")
+                        {
+                            DataManager.Instance.donut_DialogeKeywordsOpen[0] = true;
+                        }
+                        else
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+
+                        }
+                     //   GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        //GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
                     }
                     else
                     {
@@ -86,9 +137,17 @@ namespace HappyBread.GamePlay
                     textFileName = "day" + GameModel.Instance.Date.Current + "_" + characterName + "_" + DataManager.Instance.hodu;
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
-                       // GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
+                        if (textFileName == "day1_hodu_1")
+                        {
+                            DataManager.Instance.hodu_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_hodu_1")
+                        {
+                            DataManager.Instance.hodu_DialogeKeywordsOpen[1] = true;
+                        }
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -102,8 +161,25 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
+                        if (textFileName == "day1_jam_2")
+                        {
+                            DataManager.Instance.jam_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_jam_1")
+                        {
+                            DataManager.Instance.jam_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day3_jam_1")
+                        {
+                            DataManager.Instance.jam_DialogeKeywordsOpen[2] = true;
+                        }
+                        else if (textFileName == "day4_jam_1")
+                        {
+                            DataManager.Instance.jam_DialogeKeywordsOpen[3] = true;
+                        }
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -117,8 +193,26 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
+                        if (textFileName == "day1_jelly_1")
+                        {
+                            DataManager.Instance.jelly_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_jelly_1")
+                        {
+                            DataManager.Instance.jelly_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day2_jelly_3")
+                        {
+                            DataManager.Instance.jelly_DialogeKeywordsOpen[2] = true;
+                        }
+                        else if (textFileName=="day4_jelly_1")
+                        {
+                            DataManager.Instance.jelly_DialogeKeywordsOpen[3] = true;
+                        }
+
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -133,8 +227,22 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
+
+                        if (textFileName == "day1_jellyjelly_1")
+                        {
+                            DataManager.Instance.jellyjelly_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_jellyjelly_1")
+                        {
+                            DataManager.Instance.jellyjelly_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName=="day3_jellyjelly_1")
+                        {
+                            DataManager.Instance.jellyjelly_DialogeKeywordsOpen[2] = true;
+                        }
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -149,8 +257,25 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
+
+                        if (textFileName == "day2_maca_1")
+                        {
+                            DataManager.Instance.maca_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day1_maca_2")
+                        {
+                            DataManager.Instance.maca_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day3_maca_1")
+                        {
+                            DataManager.Instance.maca_DialogeKeywordsOpen[2] = true;
+                        }
+                        else if (textFileName == "day4_maca_1")
+                        {
+                            DataManager.Instance.maca_DialogeKeywordsOpen[3] = true;
+                        }
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                        //GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                         //GameModel.Instance.checkDiaryDialogue.checkDialoge(characterName);
                     }
                     else
@@ -166,8 +291,27 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                        if (textFileName == "day1_pancake_1")
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            DataManager.Instance.pancake_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName == "day2_pancke_1")
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            DataManager.Instance.pancake_DialogeKeywordsOpen[1] = true;
+                        }
+                        else if (textFileName == "day3_pancake_1")
+                        {
+                            // 팬케이크 선택지
+                            pancake_choice();
+                        }
+                        else
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -182,8 +326,17 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
+                        if (textFileName == "day1_straw_1")
+                        {
+                            DataManager.Instance.straw_DialogeKeywordsOpen[0] = true;
+                        }
+                        else if (textFileName=="day1_straw_2")
+                        {
+                            DataManager.Instance.straw_DialogeKeywordsOpen[1] = true;
+                        }
+
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                      //  GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
 
                     }
                     else
@@ -199,8 +352,44 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
-                        GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
+                        //키워드 오픈
+                        if (textFileName == "day1_twist_1")
+                        {
+                            DataManager.Instance.twist_DialogeKeywordsOpen[0] = true;
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                        else if (textFileName == "day1_twist_2")
+                        {
+                            // DataManager.Instance.twist_DialogeKeywordsOpen[1] = true;
+                            twist_day1_choice_1();
+                        }
+                        else if (textFileName == "day1_twist_3")
+                        {
+                            //DataManager.Instance.twist_DialogeKeywordsOpen[2] = true;
+                            twist_day1_choice_2();
+                        }
+                        else if (textFileName == "day2_twist_1")
+                        {
+                            DataManager.Instance.twist_DialogeKeywordsOpen[3] = true;
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            DataManager.Instance.strawRoomKey = true; // 이거 해야 딸기방 들어갈 수있음! 
+                        }
+                        else if (textFileName == "day4_twist_1")
+                        {
+                            DataManager.Instance.twist_DialogeKeywordsOpen[5] = true;
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                        else if (textFileName == "day3_twist_1")
+                        {
+                            DataManager.Instance.masterKey = true;
+                        }
+                        else
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                        
+                        
+                       // GameModel.Instance.checkDiaryDialogue.checkKeyword__Test(textFileName);
                     }
                     else
                     {
@@ -215,6 +404,54 @@ namespace HappyBread.GamePlay
             
 
 
+        }
+        //2지선다 선택에 따라 달라지는 대화 
+
+        //테스트 
+        //private void donutTest()
+        //{
+        //    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_donut_1"));
+        //    List<Event> events = new List<Event>();
+        //    events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[1] = true; ; ; }));
+        //    events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[2] = true; }));
+        //    GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+        //}
+
+        private void pancake_choice()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_pancake_1"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { DataManager.Instance.pancake_DialogeKeywordsOpen[2] = true; ; }));
+            events.Add(new ActionEvent(() => { }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+        }
+
+        private void twist_day1_choice_1()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_2"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[1] = true; ; }));
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[2] = true; }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
+        }
+        private void twist_day1_choice_2()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_3"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[1] = true; ; }));
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[2] = true; }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
+        }
+
+        private void choco_day2_1_choice()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_choco_1"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => {  ; }));
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[1] = true; }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
         }
 
         protected override void InitEvidence()  

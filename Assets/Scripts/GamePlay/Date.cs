@@ -48,7 +48,7 @@ namespace HappyBread.GamePlay
                 //불러오지 않게하기 
                 return;
             }
-
+            DataManager.Instance.date += number;
             this.date += number;
             Render();
         }

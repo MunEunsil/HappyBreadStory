@@ -1,4 +1,4 @@
-Message : askAddAvidence:Player :유저_기본: 어제밤에 어디계셨나요?
+Message : askAddAvidence:Player :유저_기본: 어젯밤에 어디계셨나요?
 Message : askAddAvidence:character :도넛_기본:그걸 왜 물어요? 사고라면서요
 Message : askAddAvidence:Player :유저_기본: 아직 확실하지 않습니...
 Message : askAddAvidence:character :도넛_기본:전 디너파티 정리하고 바로 지하에서 일했어요. 저 바빠요.

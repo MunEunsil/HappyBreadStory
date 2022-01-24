@@ -10,7 +10,7 @@ namespace HappyBread.GamePlay
     {
         public override void Interact()
         {
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_staffTwist"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_staff_twist"));
 
             GetEvidence();
 
@@ -23,7 +23,7 @@ namespace HappyBread.GamePlay
                 Sprite = "민중을이끄는꽈배기",
                 Action = () =>
                 {
-                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_staffTwist"));
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_staff_twist"));
 
                 }
 

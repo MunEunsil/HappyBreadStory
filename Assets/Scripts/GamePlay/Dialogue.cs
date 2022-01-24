@@ -214,7 +214,7 @@ namespace HappyBread.GamePlay
             {
                 //characterUI.enabled = true;
                 //characterUI.sprite = characterSprite;
-                characterUI_.SetActive(false);
+                characterUI_.SetActive(true);
                 characterUI_.GetComponent<Image>().sprite = characterSprite;
             }
             answerIndex = questionBox.AnswerIndex;
@@ -262,43 +262,56 @@ namespace HappyBread.GamePlay
             /// 다만 이렇게 하면 이미지 이름도 전부 수정 
             /// 만약 대사 모두 다시 수정할 일이 있다면 츄라이
             ///
+
             switch (TagName[0])
             {
                 case "컵케익":
-                    characterNmaeText_.text = "컵케익";
+                    GameModel.Instance.AudioManager.D_Audio("D_cake");
+                    characterNmaeText_.text = "컵케이크";
                     break;
                 case "소라빵":
-                    characterNmaeText_.text = "초롱";
+                    GameModel.Instance.AudioManager.D_Audio("D_choco");
+                    characterNmaeText_.text = "초코";
                     break;
                 case "크로아상":
-                    characterNmaeText_.text = "크로 경장";
+                    GameModel.Instance.AudioManager.D_Audio("D_crois");
+                    characterNmaeText_.text = "크로경장";
                     break;
                 case "도넛":
-                    characterNmaeText_.text = "두나";
+                    GameModel.Instance.AudioManager.D_Audio("D_donut");
+                    characterNmaeText_.text = "도넛";
                     break;
                 case "호두":
-                    characterNmaeText_.text = "워넷";
+                    GameModel.Instance.AudioManager.D_Audio("D_hodu");
+                    characterNmaeText_.text = "호두";
                     break;
                 case "땅콩잼":
-                    characterNmaeText_.text = "피넛스";
+                    GameModel.Instance.AudioManager.D_Audio("D_jam");
+                    characterNmaeText_.text = "땅콩잼";
                     break;
                 case "젤리":
+                    GameModel.Instance.AudioManager.D_Audio("D_jelly");
                     characterNmaeText_.text = "젤리";
                     break;
                 case "젤리젤리":
+                    GameModel.Instance.AudioManager.D_Audio("D_jellyjelly");
                     characterNmaeText_.text = "젤리젤리";
                     break;
                 case "마카롱":
+                    GameModel.Instance.AudioManager.D_Audio("D_maca");
                     characterNmaeText_.text = "막가롱";
                     break;
                 case "팬케이크":
-                    characterNmaeText_.text = "핫케이";
+                    GameModel.Instance.AudioManager.D_Audio("D_pancake");
+                    characterNmaeText_.text = "팬케이크";
                     break;
                 case "딸기잼":
-                    characterNmaeText_.text = "산딸기";
+                    GameModel.Instance.AudioManager.D_Audio("D_straw");
+                    characterNmaeText_.text = "딸기잼";
                     break;
                 case "꽈배기":
-                    characterNmaeText_.text = "곽백이";
+                    GameModel.Instance.AudioManager.D_Audio("D_twist");
+                    characterNmaeText_.text = "곽배기";
                     break;
 
             }
@@ -328,7 +341,7 @@ namespace HappyBread.GamePlay
                 }
                 else
                 {
-                  //  backgroundUI.enabled = true;
+                    backgroundUI.enabled = true;    
                     backgroundUI_.SetActive(true);
                     backgroundUI_.GetComponent<Image>().sprite = backgroundSprite;
                     //backgroundUI.sprite = backgroundSprite;
@@ -358,10 +371,13 @@ namespace HappyBread.GamePlay
             }
             else if (isEvidence == "Player") //플레이어 대화 일 때
             {
+                // 플레이어 소리 추가. 
+                GameModel.Instance.AudioManager.D_Audio("D_player");//walk
+
                 Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
                 Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
 
-                playerNmaeText_.text= DataManager.Instance.PlayerName;
+              //  playerNmaeText_.text= DataManager.Instance.PlayerName;
             
 
                 //characterUI.enabled = false;
@@ -390,10 +406,14 @@ namespace HappyBread.GamePlay
                 else
                 {
                     //  characterUI.enabled = true;
-                    //playerUI.sprite = playerSprite;
+                    //playerUI_.sprite = playerSprite;
+                    playerUI_.GetComponent<Image>().sprite = playerSprite;
                     playerUI_.SetActive(true);
                     playerNameUI_.SetActive(true);
-                    playerUI_.GetComponent<Image>().sprite = playerSprite;
+                    playerNmaeText_.text = DataManager.Instance.PlayerName;
+                    Debug.Log(DataManager.Instance.PlayerName);
+
+
                 }
 
                 // 메세지 변환
@@ -409,6 +429,8 @@ namespace HappyBread.GamePlay
             {
                 playerUI_.SetActive(false);
                 evidenceUI_.SetActive(false);
+                playerNameUI_.SetActive(false);
+
                 Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
                 Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
 

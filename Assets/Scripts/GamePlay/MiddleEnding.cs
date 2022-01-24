@@ -19,14 +19,14 @@ namespace HappyBread.GamePlay
         //나중에 엔딩모음 만들 때 수정 필요 
         public GameObject endingImage;
         public KeyCode NextCommand;
-
+        private int date;
 
         public void Start()
         {
-            int date = DataManager.Instance.date;
+            date = DataManager.Instance.date;
             string MImage = DataManager.Instance.middleEndingName;
             endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite(MImage);
-            SceneManager.UnloadSceneAsync($"map{date}_1"); //day에 따라 다르게 해야함으로 코드 추가 필요 
+            
         }
 
 
@@ -45,6 +45,9 @@ namespace HappyBread.GamePlay
                     SceneManager.UnloadSceneAsync("Player");
                    // SceneManager.
                     GameModel.Instance.MiddleEnding.gameObject.SetActive(false);
+
+                    //엔딩 저장하기 
+                    GameModel.Instance.DataController.Save_Ending();
 
                     DataManager.Instance.cake = 0;
                     DataManager.Instance.choco = 0;
@@ -76,30 +79,11 @@ namespace HappyBread.GamePlay
         //
 
         public void startMoldEnding() //곰팡이 엔딩 불러오기
-        {          
-            DataManager.Instance.middleEndingName = "middleEnding4";
-            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
-
-            //ui뿅 
-            GameModel.Instance.StateManager.ChangeState(new PauseState());
-            GameModel.Instance.EffectManager.FadeOut();
-
-            Invoke("Ending", 2f);
-        }
-        private void Ending() //곰팡이 엔딩
         {
-
-            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
-
-            GameModel.Instance.EffectManager.FadeIn(0.2f);
-            GameModel.Instance.StateManager.Resume();
-
-        }
-
-
-        //초코분수 퐁듀 엔딩 
-        public void startFondueEnding() 
-        {
+            date = DataManager.Instance.date;
+            SceneManager.UnloadSceneAsync($"Map{date}_1");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+           
             DataManager.Instance.middleEndingName = "middleEnding2";
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
@@ -107,18 +91,73 @@ namespace HappyBread.GamePlay
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
 
+             
+            DataManager.Instance.ending_[1] = true; 
+
+
+            Invoke("Ending", 2f);
+        }
+        private void Ending() 
+        {
+            GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
+
+            GameModel.Instance.EffectManager.FadeIn(0.2f);
+            GameModel.Instance.StateManager.Resume();
+
+
+
+        }
+        //솜사탕 구름 엔딩
+        public void cottonCandyEnding()
+        {
+            date = DataManager.Instance.date;
+            SceneManager.UnloadSceneAsync($"Map{date}_1");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "middleEnding5";
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+
+            DataManager.Instance.ending_[4] = true;
+
+            Invoke("Ending", 2f);
+        }
+
+        //초코분수 퐁듀 엔딩 
+        public void startFondueEnding()
+        {
+            date = DataManager.Instance.date;
+            SceneManager.UnloadSceneAsync($"Map{date}_1");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "middleEnding1";
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_[0] = true;
+
             Invoke("Ending", 2f);
         }
 
         //오븐 오버쿡 식빵 엔딩 
         public void startOvenEnding()
         {
-            DataManager.Instance.middleEndingName = "middleEnding5"; //이미지 이름 
+            date = DataManager.Instance.date;
+            SceneManager.UnloadSceneAsync($"Map{date}_1");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "middleEnding4"; //이미지 이름 
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
             //ui뿅 
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_[3] = true;
 
             Invoke("Ending", 2f);
         }
@@ -126,12 +165,68 @@ namespace HappyBread.GamePlay
         //냉동고 얼린식빵 엔딩 
         public void startFreezerEnding()
         {
+            date = DataManager.Instance.date;
+            SceneManager.UnloadSceneAsync($"Map{date}_1");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "middleEnding3"; //이미지 이름 
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_[2] = true;
+
+            Invoke("Ending", 2f);
+        }
+
+        //무능한 탐정 엔딩 
+        //범인짐녹 시 3번이상 틀려야함
+        public void incompetentEnding()
+        {
+
+            SceneManager.UnloadSceneAsync($"CallScene");
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding6"; //이미지 이름 
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
             //ui뿅 
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_[5] = true;
+
+            Invoke("Ending", 2f);
+        }
+
+        //해피엔딩 
+        public void totallyHappyEnding()
+        {
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "totallyHappyEnding"; //이미지 이름 
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_happyEnding[0] = true;
+
+            Invoke("Ending", 2f);
+        }
+
+        //배드엔딩
+        public void badEnding()
+        {
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "badending"; //이미지 이름 
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_happyEnding[1] = true;
 
             Invoke("Ending", 2f);
         }

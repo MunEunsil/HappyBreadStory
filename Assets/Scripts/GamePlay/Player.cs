@@ -31,9 +31,13 @@ namespace HappyBread.GamePlay
         private State state;
         private RaycastHit2D hit;
 
+        public bool inRoom; //방 안에 있는지 확인하기 위한 변수
+
+
         private void Start()
         {
             state = State.Idle;
+            inRoom = false;
         }
 
         private void Update()
@@ -87,6 +91,7 @@ namespace HappyBread.GamePlay
                 switch (NextFunctionCommand)
                 {
                     case GlobalGameData.mouseClick:
+                        //if()state가 플레이어
                         AttemptInteract();
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
@@ -115,15 +120,17 @@ namespace HappyBread.GamePlay
 
         public void AttemptInteract()  
         {
-            Vector2 start = transform.position;
-            Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
-            hit = Physics2D.Linecast(start, end, interactableLayer);
-            if (hit.transform != null)
+            if (inRoom == false)
             {
-                Interact(hit);
+                Vector2 start = transform.position;
+                Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
+                hit = Physics2D.Linecast(start, end, interactableLayer);
+                if (hit.transform != null)
+                {
+                    Interact(hit);
+                }
+
             }
-
-
             NextFunctionCommand = KeyCode.None;
         }
 
@@ -156,13 +163,23 @@ namespace HappyBread.GamePlay
             }
         }
 
+        private int walk = 0;
         private void WalkingState()
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음
             {
-                GameModel.Instance.AudioManager.PlayEffectAudio("walk");
-                
-                
+                //if (walk == 0)
+                //{
+                //    walk = 1;
+                //    GameModel.Instance.AudioManager.PlayEffectAudio("walk");//walk
+                //}
+                //else
+                //{
+                //    walk = 0;
+                //    GameModel.Instance.AudioManager.PlayEffectAudio("walk1");
+                //}
+
+                GameModel.Instance.AudioManager.PlayEffectAudio("walk");//walk
                 Move(NextMoveCommand);
             }
             else // 움직임 상태 해제
@@ -201,5 +218,8 @@ namespace HappyBread.GamePlay
         //    GameModel.Instance.StateManager.Resume();
 
         //}
+
+       
+
     }
 }

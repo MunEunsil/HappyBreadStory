@@ -10,10 +10,17 @@ namespace HappyBread.GamePlay
     {
         //파일 읽기
         private SaveGameData saveData = new SaveGameData();
+        //엔딩 파일 읽기 
+        public SaveEndingData saveEndingData = new SaveEndingData();   //각 엔딩 스크립트에서 접근할것이기 때문에 public
+
+
+
 
         private string SAVE_DATA_DIRECTORY; //저장할 폴더 경로
-        private string SAVE_FILENAME="/SaveFile.txt";//파일 이름
-       
+        private string SAVE_FILENAME="/SaveFile.txt";//세이브 파일 이름
+
+        private string SAVE_ENDINGS_DIRECTORY; //엔딩 저장할 폴더 경로
+        private string ENDING_FILENAME = "/EndingFile.txt"; //엔딩 저장 파일 이름
 
 
 
@@ -86,15 +93,24 @@ namespace HappyBread.GamePlay
             // LoadGameData();
             SAVE_DATA_DIRECTORY = Application.dataPath + "/Save/";
 
+            SAVE_ENDINGS_DIRECTORY = Application.dataPath + "/Save";
+            
+
             if (!Directory.Exists(SAVE_DATA_DIRECTORY))//해당 경로가 존재하지 않는다면
             {
                 Directory.CreateDirectory(SAVE_DATA_DIRECTORY); //폴더생성(경로 생성)
+
+            }
+
+            //엔딩 데이터 파일없으면 생성
+            if (!Directory.Exists(SAVE_ENDINGS_DIRECTORY))
+            {
+                Directory.CreateDirectory(SAVE_ENDINGS_DIRECTORY);
             }
 
 
+
       
-
-
             //saveGameData();
         }
 
@@ -104,24 +120,23 @@ namespace HappyBread.GamePlay
             //date저장 
             saveData.date = DataManager.Instance.date;
 
+            //증거가 있으면 
             //증거 이름만 저장
-            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            if (DataManager.Instance.evidences != null)
             {
-                saveData.evidence_name.Add(DataManager.Instance.evidences[j].Name); //모든 증거품 Name 추가 및 확인
-            }
-            //증거 sprite만 저장 
-            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-            {
-                saveData.evidence_Sprite.Add(DataManager.Instance.evidences[j].Sprite); //모든 증거품 Sprite 추가 및 확인
+                for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                {
+                    saveData.evidence_name.Add(DataManager.Instance.evidences[j].Name); //모든 증거품 Name 추가 및 확인
+                }
+                //증거 sprite만 저장 
+                for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                {
+                    saveData.evidence_Sprite.Add(DataManager.Instance.evidences[j].Sprite); //모든 증거품 Sprite 추가 및 확인
+                }
             }
 
 
-            //대화키워드 오픈 저장 
-            //테스트니까 일단 딸기만 
-            //for (int i = 0; i < DataManager.Instance.straw_DialogeKeywordsOpen.Length; i++)
-            //{
-            //    saveData.straw_keyword.Add(DataManager.Instance.straw_DialogeKeywordsOpen[i]);
-            //}
+
 
             string json = JsonUtility.ToJson(saveData); //제이슨화
 
@@ -131,20 +146,12 @@ namespace HappyBread.GamePlay
             Debug.Log(json);
             
 
-           // SaveGameData.date = DataManager.Instance.date;
-
-
-
-
-           // string ToJsonData = JsonUtility.ToJson(gameData);
-            //string filePath = Application.persistentDataPath + GameDataFileName;
-          //  File.WriteAllText(filePath,ToJsonData);
-           // Debug.Log("저장 완료");
         }
 
         //로드하기
         public void LoadData()
         {
+            //
             if (File.Exists(SAVE_DATA_DIRECTORY + SAVE_FILENAME))
             {
                 //전체 읽어오기
@@ -218,5 +225,57 @@ namespace HappyBread.GamePlay
             }
             
         }
+
+        //엔딩 저장하는 함수 
+        public void Save_Ending()
+        {
+            //중간엔딩
+            for (int j = 0; j < 11; j++)
+            {
+                saveEndingData.Ending.Add(DataManager.Instance.ending_[j]);
+            }
+
+            //해피/안해피 엔딩
+            saveEndingData.HappyEnding.Add(DataManager.Instance.ending_happyEnding[0]);
+            saveEndingData.HappyEnding.Add(DataManager.Instance.ending_happyEnding[1]);
+
+            string json = JsonUtility.ToJson(saveEndingData); //제이슨화
+
+            File.WriteAllText(SAVE_ENDINGS_DIRECTORY + ENDING_FILENAME, json);
+
+            Debug.Log("엔딩 저장했음!");
+            Debug.Log("엔딩 저장 json 확인 =>>> " + json);
+
+        }
+
+
+        ////엔딩을 로드하는 함수
+        public void Load_Ending()
+        {
+            // Application.dataPath + "/Save/"+"/SaveFile.txt"
+            if (File.Exists(SAVE_DATA_DIRECTORY + SAVE_FILENAME))
+            {
+                //전체 읽어오기
+                string load_Ending_json = File.ReadAllText(SAVE_ENDINGS_DIRECTORY + ENDING_FILENAME);
+                saveEndingData = JsonUtility.FromJson<SaveEndingData>(load_Ending_json);
+
+ 
+                for (int j = 0; j < 11; j++)
+                {
+                    //DataManager.Instance.ending_ = saveEndingData.Ending;
+                    DataManager.Instance.ending_[j] = saveEndingData.Ending[j];
+
+                }
+
+                Debug.Log("엔딩 로드 -완-");
+
+            }
+            else
+            {
+                Debug.Log("save 없음");
+            }
+        }
+
+
     }
 }

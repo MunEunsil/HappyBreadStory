@@ -59,7 +59,8 @@ namespace HappyBread.GamePlay
         public GameObject evidenceWindow;
         public GameObject talkBoxWindow;
 
-     
+        //대화 키워드 배경 
+        public GameObject detailKeyword_bgi;
 
 
         public Vector2 NextMoveCommand { get; internal set; }
@@ -238,12 +239,13 @@ namespace HappyBread.GamePlay
                     if (obj.CompareTag("Diary_suspects"))
                     {
                         //디테일 ui
-                        //MoveDetail();
-                        //detailObjSetactive = true;
+                        MoveDetail();
+                        detailObjSetactive = true;
                     }
                     else if (obj.CompareTag("Diary_detailText"))
                     {
-                        showDialogeText();
+                        string KeywordNum = obj.gameObject.name;
+                        showDialogeText(KeywordNum);
                         keywordTextViewBool = true;
                     }
                     else 
@@ -473,27 +475,68 @@ namespace HappyBread.GamePlay
             //이미지 
             characterFileName = name;
 
-            Sprite detailImageSprite = ResourceLoader.LoadSprite(characterFileName);
-            detailImage.sprite = detailImageSprite;
+            //Sprite detailImageSprite = ResourceLoader.LoadSprite(characterFileName);
+
+            //detailImage.sprite = detailImageSprite;
             //설명text 이미지
             string characterDescription = name + "Description";
             Sprite detailTextImg = ResourceLoader.LoadSprite(characterDescription);
-            detailText.sprite = detailTextImg;
+            //detailText.sprite = detailTextImg;
 
 
             //키워드들 채우기
             FillKeyword();
 
-            suspectsObj.SetActive(false);
-            ////cursorIndex = 0;
-            ////Destroy(cursor);
-            ////cursor = null;
 
-            ////커서 만들기 
-            ////RenderCursor();
+            //키워드 뒤에 이미지
+            FillKeywordBGI();
+            suspectsObj.SetActive(false);
+
 
         }
 
+        private void FillKeywordBGI()
+        {
+            switch (characterFileName)
+            {
+                case "straw":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("straw_keyword");
+                    break;
+                case "pancake":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("pan_keyword");
+                    break;
+                case "crois":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("cro_keyword");
+                    break;
+                case "maca":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("maca_keyword");
+                    break;
+                case "jelly":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("jelly_keyword");
+                    break;
+                case "jam":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("penut_keyword");
+                    break;
+                case "hodu":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("hodu_keyword");
+                    break;
+                case "donut":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("donut_keyword");
+                    break;
+                case "twist":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("kwabakki_keyword");
+                    break;
+                case "choco":
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("sora_keyword");
+                    break;
+                case "cake":
+                    //cup_keyword
+                    detailKeyword_bgi.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("cup_keyword");
+
+                    break;
+
+            }
+        }
         private void FillKeyword()
         {
 
@@ -501,8 +544,7 @@ namespace HappyBread.GamePlay
             {
                 switch (characterFileName)
                 {
-                    case "straw":
-                        
+                    case "straw":                                            
                         //if strawDialogeKeywordsOpen[i] ==1 이면 else 넘어가기 
                         if (DataManager.Instance.straw_DialogeKeywordsOpen[i] == true)
                         {
@@ -510,10 +552,9 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
-                        
-                        Debug.Log("딸기 키워드");
+                        Debug.Log("딸기 키워드?????");
                         break;
                     case "pancake":
                         if (DataManager.Instance.pancake_DialogeKeywordsOpen[i] == true)
@@ -522,7 +563,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("팬케이크 키워드");
                         break;
@@ -534,7 +575,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("크로아상 키워드");
                         break;
@@ -546,7 +587,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("마카롱 키워드");
                         break;
@@ -557,7 +598,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("젤리 키워드");
                         break;
@@ -568,7 +609,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("잼 키워드");
                         break;
@@ -580,7 +621,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("호두 키워드");
                         break;
@@ -592,7 +633,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         Debug.Log("도넛 키워드?");
                         break;
@@ -603,7 +644,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         break;
                     case "choco":
@@ -613,7 +654,7 @@ namespace HappyBread.GamePlay
                         }
                         else
                         {
-                            keyWordTextObj[i].text = "?";
+                            keyWordTextObj[i].text = " ";
                         }
                         break;
                     default:
@@ -625,13 +666,180 @@ namespace HappyBread.GamePlay
             }
         }
         //대화탭 -> 캐릭터 선택 -> 캐릭터 대화 정보 창에서 스페이스바를 누르면 해당 대화를 보여준다. 
-        private void showDialogeText()
+        private void showDialogeText(string num)
         {
+            //대화 ui 외에 전부 false 
+            //index랑 대화랑 매칭  
 
-            //string textKTW = keyWordTextObj[cursorIndex].text;
-            //keywordTextViewText.text = ResourceLoader.LoadDialogeText(textKTW); //게임모델
-            //keywordTextView.SetActive(true);
-            //keywordTextViewBool = true;
+            switch (characterFileName)
+            {
+                case "straw":
+                    //if strawDialogeKeywordsOpen[i] ==1 이면 else 넘어가기 
+                    if (num == "0") //0번 키워드 일 때
+                    {
+                        //해당 키워드 대화 이벤트 
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_straw_1"));
+                    }
+                    else if (num == "1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_straw_2"));
+                    }
+
+
+                    Debug.Log("딸기 키워드 클릭");
+                    break;
+                case "pancake":
+                    if (num == "0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_pancake_1"));
+                    }
+                    else if (num == "1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_pancke_1"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_pancake_1"));
+                    }
+
+                    Debug.Log("팬케이크 키워드 클릭");
+                    break;
+
+                case "crois":
+                    //if (DataManager.Instance.crois_DialogeKeywordsOpen[i] == true)
+                    //{
+                    //    keyWordTextObj[i].text = GameModel.Instance.TalkBoxData.croisDialogeKeywords[i];
+                    //}
+                    //else
+                    //{
+                    //    keyWordTextObj[i].text = "?";
+                    //}
+                    //Debug.Log("크로아상 키워드");
+                    break;
+
+                case "maca":
+                    if (num == "0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_maca_1"));
+                    }
+                    else if (num == "1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_maca_2"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_maca_1"));
+                    }
+                    else if (num == "3")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_maca_1"));
+                    }
+                    Debug.Log("마카롱 키워드 클릭");
+                    break;
+                case "jelly":
+                    if (num == "0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_jelly_1"));
+                    }
+                    else if (num == "1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_jelly_1"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_jelly_3"));
+                    }
+                    else if (num == "3")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_jelly_1"));
+                    }
+                    Debug.Log("젤리 키워드 클릭");
+                    break;
+                case "jam":
+                    if (num=="0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_jam_2"));
+                    }
+                    else if(num=="1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_jam_1"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_jam_1"));
+                    }
+                    else if (num == "3")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_jam_1"));
+                    }
+                    Debug.Log("잼 키워드");
+                    break;
+
+                case "hodu":
+                    if (num == "0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_hodu_1"));
+                    }
+                    else if(num=="1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_hodu_1"));
+                    }
+                    Debug.Log("호두 키워드");
+                    break;
+
+                case "donut":
+                    if (num=="0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_donut_1"));
+                    }
+
+                    Debug.Log("도넛 키워드?");
+                    break;
+                case "twist":
+                    if (num=="0")
+                    {
+                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_1"));
+                    }              
+                    else if(num=="1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_2"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_3"));
+                    }
+                    else if (num == "3")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_twist_1"));
+                    }
+                    else if (num == "4")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_twist_1"));
+                    }
+                    break;
+                case "choco":
+                    if (num == "0")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_choco_3"));
+                    }
+                    else if (num == "1")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_choco_2"));
+                    }
+                    else if (num == "2")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_choco_3"));
+                    }
+                    else if (num == "3")
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_choco_1"));
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
 
         }
         private void Exit()

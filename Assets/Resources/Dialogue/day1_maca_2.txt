@@ -1,1 +1,1 @@
-Message : askAddAvidence:character:마카롱_기본: 음~ 여기가 조명이 좋네~ 보셨어요? 딸기잼이랑 젤리랑 친구라던데! 나도 친해지고 싶당! 
+Message : askAddAvidence:character:마카롱_기본:음~ 여기가 조명이 좋네~ 보셨어요? 딸기잼이랑 젤리랑 친구라던데! 나도 친해지고 싶당!

@@ -38,11 +38,10 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
-
             //증거 선택 켜기 
             CallManager.Instance.EvidenceDiary.SetActive(true);
             CallManager.Instance.RenderEvidence();
-              
+
         }
 
 

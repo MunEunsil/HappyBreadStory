@@ -16,6 +16,8 @@ namespace HappyBread.GamePlay
         public GameObject happyEnding;
         public GameObject badEnding;
 
+        public GameObject credit;
+
         public bool HappyImage;
         public GameObject happyEndingImage;
 
@@ -26,21 +28,32 @@ namespace HappyBread.GamePlay
         {
           
         }
-        void Start()
+        private void Start()
         {
             GameModel.Instance.UIManager.BasicUIHide();
-            
+
+
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
 
             if (DataManager.Instance.happyEnding == true)
             {
                 happyEnding.SetActive(true);
                 HappyImage = happyEnding.GetComponent<EndingDialogue>().printState;
 
+                DataManager.Instance.ending_happyEnding[0] = true;
 
+                credit.SetActive(true);
             }
             else if(DataManager.Instance.happyEnding == false)
             {
                 badEnding.SetActive(true);
+
+
+                //배드엔딩 볼 수 있게 
+                credit.SetActive(false);
+                Debug.Log("배드엔딩?");
+                DataManager.Instance.ending_happyEnding[1] = true;
+                Debug.Log(DataManager.Instance.ending_happyEnding[1]);
             }
         }
 

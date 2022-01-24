@@ -2,17 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Evidence_ADV : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+//evidence_edvCosmetic
 
-    // Update is called once per frame
-    void Update()
+namespace HappyBread.GamePlay
+{
+
+    public class Evidence_ADV : Interactable
     {
-        
+        public override void Interact()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_edvCosmetic"));
+
+            GetEvidence();
+
+        }
+        protected override void InitEvidence()
+        {
+            DataManager.Instance.dialogeEvidence = true;
+            Evidence = new Evidence()
+            {
+                Sprite = "화장품광고지",
+                Action = () =>
+                {
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_edvCosmetic"));
+
+                }
+
+            };
+            DataManager.Instance.dialogeEvidence = false;
+        }
     }
 }

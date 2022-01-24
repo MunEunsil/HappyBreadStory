@@ -9,6 +9,10 @@ namespace HappyBread.GamePlay
     {
         public GameObject settingPanel;
 
+        public GameObject operationKeyTab;
+        public GameObject audioTab;
+
+
         public void Click()
         {
             //패널 나타남 
@@ -23,5 +27,25 @@ namespace HappyBread.GamePlay
             settingPanel.SetActive(false);
             GameModel.Instance.StateManager.ChangeState(new PlayingState());
         }
+
+        //음향버튼
+        public void button_audioTab() 
+        {
+            //조작키 끔 
+            operationKeyTab.SetActive(false);
+            //음향 킴 
+            audioTab.SetActive(true);
+        }
+        //조작탭 킴
+        public void button_operationKeyTab()
+        {
+            //음향탭끔
+            audioTab.SetActive(false);
+            //조작키 켬
+            operationKeyTab.SetActive(true);
+            
+
+        }
+
     }
 }

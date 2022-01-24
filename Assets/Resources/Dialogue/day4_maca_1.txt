@@ -1,7 +1,7 @@
-Message : askAddAvidence :character : 마카롱_기본 :탐정님, 여기 진짜 이상해요. VIP 초대가 아니라 무슨 죽음의 초대 아니냐고~~! (소근소근) 진짜 음침하죠
-Message : askAddAvidence :Player : 유저_기본 :아…하하… 그것보다 스토커는...
-Message : askAddAvidence :character : 마카롱_기본 :아 괜찮아요 이제..!
-Message : askAddAvidence :character : 마카롱_기본 :아무튼! 막 죽어나가니까 무서웠지만~ 덕분에 팔로워랑 조회수도 늘고~ 고급 서비스도 받아보고ㅎㅎ~내가 죽은 것도 아니고...
-Message : askAddAvidence :character : 마카롱_기본 :솔직히 다 어이없는 실수잖아요? 그러게 왜 그리 칠칠치 못한지~!! 
-Message : askAddAvidence :character : 마카롱_기본 :탐정님 제 명함 있죠? 저랑 같이 날 잡아서 콜라보로 컨텐츠 만들어요! 연락할게요~!!
-Message : askAddAvidence :Player : 유저_기본 :네네..! 막가롱님, 조심히 가세요…?(진짜 독특하네…)
+Message : askAddAvidence :character :마카롱_기본 :탐정님, 여기 진짜 이상해요. VIP 초대가 아니라 무슨 죽음의 초대 아니냐고~~! (소근소근) 진짜 음침하죠
+Message : askAddAvidence :Player :유저_기본 :아…하하… 그것보다 스토커는...
+Message : askAddAvidence :character :마카롱_기본 :아 괜찮아요 이제..!
+Message : askAddAvidence :character :마카롱_기본 :아무튼! 막 죽어나가니까 무서웠지만~ 덕분에 팔로워랑 조회수도 늘고~ 고급 서비스도 받아보고ㅎㅎ~내가 죽은 것도 아니고...
+Message : askAddAvidence :character :마카롱_기본 :솔직히 다 어이없는 실수잖아요? 그러게 왜 그리 칠칠치 못한지~!! 
+Message : askAddAvidence :character :마카롱_기본 :탐정님 제 명함 있죠? 저랑 같이 날 잡아서 콜라보로 컨텐츠 만들어요! 연락할게요~!!
+Message : askAddAvidence :Player :유저_기본 :네네..! 막가롱님, 조심히 가세요…?(진짜 독특하네…)

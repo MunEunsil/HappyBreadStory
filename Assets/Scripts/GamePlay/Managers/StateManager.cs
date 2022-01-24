@@ -13,6 +13,7 @@ namespace HappyBread.GamePlay
         private List<IState> stack; // 이전 상태를 저장합니다.
         IState state; // 현재 진행되고 있는 상태
 
+
         // 스택에 현재 상태를 저장하고 인자로 받은 상태로 변경합니다.
         public void ChangeState(IState state)
         {

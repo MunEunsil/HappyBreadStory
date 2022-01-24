@@ -9,7 +9,7 @@ namespace HappyBread.GamePlay
     {
         public override void Interact()
         {
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_MabyMacaPicture"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_MabyMacaPictrue"));
 
             GetEvidence();
 
@@ -22,7 +22,7 @@ namespace HappyBread.GamePlay
                 Sprite = "막가롱과거사진",
                 Action = () =>
                 {
-                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_MabyMacaPicture"));
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_MabyMacaPictrue"));
 
                 }
 

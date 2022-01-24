@@ -1,2 +1,2 @@
-Message : askAddAvidence:character:크로아상_기본:나는 이 마을에서 무려 20년동안 사건사고를 맡아왔다아~ 이말이야~ 아니이~ 근데 이 호텔 그 어마어마한 소문치고는 사알짝 실망스러운데에? 
-Message : askAddAvidence:character:크로아상_기본:아니 뭐 부족하단건 아니고오~ 꽈배기 저 사장 뭔가 구린 냄새가 나아~
+Message : askAddAvidence:character:크로아상_기본:나는 이 마을에서 무려 20년동안 사건사고를 맡아왔다아~ 이말이야~ 아니이~ 근데 이 호텔 그 어마~어마한 소문치고는 사알짝 실망스러운데에?
+Message : askAddAvidence:character:크로아상_기본:아니 뭐~ 부족하단건 아니고오~ 꽈배기 저 사장 뭔가 구린 냄새가 나~

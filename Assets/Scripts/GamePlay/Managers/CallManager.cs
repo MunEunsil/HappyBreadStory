@@ -41,6 +41,12 @@ namespace HappyBread.GamePlay
         public bool strawCaseActive = true;
         public bool hoduCaseActive = true;
         public bool jellyjellyCaseActive = true;
+        // 각 사건 버튼 
+        public GameObject strawButton;
+        public GameObject hoduButton;
+        public GameObject jellyjellyButton;
+
+
 
         //모든 사건 다 끝내면 3이고 엔딩
         public int solveCase = 0;
@@ -80,7 +86,7 @@ namespace HappyBread.GamePlay
 
 
         //오답기회 
-        private int WrongAnswerNum = 0;
+        public int WrongAnswerNum = 0;
 
         //선택한 증거 박스 보여주는 ui
         public GameObject evidenceBoxObj1;
@@ -98,6 +104,9 @@ namespace HappyBread.GamePlay
         public string selectSuspect;
 
         private string dialogueName;
+
+        public bool IsChoiceSuspect = false; //범인선택중일 때 true 아닐때 끄기 , 
+
 
         //사고사/ 타살 증거선택 했는지 체크
         public bool firstAskDone = false; //이게 true가 되면 범인 고르는 증거를 보여줘야함
@@ -196,7 +205,7 @@ namespace HappyBread.GamePlay
 
             for (int i = 0; i < 6; i++)
             {
-                evidenceObject[i].GetComponent<Image>().sprite = null;
+                evidenceObject[i].SetActive(false);
             }
 
             if (selectStrawCase == true) //딸기사건
@@ -208,9 +217,18 @@ namespace HappyBread.GamePlay
                 {
                     Debug.Log("딸기 사고/ 타살 증거 렌더");
                     
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i <6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence1[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.straw_CaseEvidence1[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence1[i]);
+                            }
+
+                        }
+                        
                     }
                 }
                 else //범인 지목 증거 
@@ -219,7 +237,16 @@ namespace HappyBread.GamePlay
                     Debug.Log("딸기범인지목 증거 렌더");
                     for (int i = 0; i < 6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence2[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.straw_CaseEvidence2[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence2[i]);
+                            }
+
+                        }
+
                     }
                 }
 
@@ -232,11 +259,19 @@ namespace HappyBread.GamePlay
 
                 if (firstAskDone == false) //사고사/ 타살 증거
                 {
-                  //  firstAskDone = true;
-                    Debug.Log("호두 사고/타살 증거 렌더");
+                    //  firstAskDone = true;
                     for (int i = 0; i < 6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence1[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.hodu_CaseEvidence1[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence1[i]);
+                            }
+
+                        }
+
                     }
                 }
                 else //범인 지목 증거 
@@ -245,7 +280,16 @@ namespace HappyBread.GamePlay
                     Debug.Log("호두범인지목 증거 렌더");
                     for (int i = 0; i < 6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence2[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.hodu_CaseEvidence2[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence2[i]);
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -258,14 +302,32 @@ namespace HappyBread.GamePlay
                 {
                     for (int i = 0; i < 6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence1[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.jellyjelly_CaseEvidence1[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence1[i]);
+                            }
+
+                        }
+
                     }
                 }
                 else //범인 지목 증거 
                 {
                     for (int i = 0; i < 6; i++)
                     {
-                        evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence2[i]);
+                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+                        {
+                            if (DataManager.Instance.evidences[j].Name == DataManager.Instance.jellyjelly_CaseEvidence2[i])
+                            {
+                                evidenceObject[i].SetActive(true);
+                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence2[i]);
+                            }
+
+                        }
+
                     }
                 }
             }
@@ -320,6 +382,9 @@ namespace HappyBread.GamePlay
                 strawCaseActive = false;
                 selectStrawCase = false;
                 strawIsActive.SetActive(true);
+                //버튼 비활성화 
+                strawButton.GetComponent<Button>().interactable = false;
+
 
             }
             else if (selectHoduCase == true)
@@ -327,12 +392,19 @@ namespace HappyBread.GamePlay
                 hoduCaseActive = false;
                 selectHoduCase = false;
                 hoduIsActive.SetActive(true);
+                //버튼 비활성화 
+                hoduButton.GetComponent<Button>().interactable = false;
+
+
             }
             else if (selectJellyJellyCase==true)
             {
                 jellyjellyCaseActive = false;
                 selectJellyJellyCase = false;
                 jellyjellyIsActive.SetActive(true);
+
+                //버튼 비활성화 
+                jellyjellyButton.GetComponent<Button>().interactable = false;
             }
 
         }
@@ -433,7 +505,7 @@ namespace HappyBread.GamePlay
                     //strawCaseActive = false;
                     //selectStrawCase = false;
                     //strawIsActive.SetActive(true);
-
+                    IsChoiceSuspect = false;
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("suspect_straw_correctAnswer"));
                     DataManager.Instance.happyEnding = true;
                     solveCase++;
@@ -456,7 +528,7 @@ namespace HappyBread.GamePlay
                     //strawCaseActive = false;
                     //selectStrawCase = false;
                     //strawIsActive.SetActive(true);
-
+                    IsChoiceSuspect = false;
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("suspect_hodu_correctAnswer"));
                     DataManager.Instance.happyEnding = true;
                     solveCase++;
@@ -475,12 +547,11 @@ namespace HappyBread.GamePlay
                 }
                 else if (dialogueName == "Kill_0_젤리젤리의흔적_소라빵의목격_1") //jellyjelly 타살 정답
                 {
-                    firstAskDone = true;
                     GameModel.Instance.EventManager.AddBlockingEvent(new Call_criminalChoiceEvent("kill_jellyjelly_correctAnswer"));
                 }
                 else if (dialogueName == "Kill_0_젤리젤리의흔적_소라빵의목격_0") //jellyjelly 타살 정답
                 {
-                    firstAskDone = true;
+
                     GameModel.Instance.EventManager.AddBlockingEvent(new Call_criminalChoiceEvent("kill_jellyjelly_correctAnswer"));
                 }
                 else if (dialogueName == "Kill_0_젤리의화장품_젤리젤리다이어리_1") //jellyjelly 범인정답
@@ -490,7 +561,7 @@ namespace HappyBread.GamePlay
                     //strawCaseActive = false;
                     //selectStrawCase = false;
                     //strawIsActive.SetActive(true);
-
+                    IsChoiceSuspect = false;
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("suspect_jellyjelly_correctAnswer"));
                     DataManager.Instance.happyEnding = true;
                     solveCase++;
@@ -502,15 +573,15 @@ namespace HappyBread.GamePlay
                     //strawCaseActive = false;
                     //selectStrawCase = false;
                     //strawIsActive.SetActive(true);
-
+                    IsChoiceSuspect = false;
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("suspect_jellyjelly_correctAnswer"));
                     DataManager.Instance.happyEnding = true;
                     solveCase++;
                 }
-                else // 오답
+                else // 타살 오답
                 {
                     //firstAskDone = false;
-                    
+                    Debug.Log(WrongAnswerNum);
                     Debug.Log("firstAskDone : " + firstAskDone);
                     if (WrongAnswerNum < 2)
                     {
@@ -518,11 +589,24 @@ namespace HappyBread.GamePlay
 
                         GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("Call_wrongAnswer"));
 
-                        EvidenceDiary.SetActive(true);
+                        if (IsChoiceSuspect == false) //타살 증거선택 틀렸을 때 
+                        {
+                            EvidenceDiary.SetActive(true);
+                            RenderEvidence();
+                            RenderText1();
+                            RenderText2();
+                        }
+                        else // 타살 범인 선택 틀렸을 때
+                        {
+                            //캐릭터마다 본인이 아니라는 대사 
+                            //GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("Call_wrongAnswer"));
+                            string name = "selectSuspect_"+selectSuspect;
+                            Debug.Log(name);
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(name));
+                            SuspectDiary.SetActive(true);
+                        }
                         
-                        RenderEvidence();
-                        RenderText1();
-                        RenderText2();
+                      
                         
                         WrongAnswerNum++;
                     }
@@ -544,7 +628,34 @@ namespace HappyBread.GamePlay
             else if(DataManager.Instance.isSuicide == false) //사고사
             {
 
-                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(dialogueName));
+                WrongAnswerNum++;
+                if (WrongAnswerNum < 2)
+                {
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("사고사"));
+                    //~~~사건은 사고/ 타살이다. 
+                    if (selectStrawCase == true)
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new CallDialogueEvent("CallSceneStrawCase1"));
+                    }
+                    else if (selectHoduCase == true)
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new CallDialogueEvent("CallSceneHoduCase"));
+                    }
+                    else
+                    {
+                        GameModel.Instance.EventManager.AddBlockingEvent(new CallDialogueEvent("CallSceneJellyjellyCase__"));
+                    }
+                    
+                }
+                else
+                {
+                    CaseOff();
+                    solveCase = 3;
+                    firstAskDone = true;
+                    DataManager.Instance.happyEnding = false;
+                    EvidenceDiary.SetActive(false);
+                }
+                //사고사는 아닌것같다.
 
             }
         }

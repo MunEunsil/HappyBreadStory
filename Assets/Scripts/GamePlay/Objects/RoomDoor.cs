@@ -35,16 +35,68 @@ namespace HappyBread.GamePlay
 
             GameModel.Instance.StateManager.Resume();
 
+            GameModel.Instance.Player.inRoom = true;
+            //ui끄기
+            GameModel.Instance.UIManager.BasicUIHide();
+
+
            // GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
 
         }
         public override void Interact()
         {
-            GameModel.Instance.StateManager.ChangeState(new PauseState());
-            GameModel.Instance.EffectManager.FadeOut();
-            Invoke("InterRoom", 2f);
+            //마스터키가 있으면 / 딸기방 열쇠가 있으면 들어 갈 수있게 하기 
+            if (this.gameObject.name == "Door206_STRAW")
+            {
+                if (DataManager.Instance.strawRoomKey == true)
+                {
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                    GameModel.Instance.EffectManager.FadeOut();
+                    Invoke("InterRoom", 2f);
+                }
+                else if (DataManager.Instance.masterKey == true)
+                {
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                    GameModel.Instance.EffectManager.FadeOut();
+                    Invoke("InterRoom", 2f);
+                }
+            }
+            else if (this.gameObject.name== "Door301_USER")
+            {
+                GameModel.Instance.StateManager.ChangeState(new PauseState());
+                GameModel.Instance.EffectManager.FadeOut();
+                Invoke("InterRoom", 2f);
+            }
+            else
+            {
+                //if (DataManager.Instance.masterKey == true)
+                //{
+                //    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                //    GameModel.Instance.EffectManager.FadeOut();
+                //    Invoke("InterRoom", 2f);
+                //}
+                if (DataManager.Instance.date >= 3)
+                {
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                    GameModel.Instance.EffectManager.FadeOut();
+                    Invoke("InterRoom", 2f);
+                }
+               
+            }
+
             NextFunctionCommand = KeyCode.None;
         }
+
+        public void exitButton()
+        {
+            Room.SetActive(false);
+            GameModel.Instance.Player.inRoom = false;
+            GameModel.Instance.StateManager.ChangeState(new PlayingState());
+
+            GameModel.Instance.UIManager.BasicUIAppear();
+
+        }
+
 
         protected override void InitEvidence()   //증거X -> 대화 저장 
         {

@@ -19,7 +19,7 @@ namespace HappyBread.GamePlay
 
         public List<bool> straw_keyword = new List<bool>(); // 딸기잼 대화 키워드 
 
-        public List<bool> pancake_keyword = new List<bool>();
+        public List<bool> pancake_keyword = new List<bool>(); 
 
         public List<bool> cake_keyword = new List<bool>();
 

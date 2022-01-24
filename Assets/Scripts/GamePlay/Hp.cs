@@ -39,6 +39,7 @@ namespace HappyBread.GamePlay
         private void Awake()
         {
             hp = maxHp;
+            //hp = 19.0f;
         }
 
     }

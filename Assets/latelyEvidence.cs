@@ -87,14 +87,14 @@ namespace HappyBread.GamePlay
         // evidence Test 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space)) 
-            {
-                int numnum = DataManager.Instance.evidences.Count;
-                Debug.Log(DataManager.Instance.evidences.Count);
-                Debug.Log(DataManager.Instance.evidences[numnum-1]);
-                Debug.Log(DataManager.Instance.evidences[numnum-1].Sprite);
+            //if (Input.GetKeyDown(KeyCode.Space)) 
+            //{
+            //    int numnum = DataManager.Instance.evidences.Count;
+            //    Debug.Log(DataManager.Instance.evidences.Count);
+            //    Debug.Log(DataManager.Instance.evidences[numnum-1]);
+            //    Debug.Log(DataManager.Instance.evidences[numnum-1].Sprite);
 
-            }   
+            //}   
         }
 
 

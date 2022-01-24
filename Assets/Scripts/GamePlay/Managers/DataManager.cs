@@ -34,6 +34,8 @@ namespace HappyBread.GamePlay
         public int date = 1;
         public int floor = 1;
 
+        public bool strawRoomKey = false;
+        public bool masterKey = false;
 
         public int newsnum = 1;
 
@@ -43,6 +45,13 @@ namespace HappyBread.GamePlay
         public string middleEndingName;
 
         public float playerPosition; //플레이어 위치 (저장 불러오기 위함)
+
+        //엔딩 저장할 배열
+        public bool[] ending_ = { false, false, false, false, false, false, false, false, false, false, false };
+
+        //해피엔딩 저장할 배열 
+        public bool[] ending_happyEnding = { false, false }; //0번이 happy엔딩 , 1번에 bad엔딩 
+
 
         //day마다 대화 한 횟수를 저장할 변수
         public int cake, choco, crois, donut, hodu, jam, jelly, jellyjelly, maca, pancake, straw, twist = 0;
@@ -140,7 +149,7 @@ namespace HappyBread.GamePlay
 
         public bool[] jelly_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //젤리
 
-        public bool[] jellyjelly_DialogeKeywordsOpen = { false, false, false, false, false }; //젤리젤리
+        public bool[] jellyjelly_DialogeKeywordsOpen = { false, false, false, false, false,false,false,false,false,false }; //젤리젤리
 
         public bool[] jam_DialogeKeywordsOpen = { false, false, false, false, false, false, false, false, false, false }; //땅콩잼
 

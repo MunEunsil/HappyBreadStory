@@ -82,7 +82,7 @@ namespace HappyBread.GamePlay
             CaseDiaryBtnAppear();
            // CallBtnAppear();
             SettingBtnAppear();
-          //  latelyEvidenceAppear();
+            latelyEvidenceAppear();
 
         }
 
@@ -97,7 +97,10 @@ namespace HappyBread.GamePlay
             CaseDiaryBtnHide();
           //  CallBtnHide();
             SettingBtnHide();
-          //  latelyEvidenceHide();
+            latelyEvidenceHide();
         }
+
+
+
     }
 }

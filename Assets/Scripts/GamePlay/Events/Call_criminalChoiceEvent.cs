@@ -37,6 +37,7 @@ public class Call_criminalChoiceEvent : Event
             FileName = null;
 
             //범인 선택 켜기
+
             CallManager.Instance.SuspectDiary.SetActive(true);
             //CallManager.Instance.RenderEvidence();
 

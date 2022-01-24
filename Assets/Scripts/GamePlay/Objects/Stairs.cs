@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HappyBread.GamePlay
 {
-    public class Stairs : MonoBehaviour
+    public class Stairs : Interactable
     {
         public int from;
         //public int to;
@@ -14,21 +14,35 @@ namespace HappyBread.GamePlay
         public GameObject exitF2;
         public GameObject exitF3;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public override void Interact()
         {
-            
 
             from = DataManager.Instance.floor;
 
-            if (collision.CompareTag("Player"))
-            {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("MoveStair"));
+            DataManager.Instance.stair = true;
+        }
 
-                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("MoveStair"));
-                DataManager.Instance.stair = true;
+        //private void OnTriggerEnter2D(Collider2D collision)
+        //{
 
-                //  GameModel.Instance.FloorManager.ChangeFloor(from, to, exit.transform.position);
 
-            }
+        //    from = DataManager.Instance.floor;
+
+        //    if (collision.CompareTag("Player"))
+        //    {
+
+        //        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("MoveStair"));
+        //        DataManager.Instance.stair = true;
+
+        //        //  GameModel.Instance.FloorManager.ChangeFloor(from, to, exit.transform.position);
+
+        //    }
+        //}
+
+        protected override void InitEvidence()
+        {
+            
         }
     }
 }

@@ -73,7 +73,8 @@ namespace HappyBread.GamePlay
 
             GameModel.Instance.StateManager.ChangeState(new PlayingState());
             GameModel.Instance.Hp.Set(300f);
-
+            // GameModel.Instance.StateManager.SetState(new PlayingState());
+            GameModel.Instance.Player.inRoom = false;
             Debug.Log($"Map{date}_1 불러오기" );
         }
         private void LoadMorningEvent()

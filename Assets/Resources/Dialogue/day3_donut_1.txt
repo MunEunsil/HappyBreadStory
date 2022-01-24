@@ -1,8 +1,8 @@
-Message : askAddAvidence :character : 도넛_기본 : 그럴리가.... 호두가 그럴리가 없어요...그럴리가.. 탐정님 정말 사고인가요? 저 정말 호두한테 할 말이 많은데..
-Message : askAddAvidence :Player : 유저_기본 :무슨 말이요?
-Message : askAddAvidence :character : 도넛_기본 :전날 밤에 우리 둘이 싸워가지고...
-Message : askAddAvidence :Player : 유저_기본 : 밤에요? 일때문인가요?
-Question : askAddAvidence :character : 도넛_기본 :그게... 근데 제 말이 수사에 뭔가 도움이 될까요? : 그럼요 단순 사고인지 뭐든 조사해봐야 아는겁니다:아…음 그게
-Answer : askAddAvidence :character : 도넛_기본 : 그게...사실 저랑 호두는 연인사이에요... : 아...하긴…그냥 가까운 사이었어요...흑흑 그냥 마지막에 좋은말이라도 해줄걸해서요...
-Answer : askAddAvidence :Player : 유저_기본 : 네? 하지만 호두는 이미 결혼 했다고 알고있는..: 
-Answer : askAddAvidence :character : 도넛_기본 : 네...저희 떳떳하지 않지만...하지만..! 저희 정말 사랑하고... 근데 어제 경매 기부 행사 끝나고 좀 다퉈가지고...흑흑 이게 다 막가롱 때문이야....! :
+Message : askAddAvidence :character :도넛_기본 : 그럴리가.... 호두가 그럴리가 없어요...그럴리가.. 탐정님 정말 사고인가요? 저 정말 호두한테 할 말이 많은데..
+Message : askAddAvidence :Player :유저_기본 :무슨 말이요?
+Message : askAddAvidence :character :도넛_기본 :전날 밤에 우리 둘이 싸워가지고...
+Message : askAddAvidence :Player :유저_기본 : 밤에요? 일때문인가요?
+Question : askAddAvidence :character :도넛_기본 :그게... 근데 제 말이 수사에 뭔가 도움이 될까요? : 그럼요 단순 사고인지 뭐든 조사해봐야 아는겁니다:아…음 그게
+Answer : askAddAvidence :character :도넛_기본 : 그게...사실 저랑 호두는 연인사이에요... : 아...하긴…그냥 가까운 사이었어요...흑흑 그냥 마지막에 좋은말이라도 해줄걸해서요...
+Answer : askAddAvidence :Player :유저_기본 : 네? 하지만 호두는 이미 결혼 했다고 알고있는..: 
+Answer : askAddAvidence :character :도넛_기본 : 네...저희 떳떳하지 않지만...하지만..! 저희 정말 사랑하고... 근데 어제 경매 기부 행사 끝나고 좀 다퉈가지고...흑흑 이게 다 막가롱 때문이야....! :

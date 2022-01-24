@@ -22,6 +22,7 @@ namespace HappyBread.GamePlay
             if (!mapName.Equals(""))
             {
                 GameModel.Instance.MapManager.ChangeMap(mapName);
+                DataManager.Instance.date = date;
              
             }
 
