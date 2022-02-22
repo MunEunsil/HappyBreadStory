@@ -26,9 +26,10 @@ namespace HappyBread.GamePlay
 
         private void AdjustSize()
         {
-            if (text.preferredWidth > background.rectTransform.rect.width + textPadding)
+            if (text.preferredWidth > background.rectTransform.rect.width ) //+textPadding
             {
-                background.rectTransform.sizeDelta = new Vector2(text.preferredWidth + textPadding, backgroundHeight);
+                //background.rectTransform.sizeDelta = new Vector2(text.preferredWidth + textPadding, backgroundHeight);
+                text.fontSize = 28;
             }
         }
 

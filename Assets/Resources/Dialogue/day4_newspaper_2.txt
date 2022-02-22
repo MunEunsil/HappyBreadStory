@@ -1,2 +1,2 @@
-Message : askAddAvidence : Evidence : 유저신문기사_day4_2 : 뭔가 이상한 기사다. 이런것도 기사라고… ‘차별을 멈추는걸 반대한다.’ 이게 대체…가당치도 않다.
+Message : askAddAvidence : Evidence : day4_newspaper_2 : 뭔가 이상한 기사다. 이런것도 기사라고… ‘차별을 멈추는걸 반대한다.’ 이게 대체…가당치도 않다.
 

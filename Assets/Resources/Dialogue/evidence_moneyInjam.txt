@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 1억수표3장 : 1억 수표 3장이다. 수표에는 땅콩잼의 싸인이 있다. 아직 딸기잼은 사용하지 않았다.
+Message : askAddAvidence : Evidence : evidence_moneyInJam : 1억 수표 3장이다. 수표에는 땅콩잼의 싸인이 있다. 아직 딸기잼은 사용하지 않았다.

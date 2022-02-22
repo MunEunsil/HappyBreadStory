@@ -1,2 +1,2 @@
-Message : askAddAvidence:character:팬케이크_기본:그거 아세요? 예전에 이 솜사탕 안개 낀 기간에, 헬기 띄우다가 떨어진적 있잖아요~ 왤까아~? : 아! 혹시 설탕안개? :그냥 우연한 사고 아닐까요?
-Answer: askAddAvidence:character:팬케이크_기본:헤......:그런가아? 그럴수도오?
+Question : askAddAvidence:character:팬케이크_기본:그거 아세요? 예전에 이 솜사탕 안개 낀 기간에, 헬기 띄우다가 떨어진적 있잖아요~ 왤까아~? : 아! 혹시 설탕안개? :그냥 우연한 사고 아닐까요?
+Answer: askAddAvidence:character:팬케이크_기본: 헤...... : 그런가아? 그럴수도오?

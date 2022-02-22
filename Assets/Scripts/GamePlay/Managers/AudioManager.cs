@@ -13,12 +13,16 @@ namespace HappyBread.GamePlay
         public GameObject EffectAudio;
         public GameObject CharacterAudio;
 
+
+        [Header("효과음")]
         public AudioClip audioWalk; // 걸을 때 효과음
         public AudioClip audioWalk1;
         public AudioClip audioPaper; // 종이 넘어갈 때 효과음
         public AudioClip audioClick; // 클릭했을 때 효과음
         public AudioClip audioEvidence; // 증거 습득 할 때 효과음
         public AudioClip audioNews; //신문소리
+        public AudioClip audioDoor; // 문여는 소리
+
 
         [Header("말소리")]
         public AudioClip audioPlayer; //플레이어 말소리
@@ -101,8 +105,17 @@ namespace HappyBread.GamePlay
                 case "D_twist":
                     characterAudioSource.clip = audioTwist;
                     break;
+                case "door":
+                    characterAudioSource.clip = audioDoor;
+                    break;
             }
-            characterAudioSource.Play();
+            //이벤트 중이 아닐 때 
+            if (DataManager.Instance.stopVoice == false)
+            {
+                characterAudioSource.Play();
+            }
+
+           
 
         }
 
@@ -115,9 +128,9 @@ namespace HappyBread.GamePlay
                 case "walk" :
                     effectAudioSource.clip = audioWalk;
                     break;
-                //case "walk1":
-                //    effectAudioSource.clip = audioWalk1;
-                //    break;
+                case "door":
+                    effectAudioSource.clip = audioDoor;
+                    break;
                 case "paper":
                     effectAudioSource.clip = audioPaper;
                     break;
@@ -130,7 +143,7 @@ namespace HappyBread.GamePlay
                 case "news":
                     effectAudioSource.clip = audioNews;
                     break;
-                
+
 
             }
             if (effectAudioSource.isPlaying)

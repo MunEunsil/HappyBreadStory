@@ -57,15 +57,35 @@ namespace HappyBread.GamePlay
                     //mouseClick();
                 }
             }
-            if (CallManager.Instance.solveCase == 3) //모든사건을 해결하면
+            if (CallManager.Instance.solveFail == true)
             {
                 GameModel.Instance.EffectManager.FadeIn();
 
                 SceneManager.UnloadSceneAsync("CallScene");
                 SceneManager.LoadScene("Ending", LoadSceneMode.Additive);
 
-                //엔딩state
             }
+            //if (CallManager.Instance.solveCase == 3) //모든사건을 해결하면
+            //{
+                
+            //    GameModel.Instance.EffectManager.FadeIn();
+
+            //    SceneManager.UnloadSceneAsync("CallScene");
+
+            //    SceneManager.LoadScene("Ending", LoadSceneMode.Additive);
+
+            //    //엔딩state
+            //}
+        }
+
+        public void solveCaseALL()
+        {
+                GameModel.Instance.EffectManager.FadeIn();
+
+                SceneManager.UnloadSceneAsync("CallScene");
+                SceneManager.LoadScene("Ending", LoadSceneMode.Additive);
+
+                //엔딩state
         }
 
         //증거선택 버튼 누름
@@ -168,7 +188,6 @@ namespace HappyBread.GamePlay
             if (DataManager.Instance.isSuicide == true) //타살 
             {
                 //범인까지 지목하는 플로우의 대화 가져오기
-                Debug.Log("타살을 누른 상태에서 ok누름");
 
                 CallManager.Instance.EvidenceDiary.SetActive(false);
                 CallManager.Instance.OkBtnDialogue();
@@ -177,7 +196,6 @@ namespace HappyBread.GamePlay
             }
             else
             {
-                Debug.Log("사고사를 누른 상태에서 ok누름");
                 //케이스 다시 고르기
 
                 CallManager.Instance.EvidenceDiary.SetActive(false);
@@ -192,7 +210,6 @@ namespace HappyBread.GamePlay
             //증거1 박스 선택 
             if (CallManager.Instance.evidenceBox2 == true)
             {
-                Debug.Log("두번째 증거를 먼저 골라주세요");
                 DataManager.Instance.Call_NextCommand = KeyCode.None;
             }
             else
@@ -210,7 +227,6 @@ namespace HappyBread.GamePlay
             //증거2 박스 선택 
             if (CallManager.Instance.evidenceBox1 == true)
             {
-                Debug.Log("첫번째 증거를 먼저 골라주세요");
                 DataManager.Instance.Call_NextCommand = KeyCode.None;
             }
             else

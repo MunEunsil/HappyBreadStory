@@ -17,6 +17,9 @@ namespace HappyBread.GamePlay
         {
             //패널 나타남 
             settingPanel.SetActive(true);
+            //hp감소 멈추기 
+            GameModel.Instance.Hp.stopHp = true;
+        
             //state 바꾸기 
             //GameModel.Instance.StateManager.ChangeState(new PlayingState());
             GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
@@ -26,6 +29,8 @@ namespace HappyBread.GamePlay
         {
             settingPanel.SetActive(false);
             GameModel.Instance.StateManager.ChangeState(new PlayingState());
+            //hp감소하기
+            GameModel.Instance.Hp.stopHp = false;
         }
 
         //음향버튼

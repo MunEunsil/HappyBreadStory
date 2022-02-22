@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 유저신문기사_day2_2 : 땅콩잼이 속한 피넷의 슈가게이지가 폭락했다.
+Message : askAddAvidence : Evidence : day2_newspaper_2 : 땅콩잼이 속한 피넷의 슈가게이지가 폭락했다.

@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 막가롱과거사진 : 누군가… 닮은 것 같다… 혹시 막가롱…? 에이 설마. 근데 스태프실에 이게 왜…?
+Message : askAddAvidence : Evidence : evidence_MabyMacaPictrue : 누군가… 닮은 것 같다… 혹시 막가롱…? 에이 설마. 근데 스태프실에 이게 왜…?

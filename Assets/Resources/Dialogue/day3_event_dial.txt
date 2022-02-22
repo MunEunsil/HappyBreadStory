@@ -1,0 +1,4 @@
+Message : askAddAvidence:character:꽈배기_응용:탐정님!! 호..혹시 저희 직원 호두 보지 못하셨나요?
+Message : askAddAvidence: Player :유저_기본:무슨 일 있나요?
+Message : askAddAvidence:character:도넛_기본: 사장님...! 
+Message : askAddAvidence:character:도넛응용:호두님이..! 호두님이..!!! 

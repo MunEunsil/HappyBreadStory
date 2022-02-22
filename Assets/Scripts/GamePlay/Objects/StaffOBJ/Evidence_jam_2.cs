@@ -19,7 +19,7 @@ namespace HappyBread.GamePlay
             DataManager.Instance.dialogeEvidence = true;
             Evidence = new Evidence()
             {
-                Sprite = "1억수표3장",
+                Sprite = "evidence_moneyInJam",
                 Action = () =>
                 {
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_moneyInJam"));

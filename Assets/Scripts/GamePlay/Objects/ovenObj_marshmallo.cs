@@ -17,7 +17,7 @@ namespace HappyBread.GamePlay
 
             if (DataManager.Instance.ovenEnding < 3) //ovenEnding datamanager에서 추가하기 
             {
-                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("noneDialogue"));
+                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_oven_ma"));
                 DataManager.Instance.ovenEnding = DataManager.Instance.ovenEnding + 1;
             }
             else

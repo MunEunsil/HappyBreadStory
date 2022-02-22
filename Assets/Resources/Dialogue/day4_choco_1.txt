@@ -1,5 +1,5 @@
 Message : askAddAvidence :character :소라빵_기본 : 흐....있잖아...흐...제가 좋은거 알려줄게..
-Message : askAddAvidence :Player :유저_기본 :그게 뭔데요?
-Message : askAddAvidence :character :소라빵_기본 :아니...ㅎ.. 그게 말이야… 흐....내가 진짜 무서워서...흐...잘 들어봐..요..?흐 내...내가 봤어...어..어제 오븐...실 일 끝내고 스태프실...가는데...예약..없이 쓰길래 따라갔다가....몰래 봤어...다 봤어...
-Message : askAddAvidence :Player :유저_기본 :네?!
-Message : askAddAvidence :character :소라빵_기본 :그냥 봤다고....젤리젤리…말고 다른…누군가…가는걸…흐….
+Question: askAddAvidence:character :소라빵_기본::그게 뭔데요? :네? 아뇨 필요없습니다.
+Answer: askAddAvidence: character:소라빵_기본:아니...ㅎ.. 그게 말이야… 흐.... 내가 진짜 무서워서...흐...잘 들어봐..요..?흐 내...내가 봤어...어..어제 오븐...실 일 끝내고 스태프실...가는데...예약..없이 쓰길래 따라갔다가....몰래 봤어...다 봤어...:ㄴ...네..흐.... 흐...이렇게 다음...승진은..나야..흐..
+Answer: askAddAvidence: character:소라빵_기본: ㅎ.....그냥 봤다고....젤리젤리…말고 다른…누군가…가는걸…흐…. : .....
+

@@ -1,2 +1,2 @@
-Message : askAddAvidence : Evidence : 막가롱의약 : 약 봉투다. ‘부작용’ 이라고 적혀있다. 막가롱은 어떤 부작용 때문에 약을 먹고 있는건가…?
+Message : askAddAvidence : Evidence : evidence_medi : 약 봉투다. ‘부작용’ 이라고 적혀있다. 막가롱은 어떤 부작용 때문에 약을 먹고 있는건가…?
 

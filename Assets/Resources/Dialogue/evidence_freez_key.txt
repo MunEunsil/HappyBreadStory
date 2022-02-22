@@ -1,0 +1,1 @@
+Message : askAddAvidence : Evidence : evidence_freez_key:이 열쇠는..어느 열쇠지?

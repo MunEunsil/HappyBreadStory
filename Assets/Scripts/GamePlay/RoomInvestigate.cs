@@ -22,9 +22,8 @@ namespace HappyBread.GamePlay
         private GraphicRaycaster gr;
         private PointerEventData ped;
 
+        public float clickControll = 0f; //광클 못하게 하기 위함 
 
-
-        public Vector2 NextMoveCommand { get; internal set; }
 
         //조사할 수 있는 오브젝트 리스트
         //public List<GameObject> roomObject = new List<GameObject>();
@@ -40,37 +39,45 @@ namespace HappyBread.GamePlay
 
         private void Update()
         {
-            //if (Input.GetMouseButtonUp(0))
+
+            //광클 못학 ㅔ하기 위함 
+            if (clickControll > 0)
+            {
+                clickControll = clickControll - Time.deltaTime;
+            }
+            else
+            {
+                clickControll = 0;
+            }
+
+            //if (Input.GetKeyUp(KeyCode.Mouse0)) //마우스 좌클릭
             //{
-            //    NextFunctionCommand = GlobalGameData.keyCodeInteract;
+            //    //NextFunctionCommand = GlobalGameData.keyCodeInteract;
+            //    ////ClickInteract();
             //}
-
-
-            if (Input.GetKeyUp(KeyCode.Mouse0)) //마우스 좌클릭
-            {
-                NextFunctionCommand = GlobalGameData.keyCodeInteract;
-                //ClickInteract();
-            }
-            else if (Input.GetKeyUp(KeyCode.Escape)) //esc
-            {
-                //Exit();
-                NextFunctionCommand = KeyCode.Escape;
-            }
+            //else 
+            //if (Input.GetKeyUp(KeyCode.Escape)) //esc
+            //{
+            //    //Exit();
+            //    NextFunctionCommand = KeyCode.Escape;
+            //}
 
 
             if (NextFunctionCommand != KeyCode.None)
             {
+                Debug.Log("nextFuntionCommand 안에는 들어갔는가!!");
                 switch (NextFunctionCommand)
                 {
-                    //case globalgamedata.keycodeinteract:
-                    //    attemptinteract();
-                    //    break;
-                    case GlobalGameData.keyCodeInteract:
-                        ClickInteract();
+                    case GlobalGameData.mouseClick:
+                        Debug.Log("클릭인터랙션 전은 가능한가");
+                        if (clickControll <=0)
+                        {
+                            ClickInteract();
+                        }
                         break;
                     case KeyCode.Escape:
                         //debug.log("esc누름");
-                        Exit();
+                      //  Exit();
                         break;
                     default:
                         break;
@@ -82,6 +89,8 @@ namespace HappyBread.GamePlay
 
         private void ClickInteract()
         {
+            clickControll = 1.5f; //1.5초간 클릭 못하게 할거임
+
             Debug.Log("마우스 클릭 함");
             ped.position = Input.mousePosition;
             List<RaycastResult> results = new List<RaycastResult>(); // 여기에 히트 된 개체 저장
@@ -141,10 +150,10 @@ namespace HappyBread.GamePlay
         private void Start()
         {
             GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
-            
+            clickControll = 0f;
             gr = RoomCanvas.GetComponent<GraphicRaycaster>();
             ped = new PointerEventData(null);
-
+            NextFunctionCommand = KeyCode.None;
             //
         }
 

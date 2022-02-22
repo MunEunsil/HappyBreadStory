@@ -11,7 +11,9 @@ namespace HappyBread.GamePlay
         //타이핑 효과를 위함
         public Text m_TypingText;
         public string m_Message;
-        public float m_Speed = 0.2f;
+        public float m_Speed = 1.5f;
+
+        public bool textDone = false;
 
         public bool printState =false;
 
@@ -30,6 +32,7 @@ namespace HappyBread.GamePlay
         // Start is called before the first frame update
         void Start()
         {
+            DataManager.Instance.EndingTextDone = true;
             StartCoroutine(Typing(m_TypingText,m_Message,m_Speed));
             printState = true;
         }
@@ -37,7 +40,10 @@ namespace HappyBread.GamePlay
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                printAll();
+            }
         }
 
         IEnumerator Typing(Text typingText, string message, float speed)
@@ -55,7 +61,10 @@ namespace HappyBread.GamePlay
         public void printAll()
         {
             StopCoroutine("Typing");
+            textDone = true;
+            StopAllCoroutines();
             m_TypingText.text = m_Message;
+          //  DataManager.Instance.EndingTextDone = true;
         }
     }
 }

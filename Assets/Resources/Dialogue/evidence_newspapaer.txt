@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 오려진신문기사 : 기사들을 가위로 여러곳 오려놨다. 하지만 기사보다 여러 글자들을 잘라놨다. 왜...?
+Message : askAddAvidence : Evidence : evidence_newspapaer : 기사들을 가위로 여러곳 오려놨다. 하지만 기사보다 여러 글자들을 잘라놨다. 왜...?

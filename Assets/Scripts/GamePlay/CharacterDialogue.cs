@@ -38,7 +38,11 @@ namespace HappyBread.GamePlay
                         {
                             DataManager.Instance.cake_DialogeKeywordsOpen[2] = true;
                         }
-                        else if (textFileName=="day4_cake_1")
+                        else if (textFileName == "day4_cake_1")
+                        {
+                            DataManager.Instance.cake_DialogeKeywordsOpen[4] = true;
+                        }
+                        else if (textFileName=="day3_cake_1")
                         {
                             DataManager.Instance.cake_DialogeKeywordsOpen[3] = true;
                         }
@@ -65,7 +69,7 @@ namespace HappyBread.GamePlay
                             DataManager.Instance.choco_DialogeKeywordsOpen[0] = true;
                             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
                         }
-                        else if (textFileName == "day2_choco_2")
+                        else if (textFileName == "day2_choco_1")
                         {
                             choco_day2_1_choice();
                             //DataManager.Instance.choco_DialogeKeywordsOpen[1] = true;
@@ -79,6 +83,10 @@ namespace HappyBread.GamePlay
                         {
                             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
                             DataManager.Instance.choco_DialogeKeywordsOpen[3] = true;
+                        }
+                        else if (textFileName == "day4_choco_1")
+                        {
+                            choco_day4_1_choice();
                         }
                         else
                         {
@@ -99,7 +107,18 @@ namespace HappyBread.GamePlay
                     if (ResourceLoader.LoadText(textFileName) != null)
                     {
                         //... 대화;
-                        GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        if (textFileName == "day2_crois_2")
+                        {
+                            if (DataManager.Instance.day2Crois_lie == true)
+                            {
+                                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                            }
+                        }
+                        else
+                        {
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
+                        }
+                        
 ;
                     }
                     else
@@ -117,6 +136,12 @@ namespace HappyBread.GamePlay
                         if (textFileName == "day3_donut_1")
                         {
                             DataManager.Instance.donut_DialogeKeywordsOpen[0] = true;
+                            donutDay3_choice();
+                        }
+                        else if (textFileName == "day4_donut_1")
+                        {
+                            DataManager.Instance.donut_DialogeKeywordsOpen[3] = true;
+                            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent(textFileName));
                         }
                         else
                         {
@@ -407,15 +432,28 @@ namespace HappyBread.GamePlay
         }
         //2지선다 선택에 따라 달라지는 대화 
 
-        //테스트 
-        //private void donutTest()
-        //{
-        //    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_donut_1"));
-        //    List<Event> events = new List<Event>();
-        //    events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[1] = true; ; ; }));
-        //    events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[2] = true; }));
-        //    GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
-        //}
+        //도넛 day3 
+        private void donutDay3_choice()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_donut_1"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[1] = true; GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
+            events.Add(new ActionEvent(() => { DataManager.Instance.donut_DialogeKeywordsOpen[2] = true; }));
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
+            Evidence = new Evidence()
+            {
+                Sprite = "evidence_donutHodu",
+                Action = () =>
+                {
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_donutHodu"));
+
+                }
+
+            };
+        }
+        
+
 
         private void pancake_choice()
         {
@@ -450,8 +488,28 @@ namespace HappyBread.GamePlay
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_choco_1"));
             List<Event> events = new List<Event>();
             events.Add(new ActionEvent(() => {  ; }));
-            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[1] = true; }));
+            events.Add(new ActionEvent(() => { DataManager.Instance.choco_DialogeKeywordsOpen[1] = true; DataManager.Instance.day2Crois_lie = true; }));
             GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+        }
+        private void choco_day4_1_choice()
+        {
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_choco_1"));
+            List<Event> events = new List<Event>();
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[5] = true; GameModel.Instance.CaseDiary.AddEvidence(Evidence); })); // 목격, 증거도 넣어줄것
+            events.Add(new ActionEvent(() => { DataManager.Instance.twist_DialogeKeywordsOpen[4] = true; })); // 승진 
+            GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+
+            //초코소라빵의 목격넣어주기
+            Evidence = new Evidence()
+            {
+                Sprite = "evidence_choco_sighting",
+                Action = () =>
+                {
+                    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_choco_sighting"));
+
+                }
+
+            };
         }
 
         protected override void InitEvidence()  

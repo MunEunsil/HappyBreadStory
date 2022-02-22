@@ -11,8 +11,14 @@ namespace HappyBread.GamePlay
         /// 지하1층에 문에 충돌하면 페이드효과
         /// </summary>
         // Start is called before the first frame update
-        private bool inOven = false;
-        private bool inPriz = false;
+        public bool inOven = false;
+        public bool inPriz = false;
+
+        private void Start()
+        {
+            inOven = false;
+            inPriz = false;
+        }
 
         public float timer = 0f;
 
@@ -20,7 +26,7 @@ namespace HappyBread.GamePlay
         {
             if (collision.CompareTag("Player"))
             {
-
+                GameModel.Instance.AudioManager.D_Audio("door");
                 GameModel.Instance.EffectManager.Fade();
                 if (this.gameObject.name == "ovenDoor")
                 {
@@ -60,14 +66,15 @@ namespace HappyBread.GamePlay
             if (inOven == true)
             {
                 timer += Time.deltaTime;
-                if (timer > 120)
+                if (timer > 60)
                 {
                     GameModel.Instance.MiddleEnding.startOvenEnding();
                 }
             }
             if (inPriz == true)
             {
-                if (timer > 120)
+                timer += Time.deltaTime;
+                if (timer > 60)
                 {
                     GameModel.Instance.MiddleEnding.startFreezerEnding();
                 }

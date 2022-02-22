@@ -28,8 +28,10 @@ namespace HappyBread.GamePlay
 
 
         //}
-        private void InterRoom()
-        {
+        private void InterRoom() 
+        {          
+            GameModel.Instance.StateManager.ChangeState(new RoomInvestigateState());
+            GameModel.Instance.AudioManager.D_Audio("door");
             Room.SetActive(true);
             GameModel.Instance.EffectManager.FadeIn(0.2f);
 
@@ -45,24 +47,35 @@ namespace HappyBread.GamePlay
         }
         public override void Interact()
         {
+            //GameModel.Instance.UIManager.BasicUIHide();
             //마스터키가 있으면 / 딸기방 열쇠가 있으면 들어 갈 수있게 하기 
             if (this.gameObject.name == "Door206_STRAW")
             {
                 if (DataManager.Instance.strawRoomKey == true)
                 {
+                    GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.StateManager.ChangeState(new PauseState());
                     GameModel.Instance.EffectManager.FadeOut();
                     Invoke("InterRoom", 2f);
                 }
-                else if (DataManager.Instance.masterKey == true)
+                else if (DataManager.Instance.date >= 3)
                 {
+                    GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.StateManager.ChangeState(new PauseState());
                     GameModel.Instance.EffectManager.FadeOut();
                     Invoke("InterRoom", 2f);
                 }
             }
-            else if (this.gameObject.name== "Door301_USER")
+            else if (this.gameObject.name == "Door301_USER")
             {
+                GameModel.Instance.UIManager.BasicUIHide();
+                GameModel.Instance.StateManager.ChangeState(new PauseState());
+                GameModel.Instance.EffectManager.FadeOut();
+                Invoke("InterRoom", 2f);
+            }
+            else if (this.gameObject.name == "Door303_감사의방")
+            {
+                GameModel.Instance.UIManager.BasicUIHide();
                 GameModel.Instance.StateManager.ChangeState(new PauseState());
                 GameModel.Instance.EffectManager.FadeOut();
                 Invoke("InterRoom", 2f);
@@ -77,11 +90,12 @@ namespace HappyBread.GamePlay
                 //}
                 if (DataManager.Instance.date >= 3)
                 {
+                    GameModel.Instance.UIManager.BasicUIHide();
                     GameModel.Instance.StateManager.ChangeState(new PauseState());
                     GameModel.Instance.EffectManager.FadeOut();
                     Invoke("InterRoom", 2f);
                 }
-               
+
             }
 
             NextFunctionCommand = KeyCode.None;

@@ -76,7 +76,7 @@ namespace HappyBread.GamePlay
         }
 
         //기존 증거 지우기 
-        private void removeEvidence()
+        public void removeEvidence()
         {
             item_1.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("itembox");
             item_2.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("itembox");

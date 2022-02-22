@@ -1,2 +1,2 @@
-Message : askAddAvidence : Evidence : 젤리의화장품 : 천연 재료를 더이상 부러워하지마라! 누가봐도 난 티안나는 빵이니까...☆ 젤리가 왜 이 화장품을 갖고 있을까..? 단순히 더 돋보이는 미모를 위해?
+Message : askAddAvidence : Evidence : evidence_jelly_cos : 천연 재료를 더이상 부러워하지마라! 누가봐도 난 티안나는 빵이니까...☆ 젤리가 왜 이 화장품을 갖고 있을까..? 단순히 더 돋보이는 미모를 위해?
 

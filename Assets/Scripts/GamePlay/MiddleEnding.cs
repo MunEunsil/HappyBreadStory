@@ -40,6 +40,7 @@ namespace HappyBread.GamePlay
                 {
                     Debug.Log("중간엔딩 state 에서 스페이스바 누름 ");
                     NextCommand = KeyCode.None;
+                    DataManager.Instance.evidences.Clear(); //증거 날리기 
 
                     SceneManager.LoadScene("Opening", LoadSceneMode.Additive);
                     SceneManager.UnloadSceneAsync("Player");
@@ -80,11 +81,13 @@ namespace HappyBread.GamePlay
 
         public void startMoldEnding() //곰팡이 엔딩 불러오기
         {
+
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
            
             DataManager.Instance.middleEndingName = "middleEnding2";
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding2");
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
             //ui뿅 
@@ -114,6 +117,7 @@ namespace HappyBread.GamePlay
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding5";
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding5");
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
             //ui뿅 
@@ -133,6 +137,7 @@ namespace HappyBread.GamePlay
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding1";
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding1");
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
             //ui뿅 
@@ -151,8 +156,9 @@ namespace HappyBread.GamePlay
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding4"; //이미지 이름 
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding4");
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
-
+           
             //ui뿅 
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
@@ -170,7 +176,7 @@ namespace HappyBread.GamePlay
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding3"; //이미지 이름 
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
-
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding3");
             //ui뿅 
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
@@ -189,7 +195,7 @@ namespace HappyBread.GamePlay
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
             DataManager.Instance.middleEndingName = "middleEnding6"; //이미지 이름 
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
-
+            endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding6");
             //ui뿅 
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();

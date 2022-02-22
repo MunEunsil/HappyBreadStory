@@ -16,6 +16,7 @@ namespace HappyBread.GamePlay
         }
         protected override void BeginDetail()
         {
+            GameModel.Instance.StateManager.ChangeState(new DialogueState());
             if (FileName != null)
             {
                 GameModel.Instance.Dialogue.Execute(ResourceLoader.LoadText(FileName));
@@ -32,8 +33,10 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
-           
+            GameModel.Instance.StateManager.UndoState();
             GameModel.Instance.EffectManager.FadeIn();
+
+
         }
     }
 }

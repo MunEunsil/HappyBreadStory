@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 명품가방 : 딸기잼은 화려하면서 밝은 패션을 즐기나보다. 명품 브랜드 샤벳트, 초크파히가 눈에 띈다.
+Message : askAddAvidence : Evidence : evidence_bag : 딸기잼은 화려하면서 밝은 패션을 즐기나보다. 명품 브랜드 샤벳트, 초크파히가 눈에 띈다.

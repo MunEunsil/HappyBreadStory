@@ -21,7 +21,7 @@ namespace HappyBread.GamePlay
         public bool HappyImage;
         public GameObject happyEndingImage;
 
-       
+         
 
         // Start is called before the first frame update
         private void Awake()
@@ -30,24 +30,25 @@ namespace HappyBread.GamePlay
         }
         private void Start()
         {
+            DataManager.Instance.evidences.Clear(); //증거 초기화
             GameModel.Instance.UIManager.BasicUIHide();
 
+            
 
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
 
             if (DataManager.Instance.happyEnding == true)
             {
                 happyEnding.SetActive(true);
-                HappyImage = happyEnding.GetComponent<EndingDialogue>().printState;
+               // HappyImage = happyEnding.GetComponent<EndingDialogue>().printState;
 
                 DataManager.Instance.ending_happyEnding[0] = true;
-
-                credit.SetActive(true);
+                Debug.Log(DataManager.Instance.ending_happyEnding[0]);
+                
             }
             else if(DataManager.Instance.happyEnding == false)
             {
                 badEnding.SetActive(true);
-
 
                 //배드엔딩 볼 수 있게 
                 credit.SetActive(false);
@@ -66,16 +67,22 @@ namespace HappyBread.GamePlay
 
                 if (DataManager.Instance.happyEnding == true)
                 {
-                    happyEndingImage.SetActive(true);
-                    //if (HappyImage == true)
-                    //{
-                    //    happyEnding.GetComponent<EndingDialogue>().printAll();
-                    //}
+                    if (DataManager.Instance.EndingTextDone == false)
+                    {
+                        happyEndingImage.SetActive(true);
+                    }
+                    else
+                    {
+                       // credit.SetActive(true);
+                    }
+
+                    
 
 
                 }
                 else if(DataManager.Instance.happyEnding == false)
                 {
+
                     done();
                 }
 
@@ -87,12 +94,21 @@ namespace HappyBread.GamePlay
             }
         }
 
-        void done()
+        public void TextExitButton()
+        {
+            happyEndingImage.SetActive(false);
+            credit.SetActive(true);
+        }
+
+
+        public void done()
         {
            // SceneManager.UnloadSceneAsync("CallScene"); //콜 씬 지우기 
             SceneManager.UnloadSceneAsync("Ending"); //엔딩 씬 지우기 
+            SceneManager.UnloadSceneAsync("Player");
             //엔딩씬 지우기 
             SceneManager.LoadScene("Opening", LoadSceneMode.Additive); //오프닝씬 불러오기
+            GameModel.Instance.DataController.Save_Ending();
         }
 
     }

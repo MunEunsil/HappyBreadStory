@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 유저신문기사_day3_1 : 땅콩잼이 피넷의 경영권을 물려받았다. 최근에는 신규 사업을 위해 투자자들을 속였다고 한다.
+Message : askAddAvidence : Evidence : day3_newspaper_1 : 땅콩잼이 피넷의 경영권을 물려받았다. 최근에는 신규 사업을 위해 투자자들을 속였다고 한다.

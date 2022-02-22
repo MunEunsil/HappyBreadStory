@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using UnityEngine;
 using HappyBread.GamePlay;
 using System;
@@ -15,9 +16,9 @@ namespace HappyBread.GamePlay
         public override void Interact()
         {
 
-            if (DataManager.Instance.chocoFondue < 3)
+            if (DataManager.Instance.chocoFondue < 1)
             {
-                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("noneDialogue"));
+                GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("chocoFondue_dial"));
                 DataManager.Instance.chocoFondue = DataManager.Instance.chocoFondue+1;
             }
             else

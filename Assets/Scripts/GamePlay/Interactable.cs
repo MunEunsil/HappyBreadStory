@@ -28,7 +28,10 @@ namespace HappyBread.GamePlay
                 return;
             }
 
-            if (!GameModel.Instance.CaseDiary.Contains(Evidence))
+
+
+
+            if (GameModel.Instance.CaseDiary.checkEvidence(Evidence))
             {
                 GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
                 List<Event> events = new List<Event>();
@@ -37,6 +40,12 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
 
             }
+            else //테스트 
+            {
+                Debug.Log("이거 증거 이미 있음!");
+            }
+
+            
         }
         //대화 저장 
 

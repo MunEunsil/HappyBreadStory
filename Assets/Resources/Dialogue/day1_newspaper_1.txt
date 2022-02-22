@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 유저신문기사_day1_1 : 세렌디피티호텔, 올해의 VVIP선정, 그 중에 나도 있다.
+Message : askAddAvidence : Evidence : day1_newspaper_1 : 세렌디피티호텔, 올해의 VVIP선정, 그 중에 나도 있다.

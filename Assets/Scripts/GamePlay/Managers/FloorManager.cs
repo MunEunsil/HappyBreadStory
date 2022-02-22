@@ -28,5 +28,12 @@ namespace HappyBread.GamePlay
             GameModel.Instance.EffectManager.FadeIn(0.2f);
             GameModel.Instance.StateManager.Resume();
         }
+
+        private void Start()
+        {
+            //floors b1 ,1f,2f,3f 자동으로 들어가게 하기 
+            
+        }
+
     }
 }

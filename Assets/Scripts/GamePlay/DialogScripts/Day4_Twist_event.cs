@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using HappyBread.GamePlay.GameState;
 
 namespace HappyBread.GamePlay
 {
@@ -34,10 +33,12 @@ namespace HappyBread.GamePlay
 
         protected override void EndDetail()
         {
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies"); //기본브금
+            DataManager.Instance.stopVoice = false;
             FileName = null;
             GameModel.Instance.EffectManager.FadeIn();
-            GameModel.Instance.AudioManager.PlayBackgroundAudio();
-
+           // GameModel.Instance.AudioManager.PlayBackgroundAudio();
+            GameModel.Instance.Hp.stopHp = false;
             if (DataManager.Instance.date == 3)
             {
                 SceneManager.LoadScene("Map3_1", LoadSceneMode.Additive);
@@ -54,10 +55,14 @@ namespace HappyBread.GamePlay
 
                 SceneManager.UnloadSceneAsync("Day4_event");
                 GameModel.Instance.UIManager.BasicUIAppear();
-                ;
+                
+
+                
                 GameModel.Instance.Player.inRoom = false;
                 GameModel.Instance.StateManager.ChangeState(new PlayingState());
             }
+            GameModel.Instance.Player.transform.position = new Vector3(2.72f, -0.3f, 1);
+           // Debug.Log("플레이어 위치 바꿈?");
 
 
         }

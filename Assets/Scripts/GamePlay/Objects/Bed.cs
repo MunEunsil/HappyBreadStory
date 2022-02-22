@@ -12,7 +12,7 @@ namespace HappyBread.GamePlay
 
         public override void Interact()
         {
-       
+
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("bed"));
 
             List<Event> events = new List<Event>();
@@ -34,11 +34,13 @@ namespace HappyBread.GamePlay
         }
         public void NightEvent()
         {
-            
+            GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
+
             SceneManager.UnloadSceneAsync($"Map{DataManager.Instance.date}_1");
             // GameModel.Instance.EffectManager.FadeIn();
             string DE = "Day"+(DataManager.Instance.date)+"_event";
             GameModel.Instance.EventManager.AddBlockingEvent(new NextDayDialogueEvent(DE));
+
 
             GameModel.Instance.DataController.saveGameData();
         }

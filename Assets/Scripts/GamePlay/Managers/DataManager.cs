@@ -34,8 +34,10 @@ namespace HappyBread.GamePlay
         public int date = 1;
         public int floor = 1;
 
+        //열쇠 열림 유무 
         public bool strawRoomKey = false;
         public bool masterKey = false;
+        public bool Day3_freezerKey = false; //f : 막힘 / t : 열림
 
         public int newsnum = 1;
 
@@ -44,6 +46,8 @@ namespace HappyBread.GamePlay
         
         public string middleEndingName;
 
+        public bool stopVoice = false; //true : 캐릭터 보이스 X , false : 캐릭터 포이스 O 
+
         public float playerPosition; //플레이어 위치 (저장 불러오기 위함)
 
         //엔딩 저장할 배열
@@ -51,6 +55,9 @@ namespace HappyBread.GamePlay
 
         //해피엔딩 저장할 배열 
         public bool[] ending_happyEnding = { false, false }; //0번이 happy엔딩 , 1번에 bad엔딩 
+
+        //day2 대화 흐름을 제어할 변수
+        public bool day2Crois_lie = false; //true : 크로아상 2번째 대화의 2번째 선택지 열림, false : 안열림 
 
 
         //day마다 대화 한 횟수를 저장할 변수
@@ -90,22 +97,24 @@ namespace HappyBread.GamePlay
         public bool isHoduCaseFail = false;
         public bool isJellyjellyFail = false;
 
+        //해피엔딩 텍스느 나오는거
+        public bool EndingTextDone = false;
         //각 사건에서 사용할 증거 변수
-        
+
         //딸기사건 사고/타살
-        public string[] straw_CaseEvidence1 = new string[] {"난간의높이","딸기잼화장품","도박_초대장","딸기뚜껑","1억수표3장","빨간부츠" };
+        public string[] straw_CaseEvidence1 = new string[] { "evidence_Handrail", "evidence_cosmetic", "evidence_gamble", "evidence_Straw_Lid", "evidence_moneyInJam", "evidence_boosts" };
         //딸기사건 범인지목
-        public string[] straw_CaseEvidence2 = new string[] { "슈가게이지", "땅콩잼의편지", "명품가방", "명품모자", "젤리젤리사진", "딸기잼의소문과동기" };
+        public string[] straw_CaseEvidence2 = new string[] { "evidence_sugar", "evidence_jamMessage", "evidence_bag", "evidence_hat", "evidence_jellyjelly_pic", "evidence_jelly_news" };
 
         //호두사건 사고/타살
-        public string[] hodu_CaseEvidence1 = new string[] { "도박코인", "냉동창고_열쇠", "녹은아이스크림눈사람", "화장품광고지", "도넛과호두관계", "민중을이끄는꽈배기" };
+        public string[] hodu_CaseEvidence1 = new string[] { "evidence_f3333333", "evidence_freez_key", "evidence_freezer", "evidence_edvCosmetic", "evidence_donutHodu", "evidence_staff_twist" };
         //호두사건 범인지목 
-        public string[] hodu_CaseEvidence2 = new string[] { "싸인없는그림", "오려진신문기사", "막가롱과거사진", "막가롱의약", "리본", "막가롱액자사진" };
+        public string[] hodu_CaseEvidence2 = new string[] { "evidence_NonePicture", "evidence_newspapaer", "evidence_MabyMacaPictrue", "evidence_medi", "evidence_ribontxt", "evidence_macaPictrue" };
 
         //젤리젤리사건 사고/타살
-        public string[] jellyjelly_CaseEvidence1 = new string[] { "오븐방마시멜로", "막가롱의협박편지", "소라빵의목격", "냉동창고_열쇠", "젤리젤리의흔적", "젤리젤리다이어리" };
+        public string[] jellyjelly_CaseEvidence1 = new string[] { "evidence_oven_ma", "evidence_message_maca", "evidence_choco_sighting", "evidence_freez_key", "evidence_oven", "evidence_jellyjellyDiary" };
         //젤리젤리 범인지목
-        public string[] jellyjelly_CaseEvidence2 = new string[] { "젤리가스크랩한기사", "젤리젤리다이어리", "젤리의미완성그림", "젤리의화장품", "시럽묻은편지", "크로아상거짓말" };
+        public string[] jellyjelly_CaseEvidence2 = new string[] { "evidence_jelly_news", "evidence_jellyjellyDiary", "evidence_jelly_pic", "evidence_jelly_cos", "evidence_MessageInJam", "크로아상거짓말" };
 
 
         //각 사건에서 사용할 증거 텍스트

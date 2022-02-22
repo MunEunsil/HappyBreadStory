@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 딸기잼의소문과동기 : 딸기잼은 주변에 적이 많은 듯 하다. 평소 행실과 망언… 게다가 재료 차별 반대 운동을 하는 젤리와도 비교가 많이 된다. 이 둘을 비교하는 기사가 많다.
+Message : askAddAvidence : Evidence : evidence_jelly_news : 딸기잼은 주변에 적이 많은 듯 하다. 평소 행실과 망언… 게다가 재료 차별 반대 운동을 하는 젤리와도 비교가 많이 된다. 이 둘을 비교하는 기사가 많다.

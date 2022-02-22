@@ -47,6 +47,7 @@ namespace HappyBread.GamePlay
         /// </summary>
         public void FadeOut()
         {
+        
             GameModel.Instance.Fade.Appear();
             GameModel.Instance.Fade.StartFadeOut();
         }

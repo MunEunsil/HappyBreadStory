@@ -14,6 +14,9 @@ namespace HappyBread.GamePlay
         private float maxHp = 300.0f;
         public float hp;
 
+        //hp멈추기 위한 변수 
+        public bool stopHp = false; //true : hp 감소 멈춤 , false : hp감소
+
         public void Add(float value)
         {            
             hp += value;
@@ -39,6 +42,7 @@ namespace HappyBread.GamePlay
         private void Awake()
         {
             hp = maxHp;
+            stopHp = false;
             //hp = 19.0f;
         }
 

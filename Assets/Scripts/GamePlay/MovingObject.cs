@@ -54,7 +54,8 @@ namespace HappyBread.GamePlay
 
             if (rigidBody2D.velocity.sqrMagnitude > Vector2.kEpsilon)
             {
-                rigidBody2D.velocity = Vector2.SmoothDamp(rigidBody2D.velocity, Vector2.zero, ref currentVelocity, speedArriveTime);
+                //rigidBody2D.velocity = Vector2.SmoothDamp(rigidBody2D.velocity, Vector2.zero, ref currentVelocity, speedArriveTime);
+                rigidBody2D.velocity = Vector2.zero;
             }
             else
             {

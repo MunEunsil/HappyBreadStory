@@ -9,12 +9,17 @@ namespace HappyBread.GamePlay
 
     public class SaveGameData
     {
+        //이름
+        public string PlayerNmae;
 
         //날짜 
         public int date;//= DataManager.Instance.date; 이건 저기 dataController에서 
         //증거
         public List<Evidence> evidences = new List<Evidence>();
-        
+        //Day3_freezerKey = false;
+        public bool day3FreezerKey;
+
+
         //대화 열림 유무에 대한 정보 
 
         public List<bool> straw_keyword = new List<bool>(); // 딸기잼 대화 키워드 

@@ -1,3 +1,3 @@
-Message : askAddAvidence:character : 크로아상_기본:여억시 호텔 명성답게 아주우 그냥 판타스틱한 곳이구만~~~ 아주 심심할틈이 없어~!! 
-Message : askAddAvidence:Player : 유저_기본: 어젯밤에 어디 계셨어요?
-Message : askAddAvidence:character : 크로아상_기본:나? 나아는 그냥 내 방에 있었지~? 나으 촉으론 말이야~ 이거이거 그냥 단.순.한 사고가 아닌것같어~? 어~?
+Message : askAddAvidence:character :크로아상_기본:여억시 호텔 명성답게 아주우 그냥 판타스틱한 곳이구만~~~ 아주 심심할틈이 없어~!! 
+Message : askAddAvidence:Player :유저_기본: 어젯밤에 어디 계셨어요?
+Message : askAddAvidence:character :크로아상_기본:나? 나아는 그냥 내 방에 있었지~? 나으 촉으론 말이야~ 이거이거 그냥 단.순.한 사고가 아닌것같어~? 어~?

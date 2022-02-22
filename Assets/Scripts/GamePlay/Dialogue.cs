@@ -116,7 +116,7 @@ namespace HappyBread.GamePlay
                 currentIndex = -1;
                 state = State.Waiting;
                 Next();
-
+               
             }
         }
 
@@ -130,7 +130,6 @@ namespace HappyBread.GamePlay
             currentIndex++;
             if (currentIndex >= currentDialogue.Count) // 대화를 다 읽었을 경우 종료한다.
             {
-
                 End();
                 return;
             }
@@ -187,36 +186,103 @@ namespace HappyBread.GamePlay
         }
         private void ShowAnswerMessage(string[] seperated)
         {
+            string isEvidence = seperated[2].Trim();
             string backgroundFileName = seperated[1].Trim();
             string characterFileName = seperated[3].Trim();
 
-            Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
-            Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+            //Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+            //Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
 
-            if (backgroundSprite == null)
-            {
-                backgroundUI.enabled = false;
-            }
-            else
-            {
-                backgroundUI.enabled = true;
-                backgroundUI.sprite = backgroundSprite;
-            }
 
-            if (characterSprite == null)
+            if (isEvidence == "Player")
             {
-               // characterUI.enabled = false;
+                GameModel.Instance.AudioManager.D_Audio("D_player");//walk
+
+                Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+                Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
+
                 characterUI_.SetActive(false);
+                evidenceUI_.SetActive(false);
+                characterNameUI_.SetActive(false);
 
+
+
+                if (backgroundSprite == null)
+                {
+                    backgroundUI.enabled = false;
+                }
+                else
+                {
+                    backgroundUI.enabled = true;
+                    backgroundUI.sprite = backgroundSprite;
+                }
+
+                if (playerSprite == null)
+                {
+                    // playerUI.enabled = false;
+                    playerUI_.SetActive(false);
+                }
+                else
+                {
+                    //  characterUI.enabled = true;
+                    //playerUI_.sprite = playerSprite;
+                    playerUI_.GetComponent<Image>().sprite = playerSprite;
+                    playerUI_.SetActive(true);
+                    playerNameUI_.SetActive(true);
+                    playerNmaeText_.text = DataManager.Instance.PlayerName;
+
+
+                    //Debug.Log(DataManager.Instance.PlayerName);
+
+
+                }
 
             }
             else
             {
-                //characterUI.enabled = true;
-                //characterUI.sprite = characterSprite;
-                characterUI_.SetActive(true);
-                characterUI_.GetComponent<Image>().sprite = characterSprite;
+                playerUI_.SetActive(false);
+                evidenceUI_.SetActive(false);
+                playerNameUI_.SetActive(false);
+
+                Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
+                Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
+
+                //playerUI.enabled = false;
+                //evidenceUI.enabled = false;
+
+                if (backgroundSprite == null)
+                {
+                    backgroundUI.enabled = false;
+                }
+                else
+                {
+                    backgroundUI.enabled = true;
+                    backgroundUI.sprite = backgroundSprite;
+                }
+
+                if (characterSprite == null)
+                {
+                    //characterUI.enabled = false;
+                    characterUI_.SetActive(false);
+                    characterNameUI_.SetActive(false);
+                }
+                else
+                {
+                    //characterUI.enabled = true;
+                    //characterUI.sprite = characterSprite;
+                    ShowNameTag(seperated[3]);
+
+                    characterUI_.SetActive(true);
+                    characterNameUI_.SetActive(true);
+                    characterUI_.GetComponent<Image>().sprite = characterSprite;
+
+
+                }
             }
+
+
+
+
             answerIndex = questionBox.AnswerIndex;
 
             // 메세지 변환
@@ -319,6 +385,7 @@ namespace HappyBread.GamePlay
 
         private void ShowMessage(string[] seperated)
         {
+            GameModel.Instance.Hp.stopHp = true; // hp감소 멈춤 
             string backgroundFileName = seperated[1].Trim();
             string characterFileName = seperated[3].Trim(); //캐릭터나 증거의 이미지
             string isEvidence = seperated[2].Trim();
@@ -357,6 +424,26 @@ namespace HappyBread.GamePlay
                   //  characterUI.enabled = true;
                     //evidenceUI.sprite = EvidenceSprite;
                     evidenceUI_.SetActive(true);
+                    //.Contains(a);
+                    if (characterFileName.Contains("newspaper"))
+                    {
+                        //신문이면 
+                        // evidenceUI_.transform = new Vector2();
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 508.7268f);
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 374.8763f);
+
+                    }
+                    else if (characterFileName.Contains("책"))
+                    {
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 242.0051f);
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 322.6733f);
+                    }
+                    else
+                    {
+                        //신문이 아니면
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 400f);
+                        evidenceUI_.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 400f);
+                    }
                     evidenceUI_.GetComponent<Image>().sprite = EvidenceSprite;
                 }
 
@@ -377,8 +464,9 @@ namespace HappyBread.GamePlay
                 Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
                 Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
 
-              //  playerNmaeText_.text= DataManager.Instance.PlayerName;
-            
+                //  playerNmaeText_.text= DataManager.Instance.PlayerName;
+
+               
 
                 //characterUI.enabled = false;
                 //evidenceUI.enabled = false;
@@ -411,7 +499,9 @@ namespace HappyBread.GamePlay
                     playerUI_.SetActive(true);
                     playerNameUI_.SetActive(true);
                     playerNmaeText_.text = DataManager.Instance.PlayerName;
-                    Debug.Log(DataManager.Instance.PlayerName);
+
+
+                    //Debug.Log(DataManager.Instance.PlayerName);
 
 
                 }
@@ -481,6 +571,7 @@ namespace HappyBread.GamePlay
 
         private void End()
         {
+            GameModel.Instance.Hp.stopHp = false; //hp감소
             state = State.Idle;
             currentIndex = -1;
             GameModel.Instance.StateManager.UndoState(); // Input 관리

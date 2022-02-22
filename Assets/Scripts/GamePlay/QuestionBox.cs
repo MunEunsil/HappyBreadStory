@@ -19,6 +19,8 @@ namespace HappyBread.GamePlay
         public KeyCode NextCommand;
         public int AnswerIndex = -1; // 선택된 값, 확정
 
+        public bool canSelect = true; //선택할 수 있는 상태 
+
         public Event ConnectedEvent { get; set; }
 
         private enum State
@@ -34,7 +36,8 @@ namespace HappyBread.GamePlay
         private int selectedIndex = 0; // 선택된 값, 아직 확정이 아님
 
         public void CreateSelector(List<string> rawQuestions)
-        {          
+        {
+            canSelect = true;
             if (rawQuestions.Count == 0)
             {
                 return;
@@ -81,16 +84,21 @@ namespace HappyBread.GamePlay
             // 방향키 커맨드를 받고 인덱스를 변화시킨다.
             ChangeSelectedIndex(NextMoveCommand);
 
+            if (canSelect == true)
+            {
+                Select(NextCommand);
+                
+            }
             // 선택키 커맨드를 받고 질문을 수행한다.
-            Select(NextCommand);
         }
 
         private void Select(KeyCode nextCommand)
         {
             if (nextCommand == GlobalGameData.KeyCodeSelect)
             {
+                canSelect = false;
                 // 선택지 제거
-                foreach(GameObject question in questions)
+                foreach (GameObject question in questions)
                 {
                     Destroy(question.gameObject);
                 }
@@ -179,6 +187,7 @@ namespace HappyBread.GamePlay
                 // 이벤트와 연결 제거
                 if (ConnectedEvent != null)
                 {
+                    
                     ConnectedEvent.End();
                     ConnectedEvent = null;
                 }

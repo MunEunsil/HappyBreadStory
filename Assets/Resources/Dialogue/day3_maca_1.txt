@@ -5,7 +5,7 @@ Message : askAddAvidence :character :마카롱_기본 :........
 Message : askAddAvidence :character :마카롱_기본 :사실 제가 이 호텔에 온 뒤로 협박 편지를 받고 있는데...
 Message : askAddAvidence :Player :유저_기본 :네?!
 Message : askAddAvidence :character :마카롱_기본 :누군지 예상은 가지만 좀 애매해서요. 
-Message : askAddAvidence :Evidence:막가롱의협박편지: 막가롱의 과거 모습으로 성형 사실을 폭로하겠다는 협박 편지다. 무엇을 그만두라는걸까? 도대체 누가?
+Message : askAddAvidence :Evidence:evidence_message_maca: 막가롱의 과거 모습으로 성형 사실을 폭로하겠다는 협박 편지다. 무엇을 그만두라는걸까? 도대체 누가?
 Message : askAddAvidence :character :마카롱_기본 :혹시 찾아주실 수 있나요?
 Message : askAddAvidence :Player :유저_기본 :알겠습니다. 한번 조사해보겠습니다..!
 Message : askAddAvidence :character :마카롱_기본 : 감사해요! 언제든 제 방에 오셔서 말씀해주세요! 아~! 탐정님, 오늘 세렌데피티 호텔의 장식인 가면 무도회 하죠?! 너무 멋질 것 같아요! ㅎㅎ 기대된다~~!!

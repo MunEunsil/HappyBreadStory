@@ -24,6 +24,8 @@ TagManager:
   - Call_slectSuspect
   - Call_ok_suspect
   - Call_JellyJellyCaseButton
+  - NPC
+  - ignore
   layers:
   - Default
   - TransparentFX

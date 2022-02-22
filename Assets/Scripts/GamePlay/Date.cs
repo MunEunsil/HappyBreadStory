@@ -66,6 +66,7 @@ namespace HappyBread.GamePlay
         private void Render()
         {
             text.text = $"Day\n{this.date}";
+            //text.text = $"Day\n{DataManager.Instance.date}";
         }
     }
 

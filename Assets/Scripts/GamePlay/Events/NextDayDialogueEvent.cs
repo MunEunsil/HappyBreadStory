@@ -41,7 +41,7 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
-            Debug.Log("엔드 디테일뜸?");
+           // Debug.Log("엔드 디테일뜸?");
             //bed wakeup진행
             WakeUp();
 
@@ -74,8 +74,7 @@ namespace HappyBread.GamePlay
             DataManager.Instance.twist = 0;
 
             //load 를 위한 data저장 
-            GameModel.Instance.DataController.saveGameData();
-
+        //    GameModel.Instance.DataController.saveGameData();
 
 
         }
@@ -85,15 +84,18 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.Date.AddDay(1);
             int date = GameModel.Instance.Date.Current;
+            //hp감소 멈춤 
+            GameModel.Instance.Hp.stopHp = true;
 
             if (date == 5)
             {
+                GameModel.Instance.UIManager.CallBtnHide();
                 //추리하기 시작!
                 GameModel.Instance.AudioManager.StopBackgroundAudio();
                 GameModel.Instance.AudioManager.ChangeBackgroundAudio("추리하기");
 
-
-               // SceneManager.UnloadSceneAsync($"Map{date}_1");
+                // SceneManager.UnloadSceneAsync("Player");
+                // SceneManager.UnloadSceneAsync($"Map{date}_1");
 
                 SceneManager.LoadScene("CallScene", LoadSceneMode.Additive);
                 GameModel.Instance.StateManager.ChangeState(new CallState());

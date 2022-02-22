@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 도박_초대장:   새로운 미래를 위해. 함께 즐기며 꿈을 꾸세요. -세리딥히리- 어떤 초대장 같다. 
+Message : askAddAvidence : Evidence : evidence_gamble:   새로운 미래를 위해. 함께 즐기며 꿈을 꾸세요. -세리딥히리- 어떤 초대장 같다. 

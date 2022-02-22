@@ -78,6 +78,7 @@ namespace HappyBread.GamePlay
 
         public void exit__room()
         {
+            Debug.Log("방 나가기 버튼");
             DoorObject.GetComponent<RoomDoor>().exitButton();
         }
 
@@ -86,7 +87,7 @@ namespace HappyBread.GamePlay
             Debug.Log("책에서 나가기 버튼");
             bookOBJ.SetActive(false);
             RoomExit_Button.SetActive(true);
-
+            GameModel.Instance.UIManager.BasicUIHide();
 
         }
         //if(gameObject.activeSelf == true

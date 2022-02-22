@@ -20,16 +20,11 @@ namespace HappyBread.GamePlay
         }
         public void ClickCall()
         {
-            //.SetActive(true);
-            //state 변경 
-            GameModel.Instance.AudioManager.StopBackgroundAudio();
-            GameModel.Instance.AudioManager.ChangeBackgroundAudio("추리하기");
+            GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
 
-            GameModel.Instance.EffectManager.FadeIn();
-            SceneManager.LoadScene("CallEvent", LoadSceneMode.Additive);
-            GameModel.Instance.StateManager.ChangeState(new CallState());
-            
-            //GameModel.Instance.StateManager.ChangeState(new ReasoningState());
+
+            SceneManager.UnloadSceneAsync($"Map{DataManager.Instance.date}_1");
+            GameModel.Instance.EventManager.AddBlockingEvent(new NextDayDialogueEvent("Day4_event"));
 
         }
     }

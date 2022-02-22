@@ -218,14 +218,15 @@ namespace HappyBread.GamePlay
             
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.Space;
+               // GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.Space;
             }
             else if (Input.GetKeyUp(KeyCode.Escape))
             {
                 GameModel.Instance.RoomInvestigate.NextFunctionCommand = KeyCode.Escape;
             }
-            else if (Input.GetKeyUp(GlobalGameData.mouseClick))
+            else if (Input.GetKeyUp(GlobalGameData.mouseClick)) //Input.GetKeyUp(KeyCode.Mouse0)
             {
+                Debug.Log("RoomInvestigateControll 클릭");
                 GameModel.Instance.RoomInvestigate.NextFunctionCommand = GlobalGameData.mouseClick;
             }
             else

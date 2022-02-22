@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 딸기뚜껑 : 딸기잼의 뚜껑이 열려 있다. 돌려서 열리는 형태다. 과연….떨어지면서 열린 것일까?
+Message : askAddAvidence : Evidence : evidence_Straw_Lid : 딸기잼의 뚜껑이 열려 있다. 돌려서 열리는 형태다. 과연….떨어지면서 열린 것일까?

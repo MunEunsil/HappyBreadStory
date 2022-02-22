@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HappyBread.GamePlay
 {
@@ -23,7 +24,7 @@ namespace HappyBread.GamePlay
         public KeyCode NextFunctionCommand;
         public LayerMask interactableLayer;
         public LayerMask evidenceLayer;
-        public float hitDistance = 0.5f;
+        public float hitDistance = 1.0f;
         public float useHpAmount = 0.01f;
 
         private bool MidEnding = false; //중간엔딩이 꺼져있음 
@@ -46,19 +47,40 @@ namespace HappyBread.GamePlay
             //시간에 따라 식빵 게이지 줄이기
             if (GameModel.Instance.Hp.hp > 0)
             {
-                if (DataManager.Instance.callStart == false)  //추리하기 중이 아닐 때 
+                //if (DataManager.Instance.callStart == false)  //추리하기 중이 아닐 때 
+                //{
+                //    GameModel.Instance.Hp.Add(-Time.deltaTime);
+                //}
+                if (GameModel.Instance.Hp.stopHp == false)
                 {
                     GameModel.Instance.Hp.Add(-Time.deltaTime);
                 }
+                else
+                {
+                    return;
+                }
+                
 
             }
             else
             {
-                if (MidEnding == false)
+                if (DataManager.Instance.date == 4)
                 {
-                    GameModel.Instance.MiddleEnding.startMoldEnding();
-                    MidEnding = true;
-                }  
+                    GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
+
+
+                    SceneManager.UnloadSceneAsync($"Map{DataManager.Instance.date}_1");
+                    GameModel.Instance.EventManager.AddBlockingEvent(new NextDayDialogueEvent("Day4_event"));
+                }
+                else
+                {
+                    if (MidEnding == false)
+                    {
+                        GameModel.Instance.MiddleEnding.startMoldEnding();
+                        MidEnding = true;
+                    }
+                }
+
             }
             //else if(GameModel.Instance.Hp.hp == 0)// 식빵 게이지가 0이면 
             //{
@@ -87,11 +109,9 @@ namespace HappyBread.GamePlay
             // 그 외 단축키 구현부 ( 상호작용 키 )
             if (NextFunctionCommand != KeyCode.None)
             {
-
                 switch (NextFunctionCommand)
                 {
                     case GlobalGameData.mouseClick:
-                        //if()state가 플레이어
                         AttemptInteract();
                         break;
                     case GlobalGameData.keyCodeCaseDiary:
@@ -120,15 +140,41 @@ namespace HappyBread.GamePlay
 
         public void AttemptInteract()  
         {
+            Stop(); // 상호작용 중 움직이는 것을 막기 위함 
+            state = State.Idle;
             if (inRoom == false)
             {
+             
                 Vector2 start = transform.position;
                 Vector2 end = (Vector2)transform.position + objectDirection * hitDistance;
                 hit = Physics2D.Linecast(start, end, interactableLayer);
+
+                
+                RaycastHit2D hitInfo;
+                Vector2 clickPos;
                 if (hit.transform != null)
                 {
-                    Interact(hit);
+                    clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    hitInfo = Physics2D.Raycast(clickPos, Camera.main.transform.forward, 15f, interactableLayer);
+                    //    Interact(hit);
+
+                    if (hitInfo.collider != null)
+                    {
+                        Debug.Log("증거 상호작용");
+                        Interact(hitInfo);
+                    } else if (hit.transform.CompareTag("NPC"))
+                    {
+                        Debug.Log("대화 상호작용");
+                        Interact(hit);
+                    }
+
                 }
+
+              //  Vector2 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+              //  RaycastHit2D hitInfo = Physics2D.Raycast(clickPos, Camera.main.transform.forward, 15f, interactableLayer)
+
+
+
 
             }
             NextFunctionCommand = KeyCode.None;
@@ -168,17 +214,6 @@ namespace HappyBread.GamePlay
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음
             {
-                //if (walk == 0)
-                //{
-                //    walk = 1;
-                //    GameModel.Instance.AudioManager.PlayEffectAudio("walk");//walk
-                //}
-                //else
-                //{
-                //    walk = 0;
-                //    GameModel.Instance.AudioManager.PlayEffectAudio("walk1");
-                //}
-
                 GameModel.Instance.AudioManager.PlayEffectAudio("walk");//walk
                 Move(NextMoveCommand);
             }

@@ -14,11 +14,12 @@ namespace HappyBread.GamePlay
 
         //  public GameObject player;
         public Texture2D cursorImg;
-        
+        public Vector2 hotspot;
         // Start is called before the first frame update
         void Start()
         {
-            Cursor.SetCursor(cursorImg, Vector2.zero,CursorMode.ForceSoftware);
+             Cursor.SetCursor(cursorImg, Vector2.zero, CursorMode.ForceSoftware);
+         //  Cursor.SetCursor(cursorImg, Vector2.zero, CursorMode.Auto);
         }
 
         // Update is called once per frame

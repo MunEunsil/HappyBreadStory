@@ -82,16 +82,24 @@ namespace HappyBread.GamePlay
         private void PlayTimeLine()
         {
             playableDirector.Play();
+            // 브금변경
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("죽는씬음악");
             state = State.Waiting;
            
         }
         public void nextScene()
         {
+            DataManager.Instance.stopVoice = false;
             state = State.Idle;
             timeLineP = true;
+            //hp 감소 시작 
+            GameModel.Instance.Hp.stopHp =false;
 
             GameModel.Instance.EffectManager.FadeIn();
-            GameModel.Instance.AudioManager.PlayBackgroundAudio();
+            //GameModel.Instance.AudioManager.PlayBackgroundAudio();
+
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies"); //기본브금
+
             //이벤트가 끝날 때 불러올 함수
             //현재 씬 삭제 
             //다음 씬 불러오기
@@ -114,10 +122,11 @@ namespace HappyBread.GamePlay
             GameModel.Instance.EventManager.AddBlockingEvent(new Day4_Twist_event("day4_twist_event"));
         }
 
-        public void day3_twist_dial()
+         public void day3_twist_dial()
         {
             GameModel.Instance.Hp.hp = 300f;
             timeLineP = true;
+            
             state = State.Idle;
             day4.SetActive(false);
             GameModel.Instance.EventManager.AddBlockingEvent(new Day4_Twist_event("day3_twist_event"));
@@ -125,19 +134,36 @@ namespace HappyBread.GamePlay
 
         private void Start()
         {
+            DataManager.Instance.stopVoice = true;
             GameModel.Instance.UIManager.BasicUIHide();
             GameModel.Instance.StateManager.ChangeState(new CallState());
-            GameModel.Instance.AudioManager.StopBackgroundAudio();
+            //GameModel.Instance.AudioManager.StopBackgroundAudio();
+        }
+
+        public void Day2_event_dialStart()
+        {
+          // Debug.Log("타임라인 퍼즈");
+            playableDirector.Pause();
+            //playableDirector.Play();
+            GameModel.Instance.EventManager.AddBlockingEvent(new Day_event_dial("day2_event_twist"));
+        }
+        public void Day3_event_dialStart()
+        {
+           // Debug.Log("타임라인 퍼즈");
+            playableDirector.Pause();
+            //playableDirector.Play();
+            GameModel.Instance.EventManager.AddBlockingEvent(new Day_event_dial("day3_event_dial"));
         }
 
         private void playerPosition()
         {
-            if (DataManager.Instance.date == 2)
-            {
-                Debug.Log("플레이어 위치 바꿈?");
-                GameModel.Instance.Player.transform.position = new Vector3(2.72f, -0.3f, 1);
-            }
-           
+            //if (DataManager.Instance.date == 2)
+            //{
+            //    Debug.Log("플레이어 위치 바꿈?");
+            //    GameModel.Instance.Player.transform.position = new Vector3(2.72f, -0.3f, 1);
+            //}
+            GameModel.Instance.Player.transform.position = new Vector3(2.72f, -0.3f, 1);
+
         }
 
 

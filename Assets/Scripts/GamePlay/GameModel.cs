@@ -79,6 +79,7 @@ namespace HappyBread.GamePlay
         [SerializeField]
         private DataController dataController;
 
+
         public DataController DataController
         {
             get
@@ -225,10 +226,11 @@ namespace HappyBread.GamePlay
         {
             get
             {
-                if (roomInvestigate == null)
-                {
-                    roomInvestigate = GameObject.FindObjectOfType<RoomInvestigate>();
-                }
+                //if (roomInvestigate == null)
+                //{
+                //    roomInvestigate = GameObject.FindObjectOfType<RoomInvestigate>();
+                //}
+                roomInvestigate = GameObject.FindObjectOfType<RoomInvestigate>();
                 return roomInvestigate;
             }
         }

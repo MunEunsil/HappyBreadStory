@@ -1,1 +1,1 @@
-Message : askAddAvidence : Evidence : 빨간부츠 : 빨간 부츠다. 컵케익이 즐겨 신나…?
+Message : askAddAvidence : Evidence : evidence_boosts : 빨간 부츠다. 컵케익이 즐겨 신나…?

@@ -46,7 +46,7 @@ namespace HappyBread.GamePlay
         }
         public void CallBtnAppear()
         {
-            //GameModel.Instance.CallBtn.Appear();
+            GameModel.Instance.CallBtn.Appear();
         }
         public void CallBtnHide()
         {
@@ -84,6 +84,11 @@ namespace HappyBread.GamePlay
             SettingBtnAppear();
             latelyEvidenceAppear();
 
+            if (DataManager.Instance.date == 4)
+            {
+                CallBtnAppear();
+            }
+
         }
 
         /// <summary>
@@ -98,6 +103,10 @@ namespace HappyBread.GamePlay
           //  CallBtnHide();
             SettingBtnHide();
             latelyEvidenceHide();
+            if (DataManager.Instance.date == 4)
+            {
+                CallBtnHide();
+            }
         }
 
 
