@@ -5,7 +5,7 @@ using UnityEngine;
 namespace HappyBread.GamePlay
 {
     /// <summary>
-    /// 상호작용 가능한 물체의 경우 상속받아야할 클래스.
+    /// 상호작용 가능한 물체의 경우 상속받아야할 클래스. (은실 수정- 2020.10.11)
     /// </summary>
     public abstract class Interactable : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace HappyBread.GamePlay
         public abstract void Interact();
 
         /// <summary>
-        /// 해당 객체에 존재하는 Evidence를 획득할지 물어보고 가져옵니다.
+        /// 해당 객체에 존재하는 Evidence를 획득할지 물어보고 가져옵니다. 
         /// </summary>
         protected void GetEvidence()
         {
@@ -29,8 +29,6 @@ namespace HappyBread.GamePlay
             }
 
 
-
-
             if (GameModel.Instance.CaseDiary.checkEvidence(Evidence))
             {
                 GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("addEvidence"));
@@ -38,6 +36,7 @@ namespace HappyBread.GamePlay
                 events.Add(new ActionEvent(() => { GameModel.Instance.CaseDiary.AddEvidence(Evidence); }));
                 events.Add(new ActionEvent(() => { }));
                 GameModel.Instance.EventManager.AddBlockingEvent(new AnswerEvent(events));
+                
 
             }
             else //테스트 
@@ -47,8 +46,6 @@ namespace HappyBread.GamePlay
 
             
         }
-        //대화 저장 
-
 
 
         /// <summary>

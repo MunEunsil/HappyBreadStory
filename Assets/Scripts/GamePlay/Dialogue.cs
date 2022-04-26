@@ -116,7 +116,7 @@ namespace HappyBread.GamePlay
                 currentIndex = -1;
                 state = State.Waiting;
                 Next();
-               
+
             }
         }
 
@@ -200,6 +200,8 @@ namespace HappyBread.GamePlay
 
                 Sprite backgroundSprite = ResourceLoader.LoadSprite(backgroundFileName);
                 Sprite playerSprite = ResourceLoader.LoadSprite(characterFileName);
+                
+                characterName.text = DataManager.Instance.PlayerName;
 
                 characterUI_.SetActive(false);
                 evidenceUI_.SetActive(false);
@@ -386,6 +388,17 @@ namespace HappyBread.GamePlay
         private void ShowMessage(string[] seperated)
         {
             GameModel.Instance.Hp.stopHp = true; // hp감소 멈춤 
+
+            if (DataManager.Instance.inPriz == true)
+            {
+                DataManager.Instance.stopTimer = true;
+            }
+            if (DataManager.Instance.inOven == true)
+            {
+                DataManager.Instance.stopTimer = true;
+            }
+
+
             string backgroundFileName = seperated[1].Trim();
             string characterFileName = seperated[3].Trim(); //캐릭터나 증거의 이미지
             string isEvidence = seperated[2].Trim();
@@ -572,6 +585,14 @@ namespace HappyBread.GamePlay
         private void End()
         {
             GameModel.Instance.Hp.stopHp = false; //hp감소
+            if (DataManager.Instance.inPriz == true)
+            {
+                DataManager.Instance.stopTimer = false;
+            }
+            if (DataManager.Instance.inOven == true)
+            {
+                DataManager.Instance.stopTimer = false;
+            }
             state = State.Idle;
             currentIndex = -1;
             GameModel.Instance.StateManager.UndoState(); // Input 관리

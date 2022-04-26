@@ -58,7 +58,7 @@ namespace HappyBread.GamePlay
             saveData.date = DataManager.Instance.date+1;
 
             //이름저장
-            saveData.PlayerNmae = DataManager.Instance.name;
+            saveData.PlayerNmae = DataManager.Instance.PlayerName;
 
             saveData.day3FreezerKey = DataManager.Instance.Day3_freezerKey;
 
@@ -116,7 +116,7 @@ namespace HappyBread.GamePlay
                 //date 로드 
                 DataManager.Instance.date = saveData.date;
                 //이름 로드 
-                DataManager.Instance.name = saveData.PlayerNmae;
+                DataManager.Instance.PlayerName = saveData.PlayerNmae;
                 //냉동창고 열림 여부 
                 DataManager.Instance.Day3_freezerKey = saveData.day3FreezerKey;
 
@@ -250,6 +250,8 @@ namespace HappyBread.GamePlay
         //엔딩 저장하는 함수 
         public void Save_Ending()
         {
+            saveEndingData.Ending.Clear();
+            saveEndingData.HappyEnding.Clear();
             //중간엔딩
             for (int j = 0; j < 11; j++)
             {
@@ -265,7 +267,19 @@ namespace HappyBread.GamePlay
 
             string json = JsonUtility.ToJson(saveEndingData); //제이슨화
 
-            File.WriteAllText(SAVE_ENDINGS_DIRECTORY + ENDING_FILENAME, json);
+            if (File.Exists(SAVE_DATA_DIRECTORY + ENDING_FILENAME))
+            {
+                File.Delete(SAVE_DATA_DIRECTORY + ENDING_FILENAME); //파일을 지우고 다시 생성
+              
+                File.WriteAllText(SAVE_DATA_DIRECTORY + ENDING_FILENAME, json);
+            }
+            else//세이브 파일이 없으면
+            {
+                json = JsonUtility.ToJson(saveEndingData); //제이슨화
+
+                File.WriteAllText(SAVE_DATA_DIRECTORY + ENDING_FILENAME, json);
+            }
+            //File.WriteAllText(SAVE_ENDINGS_DIRECTORY + ENDING_FILENAME, json);
 
             Debug.Log("엔딩 저장했음!");
             Debug.Log("엔딩 저장 json 확인 =>>> " + json);

@@ -1,0 +1,3 @@
+Message : askAddAvidence :Evidence :evidence_voodoo_doll : !!!!!!!!
+Message : askAddAvidence :Evidence :evidence_voodoo_doll :부적과 바늘로 뒤덮인 인형이다. 하도 찔러서 인형 속 솜이 삐져나왔다.
+Message : askAddAvidence :Evidence :evidence_voodoo_doll :딸기를 이렇게까지 싫어한 이유가 뭐지…?

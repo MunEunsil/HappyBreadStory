@@ -33,11 +33,13 @@ namespace HappyBread.GamePlay
         protected override void EndDetail()
         {
             FileName = null;
-            GameModel.Instance.StateManager.UndoState();
+            //GameModel.Instance.StateManager.UndoState();
+            GameModel.Instance.StateManager.ChangeState(new PlayingState());
             GameModel.Instance.EffectManager.FadeIn();
             GameModel.Instance.AudioManager.PlayEffectAudio("door");
             GameModel.Instance.Player.transform.position = new Vector3(2.94f, -0.78f, 1);
 
         }
+
     }
 }

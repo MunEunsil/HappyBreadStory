@@ -1,0 +1,3 @@
+Message : askAddAvidence : Evidence :evidence_spray :가발 스프레이다. 그럼 화려한 흰색 머리는 사실 본인 머리가 아니었나? 
+Message : askAddAvidence : Evidence :evidence_spray :엄청난 자부심이 있어 보였는데, 의외다.
+

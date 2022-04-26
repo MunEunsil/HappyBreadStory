@@ -12,11 +12,11 @@ namespace HappyBread.GamePlay
     public class MiddleEnding : MonoBehaviour
     {
         /// <summary>
-        /// 중간엔딩을 관리하는 씬 
+        /// 중간엔딩을 관리하는 클래스 
+        /// 중간엔딩 조건 스크립트에서 해당하는 엔딩 함수를 호출하여 사용 (은실 수정 2021.04.24.)
         /// </summary>
         /// 
 
-        //나중에 엔딩모음 만들 때 수정 필요 
         public GameObject endingImage;
         public KeyCode NextCommand;
         private int date;
@@ -38,9 +38,9 @@ namespace HappyBread.GamePlay
             {
                 if (NextCommand == KeyCode.Space)
                 {
-                    Debug.Log("중간엔딩 state 에서 스페이스바 누름 ");
+                    //Debug.Log("중간엔딩 state 에서 스페이스바 누름 ");
                     NextCommand = KeyCode.None;
-                    DataManager.Instance.evidences.Clear(); //증거 날리기 
+                  
 
                     SceneManager.LoadScene("Opening", LoadSceneMode.Additive);
                     SceneManager.UnloadSceneAsync("Player");
@@ -49,7 +49,9 @@ namespace HappyBread.GamePlay
 
                     //엔딩 저장하기 
                     GameModel.Instance.DataController.Save_Ending();
-
+                    //증거 초기화
+                    DataManager.Instance.evidences.Clear(); 
+                    //대화 데이터 초기화
                     DataManager.Instance.cake = 0;
                     DataManager.Instance.choco = 0;
                     DataManager.Instance.crois = 0;
@@ -77,7 +79,6 @@ namespace HappyBread.GamePlay
 
 
         //중간엔딩을 불러오기 위한 함수들 
-        //
 
         public void startMoldEnding() //곰팡이 엔딩 불러오기
         {
@@ -90,7 +91,7 @@ namespace HappyBread.GamePlay
             endingImage.GetComponent<Image>().sprite = ResourceLoader.LoadSprite("middleEnding2");
             GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
 
-            //ui뿅 
+            //ui
             GameModel.Instance.StateManager.ChangeState(new PauseState());
             GameModel.Instance.EffectManager.FadeOut();
 

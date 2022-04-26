@@ -13,6 +13,7 @@ namespace HappyBread.GamePlay
         public Image fill;
         private float maxHp = 300.0f;
         public float hp;
+        private float green = 11;
 
         //hp멈추기 위한 변수 
         public bool stopHp = false; //true : hp 감소 멈춤 , false : hp감소
@@ -21,7 +22,16 @@ namespace HappyBread.GamePlay
         {            
             hp += value;
             fill.fillAmount = hp / maxHp;
+          //  vignetteAdd();
         }
+
+        //public void vignetteAdd()
+        //{
+           
+        //    green = green + 0.4f;
+        //    DataManager.Instance.vignetterColor.value = new Color(21f, green, 22f);
+
+        //}
 
         public void Set(float value)
         {
@@ -42,6 +52,7 @@ namespace HappyBread.GamePlay
         private void Awake()
         {
             hp = maxHp;
+            green = 11;
             stopHp = false;
             //hp = 19.0f;
         }

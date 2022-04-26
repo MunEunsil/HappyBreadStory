@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace HappyBread.GamePlay
 {
@@ -33,6 +34,16 @@ namespace HappyBread.GamePlay
         public List<Evidence> evidences = new List<Evidence>();
         public int date = 1;
         public int floor = 1;
+
+        //비네트 컬러 
+       // public ColorParameter vignetterColor;
+
+
+        //지하1층 들어갔는지 체크하기 위함 
+        public bool inOven = false;
+        public bool inPriz = false;
+        //지하1층 타이머 
+        public bool stopTimer = true; //true : 멈춤 , false : 진행 
 
         //열쇠 열림 유무 
         public bool strawRoomKey = false;
@@ -119,23 +130,34 @@ namespace HappyBread.GamePlay
 
         //각 사건에서 사용할 증거 텍스트
 
-        //딸기사건 사고/타살
+        //딸기사건 타살
         public string[] straw_CaseText1 = new string[] { "딸기잼보다 훨씬 높다.","딸기잼의 돈을 노렸다." };
         public string[] straw_CaseText2 = new string[] {"누군가에게 받은것이다.","돌려서 여는 형식이다."};
+        //딸기사건 사고
+        public string[] Suicede_straw_CaseText2 = new string[] { "실수로 떨어졌다.", "미끄러졌다." };
+
         //딸기사건 범인지목
         public string[] straw_CaseText11 = new string[] { "투자 실패로, 많은 돈이 필요하다.", "같은 학교 출신이라는 소문이 있다."};
         public string[] straw_CaseText22 = new string[] { "빌미로 돈을 달라 협박했다.", "결혼을 취소해달라 했다."};
 
-        //호두사건 사고/타살
+        //호두사건 타살
         public string[] hodu_CaseText1 = new string[] { "오랫동안 냉동 창고 문이 열려있었다.", "관리가 소홀했다." };
         public string[] hodu_CaseText2 = new string[] { "원래는 1층에 있으면 안된다.", "다른 누군가 있었다." };
+
+        //호두사건 사고 
+        public string[] Suicede_hodu_CaseText2 = new string[] { "그림을 훔치려다 갇혔다.", "키를 두고왔다." };
+
         //호두사건 범인지목
         public string[] hodu_CaseText11 = new string[] { "협박 편지를 보냈다.", "어디선가 봤던 물건이다." };
         public string[] hodu_CaseText22 = new string[] { "훔쳤다.", "싸인이 없어 사용할 수 없다." };
 
-        //젤리젤리사건 사고/타살
+        //젤리젤리사건 타살
         public string[] jellyjelly_CaseText1 = new string[] { "잠금 장치 없는 밀어서 여는 문이다.", "너무 온도가 높아 녹아 내렸다." };
         public string[] jellyjelly_CaseText2 = new string[] { "계획적인 연쇄 살인이다.", "소라빵이 담당 직원이었다" };
+
+        //젤리젤리 사건 사고 
+        public string[] Suicede_jellyjelly_CaseText2 = new string[] { "갇혀버렸다.", "잠들어버렸다." };
+
         //젤리젤리사건 범인지목
         public string[] jellyjelly_CaseText11 = new string[] { "진실을 밝히려 했다.  ", "불안정한 심리였다." };
         public string[] jellyjelly_CaseText22 = new string[] { "재료 차별을 반대한다.", "천연 재료인척 한다." };

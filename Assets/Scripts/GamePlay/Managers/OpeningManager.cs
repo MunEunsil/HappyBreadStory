@@ -57,7 +57,6 @@ namespace HappyBread.GamePlay
                 return;
             }
 
-
             Invoke("SetActiveTrue", 0.5f);
         }
 
@@ -66,7 +65,8 @@ namespace HappyBread.GamePlay
         private void DataInitalization()
         {
             Debug.Log("데이터 초기화");
-            
+
+            DataManager.Instance.ovenEnding = 0;
             DataManager.Instance.Day3_freezerKey = false;
             DataManager.Instance.day2Crois_lie = false;
             DataManager.Instance.floor = 1;//1층
@@ -178,7 +178,7 @@ namespace HappyBread.GamePlay
             //spaceBar = false;
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
             GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { steps[3].SetActive(true); steps[2].SetActive(false); }));
-            GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next();  }));
+           // GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next();  })); //2번 fadein하는거 해결을 위해 주석
 
             
         }
@@ -190,6 +190,12 @@ namespace HappyBread.GamePlay
             SceneManager.LoadScene("Player", LoadSceneMode.Additive);
 
             //GameModel.Instance.Hp.hp = 300f;
+
+            DataInitalization();
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
+            GameModel.Instance.AudioManager.PlayBackgroundAudio();
+
+
 
             //데모
             // GameModel.Instance.EffectManager.Fade();
@@ -211,7 +217,7 @@ namespace HappyBread.GamePlay
                 Invoke("NextScene", 1f);
 
                 GameModel.Instance.AudioManager.StopBackgroundAudio();
-                Next();
+               // Next();
                 Debug.Log(DataManager.Instance.PlayerName);
             }
         }

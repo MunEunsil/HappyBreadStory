@@ -11,13 +11,13 @@ namespace HappyBread.GamePlay
         /// 지하1층에 문에 충돌하면 페이드효과
         /// </summary>
         // Start is called before the first frame update
-        public bool inOven = false;
-        public bool inPriz = false;
+
 
         private void Start()
         {
-            inOven = false;
-            inPriz = false;
+            DataManager.Instance.inOven = false;
+            DataManager.Instance.inPriz = false;
+            DataManager.Instance.stopTimer = true;
         }
 
         public float timer = 0f;
@@ -30,26 +30,28 @@ namespace HappyBread.GamePlay
                 GameModel.Instance.EffectManager.Fade();
                 if (this.gameObject.name == "ovenDoor")
                 {
-                    if (inOven == true)
+                    if (DataManager.Instance.inOven == true)
                     {
-                        inOven = false;
+                        DataManager.Instance.inOven = false;
+                        DataManager.Instance.stopTimer = true;
                     }
                     else
                     {
-                        inOven = true;
-
+                        DataManager.Instance.inOven = true;
+                        DataManager.Instance.stopTimer = false;
                     }
 
                 }
                 else if (this.gameObject.name == "freezerDoor")
                 {
-                    if (inPriz == true)
+                    if (DataManager.Instance.inPriz == true)
                     {
-                        inPriz = false;
+                        DataManager.Instance.inPriz = false;
                     }
                     else
                     {
-                        inPriz = true;
+                        DataManager.Instance.inPriz = true;
+                        DataManager.Instance.stopTimer = false;
                     }
                 }
 
@@ -57,27 +59,42 @@ namespace HappyBread.GamePlay
 
 
         }
-        private void timerStart()
+        public void timerStart()
         {
-            timer += Time.deltaTime;
+            DataManager.Instance.stopTimer = false; // 타이머 시작 
         }
+
+        public void timerStop()
+        {
+            DataManager.Instance.stopTimer = true; // 타이머 멈춤
+        }
+
+
+
         private void Update()
         {
-            if (inOven == true)
+            if (DataManager.Instance.inOven == true)
             {
-                timer += Time.deltaTime;
-                if (timer > 60)
+                if (DataManager.Instance.stopTimer == false)
                 {
-                    GameModel.Instance.MiddleEnding.startOvenEnding();
-                }
+                    timer += Time.deltaTime;
+                    if (timer > 60)
+                    {
+                        GameModel.Instance.MiddleEnding.startOvenEnding();
+                    }
+                }               
             }
-            if (inPriz == true)
+            if (DataManager.Instance.inPriz == true)
             {
-                timer += Time.deltaTime;
-                if (timer > 60)
+                if (DataManager.Instance.stopTimer == false)
                 {
-                    GameModel.Instance.MiddleEnding.startFreezerEnding();
+                    timer += Time.deltaTime;
+                    if (timer > 60)
+                    {
+                        GameModel.Instance.MiddleEnding.startFreezerEnding();
+                    }
                 }
+
             }
 
         }

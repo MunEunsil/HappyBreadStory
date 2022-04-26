@@ -23,7 +23,6 @@ namespace HappyBread.GamePlay
                 Action = () =>
                 {
                     GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_freezer"));
-
                 }
 
             };

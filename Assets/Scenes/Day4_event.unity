@@ -388,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextCommand: 0
   playableDirector: {fileID: 570918875}
-  timeline: {fileID: 11400000, guid: 861e51475d89d0a4086847acd2fced04, type: 2}
+  timeline: {fileID: 11400000, guid: 3cd0087f941e25e43abdf63cafc35cb1, type: 2}
   NextSceneName: Map4_1
   ThisSceneName: Day4_event
   day4: {fileID: 1477369035}
@@ -543,7 +543,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 3cd0087f941e25e43abdf63cafc35cb1, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0

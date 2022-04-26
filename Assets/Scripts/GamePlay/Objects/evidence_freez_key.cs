@@ -10,7 +10,7 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("evidence_freez_key"));
 
-            DataManager.Instance.Day3_freezerKey = true;
+            //DataManager.Instance.Day3_freezerKey = true;
 
             GetEvidence();
 

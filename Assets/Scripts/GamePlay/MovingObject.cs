@@ -45,7 +45,7 @@ namespace HappyBread.GamePlay
             AfterMove();
         }
 
-        protected virtual void Stop()
+        public virtual void Stop()
         {
             if (animator.GetBool(animatorIsWalking))
             {

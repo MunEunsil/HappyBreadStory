@@ -1,15 +1,15 @@
 Message : 만찬:character :컵케익_기본:자~ 여러분! 세렌디피티에 오신것을 환영합니다~!! 차린게 많으니 마음껏 드세요~!!
-Message : 만찬:character : : 와아~(짝짝짝)
-Message : 만찬:character : : 서로 명함을 주고받고 인사하기 바빴다. 몇분 뒤 꽈배기의 인사말이 시작됐다.
+Message : 만찬:character : :와아~(짝짝짝)
+Message : 만찬:character : :서로 명함을 주고받고 인사하기 바빴다. 몇분 뒤 꽈배기의 인사말이 시작됐다.
 Message : 만찬:character :꽈배기_기본 :여러분 모두 세렌디피티 호텔에 와주셔서 감사합니다. 딸기잼, 땅콩잼, 탐정님, 크로아상, 젤리, 젤리젤리 총 6분은 이번해 우리 마을 속 많은 영향을 끼친 인물로 세렌디피티 호텔 VVIP로 선정되셨습니다
 Message : 만찬:character :꽈배기_기본 :여러분들의 노고에 존경을 표합니다. 부디 세렌디피티 호텔에 머무르는 동안 달콤하고 느긋한 하루가 되시길 바랍니다.
-Message : 만찬:character : : 준비된 웰컴 드링크와 핑거 푸드를 먹으며 대화가 오갔다.
+Message : 만찬:character : :준비된 웰컴 드링크와 핑거 푸드를 먹으며 대화가 오갔다.
 Message : 만찬:character :딸기잼_기본 :흥...아까보단 좀 괜찮아졌네. 뭐~ 내가 자주 가는 워터힐 호텔보단 못하지만~?
 Message : 만찬:character :땅콩잼_기본 :베이베 쉿... 사람들 많은 곳에선 조심하랬잖아.
-Message : 만찬:character:크로아상_기본 :요오즘 것들은 말이야~ 위아래도 없어서~~(쩅그랑)
+Message : 만찬:character:크로아상_기본 :요오즘 것들은 말이야~ 위아래도 없어서~~(쨍그랑)
 Message : 만찬:character:소라빵_기본 :손님 흐 다른 손님들을 위해 조심해주시면 감사합니다 흐흐...
 Message : 만찬:character:마카롱_기본 :저기~ 혹시 여기 조명좀 제쪽으로 방향 틀어주실 수 있나요?
-Message : 만찬:character:도넛_기본 : ...네?
+Message : 만찬:character:도넛_기본 :...네?
 Message : 만찬:character:컵케익_기본 :아앗~~!! 손님 제가 완.벽.히 데코레이션 한거라 안됩니다 손님~
 Message : 만찬:character:젤리_기본 :이거 맛있다! 이런건 처음 먹어봐.
 Message : 만찬:character:젤리젤리_기본 : 그러게...

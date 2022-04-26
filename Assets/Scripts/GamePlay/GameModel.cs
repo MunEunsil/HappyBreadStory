@@ -78,7 +78,20 @@ namespace HappyBread.GamePlay
         private latelyEvidence lately_Evidence;
         [SerializeField]
         private DataController dataController;
+        [SerializeField]
+        private exitToOpeningBtn exit_to_opening_btn;
 
+        public exitToOpeningBtn exitToOpeningBtn
+        {
+            get
+            {
+                if (exit_to_opening_btn == null)
+                {
+                    exit_to_opening_btn = GameModel.FindObjectOfType<exitToOpeningBtn>();
+                }
+                return exit_to_opening_btn;
+            }
+        }
 
         public DataController DataController
         {

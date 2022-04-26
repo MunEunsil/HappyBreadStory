@@ -72,7 +72,10 @@ namespace HappyBread.GamePlay
             DataManager.Instance.evidences.Add(evidence);
             //최근습득증거 추가
             GameModel.Instance.latelyEvidence.latelyEvidenceTest();
-
+            if (evidence.Sprite.CompareTo("evidence_freez_key")==0)
+            {
+                DataManager.Instance.Day3_freezerKey = true;
+            }
         }
 
 
@@ -105,6 +108,8 @@ namespace HappyBread.GamePlay
             // 기존 object를 삭제한다.
             //Destroy(cursor);
             //cursor = null;
+            
+
             foreach (GameObject obj in evidencesObject)
             {
                 Destroy(obj);
@@ -839,30 +844,35 @@ namespace HappyBread.GamePlay
                     Debug.Log("도넛 키워드?");
                     break;
                 case "twist":
-                    if (num=="0")
+                    if (num == "0")
                     {
                         if (DataManager.Instance.twist_DialogeKeywordsOpen[0] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_1")); }
-                            
-                    }              
-                    else if(num=="1")
+
+                    }
+                    else if (num == "1")
                     {
                         if (DataManager.Instance.twist_DialogeKeywordsOpen[1] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_2")); }
-                        
+
                     }
                     else if (num == "2")
                     {
                         if (DataManager.Instance.twist_DialogeKeywordsOpen[2] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day1_twist_3")); }
-                  
+
                     }
                     else if (num == "3")
                     {
                         if (DataManager.Instance.twist_DialogeKeywordsOpen[3] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day2_twist_1")); }
-                       
+
+                    }
+                    else if (num == "5")
+                    {
+                        if (DataManager.Instance.twist_DialogeKeywordsOpen[5] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_twist_1")); }
+
                     }
                     else if (num == "4")
                     {
-                        if (DataManager.Instance.twist_DialogeKeywordsOpen[4] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day4_twist_1")); }
-                       
+                        if (DataManager.Instance.twist_DialogeKeywordsOpen[4] == true) { GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("day3_twist_event")); }
+                        // 인덱스4 마스터 키 
                     }
                     break;
                 case "choco":

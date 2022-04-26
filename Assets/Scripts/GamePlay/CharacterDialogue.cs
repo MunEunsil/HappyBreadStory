@@ -10,7 +10,8 @@ namespace HappyBread.GamePlay
     public class CharacterDialogue : Interactable
     {
         /// <summary>
-        /// 캐릭터와 대화 상호작용을 하는 클래스.
+        /// 캐릭터와 대화 상호작용을 하는 클래스. (원 수정 - 2021.03.23)
+        /// 특정 대화는 사건수첩의 키워드를 열기 위해 datamanager의 정보를 수정합니다. (은실 수정 - 2021.24.27)
         /// </summary>
 
         public override void Interact()
@@ -406,7 +407,8 @@ namespace HappyBread.GamePlay
                         }
                         else if (textFileName == "day3_twist_1")
                         {
-                            DataManager.Instance.masterKey = true;
+                            //DataManager.Instance.masterKey = true;
+                            //DataManager.Instance.twist_DialogeKeywordsOpen[4] = true;
                         }
                         else
                         {

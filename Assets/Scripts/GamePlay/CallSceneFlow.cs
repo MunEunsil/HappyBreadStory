@@ -12,7 +12,7 @@ namespace HappyBread.GamePlay
     public class CallSceneFlow : MonoBehaviour
     {
         ///<summary>
-        ///추리하기 플로우를 관리하는 클래스
+        ///추리하기 플로우를 관리하는 클래스 (은실 수정 — 2022.01.21.)
         ///<summary>
         ///
 

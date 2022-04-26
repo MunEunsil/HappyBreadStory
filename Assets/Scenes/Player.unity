@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &301581248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +657,8 @@ MonoBehaviour:
     m_Bits: 512
   hitDistance: 1
   useHpAmount: 0.001
+  vignetteEffect: {fileID: 1618275203}
+  vignette: {fileID: 0}
   inRoom: 0
 --- !u!1 &1618275202
 GameObject:

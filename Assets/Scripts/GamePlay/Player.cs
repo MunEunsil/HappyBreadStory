@@ -6,12 +6,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
 namespace HappyBread.GamePlay
 {
     /// <summary>
-    /// 플레이어를 제어 할 수 있는 클래스. 
+    /// 플레이어를 제어 할 수 있는 클래스.
     /// </summary>
     ///
 
@@ -27,6 +28,10 @@ namespace HappyBread.GamePlay
         public float hitDistance = 1.0f;
         public float useHpAmount = 0.01f;
 
+        //비네트 효과 
+        public PostProcessVolume vignetteEffect;
+        public Vignette vignette;
+
         private bool MidEnding = false; //중간엔딩이 꺼져있음 
 
         private State state;
@@ -39,11 +44,14 @@ namespace HappyBread.GamePlay
         {
             state = State.Idle;
             inRoom = false;
+            //DataManager.Instance.vignetterColor.value = new Color(21f, 11f, 22f);
+            //vignetteEffect.profile.TryGetSettings(out vignette);
+            
         }
 
         private void Update()
         {
-           
+            
             //시간에 따라 식빵 게이지 줄이기
             if (GameModel.Instance.Hp.hp > 0)
             {
@@ -52,7 +60,7 @@ namespace HappyBread.GamePlay
                 //    GameModel.Instance.Hp.Add(-Time.deltaTime);
                 //}
                 if (GameModel.Instance.Hp.stopHp == false)
-                {
+                {                  
                     GameModel.Instance.Hp.Add(-Time.deltaTime);
                 }
                 else
@@ -82,16 +90,7 @@ namespace HappyBread.GamePlay
                 }
 
             }
-            //else if(GameModel.Instance.Hp.hp == 0)// 식빵 게이지가 0이면 
-            //{
-            //    Debug.Log("hp 0임!!");
-            //    GameModel.Instance.MiddleEnding.startMoldEnding();
-            //}
 
-            //if (GameModel.Instance.Hp.hp<0)
-            //{
-            //    Debug.Log(GameModel.Instance.Hp.hp);
-            //}
 
             // 움직임 구현부 ( 화살표 키 )
             switch (state)
@@ -120,16 +119,10 @@ namespace HappyBread.GamePlay
                     default:
                         break;
                 }
-                 }
+               }
             }
 
-        //CaseDiaryBtn 스크립트에 적용 
-        //public void AttemptOpenCaseDiary()
-        //{
-        //    GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
-        //    GameModel.Instance.CaseDiary.gameObject.SetActive(true);
-        //    NextFunctionCommand = KeyCode.None;
-        //}
+
         private void AttemptOpenCall()
         {
             GameModel.Instance.StateManager.ChangeState(new CallState());
@@ -138,9 +131,23 @@ namespace HappyBread.GamePlay
 
         }
 
+        public void playerStop()
+        {            
+            Stop();
+            NextMoveCommand = Vector3.zero;
+        }
+
+        //상호작용을 위한 코드 (은실 - 2020.10.11)
+        //플레이어가 오브젝트를 클릭했을 때 실행
+        /*
+        NPC와 대화는 특정 거리에서 NPC를 바라보고 어딜 크릭해도 상호작용 가능
+        오브젝트는 정확하게 물체를 선택해야 가능 (은실 수정— 2022.01.26)
+        */
+
         public void AttemptInteract()  
         {
             Stop(); // 상호작용 중 움직이는 것을 막기 위함 
+            
             state = State.Idle;
             if (inRoom == false)
             {
@@ -160,24 +167,20 @@ namespace HappyBread.GamePlay
 
                     if (hitInfo.collider != null)
                     {
-                        Debug.Log("증거 상호작용");
+                        //Debug.Log("증거 상호작용");
                         Interact(hitInfo);
                     } else if (hit.transform.CompareTag("NPC"))
                     {
-                        Debug.Log("대화 상호작용");
+                       // Debug.Log("대화 상호작용");
                         Interact(hit);
                     }
 
                 }
 
-              //  Vector2 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-              //  RaycastHit2D hitInfo = Physics2D.Raycast(clickPos, Camera.main.transform.forward, 15f, interactableLayer)
-
-
-
 
             }
             NextFunctionCommand = KeyCode.None;
+            NextMoveCommand = Vector3.zero;
         }
 
         private void Interact(RaycastHit2D hit)
@@ -232,27 +235,6 @@ namespace HappyBread.GamePlay
             //NextMoveCommand = Vector3.zero;
             //GameModel.Instance.Hp.Add(-useHpAmount); // Hp 변동
         }
-
-        //private void startMoldEnding()  
-        //{
-        //    DataManager.Instance.middleEndingName = "middleEnding4";
-        //    GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
-
-        //    //ui뿅 
-        //    GameModel.Instance.StateManager.ChangeState(new PauseState());
-        //    GameModel.Instance.EffectManager.FadeOut();
-
-        //    Invoke("moldEnding", 2f);
-        //}
-        //private void moldEnding() //곰팡이 엔딩
-        //{
-
-        //    GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
-
-        //    GameModel.Instance.EffectManager.FadeIn(0.2f);
-        //    GameModel.Instance.StateManager.Resume();
-
-        //}
 
        
 

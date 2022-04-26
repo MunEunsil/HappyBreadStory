@@ -1,0 +1,2 @@
+Message : askAddAvidence : Evidence :evidence_unknown_picture_detail:사진이 접혀있었다. 오른쪽은 꽈배기인 것으로 보아, 곽배기씨의...?
+Message : askAddAvidence : Evidence :evidence_unknown_picture_detail:그럼 옆에분은...?

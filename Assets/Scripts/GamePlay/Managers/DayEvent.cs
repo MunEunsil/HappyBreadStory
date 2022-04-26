@@ -79,7 +79,7 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private void PlayTimeLine()
+        private void PlayTimeLine ()
         {
             playableDirector.Play();
             // 브금변경
@@ -130,6 +130,10 @@ namespace HappyBread.GamePlay
             state = State.Idle;
             day4.SetActive(false);
             GameModel.Instance.EventManager.AddBlockingEvent(new Day4_Twist_event("day3_twist_event"));
+
+            DataManager.Instance.masterKey = true;
+            DataManager.Instance.twist_DialogeKeywordsOpen[4] = true;
+
         }
 
         private void Start()

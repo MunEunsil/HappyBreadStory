@@ -17,10 +17,11 @@ namespace HappyBread.GamePlay
             gameObject.SetActive(false);
         }
         public void AttemptOpenCaseDiary()
-        {
+        {            
             GameModel.Instance.CaseDiary.gameObject.SetActive(true);
             GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
-            
+            GameModel.Instance.Player.playerStop();
+   
             //NextFunctionCommand = KeyCode.None;
         }
     }
