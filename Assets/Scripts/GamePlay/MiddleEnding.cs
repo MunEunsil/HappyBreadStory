@@ -79,9 +79,16 @@ namespace HappyBread.GamePlay
 
 
         //중간엔딩을 불러오기 위한 함수들 
+        /*  
+         *  hp감소 이펙트를 없애기 위해 추가 - 은실 220809
+         *  DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+         */
 
         public void startMoldEnding() //곰팡이 엔딩 불러오기
         {
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
 
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
@@ -103,6 +110,7 @@ namespace HappyBread.GamePlay
         }
         private void Ending() 
         {
+
             GameModel.Instance.MiddleEnding.gameObject.SetActive(true);
 
             GameModel.Instance.EffectManager.FadeIn(0.2f);
@@ -114,6 +122,10 @@ namespace HappyBread.GamePlay
         //솜사탕 구름 엔딩
         public void cottonCandyEnding()
         {
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+            GameModel.Instance.Hp.stopHp = true;
+
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
@@ -134,6 +146,12 @@ namespace HappyBread.GamePlay
         //초코분수 퐁듀 엔딩 
         public void startFondueEnding()
         {
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+            GameModel.Instance.Hp.stopHp = true;
+
+            DataManager.Instance.chocoFondue = 0; //은실 - (수정 초코분수 엔딩 초기화를 위해 추가 22.06.21)  
+
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
@@ -153,6 +171,10 @@ namespace HappyBread.GamePlay
         //오븐 오버쿡 식빵 엔딩 
         public void startOvenEnding()
         {
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+            GameModel.Instance.Hp.stopHp = true;
+
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
@@ -172,6 +194,10 @@ namespace HappyBread.GamePlay
         //냉동고 얼린식빵 엔딩 
         public void startFreezerEnding()
         {
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+            GameModel.Instance.Hp.stopHp = true;
+
             date = DataManager.Instance.date;
             SceneManager.UnloadSceneAsync($"Map{date}_1");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
@@ -191,6 +217,7 @@ namespace HappyBread.GamePlay
         //범인짐녹 시 3번이상 틀려야함
         public void incompetentEnding()
         {
+
 
             SceneManager.UnloadSceneAsync($"CallScene");
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");

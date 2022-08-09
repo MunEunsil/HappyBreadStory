@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HappyBread.GamePlay
 {
@@ -9,6 +10,8 @@ namespace HappyBread.GamePlay
     /// </summary>
     public class UIManager : MonoBehaviour
     {
+
+
         public void HpAppear()
         {
             GameModel.Instance.Hp.Appear();
@@ -77,6 +80,28 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.exitToOpeningBtn.Hide();
         }
+
+        //오프닝 셋팅 버튼을 위해 추가 - 은실 2022.05.07
+        public GameObject OpeingSetBtn;
+
+        public void OpeingSetAppear()
+        {
+            OpeingSetBtn.SetActive(true);
+        }
+        public void OpeingSetHide()
+        {
+            OpeingSetBtn.SetActive(false);
+        }
+
+    
+
+
+        private void Update()
+        {
+
+        }
+
+
 
 
 

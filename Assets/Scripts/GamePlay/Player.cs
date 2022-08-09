@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 
+
 namespace HappyBread.GamePlay
 {
     /// <summary>
@@ -20,17 +21,15 @@ namespace HappyBread.GamePlay
     {
 
         [HideInInspector]
-        public Vector3 NextMoveCommand; // 다음 움직임 명령
+        //public Vector3 NextMoveCommand; // 다음 움직임 명령
         [HideInInspector]
-        public KeyCode NextFunctionCommand;
+       // public KeyCode NextFunctionCommand;
         public LayerMask interactableLayer;
         public LayerMask evidenceLayer;
         public float hitDistance = 1.0f;
         public float useHpAmount = 0.01f;
 
-        //비네트 효과 
-        public PostProcessVolume vignetteEffect;
-        public Vignette vignette;
+
 
         private bool MidEnding = false; //중간엔딩이 꺼져있음 
 
@@ -40,28 +39,39 @@ namespace HappyBread.GamePlay
         public bool inRoom; //방 안에 있는지 확인하기 위한 변수
 
 
+
         private void Start()
         {
             state = State.Idle;
             inRoom = false;
-            //DataManager.Instance.vignetterColor.value = new Color(21f, 11f, 22f);
+            DataManager.Instance.WEff = true;
+            // vignetterColor.value = new Color(21f, 11f, 22f);
+
             //vignetteEffect.profile.TryGetSettings(out vignette);
-            
+
+
         }
 
+        //추가 은실) - 특정 hp구간에서 초록색 깜빡이는 효과를 위함 ( 2022-08-05 )
+        
+        public float time = 0;
         private void Update()
         {
-            
+
             //시간에 따라 식빵 게이지 줄이기
             if (GameModel.Instance.Hp.hp > 0)
             {
-                //if (DataManager.Instance.callStart == false)  //추리하기 중이 아닐 때 
-                //{
-                //    GameModel.Instance.Hp.Add(-Time.deltaTime);
-                //}
                 if (GameModel.Instance.Hp.stopHp == false)
                 {                  
                     GameModel.Instance.Hp.Add(-Time.deltaTime);
+                    
+                    if(DataManager.Instance.WEff  == true)
+                    {
+                        warningEff(); //hp 50 이하일 때 효과
+                    }
+
+                    
+
                 }
                 else
                 {
@@ -72,6 +82,8 @@ namespace HappyBread.GamePlay
             }
             else
             {
+                DataManager.Instance.WEff = false; //hp가 0보다 작아지면 효과X
+                GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
                 if (DataManager.Instance.date == 4)
                 {
                     GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
@@ -90,6 +102,9 @@ namespace HappyBread.GamePlay
                 }
 
             }
+
+
+
 
 
             // 움직임 구현부 ( 화살표 키 )
@@ -122,6 +137,33 @@ namespace HappyBread.GamePlay
                }
             }
 
+        //추가 은실) - 특정 hp구간에서 초록색 깜빡이는 효과를 위함 ( 2022-08-07 )
+        public void warningEff() 
+        {
+            if (GameModel.Instance.Hp.hp < 50)
+            {
+
+                Debug.Log(GameModel.Instance.Hp.WH.color.ToString("N3"));
+
+                // GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, time);
+                
+                if (time < 0.5f)
+                {
+                    GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 1 - time);
+                }
+                else
+                {
+                    GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, time);
+                    if (time > 1.0f)
+                    {
+                        time = 0;
+                    }
+                }
+                time += Time.deltaTime;
+
+
+            }
+        }
 
         private void AttemptOpenCall()
         {
@@ -168,8 +210,13 @@ namespace HappyBread.GamePlay
                     if (hitInfo.collider != null)
                     {
                         //Debug.Log("증거 상호작용");
-                        Interact(hitInfo);
-                    } else if (hit.transform.CompareTag("NPC"))
+                        if (hit.transform.position == hitInfo.transform.position)
+                        {
+                            Interact(hitInfo);
+                        }
+                        
+                    }
+                    else if (hit.transform.CompareTag("NPC"))
                     {
                        // Debug.Log("대화 상호작용");
                         Interact(hit);
@@ -212,7 +259,7 @@ namespace HappyBread.GamePlay
             }
         }
 
-        private int walk = 0;
+     //   private int walk = 0;
         private void WalkingState()
         {
             if (NextMoveCommand != Vector3.zero) // 움직이라는 명령 받음

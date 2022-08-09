@@ -38,7 +38,11 @@ namespace HappyBread.GamePlay
             FileName = null;
             GameModel.Instance.EffectManager.FadeIn();
            // GameModel.Instance.AudioManager.PlayBackgroundAudio();
-            GameModel.Instance.Hp.stopHp = false;
+            GameModel.Instance.Hp.stopHp = false; //hp감소 
+
+            DataManager.Instance.WEff = true; //hp감소 이펙트 true
+
+
             if (DataManager.Instance.date == 3)
             {
                 SceneManager.LoadScene("Map3_1", LoadSceneMode.Additive);

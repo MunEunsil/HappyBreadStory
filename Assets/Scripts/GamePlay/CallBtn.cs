@@ -22,6 +22,9 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
 
+            DataManager.Instance.WEff = false;
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+
 
             SceneManager.UnloadSceneAsync($"Map{DataManager.Instance.date}_1");
             GameModel.Instance.EventManager.AddBlockingEvent(new NextDayDialogueEvent("Day4_event"));

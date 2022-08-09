@@ -34,6 +34,8 @@ namespace HappyBread.GamePlay
 
         public void nextScene()
         {
+            GameModel.Instance.Hp.stopHp = false;
+
             //timeLineP = true;
             Debug.Log("day1 맵 나와라 뿅");
            // SceneManager.LoadScene("Player", LoadSceneMode.Additive);

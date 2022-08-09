@@ -35,9 +35,15 @@ namespace HappyBread.GamePlay
         public int date = 1;
         public int floor = 1;
 
-        //비네트 컬러 
-       // public ColorParameter vignetterColor;
 
+        //수정 오프닝 세팅을 위해 추가 (은실 2022.05.07)
+        public bool isPlaying = true; //true :  start or load 를 안누른 상태  false : start or load를 누른상태 
+
+
+        //비네트 컬러 
+        public ColorParameter vignetterColor;
+        //hp 감소 이펙트 
+        public bool WEff = true; //false : 효과X true : 효과 ㅇ
 
         //지하1층 들어갔는지 체크하기 위함 
         public bool inOven = false;

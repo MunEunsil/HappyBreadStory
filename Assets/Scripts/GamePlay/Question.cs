@@ -15,8 +15,8 @@ namespace HappyBread.GamePlay
         public Text text;
         public Image background;
 
-        private float backgroundHeight = 50f;
-        private float textPadding = 10f;
+       // private float backgroundHeight = 50f;
+      //  private float textPadding = 10f;
 
         public void SetText(string text)
         {

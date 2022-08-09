@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 384bbb230bca2e74d826e91a8a41114f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapName: Map3_1
-  date: 3
+  mapName: Map2_1
+  date: 2
 --- !u!4 &301581249
 Transform:
   m_ObjectHideFlags: 0
@@ -657,9 +657,8 @@ MonoBehaviour:
     m_Bits: 512
   hitDistance: 1
   useHpAmount: 0.001
-  vignetteEffect: {fileID: 1618275203}
-  vignette: {fileID: 0}
   inRoom: 0
+  time: 0
 --- !u!1 &1618275202
 GameObject:
   m_ObjectHideFlags: 0

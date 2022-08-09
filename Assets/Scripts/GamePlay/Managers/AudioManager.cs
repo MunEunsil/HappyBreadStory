@@ -180,8 +180,8 @@ namespace HappyBread.GamePlay
             ChangeBackgroundAudio("오프닝");
             PlayBackgroundAudio();
 
-            BGM_Volume.value = 1f;
-            EFM_Volume.value = 1f;
+            BGM_Volume.value = 0.5f;
+            EFM_Volume.value = 0.5f;
 
             backgroundAudioSource.volume = BGM_Volume.value;
         }

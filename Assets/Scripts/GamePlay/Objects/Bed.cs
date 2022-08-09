@@ -35,6 +35,7 @@ namespace HappyBread.GamePlay
         public void NightEvent()
         {
             GameModel.Instance.DataController.saveData.evidence_Sprite.Clear();
+            DataManager.Instance.WEff = false; 
 
             SceneManager.UnloadSceneAsync($"Map{DataManager.Instance.date}_1");
             // GameModel.Instance.EffectManager.FadeIn();

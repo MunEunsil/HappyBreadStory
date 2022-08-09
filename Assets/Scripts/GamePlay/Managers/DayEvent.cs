@@ -93,7 +93,12 @@ namespace HappyBread.GamePlay
             state = State.Idle;
             timeLineP = true;
             //hp 감소 시작 
-            GameModel.Instance.Hp.stopHp =false;
+            GameModel.Instance.Hp.hp = 300f;
+            GameModel.Instance.Hp.stopHp = false;
+
+            DataManager.Instance.WEff = true; //hp감소 이펙트 true
+
+            
 
             GameModel.Instance.EffectManager.FadeIn();
             //GameModel.Instance.AudioManager.PlayBackgroundAudio();
@@ -104,7 +109,7 @@ namespace HappyBread.GamePlay
             //현재 씬 삭제 
             //다음 씬 불러오기
             //state변경 
-            GameModel.Instance.Hp.hp = 300f;
+          
             SceneManager.LoadScene(NextSceneName, LoadSceneMode.Additive);
             SceneManager.UnloadSceneAsync(ThisSceneName);
             GameModel.Instance.UIManager.BasicUIAppear();
@@ -138,6 +143,9 @@ namespace HappyBread.GamePlay
 
         private void Start()
         {
+            GameModel.Instance.Hp.WH.color = new Color(1, 1, 1, 0);
+            
+
             DataManager.Instance.stopVoice = true;
             GameModel.Instance.UIManager.BasicUIHide();
             GameModel.Instance.StateManager.ChangeState(new CallState());

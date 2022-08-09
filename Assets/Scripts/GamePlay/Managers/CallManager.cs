@@ -67,6 +67,12 @@ namespace HappyBread.GamePlay
         public string evidenceArrName;
         public GameObject[] textObject = new GameObject[2];
 
+        //증거선택화면 증거 좌/우 움직이기위한 변수
+        //증거선택 열때마다 초기화해줘야함 
+        int j = 0;  //증거 칸 index 
+        bool rightEnd = false; //오른쪽으로 더이상 클릭 불가능하게 하기 위함 
+
+        public int EAF = 0; //EvidenceArrFront
         //텍스트 커서? 
         public int text1 = 0;
         public int text2 = 0;
@@ -192,10 +198,23 @@ namespace HappyBread.GamePlay
                 //추리할 수 없는 사건입니다. 
             }
         }
-        public void RenderEvidence()
+
+        /// <summary>
+        /// 증거 보여주기 수정 - 은실(2022.05.28)
+        /// 기존 : 특정 증거만 습득되어있으면 보여줌 (없으면 빈칸)
+        /// 변경 : 습득한 모든 증거물 선택할 수 있음. 버튼을 통해 6개씩 변경
+        /// </summary>
+
+        public void RenderEvidence()   // 증거선택 처음에 나오는 증거
         {
             //기존에 있던것 지우기 
             //evidenceObject.Clear();
+            EAF = 0; //EvidenceArrFront
+
+            j = 0;
+            rightEnd = false;                 
+
+
             choiceEvidence1.SetActive(false);
             choiceEvidence2.SetActive(false);
             choiceEvidence1.GetComponent<Image>().sprite = null;
@@ -206,134 +225,221 @@ namespace HappyBread.GamePlay
                 evidenceObject[i].SetActive(false);
             }
 
-            if (selectStrawCase == true) //딸기사건
+            RenderText1();
+            RenderText2();
+
+            //evidenceObject[0].SetActive(true);
+            //evidenceObject[1].SetActive(true);
+            //evidenceObject[2].SetActive(true);
+            //evidenceObject[3].SetActive(true);
+            //evidenceObject[4].SetActive(true);
+            //evidenceObject[5].SetActive(true);
+
+            for (int num = 0; num < 6; num++)
             {
-                RenderText1();
-                RenderText2();
-
-                if (firstAskDone == false) //사고사/ 타살 증거
+                if (DataManager.Instance.evidences.Count > num)
                 {
-                   // Debug.Log("딸기 사고/ 타살 증거 렌더");
-                    
-                    for (int i = 0; i <6; i++)
-                    {
-                        //테스트용 
-                        //evidenceObject[i].SetActive(true);
-                        //evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence1[i]);
-
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.straw_CaseEvidence1[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence1[i]);
-                            }
-
-                        }
-                        
-                    }
+                    evidenceObject[num].SetActive(true);
+                    evidenceObject[num].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[num].Sprite);
                 }
-                else //범인 지목 증거 
-                {
-                    
-                    Debug.Log("딸기범인지목 증거 렌더");
-                    for (int i = 0; i < 6; i++)
-                    {
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.straw_CaseEvidence2[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence2[i]);
-                            }
-
-                        }
-
-                    }
-                }
-
-            }
-            else if (selectHoduCase == true)
-            {
-                RenderText1();
-                RenderText2();
-               // Debug.Log("호두사건 클릭");
-
-                if (firstAskDone == false) //사고사/ 타살 증거
-                {
-                    //  firstAskDone = true;
-                    for (int i = 0; i < 6; i++)
-                    {
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.hodu_CaseEvidence1[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence1[i]);
-                            }
-
-                        }
-
-                    }
-                }
-                else //범인 지목 증거 
-                {
-                   //firstAskDone = false;
-                   // Debug.Log("호두범인지목 증거 렌더");
-                    for (int i = 0; i < 6; i++)
-                    {
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.hodu_CaseEvidence2[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence2[i]);
-                            }
-
-                        }
-
-                    }
-                }
-            }
-            else if (selectJellyJellyCase == true)
-            {
-                RenderText1();
-                RenderText2();
-
-                if (firstAskDone == false) //사고사/ 타살 증거
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.jellyjelly_CaseEvidence1[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence1[i]);
-                            }
-
-                        }
-
-                    }
-                }
-                else //범인 지목 증거 
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
-                        {
-                            if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.jellyjelly_CaseEvidence2[i])
-                            {
-                                evidenceObject[i].SetActive(true);
-                                evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence2[i]);
-                            }
-
-                        }
-
-                    }
-                }
+                else { break; }
             }
 
+            //evidenceObject[0].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[0].Sprite);
+            //evidenceObject[1].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[1].Sprite);
+            //evidenceObject[2].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[2].Sprite);
+            //evidenceObject[3].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[3].Sprite);
+            //evidenceObject[4].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[4].Sprite);
+            //evidenceObject[5].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[5].Sprite);
+            //if (selectStrawCase == true) //딸기사건
+            //{
+            //    RenderText1();
+            //    RenderText2();
+
+            //    if (firstAskDone == false) //사고사/ 타살 증거
+            //    {
+
+
+            //        Debug.Log("딸기 사고/ 타살 증거 렌더");
+
+            //        for (int i = 0; i < 6; i++)
+            //        {
+
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.straw_CaseEvidence1[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence1[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+            //    else //범인 지목 증거 
+            //    {
+
+            //        Debug.Log("딸기범인지목 증거 렌더");
+            //        for (int i = 0; i < 6; i++)
+            //        {
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.straw_CaseEvidence2[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.straw_CaseEvidence2[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+
+            //}
+            //else if (selectHoduCase == true)
+            //{
+            //    RenderText1();
+            //    RenderText2();
+            //   // Debug.Log("호두사건 클릭");
+
+            //    if (firstAskDone == false) //사고사/ 타살 증거
+            //    {
+            //        //  firstAskDone = true;
+            //        for (int i = 0; i < 6; i++)
+            //        {
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.hodu_CaseEvidence1[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence1[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+            //    else //범인 지목 증거 
+            //    {
+            //       //firstAskDone = false;
+            //       // Debug.Log("호두범인지목 증거 렌더");
+            //        for (int i = 0; i < 6; i++)
+            //        {
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.hodu_CaseEvidence2[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.hodu_CaseEvidence2[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+            //}
+            //else if (selectJellyJellyCase == true)
+            //{
+            //    RenderText1();
+            //    RenderText2();
+
+            //    if (firstAskDone == false) //사고사/ 타살 증거
+            //    {
+            //        for (int i = 0; i < 6; i++)
+            //        {
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.jellyjelly_CaseEvidence1[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence1[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+            //    else //범인 지목 증거 
+            //    {
+            //        for (int i = 0; i < 6; i++)
+            //        {
+            //            for (int j = 0; j < DataManager.Instance.evidences.Count; j++)
+            //            {
+            //                if (DataManager.Instance.evidences[j].Sprite == DataManager.Instance.jellyjelly_CaseEvidence2[i])
+            //                {
+            //                    evidenceObject[i].SetActive(true);
+            //                    evidenceObject[i].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.jellyjelly_CaseEvidence2[i]);
+            //                }
+
+            //            }
+
+            //        }
+            //    }
+            //}
+
+        }
+
+
+        public void LeftButtonClickRenderEvidence() //왼쪽 버튼을 눌렀을 때 증거
+        {
+            Debug.Log(EAF);
+            if (EAF == 0)
+            {
+                return;
+            }
+            else
+            {
+                //Debug.Log(" 왼쪽버튼 눌렀음! 누른거임! 눌렀다고! ");
+                rightEnd = false;
+                EAF = EAF - 6;
+                evidenceObject[0].SetActive(true);
+                evidenceObject[1].SetActive(true);
+                evidenceObject[2].SetActive(true);
+                evidenceObject[3].SetActive(true);
+                evidenceObject[4].SetActive(true);
+                evidenceObject[5].SetActive(true);
+
+                evidenceObject[0].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF].Sprite);
+                evidenceObject[1].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF + 1].Sprite);
+                evidenceObject[2].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF + 2].Sprite);
+                evidenceObject[3].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF + 3].Sprite);
+                evidenceObject[4].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF + 4].Sprite);
+                evidenceObject[5].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[EAF + 5].Sprite);
+            }
+        }
+
+        public void RightButtonClickRenderEvidence() //오른쪽 버튼을 눌렀을 때 증거 
+        {
+           // Debug.Log(EAF);
+            if (DataManager.Instance.evidences.Count <= 6)
+            {
+                return;
+            }
+            else if (rightEnd == true) { return; }
+            else
+            {
+                EAF = EAF + 6;
+                j = 0;
+                for (int i = EAF; i < EAF + 6; i++)
+                {
+                    if (i < DataManager.Instance.evidences.Count)
+                    {
+                        evidenceObject[j].GetComponent<Image>().sprite = ResourceLoader.LoadSprite(DataManager.Instance.evidences[i].Sprite);
+                    }
+                    else
+                    {
+                        for (int h = j; h < 6; h++)
+                        {
+                             evidenceObject[h].SetActive(false);
+                            //evidenceObject[h].GetComponent<Image>().sprite = null;
+                        }
+                        rightEnd = true;
+                        break;
+                    }
+                    j++;
+                }
+            }
         }
 
 

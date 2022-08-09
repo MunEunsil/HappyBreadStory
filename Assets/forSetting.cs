@@ -31,23 +31,48 @@ namespace HappyBread.GamePlay
             GameModel.Instance.Hp.stopHp = true;
 
             GameModel.Instance.Player.playerStop();
+
             
             //state 바꾸기 
             //GameModel.Instance.StateManager.ChangeState(new PlayingState());
             GameModel.Instance.StateManager.ChangeState(new CaseDiaryState());
         }
+        //수정 - 오프닝 셋팅을 위해 추가 (은실 2022.05.07 )
+        public void OpeningSettingClick()
+        {
+            //버튼 없애기 
+            GameModel.Instance.UIManager.OpeingSetHide();
+            //패널 나타남 
+            settingPanel.SetActive(true);
+            //음향켜고 
+            audioTab.SetActive(true);
+            //겜설명 끄기
+            operationKeyTab.SetActive(false);
+        }
+
 
         public void Esc()
         {
+            manual[manualIndex].SetActive(false);
             settingPanel.SetActive(false);
-            GameModel.Instance.StateManager.ChangeState(new PlayingState());
-            //hp감소하기
-            GameModel.Instance.Hp.stopHp = false;
+
+            if (DataManager.Instance.isPlaying == false)
+            {
+                GameModel.Instance.StateManager.ChangeState(new PlayingState());
+                //hp감소하기
+                GameModel.Instance.Hp.stopHp = false;
+            }
+            else { GameModel.Instance.UIManager.OpeingSetAppear(); }
+
+
         }
 
         //음향버튼
         public void button_audioTab() 
         {
+            //조작키 인덱스 끄기 
+            manual[manualIndex].SetActive(false);
+         
             //조작키 끔 
             operationKeyTab.SetActive(false);
             //음향 킴 

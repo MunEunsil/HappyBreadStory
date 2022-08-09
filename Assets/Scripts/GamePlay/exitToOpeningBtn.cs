@@ -18,6 +18,8 @@ namespace HappyBread.GamePlay
         }
         public void clickExitToOpeningBtin()
         {
+            // 은실 - 수정(22.06.30 npc와 대화중 나가는 문제 있음 해결하기)
+
             // NextCommand = KeyCode.None;
             DataManager.Instance.evidences.Clear(); //증거 날리기 
 

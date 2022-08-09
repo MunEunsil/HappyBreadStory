@@ -30,6 +30,7 @@ namespace HappyBread.GamePlay
         public GameObject[] endings = new GameObject[6];
         public GameObject[] finalEnding = new GameObject[2];
 
+        public GameObject settingUI;
 
         //엔딩 디테일 
         public GameObject endingDetail;
@@ -39,38 +40,88 @@ namespace HappyBread.GamePlay
         public float controll_space = 0f;
         //로드 여러번 방지용
         public bool Loading = false;
+        //오프닝 스킵물어보기용
+        public GameObject sikp;
 
-        public void Next()
+        //start눌렀을 때 하나씩 열리고 사라질 오브젝트 
+        public GameObject start_1; //초대장1
+        public GameObject start_2; //초대장2
+        
+
+        //22.06.26 은실- 수정( 오프닝 -> start -> 닉네임 설정까지 스킵을 위해 변경 )
+        //자세한 내용은 디스코드 -> 은실님 노트 
+
+        public void Next() //start버튼을 눌렀을 때 
         {
+            GameModel.Instance.UIManager.OpeingSetHide();
             GameModel.Instance.EffectManager.FadeIn(0.2f);
 
-            //데이터 초기화 
-            controll_space = 1.5f;
-            //  Invoke("SetActiveFalse", 1.1f);
-            SetActiveFalse();
-            if (currentStep + 1 >= steps.Length) // 다음 씬으로 넘어간다.
+            //save파일이 있는지 확인            
+            if (File.Exists(Application.dataPath + "/Save/" + "/SaveFile.txt")) //엔딩파일이 존재하면
             {
-                DataInitalization();
-                //Invoke("NextScene", 2f);
-                GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
-                GameModel.Instance.AudioManager.PlayBackgroundAudio();
-                return;
+                Invoke("existSave", 0.2f);
+                //existSave();
             }
+            else { isSkipOpening(); } //엔딩파일이 존재하지않으면
 
-            Invoke("SetActiveTrue", 0.5f);
+            
         }
 
-        //
- 
-        private void DataInitalization()
+        private void existSave() // start 버튼을 눌렀을 때 save가 존재하면 실행할 함수
         {
-            Debug.Log("데이터 초기화");
+            //세이브 파일과 동일한 닉네임으로 시작할것인지 선택지 보여줌
+            sikp.SetActive(true);
+        }
+
+        //오프닝 스킵 - 버튼 누르는 것에 따라 진행
+
+        public void skipOpening() //SAVE 데이터가 있고 스킵을 선택했을 때 실행되는 함수
+        {
+            string loadjson = File.ReadAllText(Application.dataPath + "/Save/" + "/SaveFile.txt");
+            SaveGameData opSaveData = new SaveGameData();
+            opSaveData = JsonUtility.FromJson<SaveGameData>(loadjson);
+
+            //이름만 로드 
+            DataManager.Instance.name = opSaveData.PlayerNmae;
+            //바로 시작 애니메이션
+            Invoke("NextScene", 0.2f);
+            //NextScene();
+        }
+
+        public void isSkipOpening() //SAVE가 없거나 스킵을 선택하지 않았을 때 실행되는 함수
+        {
+            start_1_activeT();
+            Invoke("start_2_activeT", 0.8f);
+            Invoke("start_3", 1.8f);
+        }
+        //invoke로 하나씩 진행할 함수들 
+        private void start_1_activeT()
+        {
+            start_1.SetActive(true);
+        }
+        private void start_2_activeT()
+        {
+            start_1.SetActive(false);
+            start_2.SetActive(true);
+        }
+        private void start_3()
+        {
+            //대화 이벤트 열릴거임 
+            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
+            GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { steps[3].SetActive(true); start_2.SetActive(false); ; }));
+        }
+        
+
+
+        private void DataInitalization() 
+        {
+           // Debug.Log("데이터 초기화");
 
             DataManager.Instance.ovenEnding = 0;
             DataManager.Instance.Day3_freezerKey = false;
             DataManager.Instance.day2Crois_lie = false;
             DataManager.Instance.floor = 1;//1층
-            //start눌렀을 때 데이터 초기화를 위함! 
+            //데이터 초기화를 위함! 
             DataManager.Instance.date = 1;
             GameModel.Instance.Date.SetDate(1);
             DataManager.Instance.evidences.Clear();
@@ -111,78 +162,80 @@ namespace HappyBread.GamePlay
 
         }
 
-        private void SetActiveTrue()
-        {
-            Debug.Log("SAT");
+        //private void SetActiveTrue()
+        //{
+        //    Debug.Log("SAT");
 
-            if (currentStep == 0)
-            {
-                //spaceBar = true;
+        //    if (currentStep == 0)
+        //    {
+        //        //spaceBar = true;
                 
-                steps[++currentStep].SetActive(true);
-               // GameModel.Instance.EffectManager.FadeIn(0.2f);
-                // Debug.Log("SetActive True : currentStep  => "+ currentStep);
-            }
-            else if (currentStep == 1)
-            {
-                // spaceBar = true;
-              //  GameModel.Instance.EffectManager.FadeIn(0.2f);
-                //GameModel.Instance.EffectManager.Fade();//
-                steps[++currentStep].SetActive(true);
-                // GameModel.Instance.EffectManager.FadeIn(0.2f);
-            }
-            else if (currentStep == 2) // 말하는 부분
-            {
-               // currentStep++;
-               // GameModel.Instance.EffectManager.FadeIn(0.2f);
-                // GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //        steps[++currentStep].SetActive(true);
+        //       // GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //        // Debug.Log("SetActive True : currentStep  => "+ currentStep);
+        //    }
+        //    else if (currentStep == 1)
+        //    {
+        //        // spaceBar = true;
+        //      //  GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //        //GameModel.Instance.EffectManager.Fade();//
+        //        steps[++currentStep].SetActive(true);
+        //        // GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //    }
+        //    else if (currentStep == 2) // 말하는 부분
+        //    {
+        //       // currentStep++;
+        //       // GameModel.Instance.EffectManager.FadeIn(0.2f);
+        //        // GameModel.Instance.EffectManager.FadeIn(0.2f);
                
-                //spaceBar = false;
-                Invoke("InvokeOpening", 1f);
-                //  Debug.Log("SetActive True : currentStep  => " + currentStep);
-            }
-            else
-            {
-                return;
-            }
+        //        //spaceBar = false;
+        //        Invoke("InvokeOpening", 1f);
+        //        //  Debug.Log("SetActive True : currentStep  => " + currentStep);
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }
 
-        }
+        //}
 
-        private void SetActiveFalse()
-        {
+        //private void SetActiveFalse()
+        //{
 
-            //Debug.Log("SetActive False : currentStep  => " + currentStep);
-            if (currentStep == 0)
-            {
-               // GameModel.Instance.EffectManager.FadeOut();
-                steps[currentStep].SetActive(false);
-            }
-            else if (currentStep == 1)
-            {
-              //  GameModel.Instance.EffectManager.FadeOut();
-                steps[currentStep].SetActive(false);
-                spaceBar = false;
-            }
-            else if(currentStep ==2)
-            {
-                return;
-               // steps[currentStep].SetActive(false);
-            }
+        //    //Debug.Log("SetActive False : currentStep  => " + currentStep);
+        //    if (currentStep == 0)
+        //    {
+        //       // GameModel.Instance.EffectManager.FadeOut();
+        //        steps[currentStep].SetActive(false);
+        //    }
+        //    else if (currentStep == 1)
+        //    {
+        //      //  GameModel.Instance.EffectManager.FadeOut();
+        //        steps[currentStep].SetActive(false);
+        //        spaceBar = false;
+        //    }
+        //    else if(currentStep ==2)
+        //    {
+        //        return;
+        //       // steps[currentStep].SetActive(false);
+        //    }
            
-        }
+        //}
 
-        private void InvokeOpening()
-        {
+        //private void InvokeOpening()
+        //{
 
-            currentStep++;
-            //spaceBar = false;
-            GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
-            GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { steps[3].SetActive(true); steps[2].SetActive(false); }));
-           // GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next();  })); //2번 fadein하는거 해결을 위해 주석
+        //    currentStep++;
+        //    //spaceBar = false;
+        //    GameModel.Instance.EventManager.AddBlockingEvent(new DialogueEvent("opening"));
+        //    GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { steps[3].SetActive(true); steps[2].SetActive(false); }));
+        //   // GameModel.Instance.EventManager.AddBlockingEvent(new ActionEvent(() => { Next();  })); //2번 fadein하는거 해결을 위해 주석
 
             
-        }
+        //}
 
+        //닉네임 입력 후 확인버튼 눌렀을 때 실행됨 
+        //오프닝 day1 사이에 인트로 애니메이션 씬 
         public void NextScene()
         {
             SceneManager.UnloadSceneAsync("Opening");
@@ -195,7 +248,7 @@ namespace HappyBread.GamePlay
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("Dance_Of_The_Sugar_Plum_Fairies");
             GameModel.Instance.AudioManager.PlayBackgroundAudio();
 
-
+            DataManager.Instance.isPlaying = false;
 
             //데모
             // GameModel.Instance.EffectManager.Fade();
@@ -218,7 +271,7 @@ namespace HappyBread.GamePlay
 
                 GameModel.Instance.AudioManager.StopBackgroundAudio();
                // Next();
-                Debug.Log(DataManager.Instance.PlayerName);
+               // Debug.Log(DataManager.Instance.PlayerName);
             }
         }
 
@@ -226,6 +279,11 @@ namespace HappyBread.GamePlay
         {
             GameModel.Instance.StateManager.SetState(new OpeningState());
             GameModel.Instance.AudioManager.ChangeBackgroundAudio("인트로");
+
+            GameModel.Instance.UIManager.OpeingSetAppear();
+
+            DataManager.Instance.isPlaying = true;
+
             //엔딩 로드 
             GameModel.Instance.DataController.Load_Ending();
             Loading = false;
@@ -250,24 +308,7 @@ namespace HappyBread.GamePlay
                 }
 
             }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                if (currentStep > 0 &&currentStep<3)
-                {
-                    //if (spaceBar == true)
-                    //{
-                    //    Next();
-                    //}
-                    if (controll_space <= 0)
-                    {
-                        Next();
-                    }
-                    
-                        
-                                     
-                }
-           
-            }
+
 
             if (controll_space > 0)
             {
@@ -281,9 +322,11 @@ namespace HappyBread.GamePlay
         }
 
 
+
         //엔딩 이미지 로드
         private void Load_Ending()
         {
+            GameModel.Instance.UIManager.OpeingSetHide();
             //i번째 앤딩이 true인지 확인
             for (int i = 0; i < 6; i++)
             {
@@ -343,7 +386,7 @@ namespace HappyBread.GamePlay
         public void Click_ending_Detail_exit()
         {
             endingDetail.SetActive(false);
-
+            
         }
 
 
@@ -361,6 +404,7 @@ namespace HappyBread.GamePlay
         public void Exit_Ending_button()
         {
             endingPanel.SetActive(false); //엔딩패널 비활성화
+            GameModel.Instance.UIManager.OpeingSetAppear();
         }
 
         //엔딩 나가기 버튼 
@@ -388,6 +432,8 @@ namespace HappyBread.GamePlay
 
         public void Click_Load()
         {
+            GameModel.Instance.UIManager.OpeingSetHide();
+            DataManager.Instance.isPlaying = false;
             // 최근습득증거 날리기 
             GameModel.Instance.latelyEvidence.removeEvidence();
             if (Loading == false)

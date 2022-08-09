@@ -1,1 +1,1 @@
-{"Ending":[true,false,false,false,false,false,false,false,false,false,false],"HappyEnding":[false,false]}
+{"Ending":[true,false,false,false,true,false,false,false,false,false,false],"HappyEnding":[false,false]}

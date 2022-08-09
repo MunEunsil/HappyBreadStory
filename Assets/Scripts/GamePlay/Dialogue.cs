@@ -194,7 +194,7 @@ namespace HappyBread.GamePlay
             //Sprite characterSprite = ResourceLoader.LoadSprite(characterFileName);
 
 
-            if (isEvidence == "Player")
+            if (isEvidence == "Player") //플레이어일 때
             {
                 GameModel.Instance.AudioManager.D_Audio("D_player");//walk
 
@@ -240,7 +240,7 @@ namespace HappyBread.GamePlay
                 }
 
             }
-            else
+            else // npc일 떄
             {
                 playerUI_.SetActive(false);
                 evidenceUI_.SetActive(false);
@@ -322,67 +322,126 @@ namespace HappyBread.GamePlay
         private void ShowNameTag(string name) 
         {
             //플레이어 이름 / npc 이름 
-            string[] TagName = new string [2];
-            TagName = name.Split('_');
+            //string[] TagName = new string [2];
+            //TagName = name.Split('_');
+            string TagName = name;
 
-            ///
-            /// 대사 전부 수정할 일 있으면 그냥 캐릭터이름_ 이렇게 수정 
-            /// 다만 이렇게 하면 이미지 이름도 전부 수정 
-            /// 만약 대사 모두 다시 수정할 일이 있다면 츄라이
-            ///
 
-            switch (TagName[0])
+            //캐릭터 이름 출력 버그해결을 위해 변경 - (수정 - 은실 2022.04.29)
+            if (TagName.Contains("컵케익"))
             {
-                case "컵케익":
-                    GameModel.Instance.AudioManager.D_Audio("D_cake");
-                    characterNmaeText_.text = "컵케이크";
-                    break;
-                case "소라빵":
-                    GameModel.Instance.AudioManager.D_Audio("D_choco");
-                    characterNmaeText_.text = "초코";
-                    break;
-                case "크로아상":
-                    GameModel.Instance.AudioManager.D_Audio("D_crois");
-                    characterNmaeText_.text = "크로경장";
-                    break;
-                case "도넛":
-                    GameModel.Instance.AudioManager.D_Audio("D_donut");
-                    characterNmaeText_.text = "도넛";
-                    break;
-                case "호두":
-                    GameModel.Instance.AudioManager.D_Audio("D_hodu");
-                    characterNmaeText_.text = "호두";
-                    break;
-                case "땅콩잼":
-                    GameModel.Instance.AudioManager.D_Audio("D_jam");
-                    characterNmaeText_.text = "땅콩잼";
-                    break;
-                case "젤리":
-                    GameModel.Instance.AudioManager.D_Audio("D_jelly");
-                    characterNmaeText_.text = "젤리";
-                    break;
-                case "젤리젤리":
-                    GameModel.Instance.AudioManager.D_Audio("D_jellyjelly");
-                    characterNmaeText_.text = "젤리젤리";
-                    break;
-                case "마카롱":
-                    GameModel.Instance.AudioManager.D_Audio("D_maca");
-                    characterNmaeText_.text = "막가롱";
-                    break;
-                case "팬케이크":
-                    GameModel.Instance.AudioManager.D_Audio("D_pancake");
-                    characterNmaeText_.text = "팬케이크";
-                    break;
-                case "딸기잼":
-                    GameModel.Instance.AudioManager.D_Audio("D_straw");
-                    characterNmaeText_.text = "딸기잼";
-                    break;
-                case "꽈배기":
-                    GameModel.Instance.AudioManager.D_Audio("D_twist");
-                    characterNmaeText_.text = "곽배기";
-                    break;
-
+                GameModel.Instance.AudioManager.D_Audio("D_cake");
+                characterNmaeText_.text = "컵케이크";
             }
+            else if (TagName.Contains("소라빵"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_choco");
+                characterNmaeText_.text = "초코";
+            }
+            else if (TagName.Contains("크로아상"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_crois");
+                characterNmaeText_.text = "크로경장";
+            }
+            else if (TagName.Contains("도넛"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_donut");
+                characterNmaeText_.text = "도넛";
+            }
+            else if (TagName.Contains("호두"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_hodu");
+                characterNmaeText_.text = "호두";
+            }
+            else if (TagName.Contains("땅콩잼"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_jam");
+                characterNmaeText_.text = "땅콩잼";
+            }
+            else if (TagName.Contains("젤리"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_jelly");
+                characterNmaeText_.text = "젤리";
+            }
+            else if (TagName.Contains("젤리젤리"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_jellyjelly");
+                characterNmaeText_.text = "젤리젤리";
+            }
+            else if (TagName.Contains("마카롱"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_maca");
+                characterNmaeText_.text = "막가롱";
+            }
+            else if (TagName.Contains("팬케이크"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_pancake");
+                characterNmaeText_.text = "팬케이크";
+            }
+            else if (TagName.Contains("딸기잼"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_straw");
+                characterNmaeText_.text = "딸기잼";
+            }
+            else if (TagName.Contains("꽈배기"))
+            {
+                GameModel.Instance.AudioManager.D_Audio("D_twist");
+                characterNmaeText_.text = "곽배기";
+            }
+
+
+            //switch (TagName)
+            //{
+            //    case "컵케익":
+            //        GameModel.Instance.AudioManager.D_Audio("D_cake");
+            //        characterNmaeText_.text = "컵케이크";
+            //        break;
+            //    case "소라빵":
+            //        GameModel.Instance.AudioManager.D_Audio("D_choco");
+            //        characterNmaeText_.text = "초코";
+            //        break;
+            //    case "크로아상":
+            //        GameModel.Instance.AudioManager.D_Audio("D_crois");
+            //        characterNmaeText_.text = "크로경장";
+            //        break;
+            //    case "도넛":
+            //        GameModel.Instance.AudioManager.D_Audio("D_donut");
+            //        characterNmaeText_.text = "도넛";
+            //        break;
+            //    case "호두":
+            //        GameModel.Instance.AudioManager.D_Audio("D_hodu");
+            //        characterNmaeText_.text = "호두";
+            //        break;
+            //    case "땅콩잼":
+            //        GameModel.Instance.AudioManager.D_Audio("D_jam");
+            //        characterNmaeText_.text = "땅콩잼";
+            //        break;
+            //    case "젤리":
+            //        GameModel.Instance.AudioManager.D_Audio("D_jelly");
+            //        characterNmaeText_.text = "젤리";
+            //        break;
+            //    case "젤리젤리":
+            //        GameModel.Instance.AudioManager.D_Audio("D_jellyjelly");
+            //        characterNmaeText_.text = "젤리젤리";
+            //        break;
+            //    case "마카롱":
+            //        GameModel.Instance.AudioManager.D_Audio("D_maca");
+            //        characterNmaeText_.text = "막가롱";
+            //        break;
+            //    case "팬케이크":
+            //        GameModel.Instance.AudioManager.D_Audio("D_pancake");
+            //        characterNmaeText_.text = "팬케이크";
+            //        break;
+            //    case "딸기잼":
+            //        GameModel.Instance.AudioManager.D_Audio("D_straw");
+            //        characterNmaeText_.text = "딸기잼";
+            //        break;
+            //    case "꽈배기":
+            //        GameModel.Instance.AudioManager.D_Audio("D_twist");
+            //        characterNmaeText_.text = "곽배기";
+            //        break;
+
+            //}
         }
 
         private void ShowMessage(string[] seperated)

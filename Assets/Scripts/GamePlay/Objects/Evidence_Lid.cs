@@ -18,7 +18,7 @@ namespace HappyBread.GamePlay
         protected override void InitEvidence()
         {
             DataManager.Instance.dialogeEvidence = true;
-            Evidence_Sprite = "evidence_Straw_Lid";
+           // Evidence_Sprite = "evidence_Straw_Lid";
             Evidence = new Evidence()
             {
                 Name = "딸기뚜껑",
