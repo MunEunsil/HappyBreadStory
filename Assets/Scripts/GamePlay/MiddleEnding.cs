@@ -265,6 +265,38 @@ namespace HappyBread.GamePlay
             Invoke("Ending", 2f);
         }
 
+        //트루해피(?)엔딩 
+
+        public void true_HappyEnding()
+        {
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "임시트루엔딩_해피"; //이미지 이름 
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_happyEnding[0] = true;
+
+            Invoke("Ending", 2f);
+        }
+
+        //트루배드엔딩
+        public void true_BadEnding()
+        {
+            GameModel.Instance.AudioManager.ChangeBackgroundAudio("중간엔딩음악");
+            DataManager.Instance.middleEndingName = "임시트루엔딩_배드"; //이미지 이름 
+            GameModel.Instance.StateManager.ChangeState(new MiddleEndingState());
+
+            //ui뿅 
+            GameModel.Instance.StateManager.ChangeState(new PauseState());
+            GameModel.Instance.EffectManager.FadeOut();
+
+            DataManager.Instance.ending_happyEnding[0] = true;
+
+            Invoke("Ending", 2f);
+        }
 
     }
 }

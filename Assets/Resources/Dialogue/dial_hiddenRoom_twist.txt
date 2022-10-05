@@ -1,0 +1,7 @@
+Message : askAddAvidence: Player : 유저_기본: 잇어뱉 잇어 굿
+Message : askAddAvidence :character : 꽈배기_기본 : Narcissistic, my god, I love it
+Message : askAddAvidence: Player : 유저_기본: 서로를 비춘 밤 ( 똑 딱 똑 딱 )
+Message : askAddAvidence :character : 꽈배기_기본 : 아름다운 까만 눈빛 더 빠져 깊이
+Message : askAddAvidence: Player : 유저_기본: (넌 내게로, 난 네게로) 
+Message : askAddAvidence: Player : 유저_기본: 숨 참고 love dive 
+Message : askAddAvidence: Player : 유저_기본: 우우우우 라 랄라 라 랄라 

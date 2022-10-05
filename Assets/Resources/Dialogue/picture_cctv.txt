@@ -1,0 +1,2 @@
+Message : askAddAvidence : Evidence :  : 뭔가 반짝인다. 
+Message : askAddAvidence : Evidence :  : 감시카메라가 숨겨져 있었다.

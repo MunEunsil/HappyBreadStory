@@ -21,9 +21,9 @@ namespace HappyBread.GamePlay
     {
 
         [HideInInspector]
-        //public Vector3 NextMoveCommand; // 다음 움직임 명령
+        public Vector3 NextMoveCommand; // 다음 움직임 명령
         [HideInInspector]
-       // public KeyCode NextFunctionCommand;
+        public KeyCode NextFunctionCommand;
         public LayerMask interactableLayer;
         public LayerMask evidenceLayer;
         public float hitDistance = 1.0f;

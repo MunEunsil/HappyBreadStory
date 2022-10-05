@@ -19,7 +19,7 @@ namespace HappyBread.GamePlay
             {
                 if (_instance == null)
                 {
-                    _instance = GameObject.Find("DataManager").GetComponent<DataManager>();
+                    //_instance = GameObject.Find("DataManager").GetComponent<DataManager>();
                 }
                 return _instance;
             }
@@ -34,6 +34,18 @@ namespace HappyBread.GamePlay
         public List<Evidence> evidences = new List<Evidence>();
         public int date = 1;
         public int floor = 1;
+
+        //트루엔딩을 위한 열쇠 습득여부 확인을 위해 추가 ( 은실 2022.08.19)
+        public bool TrueRoomKey = false;
+
+
+
+        //cctv 발견 유무 확인을 위해 추가 (은실 2022.08.19)
+        public bool getKnowCctv = false;
+
+        //히든 -> 트루엔딩 여부 (추가 2022 10 03 )
+        //cctv 방에서 방 선택에 따라 달라짐 
+        public bool hidden_true = false; // true : 히든 - 트루엔딩 false : 히든 - 죽음엔딩
 
 
         //수정 오프닝 세팅을 위해 추가 (은실 2022.05.07)

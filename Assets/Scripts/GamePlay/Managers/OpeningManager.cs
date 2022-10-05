@@ -122,6 +122,9 @@ namespace HappyBread.GamePlay
             DataManager.Instance.day2Crois_lie = false;
             DataManager.Instance.floor = 1;//1층
             //데이터 초기화를 위함! 
+            DataManager.Instance.TrueRoomKey = false;
+            DataManager.Instance.getKnowCctv = false;
+
             DataManager.Instance.date = 1;
             GameModel.Instance.Date.SetDate(1);
             DataManager.Instance.evidences.Clear();

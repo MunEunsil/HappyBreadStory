@@ -66,6 +66,16 @@ namespace HappyBread.GamePlay
                     Invoke("InterRoom", 2f);
                 }
             }
+            else if (this.gameObject.name == "Door306") 
+            {
+                if (DataManager.Instance.TrueRoomKey == true) //열쇠를 습득해야 들어갈 수 있다.
+                {
+                    GameModel.Instance.UIManager.BasicUIHide();
+                    GameModel.Instance.StateManager.ChangeState(new PauseState());
+                    GameModel.Instance.EffectManager.FadeOut();
+                    Invoke("InterRoom", 2f);
+                }
+            }
             else if (this.gameObject.name == "Door301_USER")
             {
                 GameModel.Instance.UIManager.BasicUIHide();
@@ -82,12 +92,7 @@ namespace HappyBread.GamePlay
             }
             else
             {
-                //if (DataManager.Instance.masterKey == true)
-                //{
-                //    GameModel.Instance.StateManager.ChangeState(new PauseState());
-                //    GameModel.Instance.EffectManager.FadeOut();
-                //    Invoke("InterRoom", 2f);
-                //}
+
                 if (DataManager.Instance.date >= 3)
                 {
                     GameModel.Instance.UIManager.BasicUIHide();

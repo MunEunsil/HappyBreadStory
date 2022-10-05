@@ -1,0 +1,2 @@
+Message : askAddAvidence : Evidence :temp_trueRoomKey:세상에...이건...감시카메라? 
+Message : askAddAvidence : Evidence :temp_trueRoomKey:호텔의 모든 방 안이 보인다.
